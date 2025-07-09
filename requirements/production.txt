@@ -1,0 +1,17 @@
+# Base dependencies
+-r base.txt
+
+# Production server
+gunicorn==21.2.0
+
+# Environment variables
+python-dotenv==1.0.0
+
+# Database (if using PostgreSQL)
+psycopg2-binary==2.9.9
+
+# Caching (if using Redis)
+redis==5.0.1
+
+# Monitoring (optional)
+sentry-sdk[django]==1.40.4
