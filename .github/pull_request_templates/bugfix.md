@@ -1,3 +1,11 @@
+---
+name: 🐛 Bug Fix Pull Request
+about: Use this template for bug fixes and hotfixes
+title: "[BUGFIX] "
+labels: ["bug", "fix"]
+assignees: []
+---
+
 ## 🐛 Bug Fix Pull Request
 
 ### 📋 Description

@@ -1,3 +1,11 @@
+---
+name: 🚀 Feature Pull Request
+about: Use this template for new features and enhancements
+title: "[FEATURE] "
+labels: ["feature", "enhancement"]
+assignees: []
+---
+
 ## 🚀 Feature Pull Request
 
 ### 📋 Description
