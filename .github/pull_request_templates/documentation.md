@@ -1,3 +1,11 @@
+---
+name: 📚 Documentation Pull Request
+about: Use this template for documentation updates
+title: "[DOCS] "
+labels: ["documentation"]
+assignees: []
+---
+
 ## 📚 Documentation Pull Request
 
 ### 📋 Description
