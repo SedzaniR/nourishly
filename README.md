@@ -1,20 +1,34 @@
 # Nourishly
 
-A modern nutrition and wellness application designed to help users make healthier food choices and track their nutritional intake.
+A modern nutrition and wellness API built with Django and Django Ninja, designed to help users make healthier food choices and track their nutritional intake.
 
 ## 🚀 Features
 
 - **Nutrition Tracking**: Log and track your daily food intake
-- **Meal Planning**: Plan your meals ahead of time
-- **Recipe Database**: Access to a vast collection of healthy recipes
-- **Progress Monitoring**: Track your health and nutrition goals
-- **Personalized Recommendations**: Get tailored nutrition advice
+- **Meal Planning**: Plan your meals ahead of time with AI-powered suggestions
+- **Recipe Database**: Access to a vast collection of healthy recipes with Edamam integration
+- **Cuisine Classification**: AI-powered cuisine classification using Hugging Face
+- **User Profiles**: Personalized nutrition goals and dietary preferences
+- **RESTful API**: Modern API built with Django Ninja for type safety and performance
+
+## 🏗️ Architecture
+
+```
+nourishly/
+├── api/                 # Main API router (Django Ninja)
+├── recipes/             # Recipe and ingredient management
+├── planner/             # Meal planning engine
+├── users/               # User auth and preference profiles
+├── classify/            # Cuisine classification with Hugging Face
+├── core/                # Shared utilities and base models
+└── nourishly/           # Project settings (separated by environment)
+```
 
 ## 📋 Prerequisites
 
 Before you begin, ensure you have the following installed:
-- Node.js (v18 or higher)
-- npm or yarn
+- Python 3.11+ (recommended: 3.13)
+- pyenv (for Python version management)
 - Git
 
 ## 🛠️ Installation
@@ -25,50 +39,87 @@ Before you begin, ensure you have the following installed:
    cd nourishly
    ```
 
-2. **Install dependencies**
+2. **Set up Python environment**
    ```bash
-   npm install
-   # or
-   yarn install
+   pyenv install 3.13.5
+   pyenv virtualenv 3.13.5 nourishly-venv
+   pyenv activate nourishly-venv
    ```
 
-3. **Set up environment variables**
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements/development.txt
+   ```
+
+4. **Set up environment variables**
    ```bash
    cp .env.example .env
    # Edit .env with your configuration
    ```
 
-4. **Run the development server**
+5. **Run database migrations**
    ```bash
-   npm run dev
-   # or
-   yarn dev
+   python manage.py migrate
    ```
 
-5. **Open your browser**
-   Navigate to `http://localhost:3000`
+6. **Run the development server**
+   ```bash
+   python manage.py runserver
+   ```
+
+7. **Open your browser**
+   Navigate to `http://127.0.0.1:8000`
 
 ## 🧪 Testing
 
 ```bash
 # Run all tests
-npm test
-
-# Run tests in watch mode
-npm run test:watch
+pytest
 
 # Run tests with coverage
-npm run test:coverage
+pytest --cov
+
+# Run tests in watch mode
+pytest-watch
+
+# Run specific app tests
+pytest recipes/
 ```
 
 ## 📦 Building for Production
 
 ```bash
-# Build the application
-npm run build
+# Install production dependencies
+pip install -r requirements/production.txt
 
-# Start the production server
-npm start
+# Set production environment
+export DJANGO_ENV=production
+
+# Run migrations
+python manage.py migrate
+
+# Collect static files
+python manage.py collectstatic
+
+# Start production server
+gunicorn nourishly.wsgi:application
+```
+
+## 🔧 Development
+
+```bash
+# Code formatting
+black .
+isort .
+
+# Linting
+flake8
+
+# Type checking
+mypy .
+
+# Run development server
+python manage.py runserver
 ```
 
 ## 🤝 Contributing
@@ -103,9 +154,9 @@ We have several pull request templates to help you create better PRs:
 
 ## 📚 Documentation
 
-- [API Documentation](./docs/api.md)
-- [User Guide](./docs/user-guide.md)
-- [Developer Guide](./docs/developer-guide.md)
+- [API Documentation](./docs/api.md) - Django Ninja API endpoints
+- [Developer Guide](./docs/developer-guide.md) - Setup and development workflow
+- [Architecture Guide](./docs/architecture.md) - Project structure and design decisions
 - [Contributing Guidelines](./docs/contributing.md)
 
 ## 🐛 Bug Reports
