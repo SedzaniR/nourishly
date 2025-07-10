@@ -5,6 +5,18 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
+# Database - Use PostgreSQL for development
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'nourishly_dev',
+        'USER': 'sedzaniragau',  # Your macOS username
+        'PASSWORD': 'nMDyHqTmxUE6aZv',  # No password for local development
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
 # Development-specific settings
 if DEBUG:
     try:

@@ -14,4 +14,4 @@ psycopg2-binary==2.9.9
 redis==5.0.1
 
 # Monitoring (optional)
-sentry-sdk[django]==1.40.4
+sentry-sdk==2.32.0

@@ -1,5 +1,15 @@
 from .base import *
 import os
+import sentry_sdk
+
+
+
+sentry_sdk.init(
+    dsn="https://28a962019e948933220a8620545d3b35@o4509646364475392.ingest.us.sentry.io/4509646367621120",
+    # Add data like request headers and IP for users,
+    # see https://docs.sentry.io/platforms/python/data-management/data-collected/ for more info
+    send_default_pii=True,
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False

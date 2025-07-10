@@ -16,5 +16,8 @@ ipython==8.18.1
 # Environment & Configuration
 python-dotenv==1.0.0
 
+# Database
+psycopg2-binary==2.9.9
+
 # API Development
 httpie==3.2.2
