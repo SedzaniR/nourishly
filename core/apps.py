@@ -22,10 +22,15 @@ class CoreConfig(AppConfig):
         else:
             log_level = 'DEBUG' if settings.DEBUG else 'INFO'
         
+        if settings.DEBUG:
+            json_format = False
+        else:
+            json_format = True
+        
         logger.initialize(
             name='nourishly',
             level=log_level,
             console_output=True,
             file_output=True,
-            json_format=False  # Set to True for structured logging
+            json_format=json_format  # Set to True for structured logging
         )
