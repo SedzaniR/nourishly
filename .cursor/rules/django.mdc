@@ -1,7 +1,7 @@
 # Django Project Rules for Nourishly
 
 ## Project Overview
-This is a Django-based nutrition and wellness API called "Nourishly" that uses Django Ninja for API development, follows a selectors pattern for database queries, and implements comprehensive logging throughout the application.
+This is a Django-based nutrition and wellness API called "Nourishly" that uses Django Ninja for API development, follows a selectors pattern for database queries, services for database writes, API for communication across applications. and implements comprehensive logging throughout the application.
 
 ## Architecture Patterns
 
