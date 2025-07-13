@@ -13,8 +13,10 @@ api = NinjaAPI(
 # from planner.api import router as planner_router
 # from users.api import router as users_router
 # from classify.api import router as classify_router
+from subscriptions.api import router as subscriptions_router
 
 # api.add_router("/recipes/", recipes_router)
 # api.add_router("/planner/", planner_router)
 # api.add_router("/users/", users_router)
-# api.add_router("/classify/", classify_router) 
+# api.add_router("/classify/", classify_router)
+api.add_router("/subscriptions/", subscriptions_router) 
