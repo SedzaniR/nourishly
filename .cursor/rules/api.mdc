@@ -1,0 +1,264 @@
+# Django Ninja API Development Rules
+
+## API Structure
+
+### Router Setup
+```python
+from ninja import Router, Schema
+from ninja.errors import HttpError
+from django.shortcuts import get_object_or_404
+from typing import List, Optional
+
+router = Router()
+```
+
+### Schema Definitions
+- Define schemas at the top of the file
+- Use descriptive names ending with "Schema"
+- Include type hints for all fields
+- Use Optional for nullable fields
+- Group related schemas together
+
+```python
+class RequestSchema(Schema):
+    field1: str
+    field2: Optional[int] = None
+    field3: List[str] = []
+
+class ResponseSchema(Schema):
+    id: int
+    name: str
+    created_at: datetime
+```
+
+## Endpoint Patterns
+
+### GET Endpoints
+```python
+@router.get("/endpoint", response=List[ResponseSchema])
+def list_items(request):
+    """Get all items for the user."""
+    if not request.user.is_authenticated:
+        raise HttpError(401, "Authentication required")
+    
+    try:
+        items = Selector.get_user_items(request.user)
+        return items
+    except Exception as e:
+        log_error("Failed to fetch items", error=str(e))
+        raise HttpError(500, "Failed to fetch items")
+```
+
+### POST Endpoints
+```python
+@router.post("/endpoint", response=ResponseSchema)
+def create_item(request, data: RequestSchema):
+    """Create a new item."""
+    if not request.user.is_authenticated:
+        raise HttpError(401, "Authentication required")
+    
+    try:
+        item = Service.create_item(request.user, data)
+        return item
+    except ValueError as e:
+        raise HttpError(400, str(e))
+    except Exception as e:
+        log_error("Failed to create item", error=str(e))
+        raise HttpError(500, "Failed to create item")
+```
+
+### PUT/PATCH Endpoints
+```python
+@router.put("/endpoint/{item_id}", response=ResponseSchema)
+def update_item(request, item_id: int, data: RequestSchema):
+    """Update an existing item."""
+    if not request.user.is_authenticated:
+        raise HttpError(401, "Authentication required")
+    
+    try:
+        item = Selector.get_item_by_id(item_id, request.user)
+        if not item:
+            raise HttpError(404, "Item not found")
+        
+        updated_item = Service.update_item(item, data)
+        return updated_item
+    except HttpError:
+        raise
+    except Exception as e:
+        log_error("Failed to update item", error=str(e))
+        raise HttpError(500, "Failed to update item")
+```
+
+### DELETE Endpoints
+```python
+@router.delete("/endpoint/{item_id}")
+def delete_item(request, item_id: int):
+    """Delete an item."""
+    if not request.user.is_authenticated:
+        raise HttpError(401, "Authentication required")
+    
+    try:
+        item = Selector.get_item_by_id(item_id, request.user)
+        if not item:
+            raise HttpError(404, "Item not found")
+        
+        Service.delete_item(item)
+        return {"message": "Item deleted successfully"}
+    except HttpError:
+        raise
+    except Exception as e:
+        log_error("Failed to delete item", error=str(e))
+        raise HttpError(500, "Failed to delete item")
+```
+
+## Error Handling
+
+### HTTP Status Codes
+- 200: Success
+- 201: Created
+- 400: Bad Request (validation errors)
+- 401: Unauthorized (authentication required)
+- 403: Forbidden (permission denied)
+- 404: Not Found
+- 500: Internal Server Error
+
+### Error Response Pattern
+```python
+try:
+    # operation
+    pass
+except ValueError as e:
+    raise HttpError(400, str(e))
+except HttpError:
+    raise
+except Exception as e:
+    log_error("Operation failed", error=str(e))
+    raise HttpError(500, "Internal server error")
+```
+
+## Authentication & Authorization
+
+### Authentication Check
+```python
+if not request.user.is_authenticated:
+    raise HttpError(401, "Authentication required")
+```
+
+### User-Specific Data
+```python
+# Always filter by user for user-specific data
+items = Selector.get_user_items(request.user)
+```
+
+### Permission Checks
+```python
+# Check if user owns the resource
+item = Selector.get_item_by_id(item_id, request.user)
+if not item:
+    raise HttpError(404, "Item not found")
+```
+
+## Logging
+
+### Request Logging
+```python
+log_info(
+    "API request",
+    endpoint="/api/endpoint",
+    user_id=request.user.id,
+    method=request.method
+)
+```
+
+### Error Logging
+```python
+log_error(
+    "API error",
+    endpoint="/api/endpoint",
+    user_id=request.user.id,
+    error=str(e)
+)
+```
+
+## Response Patterns
+
+### List Responses
+```python
+@router.get("/items", response=List[ItemSchema])
+def list_items(request):
+    items = Selector.get_items(request.user)
+    return items
+```
+
+### Single Item Responses
+```python
+@router.get("/items/{item_id}", response=ItemSchema)
+def get_item(request, item_id: int):
+    item = Selector.get_item_by_id(item_id, request.user)
+    if not item:
+        raise HttpError(404, "Item not found")
+    return item
+```
+
+### Status Responses
+```python
+@router.get("/status", response=StatusSchema)
+def get_status(request):
+    return {
+        "status": "healthy",
+        "timestamp": timezone.now()
+    }
+```
+
+## Query Parameters
+
+### Pagination
+```python
+@router.get("/items", response=List[ItemSchema])
+def list_items(request, page: int = 1, size: int = 20):
+    items = Selector.get_items_paginated(request.user, page, size)
+    return items
+```
+
+### Filtering
+```python
+@router.get("/items", response=List[ItemSchema])
+def list_items(request, status: Optional[str] = None):
+    items = Selector.get_items_filtered(request.user, status=status)
+    return items
+```
+
+## File Uploads
+
+### File Upload Endpoint
+```python
+@router.post("/upload")
+def upload_file(request, file: UploadedFile):
+    """Upload a file."""
+    if not request.user.is_authenticated:
+        raise HttpError(401, "Authentication required")
+    
+    try:
+        result = Service.process_upload(request.user, file)
+        return {"message": "File uploaded successfully", "file_id": result.id}
+    except Exception as e:
+        log_error("File upload failed", error=str(e))
+        raise HttpError(500, "Failed to upload file")
+```
+
+## Best Practices
+
+1. **Always use selectors for database queries**
+2. **Use services for business logic**
+3. **Include proper error handling**
+4. **Log all requests and errors**
+5. **Use descriptive endpoint names**
+6. **Include proper HTTP status codes**
+7. **Validate input data with schemas**
+8. **Check authentication where needed**
+9. **Filter data by user for user-specific endpoints**
+10. **Use type hints for all parameters and return values**
+description:
+globs:
+alwaysApply: false
+---
