@@ -1,0 +1,336 @@
+# Django Project Rules for Nourishly
+
+## Project Overview
+This is a Django-based nutrition and wellness API called "Nourishly" that uses Django Ninja for API development, follows a selectors pattern for database queries, and implements comprehensive logging throughout the application.
+
+## Architecture Patterns
+
+### 1. Selectors Pattern
+- All database queries MUST go through selector classes in `app/selectors.py`
+- Selectors import only from models and are imported by services and API
+- Use proper docstrings with Args/Returns sections following PEP 257
+- Example structure:
+```python
+class ModelSelector:
+    """Database queries for Model."""
+    
+    @staticmethod
+    def get_by_id(id: int) -> Optional[Model]:
+        """Get model by ID.
+        
+        Args:
+            id: The ID of the model to retrieve.
+            
+        Returns:
+            Model or None: The model if found, None otherwise.
+        """
+        return Model.objects.filter(id=id).first()
+```
+
+### 2. Service Layer
+- Business logic goes in `app/services.py`
+- Services use selectors for database operations
+- Use transaction.atomic() for operations that modify data
+- Log all important operations using core.logger
+
+### 3. API Layer (Django Ninja)
+- API endpoints in `app/api.py`
+- Use proper Schema classes for request/response validation
+- Always include authentication checks where needed
+- Use selectors for database queries, never direct model queries
+- Comprehensive error handling with proper HTTP status codes
+
+## Code Style & Conventions
+
+### Python Style
+- Follow PEP 8 with 100 character line limit
+- Use type hints for all function parameters and return values
+- Use f-strings for string formatting
+- Use list/dict comprehensions where appropriate
+- Use `Optional[Type]` for nullable values
+
+### Django Conventions
+- Use `pk` instead of `id` for primary key references
+- Use `select_related()` and `prefetch_related()` for related data
+- Use `get_object_or_404()` for single object retrieval
+- Use `filter().first()` instead of `get()` when object might not exist
+- Use `exists()` for boolean checks instead of `count() > 0`
+
+### Model Conventions
+- Inherit from `TimeStampedModel` for created_at/updated_at fields
+- Use `help_text` for all model fields
+- Use `choices` for constrained string fields
+- Use `validators` for field validation
+- Override `save()` method for logging and business logic
+- Use `@property` for computed fields
+
+### API Conventions
+- Use descriptive endpoint names
+- Include proper HTTP status codes
+- Use Schema classes for request/response validation
+- Include comprehensive error handling
+- Log all API requests and responses
+
+## File Structure
+
+### App Structure
+```
+app/
+├── __init__.py
+├── admin.py          # Django admin configuration
+├── api.py            # Django Ninja API endpoints
+├── apps.py           # Django app configuration
+├── models.py         # Django models
+├── selectors.py      # Database query selectors
+├── services.py       # Business logic services
+├── tests.py          # Tests
+└── views.py          # Traditional Django views (if needed)
+```
+
+### Project Structure
+```
+nourishly/
+├── api/              # Main API router
+├── core/             # Shared utilities, base models, logging
+├── subscriptions/    # Subscription management
+├── users/            # User management
+├── recipes/          # Recipe management
+├── planner/          # Meal planning
+├── classify/         # AI classification
+└── nourishly/        # Project settings
+```
+
+## Logging Standards
+
+### Import Pattern
+```python
+from core.logger import log_info, log_error, log_debug, log_exception
+```
+
+### Logging Examples
+```python
+# Info logging with context
+log_info(
+    "User action completed",
+    user_id=user.id,
+    action="subscription_created",
+    subscription_id=subscription.pk
+)
+
+# Error logging with exception
+try:
+    # risky operation
+    pass
+except Exception as e:
+    log_exception(
+        "Operation failed",
+        user_id=user.id,
+        error=str(e)
+    )
+    raise
+```
+
+## Database Patterns
+
+### Query Optimization
+- Always use `select_related()` for ForeignKey relationships
+- Use `prefetch_related()` for ManyToMany relationships
+- Use `Prefetch` objects for complex prefetching
+- Use `only()` and `defer()` to limit fields when appropriate
+
+### Filter Patterns
+```python
+# Simple filters
+Model.objects.filter(field=value)
+
+# Multiple filters
+Model.objects.filter(field1=value1, field2=value2)
+
+# Complex filters
+Model.objects.filter(
+    status__in=['active', 'trialing'],
+    created_at__gte=start_date
+)
+
+# Existence checks
+Model.objects.filter(user=user).exists()
+```
+
+## Security Practices
+
+### Authentication
+- Always check `request.user.is_authenticated` in API endpoints
+- Use proper permission classes where needed
+- Never expose sensitive data in logs or responses
+
+### Data Validation
+- Use Django validators for model fields
+- Use Schema validation in API endpoints
+- Sanitize user inputs
+- Use parameterized queries (Django ORM handles this)
+
+## Testing Guidelines
+
+### Test Structure
+- Use Django's TestCase for database tests
+- Use pytest for unit tests
+- Mock external services
+- Test both success and failure scenarios
+- Use factories for test data creation
+
+### Test Examples
+```python
+from django.test import TestCase
+from unittest.mock import patch
+
+class ModelTestCase(TestCase):
+    def setUp(self):
+        # Setup test data
+        pass
+    
+    def test_model_creation(self):
+        # Test model creation
+        pass
+    
+    @patch('external.service.call')
+    def test_external_service(self, mock_call):
+        # Test with mocked external service
+        pass
+```
+
+## Environment Configuration
+
+### Settings Structure
+- Use environment-specific settings files
+- Use python-dotenv for environment variables
+- Keep sensitive data in environment variables
+- Use different databases for different environments
+
+### Environment Variables
+```bash
+# Required
+SECRET_KEY=your-secret-key
+DATABASE_URL=postgresql://user:pass@localhost/db
+
+# Optional
+DEBUG=True
+ALLOWED_HOSTS=localhost,127.0.0.1
+```
+
+## Performance Guidelines
+
+### Database Performance
+- Use database indexes for frequently queried fields
+- Monitor query performance with Django Debug Toolbar
+- Use bulk operations for large datasets
+- Cache frequently accessed data
+
+### API Performance
+- Use pagination for large result sets
+- Implement proper caching strategies
+- Use async operations where appropriate
+- Monitor response times
+
+## Documentation Standards
+
+### Code Documentation
+- Use proper docstrings for all functions and classes
+- Include type hints for all parameters and return values
+- Document complex business logic
+- Keep README.md updated
+
+### API Documentation
+- Use Django Ninja's automatic API documentation
+- Include examples in docstrings
+- Document error responses
+- Keep API versioning in mind
+
+## Deployment Considerations
+
+### Production Settings
+- Set DEBUG=False in production
+- Use proper database configuration
+- Configure static file serving
+- Set up proper logging
+- Use environment variables for secrets
+
+### Monitoring
+- Use Sentry for error tracking
+- Monitor application performance
+- Set up health checks
+- Configure proper logging levels
+
+## Common Patterns
+
+### Model Methods
+```python
+def save(self, *args, **kwargs):
+    """Override save to add logging and business logic."""
+    is_new = self.pk is None
+    
+    if is_new:
+        log_info("Creating new model", model_type=self.__class__.__name__)
+    else:
+        log_info("Updating model", model_id=self.pk)
+    
+    super().save(*args, **kwargs)
+```
+
+### API Endpoint Pattern
+```python
+@router.get("/endpoint", response=ResponseSchema)
+def endpoint(request):
+    """Endpoint description."""
+    if not request.user.is_authenticated:
+        raise HttpError(401, "Authentication required")
+    
+    try:
+        # Use selectors for database queries
+        data = Selector.get_data(request.user)
+        
+        log_info("Endpoint called", user_id=request.user.id)
+        
+        return data
+    except Exception as e:
+        log_error("Endpoint failed", error=str(e))
+        raise HttpError(500, "Internal server error")
+```
+
+### Service Method Pattern
+```python
+@staticmethod
+def business_operation(user, data):
+    """Business operation description."""
+    with transaction.atomic():
+        # Validate input
+        if not data:
+            raise ValueError("Data is required")
+        
+        # Use selectors for database operations
+        existing = Selector.get_by_user(user)
+        
+        # Perform business logic
+        result = perform_operation(existing, data)
+        
+        # Log the operation
+        log_info("Operation completed", user_id=user.id)
+        
+        return result
+```
+
+## Best Practices Summary
+
+1. **Always use selectors for database queries**
+2. **Log all important operations**
+3. **Use proper error handling**
+4. **Follow Django conventions**
+5. **Write comprehensive tests**
+6. **Use type hints everywhere**
+7. **Document your code**
+8. **Optimize for performance**
+9. **Follow security best practices**
+10. **Keep code DRY and maintainable**
+description:
+globs:
+alwaysApply: false
+---
