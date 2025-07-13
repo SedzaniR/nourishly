@@ -4,24 +4,59 @@ A modern nutrition and wellness API built with Django and Django Ninja, designed
 
 ## 🚀 Features
 
-- **Nutrition Tracking**: Log and track your daily food intake
-- **Meal Planning**: Plan your meals ahead of time with AI-powered suggestions
-- **Recipe Database**: Access to a vast collection of healthy recipes with Edamam integration
-- **Cuisine Classification**: AI-powered cuisine classification using Hugging Face
-- **User Profiles**: Personalized nutrition goals and dietary preferences
+- **Subscription Management**: Comprehensive subscription plans with payment processing
+- **User Profiles**: Personalized nutrition goals and dietary preferences with BMI calculations
+- **Centralized Logging**: Advanced logging system with structured data and performance monitoring
 - **RESTful API**: Modern API built with Django Ninja for type safety and performance
+- **Database Architecture**: Clean architecture with selectors pattern for database queries
+- **Development Tools**: Comprehensive development setup with linting, testing, and debugging tools
 
 ## 🏗️ Architecture
 
 ```
 nourishly/
 ├── api/                 # Main API router (Django Ninja)
-├── recipes/             # Recipe and ingredient management
-├── planner/             # Meal planning engine
+├── core/                # Shared utilities, base models, logging system
+├── subscriptions/       # Subscription and payment management
 ├── users/               # User auth and preference profiles
-├── classify/            # Cuisine classification with Hugging Face
-├── core/                # Shared utilities and base models
-└── nourishly/           # Project settings (separated by environment)
+├── recipes/             # Recipe and ingredient management (planned)
+├── planner/             # Meal planning engine (planned)
+├── classify/            # Cuisine classification (planned)
+├── nourishly/           # Project settings (separated by environment)
+├── .cursor/             # AI development rules and patterns
+├── docs/                # Project documentation
+└── logs/                # Application logs
+```
+
+## 🏛️ Architecture Patterns
+
+### Selectors Pattern
+All database queries go through selector classes in `app/selectors.py`:
+```python
+# ✅ Correct - Use selectors
+data = UserSelector.get_by_id(user_id)
+
+# ❌ Incorrect - Direct model queries in services/API
+data = User.objects.get(id=user_id)
+```
+
+### Service Layer
+Business logic goes in service classes:
+```python
+# ✅ Correct - Use services for business logic
+result = UserService.create_user(data)
+
+# ❌ Incorrect - Business logic in API endpoints
+user = User.objects.create(**data)
+```
+
+### Logging System
+Centralized logging with structured data:
+```python
+from core.logger import log_info, log_error
+
+log_info("Operation completed", user_id=user.id)
+log_error("Operation failed", error=str(e))
 ```
 
 ## 📋 Prerequisites
@@ -29,6 +64,7 @@ nourishly/
 Before you begin, ensure you have the following installed:
 - Python 3.11+ (recommended: 3.13)
 - pyenv (for Python version management)
+- PostgreSQL (for database)
 - Git
 
 ## 🛠️ Installation
@@ -57,18 +93,31 @@ Before you begin, ensure you have the following installed:
    # Edit .env with your configuration
    ```
 
-5. **Run database migrations**
+5. **Set up PostgreSQL database**
+   ```bash
+   # Create database
+   createdb nourishly_dev
+   ```
+
+6. **Run database migrations**
    ```bash
    python manage.py migrate
    ```
 
-6. **Run the development server**
+7. **Create a superuser**
+   ```bash
+   python manage.py createsuperuser
+   ```
+
+8. **Run the development server**
    ```bash
    python manage.py runserver
    ```
 
-7. **Open your browser**
-   Navigate to `http://127.0.0.1:8000`
+9. **Access the application**
+   - Main app: `http://127.0.0.1:8000`
+   - Admin interface: `http://127.0.0.1:8000/admin`
+   - API documentation: `http://127.0.0.1:8000/api/docs`
 
 ## 🧪 Testing
 
@@ -83,7 +132,7 @@ pytest --cov
 pytest-watch
 
 # Run specific app tests
-pytest recipes/
+pytest subscriptions/
 ```
 
 ## 📦 Building for Production
@@ -122,6 +171,16 @@ mypy .
 python manage.py runserver
 ```
 
+## 📚 API Documentation
+
+The API is built with Django Ninja and provides automatic documentation:
+
+- **Development**: Visit `http://127.0.0.1:8000/api/docs` for interactive API documentation
+- **Available Endpoints**:
+  - `/api/subscriptions/` - Subscription management
+  - `/api/subscriptions/plans` - Available subscription plans
+  - `/api/subscriptions/status` - User subscription status
+
 ## 🤝 Contributing
 
 We welcome contributions from the community! Please read our contributing guidelines before submitting a pull request.
@@ -130,16 +189,15 @@ We welcome contributions from the community! Please read our contributing guidel
 
 We have several pull request templates to help you create better PRs:
 
-- **[Feature PR](.github/pull_request_templates/feature.md)** - For new features and enhancements
-- **[Bug Fix PR](.github/pull_request_templates/bugfix.md)** - For bug fixes and hotfixes
-- **[Documentation PR](.github/pull_request_templates/documentation.md)** - For documentation updates
-- **[Default PR](.github/pull_request_templates/default.md)** - For any other changes
+- **[Feature PR](.github/PULL_REQUEST_TEMPLATE/feature_request.md)** - For new features and enhancements
+- **[Bug Fix PR](.github/PULL_REQUEST_TEMPLATE/bug_report.md)** - For bug fixes and hotfixes
+- **[Documentation PR](.github/PULL_REQUEST_TEMPLATE/documentation.md)** - For documentation updates
 
 ### Development Workflow
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes
+3. Make your changes following the established patterns
 4. Add tests for your changes
 5. Commit your changes (`git commit -m 'Add some amazing feature'`)
 6. Push to the branch (`git push origin feature/amazing-feature`)
@@ -148,16 +206,38 @@ We have several pull request templates to help you create better PRs:
 ### Code Style
 
 - Follow the existing code style and conventions
+- Use the selectors pattern for database queries
+- Use the service layer for business logic
+- Include proper logging for all operations
 - Write meaningful commit messages
 - Add comments for complex logic
 - Ensure all tests pass before submitting
 
-## 📚 Documentation
+## 📖 Documentation
 
-- [API Documentation](./docs/api.md) - Django Ninja API endpoints
-- [Developer Guide](./docs/developer-guide.md) - Setup and development workflow
-- [Architecture Guide](./docs/architecture.md) - Project structure and design decisions
-- [Contributing Guidelines](./docs/contributing.md)
+- [Logging System](./docs/logging.md) - Comprehensive logging documentation
+- [Cursor Rules](./.cursor/README.md) - AI development patterns and rules
+- [API Development Rules](./.cursor/rules/api.mdc) - Django Ninja API patterns
+- [Model Development Rules](./.cursor/rules/models.mdc) - Django model patterns
+
+## 🏗️ Project Structure
+
+### Core Apps
+- **`core/`** - Shared utilities, base models, logging system, middleware
+- **`api/`** - Main API router and health check endpoints
+- **`users/`** - Custom user model with nutrition-specific fields
+- **`subscriptions/`** - Complete subscription and payment management
+
+### Planned Apps
+- **`recipes/`** - Recipe and ingredient management
+- **`planner/`** - Meal planning engine
+- **`classify/`** - AI-powered cuisine classification
+
+### Key Files
+- **`.cursor/rules/`** - AI development patterns and conventions
+- **`requirements/`** - Environment-specific dependency management
+- **`nourishly/settings/`** - Environment-specific Django settings
+- **`logs/`** - Application log files
 
 ## 🐛 Bug Reports
 
@@ -189,7 +269,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you need help or have questions:
 - Create an issue on GitHub
-- Check our [FAQ](./docs/faq.md)
+- Check our [documentation](./docs/)
 - Join our community discussions
 
 ---
