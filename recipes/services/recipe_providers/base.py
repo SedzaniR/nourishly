@@ -245,10 +245,11 @@ class BaseRecipeProvider(ABC):
         """
         return self.validate_config()
     
+    @abstractmethod
     def _normalize_recipe_data(self, raw_data: Dict[str, Any]) -> RecipeData:
         """Convert provider-specific data to standardized RecipeData format.
         
-        This method should be implemented by each provider to transform
+        This method must be implemented by each provider to transform
         their API response format into the standardized RecipeData structure.
         It handles field mapping, data type conversion, and any necessary
         data cleaning or validation.
@@ -263,11 +264,10 @@ class BaseRecipeProvider(ABC):
         Raises:
             ValueError: If the raw data is missing required fields or
                 contains invalid data that cannot be normalized.
-            NotImplementedError: If the subclass hasn't implemented this method.
             
         Note:
             This is a protected method intended for internal use by the provider.
-            Each provider implementation should override this method with
+            Each provider implementation must override this method with
             their specific data transformation logic.
             
         Example:
@@ -282,4 +282,4 @@ class BaseRecipeProvider(ABC):
                 )
             ```
         """
-        raise NotImplementedError("Each provider must implement data normalization")
+        pass
