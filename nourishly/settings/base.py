@@ -106,6 +106,15 @@ AUTH_USER_MODEL = 'users.User'
 # Django Ninja
 NINJA_JWT = None  # Disable JWT for now
 
+# Recipe Provider Configuration
+RECIPE_PROVIDERS = {
+
+    'spoonacular': {
+        'enabled': os.environ.get('SPOONACULAR_ENABLED', 'False').lower() == 'true',
+        'api_key': os.environ.get('SPOONACULAR_API_KEY'),
+    },
+}
+
 # Logging Configuration
 LOGGING = {
     'version': 1,
