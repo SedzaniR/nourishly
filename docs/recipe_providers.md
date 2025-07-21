@@ -256,13 +256,13 @@ else:
     print("Provider not properly configured")
 ```
 
-### is_available
+### is_api_available
 
 ```python
-def is_available(self) -> bool:
+def is_api_available(self) -> bool:
 ```
 
-Check if the provider is currently available and functional. This method performs a health check to ensure the provider's API is accessible and responding. It typically checks configuration and may perform a simple test request.
+Check if the provider is currently available and functional. This method performs a health check to ensure the provider's API is accessible and responding. The default implementation only checks configuration, but providers can override this to perform more sophisticated availability checks.
 
 **Returns:** True if the provider is available and can handle requests, False if there are connectivity issues or the service is down.
 
@@ -271,12 +271,28 @@ Check if the provider is currently available and functional. This method perform
 **Example:**
 
 ```python
-if provider.is_available():
+if provider.is_api_available():
     # Safe to make requests
     recipes = provider.search_recipes("dinner")
 else:
     # Use fallback provider or show error
     print("Provider currently unavailable")
+```
+
+**Override Example:**
+
+```python
+def is_api_available(self) -> bool:
+    # Check config first
+    if not self.validate_config():
+        return False
+    
+    # Then check API health
+    try:
+        response = requests.get(f"{self.base_url}/health")
+        return response.status_code == 200
+    except requests.RequestException:
+        return False
 ```
 
 ## Implementation Guide
@@ -360,7 +376,7 @@ class MyRecipeProvider(BaseRecipeProvider):
 provider = MyRecipeProvider(api_key="your-api-key")
 
 # Check if available
-if provider.is_available():
+if provider.is_api_available():
     # Search for recipes
     recipes = provider.search_recipes("pasta", limit=5)
     
@@ -411,7 +427,7 @@ except Exception as e:
 
 ### Best Practices
 
-1. **Always check availability** before making requests
+1. **Always check availability** before making requests (using `is_api_available()`)
 2. **Handle exceptions gracefully** with fallback behavior
 3. **Validate inputs** before processing
 4. **Log errors** for debugging and monitoring
