@@ -43,6 +43,14 @@ class Recipe(TimeStampedModel):
         help_text="Number of servings"
     )
     
+    # Recipe categorization
+    cuisine_type = models.CharField(
+        max_length=50,
+        blank=True,
+        null=True,
+        help_text="Type of cuisine (e.g., 'Italian', 'Mexican', 'Asian')"
+    )
+    
     # Rating and reviews
     rating = models.FloatField(
         blank=True,
@@ -63,6 +71,7 @@ class Recipe(TimeStampedModel):
             models.Index(fields=['source_site']),
             models.Index(fields=['created_at']),
             models.Index(fields=['rating']),
+            models.Index(fields=['cuisine_type']),
         ]
 
     def __str__(self) -> str:
