@@ -297,7 +297,12 @@ class IngredientAllergen(TimeStampedModel):
         return f"{self.ingredient.name} - {self.get_allergen_name_display()}"
 
 
+class Tag(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=50, unique=True)
 
-
-
+class RecipeTag(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    recipe = models.ForeignKey("Recipe", on_delete=models.CASCADE, related_name="recipe_tags")
+    tag = models.ForeignKey("Tag", on_delete=models.CASCADE, related_name="tagged_recipes")
 
