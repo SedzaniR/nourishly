@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from django.utils.text import slugify
+from django.core.validators import MinValueValidator, MaxValueValidator
 from typing import Optional
 
 from core.base_models import TimeStampedModel
@@ -41,6 +42,19 @@ class Recipe(TimeStampedModel):
         null=True,
         help_text="Number of servings"
     )
+    
+    # Rating and reviews
+    rating = models.FloatField(
+        blank=True,
+        null=True,
+        validators=[MinValueValidator(0.0), MaxValueValidator(5.0)],
+        help_text="Average rating (0-5 stars)"
+    )
+    review_count = models.PositiveIntegerField(
+        blank=True,
+        null=True,
+        help_text="Number of reviews/ratings"
+    )
 
     class Meta:
         ordering = ['-created_at']
@@ -48,6 +62,7 @@ class Recipe(TimeStampedModel):
             models.Index(fields=['title']),
             models.Index(fields=['source_site']),
             models.Index(fields=['created_at']),
+            models.Index(fields=['rating']),
         ]
 
     def __str__(self) -> str:
@@ -65,6 +80,21 @@ class Recipe(TimeStampedModel):
         if self.preparation_time and self.cooking_time:
             return self.preparation_time + self.cooking_time
         return None
+
+    @property
+    def rating_display(self) -> str:
+        """Return formatted rating string for display."""
+        if self.rating is None:
+            return "No rating"
+        
+        stars = "★" * int(self.rating) + "☆" * (5 - int(self.rating))
+        review_text = f" ({self.review_count} reviews)" if self.review_count else ""
+        return f"{self.rating:.1f}/5 {stars}{review_text}"
+
+    @property
+    def has_good_rating(self) -> bool:
+        """Check if recipe has a good rating (4+ stars)."""
+        return self.rating is not None and self.rating >= 4.0
 
 
 
