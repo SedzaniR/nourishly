@@ -1,52 +1,97 @@
 from abc import ABC, abstractmethod
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Union
 from dataclasses import dataclass
+
+
+@dataclass
+class IngredientData:
+    """
+    Structured ingredient data with quantity, unit, and name components.
+
+    This allows for precise ingredient parsing and better recipe analysis.
+
+    Attributes:
+        name: The ingredient name (e.g., "tomatoes", "sea salt")
+        quantity: Numeric quantity (e.g., 2, 0.25, 1.5)
+        unit: Unit of measurement (e.g., "cups", "tsp", "pieces", "lbs")
+        notes: Additional preparation notes (e.g., "diced", "room temperature")
+        original_text: Original unparsed ingredient text for reference
+
+    Example:
+        ```python
+        ingredient = IngredientData(
+            name="tomatoes",
+            quantity=2.0,
+            unit="pieces",
+            notes="vine ripe",
+            original_text="2 tomatoes (vine ripe, $1.28)"
+        )
+        ```
+    """
+
+    name: str
+    quantity: Optional[float] = None
+    unit: Optional[str] = None
+    notes: Optional[str] = None
+    original_text: Optional[str] = None
 
 
 @dataclass
 class RecipeData:
     """
-    Standardized recipe data structure for all recipe providers.
+    Standardized recipe data structure for all recipe scrapers.
 
-    This class provides a unified data structure that all recipe providers
-    must return, ensuring consistency across different recipe APIs and sources.
+    This class provides a unified data structure that all recipe scrapers
+    must return, ensuring consistency across different recipe websites and sources.
 
     Attributes:
         title: The name/title of the recipe.
         description: A brief description or summary of the recipe.
-        ingredients: List of ingredients with quantities and descriptions.
+        ingredients: List of structured ingredient data or simple strings (for backward compatibility).
         instructions: Step-by-step cooking instructions.
-        prep_time: Preparation time in minutes.
-        cook_time: Cooking time in minutes.
+        preparation_time: Preparation time in minutes.
+        cooking_time: Cooking time in minutes.
         servings: Number of servings the recipe yields.
         cuisine_type: Type of cuisine (e.g., "Italian", "Mexican", "Asian").
-        difficulty_level: Difficulty rating (e.g., "easy", "medium", "hard").
         image_url: URL to an image of the prepared dish.
-        source_url: Original URL where the recipe was found.
+        source_url: Original URL where the recipe was scraped.
         nutrition: Dictionary containing nutritional information.
         tags: List of tags for categorization (e.g., "vegetarian", "gluten-free").
-        provider: Name of the provider that supplied this recipe.
-        external_id: Provider-specific unique identifier for the recipe.
+
 
     Example:
         ```python
+        # Using structured ingredients
         recipe = RecipeData(
             title="Chocolate Chip Cookies",
             description="Classic homemade chocolate chip cookies",
-            ingredients=["2 cups flour", "1 cup sugar", "1/2 cup butter"],
+            ingredients=[
+                IngredientData(name="flour", quantity=2, unit="cups"),
+                IngredientData(name="sugar", quantity=1, unit="cup"),
+                IngredientData(name="butter", quantity=0.5, unit="cup")
+            ],
             instructions=["Mix ingredients", "Bake at 350°F for 12 minutes"],
             prep_time=15,
             cook_time=12,
             servings=24,
-            cuisine_type="American",
-            difficulty_level="easy"
+            source_url="https://example.com/chocolate-chip-cookies"
+        )
+
+        # Or using simple strings (backward compatibility)
+        recipe = RecipeData(
+            title="Simple Recipe",
+            ingredients=["2 cups flour", "1 cup sugar"],
+            source_url="https://example.com/simple-recipe"
         )
         ```
     """
 
     title: str
+    source_url: str
+
+    # Recipe content
     description: Optional[str] = None
-    ingredients: Optional[List[str]] = None
+    ingredients: Optional[Union[List[IngredientData], List[str]]] = None
     instructions: Optional[List[str]] = None
     prep_time: Optional[int] = None  # minutes
     cook_time: Optional[int] = None  # minutes
@@ -54,11 +99,12 @@ class RecipeData:
     cuisine_type: Optional[str] = None
     difficulty_level: Optional[str] = None
     image_url: Optional[str] = None
-    source_url: Optional[str] = None
     nutrition: Optional[Dict[str, Any]] = None
     tags: Optional[List[str]] = None
-    provider: Optional[str] = None
-    external_id: Optional[str] = None
+
+    # Additional metadata
+    author: Optional[str] = None
+    rating: Optional[float] = None
 
     def __post_init__(self):
         """Initialize empty lists for optional list fields if None.
@@ -75,45 +121,63 @@ class RecipeData:
 
 
 class BaseRecipeProvider(ABC):
-    """Abstract base class for all recipe providers.
+    """Abstract base class for all recipe scrapers.
 
-    This class defines the interface that all recipe providers must implement
-    to ensure consistent behavior across different recipe APIs and data sources.
-    Each provider should inherit from this class and implement the required
+    This class defines the interface that all recipe scrapers must implement
+    to ensure consistent behavior across different recipe websites and data sources.
+    Each scraper should inherit from this class and implement the required
     abstract methods.
 
-    The provider system allows the application to support multiple recipe
-    sources (e.g., Spoonacular, Edamam, custom APIs) through a unified interface.
+    The scraper system allows the application to support multiple recipe
+    websites (e.g., AllRecipes, Food Network, Food.com) through a unified interface.
 
     Attributes:
-        api_key: API key for the provider service (if required).
-        config: Additional configuration parameters specific to the provider.
+        base_url: Base URL of the website being scraped.
+        config: Additional configuration parameters specific to the scraper.
+        headers: HTTP headers to use when scraping.
+        rate_limit: Delay between requests in seconds.
 
     Example:
         ```python
-        class MyRecipeProvider(BaseRecipeProvider):
+        class AllRecipesScraper(BaseRecipeProvider):
             @property
             def provider_name(self) -> str:
-                return "MyProvider"
+                return "AllRecipes"
 
-            def search_recipes(self, query: str, limit: int = 10,
-                             filters: Optional[Dict[str, Any]] = None) -> List[RecipeData]:
+            def scrape_recipe_from_url(self, url: str) -> Optional[RecipeData]:
                 # Implementation here
                 pass
         ```
     """
 
-    def __init__(self, api_key: Optional[str] = None, **kwargs):
-        """Initialize the recipe provider.
+    def __init__(
+        self, base_url: Optional[str] = None, rate_limit: float = 1.0, **kwargs
+    ):
+        """Initialize the recipe scraper.
 
         Args:
-            api_key: API key for the provider service. Some providers may not
-                require an API key.
+            base_url: Base URL of the website to scrape. If None, will be
+                determined from the provider implementation.
+            rate_limit: Minimum delay between requests in seconds to be respectful
+                to the target website.
             **kwargs: Additional configuration parameters that may be needed
-                by specific providers (e.g., base_url, timeout, rate_limits).
+                by specific scrapers (e.g., timeout, user_agent, proxies).
         """
-        self.api_key = api_key
+        self.base_url = base_url
+        self.rate_limit = rate_limit
         self.config = kwargs
+
+        # Default headers for web scraping
+        self.headers = {
+            "User-Agent": kwargs.get(
+                "user_agent",
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+            ),
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.5",
+            "Accept-Encoding": "gzip, deflate",
+            "Connection": "keep-alive",
+        }
 
     @property
     @abstractmethod
@@ -129,154 +193,150 @@ class BaseRecipeProvider(ABC):
         pass
 
     @abstractmethod
-    def _get_default_api_key(self) -> str:
-        """Get the default API key for the provider."""
-        pass
+    def scrape_recipe_from_url(self, url: str) -> Optional[RecipeData]:
+        """Scrape a recipe from a specific URL.
 
-    @abstractmethod
-    def search_recipes(
-        self, query: str, limit: int = 10, filters: Optional[Dict[str, Any]] = None
-    ) -> List[RecipeData]:
-        """Search for recipes using the provider's API.
-
-        This method should search the provider's database for recipes matching
-        the given query and return a list of standardized RecipeData objects.
+        This is the primary method for extracting recipe data from a given URL.
+        It should handle HTML parsing, data extraction, and return a standardized
+        RecipeData object.
 
         Args:
-            query: Search term or phrase to find recipes (e.g., "chicken pasta").
-            limit: Maximum number of results to return. Defaults to 10.
-            filters: Additional search filters such as:
-                - cuisine: str (e.g., "italian", "mexican")
-                - diet: str (e.g., "vegetarian", "vegan", "gluten-free")
-                - max_prep_time: int (maximum preparation time in minutes)
-                - max_cook_time: int (maximum cooking time in minutes)
-                - difficulty: str (e.g., "easy", "medium", "hard")
+            url: The URL of the recipe page to scrape.
 
         Returns:
-            A list of RecipeData objects matching the search criteria.
-            Returns empty list if no recipes found.
+            A RecipeData object with extracted recipe information, or None
+            if the recipe could not be scraped or the URL is invalid.
 
         Raises:
-            ProviderError: If the API request fails or returns an error.
-            ValidationError: If the query or filters are invalid.
+            ScrapingError: If the scraping fails due to network issues or parsing errors.
+            ValidationError: If the URL format is invalid or not supported.
 
         Example:
             ```python
-            recipes = provider.search_recipes(
-                query="chicken pasta",
-                limit=5,
-                filters={"cuisine": "italian", "diet": "vegetarian"}
+            recipe = scraper.scrape_recipe_from_url("https://example.com/chocolate-cake")
+            if recipe:
+                print(f"Scraped recipe: {recipe.title}")
+            ```
+        """
+        pass
+
+    @abstractmethod
+    def discover_recipe_urls(self, start_url: str, limit: int = 10) -> List[str]:
+        """Discover recipe URLs from a website or category page.
+
+        This method finds recipe URLs on a given page, such as a category page,
+        search results, or homepage. Useful for bulk scraping operations.
+
+        Args:
+            start_url: The URL to start discovering recipes from (e.g., category page).
+            limit: Maximum number of recipe URLs to return. Defaults to 10.
+
+        Returns:
+            A list of recipe URLs found on the page.
+            Returns empty list if no recipe URLs found.
+
+        Raises:
+            ScrapingError: If the page cannot be accessed or parsed.
+            ValidationError: If the start_url is invalid.
+
+        Example:
+            ```python
+            urls = scraper.discover_recipe_urls(
+                "https://example.com/recipes/pasta",
+                limit=20
             )
             ```
         """
         pass
 
     @abstractmethod
-    def get_recipe_by_id(self, recipe_id: str) -> Optional[RecipeData]:
-        """Get a specific recipe by its provider-specific ID.
+    def validate_scraping_config(self) -> bool:
+        """Validate scraper configuration and settings.
 
-        This method retrieves detailed information for a specific recipe
-        using the provider's unique identifier.
-
-        Args:
-            recipe_id: Provider-specific recipe identifier. The format
-                depends on the provider (e.g., numeric ID, UUID, slug).
+        This method checks whether the scraper is properly configured
+        and ready to scrape recipes from the target website.
 
         Returns:
-            A RecipeData object with detailed recipe information, or None
-            if the recipe is not found or no longer available.
-
-        Raises:
-            ProviderError: If the API request fails or returns an error.
-            ValidationError: If the recipe_id format is invalid.
-
-        Example:
-            ```python
-            recipe = provider.get_recipe_by_id("12345")
-            if recipe:
-                print(f"Found recipe: {recipe.title}")
-            ```
-        """
-        pass
-
-    @abstractmethod
-    def validate_config(self) -> bool:
-        """Validate provider configuration including API keys and settings.
-
-        This method must be implemented by each provider to check whether
-        it is properly configured and ready to make API requests.
-
-        Returns:
-            True if the provider is properly configured and ready to use,
+            True if the scraper is properly configured and ready to use,
             False otherwise.
 
         Example:
             ```python
-            if provider.validate_config():
-                recipes = provider.search_recipes("pasta")
+            if scraper.validate_scraping_config():
+                recipe = scraper.scrape_recipe_from_url(url)
             else:
-                print("Provider not properly configured")
+                print("Scraper not properly configured")
             ```
         """
         pass
 
     @abstractmethod
-    def is_api_available(self) -> bool:
-        """Check if the provider is currently available and functional.
+    def is_site_accessible(self) -> bool:
+        """Check if the target website is accessible for scraping.
 
-        This method must be implemented by each provider to perform
-        appropriate availability checks for their specific service.
+        This method performs basic accessibility checks such as:
+        - Website is responding to requests
+        - No blocking/rate limiting detected
+        - robots.txt compliance (optional)
 
         Returns:
-            True if the provider is available and can handle requests,
-            False if there are connectivity issues or the service is down.
+            True if the site is accessible and can be scraped,
+            False if there are connectivity issues or blocking detected.
 
         Note:
-            This method may make a network request, so it could be slow.
+            This method will make a network request, so it could be slow.
             Consider caching the result for a short period in production.
 
         Example:
             ```python
-            if provider.is_api_available():
-                # Safe to make requests
-                recipes = provider.search_recipes("dinner")
+            if scraper.is_site_accessible():
+                # Safe to scrape
+                recipe = scraper.scrape_recipe_from_url(url)
             else:
-                # Use fallback provider or show error
-                print("Provider currently unavailable")
-            ```
-
-        Implementation Examples:
-            ```python
-            # Simple implementation
-            def is_api_available(self) -> bool:
-                return self.validate_config()
-
-            # With API health check
-            def is_api_available(self) -> bool:
-                if not self.validate_config():
-                    return False
-
-                try:
-                    response = requests.get(f"{self.base_url}/health")
-                    return response.status_code == 200
-                except requests.RequestException:
-                    return False
+                # Handle inaccessible site
+                print("Site currently inaccessible")
             ```
         """
         pass
 
     @abstractmethod
-    def _normalize_recipe_data(self, raw_data: Dict[str, Any]) -> RecipeData:
-        """Convert provider-specific data to standardized RecipeData format.
+    def extract_structured_data(self, html_content: str) -> Optional[Dict[str, Any]]:
+        """Extract structured data (JSON-LD, microdata) from HTML content.
 
-        This method must be implemented by each provider to transform
-        their API response format into the standardized RecipeData structure.
+        Many recipe websites include structured data that makes scraping easier
+        and more reliable. This method extracts that structured data.
+
+        Args:
+            html_content: Raw HTML content of the recipe page.
+
+        Returns:
+            A dictionary containing structured data, or None if no
+            structured data is found.
+
+        Example:
+            ```python
+            structured_data = scraper.extract_structured_data(html_content)
+            if structured_data:
+                title = structured_data.get('name')
+            ```
+        """
+        pass
+
+    @abstractmethod
+    def _normalize_recipe_data(
+        self, raw_data: Dict[str, Any], source_url: str
+    ) -> RecipeData:
+        """Convert scraped data to standardized RecipeData format.
+
+        This method must be implemented by each scraper to transform
+        their extracted HTML data into the standardized RecipeData structure.
         It handles field mapping, data type conversion, and any necessary
         data cleaning or validation.
 
         Args:
-            raw_data: Raw recipe data as returned by the provider's API.
-                The structure depends on the specific provider.
+            raw_data: Raw recipe data extracted from HTML or structured data.
+                The structure depends on the specific website.
+            source_url: The URL where the recipe was scraped from.
 
         Returns:
             A RecipeData object with normalized and validated data.
@@ -286,20 +346,113 @@ class BaseRecipeProvider(ABC):
                 contains invalid data that cannot be normalized.
 
         Note:
-            This is a protected method intended for internal use by the provider.
-            Each provider implementation must override this method with
+            This is a protected method intended for internal use by the scraper.
+            Each scraper implementation must override this method with
             their specific data transformation logic.
 
         Example:
             ```python
-            def _normalize_recipe_data(self, raw_data: Dict[str, Any]) -> RecipeData:
+            def _normalize_recipe_data(self, raw_data: Dict[str, Any], source_url: str) -> RecipeData:
                 return RecipeData(
                     title=raw_data.get('title', ''),
-                    description=raw_data.get('summary'),
-                    ingredients=raw_data.get('extendedIngredients', []),
-                    # ... other field mappings
-                    provider=self.provider_name
+                    description=raw_data.get('description'),
+                    ingredients=raw_data.get('ingredients', []),
+                    instructions=raw_data.get('instructions', []),
+                    source_url=source_url,
+                    provider=self.provider_name,
+                    scraped_at=datetime.now().isoformat()
                 )
             ```
         """
         pass
+
+    def _clean_text(self, text: Optional[str]) -> Optional[str]:
+        """Clean and normalize text content extracted from HTML.
+
+        This utility method cleans up text content by removing extra whitespace,
+        HTML entities, and other common issues found in scraped content.
+
+        Args:
+            text: Raw text content to clean.
+
+        Returns:
+            Cleaned text content, or None if input was None or empty.
+        """
+        if not text:
+            return None
+
+        import html
+        import re
+
+        # Decode HTML entities
+        text = html.unescape(text)
+
+        # Remove extra whitespace and normalize line breaks
+        text = re.sub(r"\s+", " ", text.strip())
+
+        return text if text else None
+
+    def _parse_time_string(self, time_str: Optional[str]) -> Optional[int]:
+        """Parse time strings (e.g., "30 minutes", "1 hour 15 min") to minutes.
+
+        Args:
+            time_str: Time string to parse.
+
+        Returns:
+            Time in minutes, or None if parsing fails.
+        """
+        if not time_str:
+            return None
+
+        import re
+
+        # Common time patterns
+        time_str = time_str.lower()
+
+        # Extract hours and minutes
+        hour_match = re.search(r"(\d+)\s*h(?:our)?s?", time_str)
+        minute_match = re.search(r"(\d+)\s*m(?:in)?(?:ute)?s?", time_str)
+
+        total_minutes = 0
+
+        if hour_match:
+            total_minutes += int(hour_match.group(1)) * 60
+
+        if minute_match:
+            total_minutes += int(minute_match.group(1))
+
+        # If no specific pattern found, try to extract just numbers
+        if total_minutes == 0:
+            number_match = re.search(r"(\d+)", time_str)
+            if number_match:
+                total_minutes = int(number_match.group(1))
+
+        return total_minutes if total_minutes > 0 else None
+
+    def _extract_rating(self, rating_str: Optional[str]) -> Optional[float]:
+        """Extract numeric rating from rating strings.
+
+        Args:
+            rating_str: Rating string (e.g., "4.5 stars", "4.5/5", "4.5 out of 5").
+
+        Returns:
+            Numeric rating, or None if parsing fails.
+        """
+        if not rating_str:
+            return None
+
+        import re
+
+        # Extract decimal number from rating string
+        match = re.search(r"(\d+\.?\d*)", rating_str)
+        if match:
+            try:
+                rating = float(match.group(1))
+                # Normalize to 5-star scale if needed
+                if rating > 5:
+                    rating = rating / 2  # Assume 10-star scale
+                return rating
+            except ValueError:
+                pass
+
+        return None
