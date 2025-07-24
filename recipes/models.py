@@ -9,69 +9,51 @@ from core.base_models import TimeStampedModel
 
 class Recipe(TimeStampedModel):
     """Main recipe model containing recipe details and metadata."""
-    
-    id = models.UUIDField(
-        primary_key=True, 
-        default=uuid.uuid4, 
-        editable=False
-    )
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=255)
-    slug = models.SlugField(
-        max_length=255, 
-        unique=True, 
-        null=True
-    )
+    slug = models.SlugField(max_length=255, unique=True, null=True)
     source_url = models.URLField(max_length=500)
     source_site = models.CharField(max_length=100)
-    image_url = models.URLField(
-        max_length=500
-    )
+    image_url = models.URLField(max_length=500)
     instructions = models.JSONField()
     preparation_time = models.PositiveIntegerField(
-        blank=True, 
-        null=True,
-        help_text="Preparation time in minutes"
+        blank=True, null=True, help_text="Preparation time in minutes"
     )
     cooking_time = models.PositiveIntegerField(
-        blank=True, 
-        null=True,
-        help_text="Cooking time in minutes"
+        blank=True, null=True, help_text="Cooking time in minutes"
     )
     servings = models.PositiveIntegerField(
-        blank=True, 
-        null=True,
-        help_text="Number of servings"
+        blank=True, null=True, help_text="Number of servings"
     )
-    
+
     # Recipe categorization
     cuisine_type = models.CharField(
         max_length=50,
         blank=True,
         null=True,
-        help_text="Type of cuisine (e.g., 'Italian', 'Mexican', 'Asian')"
+        help_text="Type of cuisine (e.g., 'Italian', 'Mexican', 'Asian')",
     )
-    
+
     # Rating and reviews
     rating = models.FloatField(
         blank=True,
         null=True,
         validators=[MinValueValidator(0.0), MaxValueValidator(5.0)],
-        help_text="Average rating (0-5 stars)"
+        help_text="Average rating (0-5 stars)",
     )
     review_count = models.PositiveIntegerField(
-        blank=True,
-        null=True,
-        help_text="Number of reviews/ratings"
+        blank=True, null=True, help_text="Number of reviews/ratings"
     )
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ["-created_at"]
         indexes = [
-            models.Index(fields=['title']),
-            models.Index(fields=['source_site']),
-            models.Index(fields=['created_at']),
-            models.Index(fields=['rating']),
-            models.Index(fields=['cuisine_type']),
+            models.Index(fields=["title"]),
+            models.Index(fields=["source_site"]),
+            models.Index(fields=["created_at"]),
+            models.Index(fields=["rating"]),
+            models.Index(fields=["cuisine_type"]),
         ]
 
     def __str__(self) -> str:
@@ -95,7 +77,7 @@ class Recipe(TimeStampedModel):
         """Return formatted rating string for display."""
         if self.rating is None:
             return "No rating"
-        
+
         stars = "★" * int(self.rating) + "☆" * (5 - int(self.rating))
         review_text = f" ({self.review_count} reviews)" if self.review_count else ""
         return f"{self.rating:.1f}/5 {stars}{review_text}"
@@ -106,19 +88,12 @@ class Recipe(TimeStampedModel):
         return self.rating is not None and self.rating >= 4.0
 
 
-
 class RecipeVector(TimeStampedModel):
     """Vector embeddings for recipe semantic search and recommendations."""
-    
-    id = models.UUIDField(
-        primary_key=True, 
-        default=uuid.uuid4, 
-        editable=False
-    )
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     recipe = models.OneToOneField(
-        Recipe,
-        on_delete=models.CASCADE,
-        related_name='vector'
+        Recipe, on_delete=models.CASCADE, related_name="vector"
     )
     # Placeholder for vector field - replace with pgvector field when available
     # embedding = VectorField(dimensions=768)  # Example for pgvector
@@ -126,14 +101,13 @@ class RecipeVector(TimeStampedModel):
         help_text="JSON serialized vector embedding (placeholder for pgvector)"
     )
     embedding_version = models.CharField(
-        max_length=50,
-        help_text="Version of the embedding model used"
+        max_length=50, help_text="Version of the embedding model used"
     )
 
     class Meta:
         indexes = [
-            models.Index(fields=['embedding_version']),
-            models.Index(fields=['created_at']),
+            models.Index(fields=["embedding_version"]),
+            models.Index(fields=["created_at"]),
         ]
 
     def __str__(self) -> str:
@@ -142,69 +116,51 @@ class RecipeVector(TimeStampedModel):
 
 class Ingredient(TimeStampedModel):
     """Catalog of ingredients with categorization and nutritional information."""
-    
-    class Category(models.TextChoices):
-        PROTEIN = 'protein', 'Protein'
-        DAIRY = 'dairy', 'Dairy'
-        GRAINS = 'grains', 'Grains'
-        VEGETABLES = 'vegetables', 'Vegetables'
-        FRUITS = 'fruits', 'Fruits'
-        HERBS_SPICES = 'herbs_spices', 'Herbs & Spices'
-        OILS_FATS = 'oils_fats', 'Oils & Fats'
-        NUTS_SEEDS = 'nuts_seeds', 'Nuts & Seeds'
-        SWEETENERS = 'sweeteners', 'Sweeteners'
-        BEVERAGES = 'beverages', 'Beverages'
-        OTHER = 'other', 'Other'
 
-    id = models.UUIDField(
-        primary_key=True, 
-        default=uuid.uuid4, 
-        editable=False
-    )
+    class Category(models.TextChoices):
+        PROTEIN = "protein", "Protein"
+        DAIRY = "dairy", "Dairy"
+        GRAINS = "grains", "Grains"
+        VEGETABLES = "vegetables", "Vegetables"
+        FRUITS = "fruits", "Fruits"
+        HERBS_SPICES = "herbs_spices", "Herbs & Spices"
+        OILS_FATS = "oils_fats", "Oils & Fats"
+        NUTS_SEEDS = "nuts_seeds", "Nuts & Seeds"
+        SWEETENERS = "sweeteners", "Sweeteners"
+        BEVERAGES = "beverages", "Beverages"
+        OTHER = "other", "Other"
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255, unique=True)
     category = models.CharField(
-        max_length=20,
-        choices=Category.choices,
-        default=Category.OTHER
+        max_length=20, choices=Category.choices, default=Category.OTHER
     )
-    
+
     # Nutritional information per 100g
     calories_per_100g = models.FloatField(
-        blank=True,
-        null=True,
-        help_text="Calories per 100 grams"
+        blank=True, null=True, help_text="Calories per 100 grams"
     )
     protein_per_100g = models.FloatField(
-        blank=True,
-        null=True,
-        help_text="Protein in grams per 100 grams"
+        blank=True, null=True, help_text="Protein in grams per 100 grams"
     )
     carbohydrates_per_100g = models.FloatField(
-        blank=True,
-        null=True,
-        help_text="Total carbohydrates in grams per 100 grams"
+        blank=True, null=True, help_text="Total carbohydrates in grams per 100 grams"
     )
     fat_per_100g = models.FloatField(
-        blank=True,
-        null=True,
-        help_text="Total fat in grams per 100 grams"
+        blank=True, null=True, help_text="Total fat in grams per 100 grams"
     )
     fiber_per_100g = models.FloatField(
-        blank=True,
-        null=True,
-        help_text="Dietary fiber in grams per 100 grams"
+        blank=True, null=True, help_text="Dietary fiber in grams per 100 grams"
     )
     sugar_per_100g = models.FloatField(
-        blank=True,
-        null=True,
-        help_text="Total sugars in grams per 100 grams"
+        blank=True, null=True, help_text="Total sugars in grams per 100 grams"
     )
 
     class Meta:
-        ordering = ['name']
+        ordering = ["name"]
         indexes = [
-            models.Index(fields=['name']),
-            models.Index(fields=['category']),
+            models.Index(fields=["name"]),
+            models.Index(fields=["category"]),
         ]
 
     def __str__(self) -> str:
@@ -213,41 +169,33 @@ class Ingredient(TimeStampedModel):
 
 class RecipeIngredient(models.Model):
     """Through model for Recipe-Ingredient many-to-many relationship with quantities."""
-    
-    id = models.UUIDField(
-        primary_key=True, 
-        default=uuid.uuid4, 
-        editable=False
-    )
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     recipe = models.ForeignKey(
-        Recipe,
-        on_delete=models.CASCADE,
-        related_name='recipe_ingredients'
+        Recipe, on_delete=models.CASCADE, related_name="recipe_ingredients"
     )
     ingredient = models.ForeignKey(
-        Ingredient,
-        on_delete=models.CASCADE,
-        related_name='recipe_ingredients'
+        Ingredient, on_delete=models.CASCADE, related_name="recipe_ingredients"
     )
-    quantity = models.FloatField(
-        help_text="Quantity of ingredient needed"
-    )
+    quantity = models.FloatField(help_text="Quantity of ingredient needed")
     unit = models.CharField(
-        max_length=50,
-        help_text="Unit of measurement (e.g., 'cups', 'grams', 'pieces')"
+        max_length=50, help_text="Unit of measurement (e.g., 'cups', 'grams', 'pieces')"
     )
     note = models.TextField(
         blank=True,
         null=True,
-        help_text="Additional notes about preparation or substitutions"
+        help_text="Additional notes about preparation or substitutions",
+    )
+    original_text = models.TextField(
+        blank=True, null=True, help_text="Original text of the ingredient"
     )
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = ['recipe', 'ingredient']
-        ordering = ['id']
+        unique_together = ["recipe", "ingredient"]
+        ordering = ["id"]
         indexes = [
-            models.Index(fields=['recipe', 'ingredient']),
+            models.Index(fields=["recipe", "ingredient"]),
         ]
 
     def __str__(self) -> str:
@@ -256,41 +204,32 @@ class RecipeIngredient(models.Model):
 
 class IngredientAllergen(TimeStampedModel):
     """Allergen information for ingredients."""
-    
-    class AllergenType(models.TextChoices):
-        DAIRY = 'dairy', 'Dairy'
-        EGGS = 'eggs', 'Eggs'
-        FISH = 'fish', 'Fish'
-        SHELLFISH = 'shellfish', 'Shellfish'
-        TREE_NUTS = 'tree_nuts', 'Tree Nuts'
-        PEANUTS = 'peanuts', 'Peanuts'
-        WHEAT = 'wheat', 'Wheat'
-        SOYBEANS = 'soybeans', 'Soybeans'
-        SESAME = 'sesame', 'Sesame'
-        GLUTEN = 'gluten', 'Gluten'
-        OTHER = 'other', 'Other'
 
-    id = models.UUIDField(
-        primary_key=True, 
-        default=uuid.uuid4, 
-        editable=False
-    )
+    class AllergenType(models.TextChoices):
+        DAIRY = "dairy", "Dairy"
+        EGGS = "eggs", "Eggs"
+        FISH = "fish", "Fish"
+        SHELLFISH = "shellfish", "Shellfish"
+        TREE_NUTS = "tree_nuts", "Tree Nuts"
+        PEANUTS = "peanuts", "Peanuts"
+        WHEAT = "wheat", "Wheat"
+        SOYBEANS = "soybeans", "Soybeans"
+        SESAME = "sesame", "Sesame"
+        GLUTEN = "gluten", "Gluten"
+        OTHER = "other", "Other"
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     ingredient = models.ForeignKey(
-        Ingredient,
-        on_delete=models.CASCADE,
-        related_name='allergens'
+        Ingredient, on_delete=models.CASCADE, related_name="allergens"
     )
-    allergen_name = models.CharField(
-        max_length=20,
-        choices=AllergenType.choices
-    )
+    allergen_name = models.CharField(max_length=20, choices=AllergenType.choices)
 
     class Meta:
-        unique_together = ['ingredient', 'allergen_name']
-        ordering = ['allergen_name']
+        unique_together = ["ingredient", "allergen_name"]
+        ordering = ["allergen_name"]
         indexes = [
-            models.Index(fields=['allergen_name']),
-            models.Index(fields=['ingredient', 'allergen_name']),
+            models.Index(fields=["allergen_name"]),
+            models.Index(fields=["ingredient", "allergen_name"]),
         ]
 
     def __str__(self) -> str:
@@ -301,8 +240,12 @@ class Tag(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=50, unique=True)
 
+
 class RecipeTag(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    recipe = models.ForeignKey("Recipe", on_delete=models.CASCADE, related_name="recipe_tags")
-    tag = models.ForeignKey("Tag", on_delete=models.CASCADE, related_name="tagged_recipes")
-
+    recipe = models.ForeignKey(
+        "Recipe", on_delete=models.CASCADE, related_name="recipe_tags"
+    )
+    tag = models.ForeignKey(
+        "Tag", on_delete=models.CASCADE, related_name="tagged_recipes"
+    )
