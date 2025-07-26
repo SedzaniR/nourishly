@@ -1,15 +1,17 @@
+import re
 import time
 from datetime import datetime
-from typing import Optional, List, Dict, Any, Callable, Tuple, Union, Match
+from typing import Any, Callable, Dict, List, Match, Optional, Tuple
 from urllib.parse import ParseResult, urlparse
-import re
 
-from recipe_scrapers import scrape_me, SCRAPERS
+from recipe_scrapers import SCRAPERS, scrape_me
 
+from core.logger import log_debug, log_error, log_info
 from recipes.services.recipe_providers import constants
-from .base import BaseRecipeProvider, RecipeData, IngredientData, MacroNutrition
-from core.logger import log_info, log_error, log_debug
 from recipes.utils import extract_numeric_value_from_string
+
+from .base import (BaseRecipeProvider, IngredientData, MacroNutrition,
+                   RecipeData)
 
 
 class BudgetBytesScraper(BaseRecipeProvider):
@@ -371,8 +373,6 @@ class BudgetBytesScraper(BaseRecipeProvider):
             >>> print(f"{parsed[0].quantity} {parsed[0].unit or 'pieces'} {parsed[0].name}")
             2.0 pieces tomatoes
         """
-        import re
-        from fractions import Fraction
 
         parsed_ingredients = []
 
@@ -465,7 +465,6 @@ class BudgetBytesScraper(BaseRecipeProvider):
             Optional[IngredientData]: Parsed ingredient data or None if parsing fails.
         """
         import re
-        from fractions import Fraction
 
         try:
             # Common measurement units (plural forms first for proper regex matching)
