@@ -100,6 +100,7 @@ class RecipeData:
         source_url: Original URL where the recipe was scraped.
         nutrition: Dictionary containing nutritional information.
         tags: List of tags for categorization (e.g., "vegetarian", "gluten-free").
+        dietary_restrictions: List of dietary restrictions or guidelines (e.g., "vegetarian", "gluten-free", "dairy-free").
 
 
     Example:
@@ -154,6 +155,7 @@ class RecipeData:
     nutrition: Optional[Dict[str, Any]] = None
     macros: Optional[MacroNutrition] = None
     tags: Optional[List[str]] = None
+    dietary_restrictions: Optional[List[str]] = None
 
     # Additional metadata
     author: Optional[str] = None
@@ -171,6 +173,8 @@ class RecipeData:
             self.instructions = []
         if self.tags is None:
             self.tags = []
+        if self.dietary_restrictions is None:
+            self.dietary_restrictions = []
 
 
 class BaseRecipeProvider(ABC):

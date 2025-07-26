@@ -2,6 +2,7 @@ import time
 from datetime import datetime
 from typing import Optional, List, Dict, Any, Callable, Tuple, Union, Match
 from urllib.parse import ParseResult, urlparse
+import re
 
 from recipe_scrapers import scrape_me, SCRAPERS
 
@@ -270,6 +271,8 @@ class BudgetBytesScraper(BaseRecipeProvider):
                 rating=self._safe_extract(scraper.ratings),
                 # Extract tags from category
                 tags=self._extract_tags(scraper),
+                # Extract dietary restrictions
+                dietary_restrictions=self._extract_dietary_restrictions(scraper),
                 # Store raw nutrition data from recipe-scrapers
                 nutrition=self._safe_extract(scraper.nutrients),
                 # Extract structured macros
@@ -609,6 +612,49 @@ class BudgetBytesScraper(BaseRecipeProvider):
 
         # Remove duplicates and None values
         return [tag for tag in extracted_tags if tag and tag.strip()]
+
+    def _extract_dietary_restrictions(self, scraper: Any) -> List[str]:
+        """Extract dietary restrictions from recipe-scrapers data.
+
+        Args:
+            scraper (Any): Recipe scraper object from recipe-scrapers library.
+
+        Returns:
+            List[str]: List of dietary restrictions extracted from the recipe,
+                with duplicates and empty values removed.
+
+        Note:
+            Uses the dietary_restrictions() method from recipe-scrapers which
+            extracts dietary guidelines or restrictions for the recipe.
+        """
+        try:
+            restrictions = self._safe_extract(scraper.dietary_restrictions)
+
+            if not restrictions:
+                return []
+
+            # Handle different return types from recipe-scrapers
+            if isinstance(restrictions, str):
+                # If it's a single string, split by common delimiters
+                restriction_list = [
+                    restriction.strip().lower()
+                    for restriction in re.split(r"[,;&|]", restrictions)
+                    if restriction.strip()
+                ]
+                return restriction_list
+            elif isinstance(restrictions, list):
+                # If it's already a list, clean and normalize
+                return [
+                    restriction.strip().lower()
+                    for restriction in restrictions
+                    if restriction and restriction.strip()
+                ]
+            else:
+                return []
+
+        except Exception:
+            # If dietary_restrictions method fails, return empty list
+            return []
 
     def _extract_macros(self, scraper: Any) -> Optional[MacroNutrition]:
         """Extract nutritional macro information from recipe scraper.
