@@ -1,1 +1,1 @@
-"""Cuisine classification services for identifying and categorizing recipe cuisine types.""" 
+"""Cuisine classification services for identifying and categorizing recipe cuisine types."""

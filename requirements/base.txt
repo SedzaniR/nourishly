@@ -5,3 +5,11 @@ django-ninja==1.1.0
 recipe-scrapers>=14.44.0
 requests>=2.31.0
 psycopg2-binary>=2.9.10
+
+# Cuisine Classification (API-based)
+requests>=2.31.0
+
+# Cuisine Classification (Local model - optional, high memory usage)
+# Uncomment these if you want to use local models instead of API
+# transformers>=4.35.0
+# torch>=2.0.0
