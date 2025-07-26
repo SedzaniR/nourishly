@@ -4,6 +4,49 @@ from dataclasses import dataclass
 
 
 @dataclass
+class MacroNutrition:
+    """
+    Structured nutritional macro information for recipes.
+
+    This provides a standardized way to store nutritional data that can be
+    extracted from recipe websites or calculated from ingredients.
+
+    Attributes:
+        calories: Total calories per serving
+        protein: Protein in grams per serving
+        carbohydrates: Total carbohydrates in grams per serving
+        fat: Total fat in grams per serving
+        fiber: Dietary fiber in grams per serving
+        sugar: Total sugars in grams per serving
+        sodium: Sodium in milligrams per serving
+        saturated_fat: Saturated fat in grams per serving
+        cholesterol: Cholesterol in milligrams per serving
+
+    Example:
+        ```python
+        macros = MacroNutrition(
+            calories=250,
+            protein=15.2,
+            carbohydrates=30.5,
+            fat=8.1,
+            fiber=3.2,
+            sodium=580
+        )
+        ```
+    """
+
+    calories: Optional[float] = None
+    protein: Optional[float] = None  # grams
+    carbohydrates: Optional[float] = None  # grams
+    fat: Optional[float] = None  # grams
+    fiber: Optional[float] = None  # grams
+    sugar: Optional[float] = None  # grams
+    sodium: Optional[float] = None  # milligrams
+    saturated_fat: Optional[float] = None  # grams
+    cholesterol: Optional[float] = None  # milligrams
+
+
+@dataclass
 class IngredientData:
     """
     Structured ingredient data with quantity, unit, and name components.
@@ -74,7 +117,16 @@ class RecipeData:
             prep_time=15,
             cook_time=12,
             servings=24,
-            source_url="https://example.com/chocolate-chip-cookies"
+            source_url="https://example.com/chocolate-chip-cookies",
+            macros=MacroNutrition(
+                calories=180,
+                protein=2.1,
+                carbohydrates=24.5,
+                fat=8.2,
+                fiber=0.8,
+                sugar=12.3,
+                sodium=95
+            )
         )
 
         # Or using simple strings (backward compatibility)
@@ -100,6 +152,7 @@ class RecipeData:
     difficulty_level: Optional[str] = None
     image_url: Optional[str] = None
     nutrition: Optional[Dict[str, Any]] = None
+    macros: Optional[MacroNutrition] = None
     tags: Optional[List[str]] = None
 
     # Additional metadata

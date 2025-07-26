@@ -6,8 +6,9 @@ from urllib.parse import ParseResult, urlparse
 from recipe_scrapers import scrape_me, SCRAPERS
 
 from recipes.services.recipe_providers import constants
-from .base import BaseRecipeProvider, RecipeData, IngredientData
+from .base import BaseRecipeProvider, RecipeData, IngredientData, MacroNutrition
 from core.logger import log_info, log_error, log_debug
+from recipes.utils import extract_numeric_value_from_string
 
 
 class BudgetBytesScraper(BaseRecipeProvider):
@@ -269,6 +270,10 @@ class BudgetBytesScraper(BaseRecipeProvider):
                 rating=self._safe_extract(scraper.ratings),
                 # Extract tags from category
                 tags=self._extract_tags(scraper),
+                # Store raw nutrition data from recipe-scrapers
+                nutrition=self._safe_extract(scraper.nutrients),
+                # Extract structured macros
+                macros=self._extract_macros(scraper),
             )
 
             log_info(
@@ -604,6 +609,70 @@ class BudgetBytesScraper(BaseRecipeProvider):
 
         # Remove duplicates and None values
         return [tag for tag in extracted_tags if tag and tag.strip()]
+
+    def _extract_macros(self, scraper: Any) -> Optional[MacroNutrition]:
+        """Extract nutritional macro information from recipe scraper.
+
+        Uses the reusable extract_numeric_value utility to parse nutrition strings.
+
+        Args:
+            scraper (Any): Recipe scraper object from recipe-scrapers library.
+
+        Returns:
+            Optional[MacroNutrition]: Structured macro nutrition data, or None if unavailable.
+        """
+        try:
+            # Get nutrition data directly from recipe-scrapers
+            nutrients = scraper.nutrients()
+            if not nutrients:
+                return None
+
+            # Use utility to extract numbers from strings like "211 kcal", "13 g"
+            macros = MacroNutrition(
+                calories=extract_numeric_value_from_string(nutrients.get("calories")),
+                protein=extract_numeric_value_from_string(
+                    nutrients.get("proteinContent")
+                ),
+                carbohydrates=extract_numeric_value_from_string(
+                    nutrients.get("carbohydrateContent")
+                ),
+                fat=extract_numeric_value_from_string(nutrients.get("fatContent")),
+                fiber=extract_numeric_value_from_string(nutrients.get("fiberContent")),
+                sugar=extract_numeric_value_from_string(nutrients.get("sugarContent")),
+                sodium=extract_numeric_value_from_string(
+                    nutrients.get("sodiumContent")
+                ),
+                saturated_fat=extract_numeric_value_from_string(
+                    nutrients.get("saturatedFatContent")
+                ),
+                cholesterol=extract_numeric_value_from_string(
+                    nutrients.get("cholesterolContent")
+                ),
+            )
+
+            # Return only if we got at least one value
+            if any(
+                getattr(macros, field) is not None
+                for field in [
+                    "calories",
+                    "protein",
+                    "carbohydrates",
+                    "fat",
+                    "fiber",
+                    "sugar",
+                    "sodium",
+                ]
+            ):
+                log_debug(
+                    "Macros extracted", calories=macros.calories, protein=macros.protein
+                )
+                return macros
+
+            return None
+
+        except Exception as e:
+            log_error("Failed to extract macros", error=str(e))
+            return None
 
     def _is_budget_bytes_url(self, url: str) -> bool:
         """Check if the URL is from Budget Bytes website.
