@@ -2,7 +2,7 @@ import uuid
 from django.db import models
 from django.utils.text import slugify
 from django.core.validators import MinValueValidator, MaxValueValidator
-from typing import Optional
+from typing import Optional, List
 
 from core.base_models import TimeStampedModel
 
@@ -86,6 +86,42 @@ class Recipe(TimeStampedModel):
     def has_good_rating(self) -> bool:
         """Check if recipe has a good rating (4+ stars)."""
         return self.rating is not None and self.rating >= 4.0
+
+    @property
+    def dietary_restrictions_list(self) -> List[str]:
+        """Get list of dietary restriction names for this recipe."""
+        return list(
+            self.recipe_dietary_restrictions.values_list(
+                "dietary_restriction__name", flat=True
+            )
+        )
+
+    @property
+    def dietary_restrictions_display(self) -> List[str]:
+        """Get list of dietary restriction display names for this recipe."""
+        return list(
+            self.recipe_dietary_restrictions.values_list(
+                "dietary_restriction__display_name", flat=True
+            )
+        )
+
+    def has_dietary_restriction(self, restriction_name: str) -> bool:
+        """Check if recipe has a specific dietary restriction."""
+        return self.recipe_dietary_restrictions.filter(
+            dietary_restriction__name=restriction_name
+        ).exists()
+
+    def is_vegetarian(self) -> bool:
+        """Check if recipe is vegetarian."""
+        return self.has_dietary_restriction("vegetarian")
+
+    def is_vegan(self) -> bool:
+        """Check if recipe is vegan."""
+        return self.has_dietary_restriction("vegan")
+
+    def is_gluten_free(self) -> bool:
+        """Check if recipe is gluten-free."""
+        return self.has_dietary_restriction("gluten_free")
 
 
 class RecipeVector(TimeStampedModel):
@@ -249,3 +285,86 @@ class RecipeTag(models.Model):
     tag = models.ForeignKey(
         "Tag", on_delete=models.CASCADE, related_name="tagged_recipes"
     )
+
+
+class DietaryRestriction(TimeStampedModel):
+    """Dietary restrictions and guidelines (vegetarian, gluten-free, etc.)."""
+
+    class RestrictionType(models.TextChoices):
+        VEGETARIAN = "vegetarian", "Vegetarian"
+        VEGAN = "vegan", "Vegan"
+        GLUTEN_FREE = "gluten_free", "Gluten-Free"
+        DAIRY_FREE = "dairy_free", "Dairy-Free"
+        NUT_FREE = "nut_free", "Nut-Free"
+        EGG_FREE = "egg_free", "Egg-Free"
+        SOY_FREE = "soy_free", "Soy-Free"
+        KETO = "keto", "Ketogenic"
+        PALEO = "paleo", "Paleo"
+        LOW_CARB = "low_carb", "Low-Carb"
+        LOW_SODIUM = "low_sodium", "Low-Sodium"
+        DIABETIC_FRIENDLY = "diabetic_friendly", "Diabetic-Friendly"
+        HALAL = "halal", "Halal"
+        KOSHER = "kosher", "Kosher"
+        OTHER = "other", "Other"
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(
+        max_length=30,
+        choices=RestrictionType.choices,
+        unique=True,
+        help_text="Type of dietary restriction or guideline",
+    )
+    display_name = models.CharField(
+        max_length=50, help_text="Human-readable name for display"
+    )
+    description = models.TextField(
+        blank=True,
+        null=True,
+        help_text="Detailed description of the dietary restriction",
+    )
+
+    class Meta:
+        ordering = ["display_name"]
+        indexes = [
+            models.Index(fields=["name"]),
+        ]
+
+    def __str__(self) -> str:
+        return self.display_name
+
+    def save(self, *args, **kwargs) -> None:
+        """Auto-populate display_name from choices if not provided."""
+        if not self.display_name:
+            self.display_name = self.get_name_display()
+        super().save(*args, **kwargs)
+
+
+class RecipeDietaryRestriction(models.Model):
+    """Through model for Recipe-DietaryRestriction many-to-many relationship."""
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    recipe = models.ForeignKey(
+        "Recipe", on_delete=models.CASCADE, related_name="recipe_dietary_restrictions"
+    )
+    dietary_restriction = models.ForeignKey(
+        "DietaryRestriction",
+        on_delete=models.CASCADE,
+        related_name="restricted_recipes",
+    )
+    confidence = models.FloatField(
+        default=1.0,
+        validators=[MinValueValidator(0.0), MaxValueValidator(1.0)],
+        help_text="Confidence level (0.0-1.0) for auto-detected restrictions",
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ["recipe", "dietary_restriction"]
+        ordering = ["dietary_restriction__display_name"]
+        indexes = [
+            models.Index(fields=["recipe", "dietary_restriction"]),
+            models.Index(fields=["dietary_restriction"]),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.recipe.title} - {self.dietary_restriction.display_name}"
