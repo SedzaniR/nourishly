@@ -5,13 +5,13 @@ from typing import Any, Callable, Dict, List, Match, Optional, Tuple
 from urllib.parse import ParseResult, urlparse
 
 from recipe_scrapers import SCRAPERS, scrape_me
+from ingredient_parser import parse_ingredient
 
 from core.logger import log_debug, log_error, log_info
 from recipes.services.recipe_providers import constants
 from recipes.utils import extract_numeric_value_from_string
 
-from .base import (BaseRecipeProvider, IngredientData, MacroNutrition,
-                   RecipeData)
+from .base import BaseRecipeProvider, IngredientData, MacroNutrition, RecipeData
 
 
 class BudgetBytesScraper(BaseRecipeProvider):
@@ -355,44 +355,45 @@ class BudgetBytesScraper(BaseRecipeProvider):
         return self._parse_time_string(str(duration))
 
     def _parse_ingredients(self, raw_ingredients: List[str]) -> List[IngredientData]:
-        """Parse Budget Bytes ingredients into structured IngredientData objects.
-
-        Budget Bytes ingredients include cost information and follow patterns like:
-        '2 tomatoes (vine ripe, $1.28)' -> IngredientData(name="tomatoes", quantity=2, notes="vine ripe")
-        '¼ tsp sea salt ($0.01)' -> IngredientData(name="sea salt", quantity=0.25, unit="tsp")
-
-        Args:
-            raw_ingredients (List[str]): Raw ingredient list from recipe-scrapers.
-
-        Returns:
-            List[IngredientData]: Structured ingredient data with quantity, unit, and name parsed.
-
-        Example:
-            >>> raw = ['2 tomatoes (vine ripe, $1.28)', '¼ tsp salt ($0.01)']
-            >>> parsed = scraper._parse_ingredients(raw)
-            >>> print(f"{parsed[0].quantity} {parsed[0].unit or 'pieces'} {parsed[0].name}")
-            2.0 pieces tomatoes
-        """
-
         parsed_ingredients = []
 
         for ingredient_text in raw_ingredients:
             if not ingredient_text:
                 continue
 
-            # Clean cost information - remove any content containing $ sign
+            # Step 1: Remove Budget Bytes cost info first (keep your existing logic)
             cleaned = self._remove_cost_info(ingredient_text)
 
             if not cleaned:
                 continue
 
-            # Use the same cleaned text for original reference
-            clean_original = cleaned
+            try:
+                # Step 2: Use ingredient_parser on clean text
+                parsed = parse_ingredient(cleaned)
 
-            # Parse quantity, unit, and ingredient name
-            ingredient_data = self._parse_ingredient_components(cleaned, clean_original)
-            if ingredient_data:
+                # Step 3: Convert to IngredientData format
+                ingredient_data = IngredientData(
+                    name=parsed.name[0].text if parsed.name else "unknown",
+                    quantity=(
+                        float(parsed.amount[0].quantity) if parsed.amount else None
+                    ),
+                    unit=str(parsed.amount[0].unit) if parsed.amount else None,
+                    notes=parsed.preparation.text if parsed.preparation else None,
+                    original_text=ingredient_text,  # Keep original with cost info
+                )
+
                 parsed_ingredients.append(ingredient_data)
+
+            except Exception as e:
+                log_debug(
+                    "Failed to parse ingredient with ingredient_parser",
+                    ingredient=cleaned,
+                    error=str(e),
+                )
+                # Fallback to basic parsing
+                parsed_ingredients.append(
+                    IngredientData(name=cleaned, original_text=ingredient_text)
+                )
 
         return parsed_ingredients
 
