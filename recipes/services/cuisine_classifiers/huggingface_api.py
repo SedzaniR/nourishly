@@ -6,27 +6,30 @@ without loading models locally, saving memory and computational resources.
 """
 
 import os
-from typing import List, Dict, Union, Optional
 import time
-import requests
 from functools import lru_cache
+from typing import Dict, List, Optional
+
+import requests
+from dotenv import load_dotenv
 
 from core.logger import get_logger
+
 from .base import (
     BaseCuisineClassifier,
-    CuisineClassification,
     ConfidenceLevel,
-    ClassificationError,
+    CuisineClassification,
 )
 from .constants import (
-    DEFAULT_HUGGINGFACE_MODEL,
-    DEFAULT_API_RATE_LIMIT_DELAY,
     DEFAULT_API_MAX_RETRIES,
+    DEFAULT_API_RATE_LIMIT_DELAY,
     DEFAULT_API_RETRY_DELAY,
     DEFAULT_API_TIMEOUT,
+    DEFAULT_HUGGINGFACE_MODEL,
 )
 
 logger = get_logger()
+load_dotenv()
 
 
 class HuggingFaceAPICuisineClassifier(BaseCuisineClassifier):
@@ -104,8 +107,9 @@ class HuggingFaceAPICuisineClassifier(BaseCuisineClassifier):
     def classifier_name(self) -> str:
         return f"HuggingFace API ({self.model_name})"
 
-    def _rate_limit(self):
+    def _rate_limit(self) -> None:
         """Implement rate limiting between API requests."""
+
         current_time = time.time()
         time_since_last = current_time - self._last_request_time
 
@@ -113,10 +117,10 @@ class HuggingFaceAPICuisineClassifier(BaseCuisineClassifier):
             sleep_time = self.rate_limit_delay - time_since_last
             logger.debug("Rate limiting API request", sleep_time=sleep_time)
             time.sleep(sleep_time)
+        else:
+            self._last_request_time = time.time()
 
-        self._last_request_time = time.time()
-
-    def _make_api_request(self, payload: Dict, retry_count: int = 0) -> Dict:
+    def _make_api_request(self, payload: Dict, retry_count: int = 0) -> Optional[Dict]:
         """
         Make a request to the Hugging Face Inference API with retry logic.
 
@@ -125,10 +129,7 @@ class HuggingFaceAPICuisineClassifier(BaseCuisineClassifier):
             retry_count: Current retry attempt
 
         Returns:
-            API response data
-
-        Raises:
-            ClassificationError: If all retries are exhausted
+            API response data, or None if the request fails
         """
         self._rate_limit()
 
@@ -151,10 +152,11 @@ class HuggingFaceAPICuisineClassifier(BaseCuisineClassifier):
                     time.sleep(wait_time)
                     return self._make_api_request(payload, retry_count + 1)
                 else:
-                    raise ClassificationError(
+                    logger.error(
                         "Model failed to load after maximum retries",
                         error_details={"max_retries": self.max_retries},
                     )
+                    return None
             elif response.status_code == 429:
                 # Rate limited, wait and retry
                 if retry_count < self.max_retries:
@@ -169,27 +171,22 @@ class HuggingFaceAPICuisineClassifier(BaseCuisineClassifier):
                     time.sleep(wait_time)
                     return self._make_api_request(payload, retry_count + 1)
                 else:
-                    raise ClassificationError(
+                    logger.error(
                         "Rate limit exceeded, maximum retries reached",
                         error_details={
                             "max_retries": self.max_retries,
                             "rate_limited": True,
                         },
                     )
+                    return None
             else:
                 error_msg = f"API request failed with status {response.status_code}: {response.text}"
                 logger.error(
                     "Hugging Face API request failed",
                     status_code=response.status_code,
-                    error_text=response.text,
+                    error_text=error_msg,
                 )
-                raise ClassificationError(
-                    error_msg,
-                    error_details={
-                        "status_code": response.status_code,
-                        "response_text": response.text,
-                    },
-                )
+                return None
 
         except requests.exceptions.Timeout:
             if retry_count < self.max_retries:
@@ -197,26 +194,31 @@ class HuggingFaceAPICuisineClassifier(BaseCuisineClassifier):
                 time.sleep(self.retry_delay)
                 return self._make_api_request(payload, retry_count + 1)
             else:
-                raise ClassificationError(
+                logger.error(
                     "API request timeout after maximum retries",
                     error_details={
                         "timeout": self.timeout,
                         "max_retries": self.max_retries,
                     },
                 )
+                return None
         except requests.exceptions.RequestException as e:
             logger.error("API request exception", error=str(e), retry_count=retry_count)
             if retry_count < self.max_retries:
                 time.sleep(self.retry_delay)
                 return self._make_api_request(payload, retry_count + 1)
             else:
-                raise ClassificationError(
-                    f"API request failed: {str(e)}",
+                logger.error(
+                    "API request failed after maximum retries",
                     error_details={
                         "original_error": str(e),
                         "max_retries": self.max_retries,
                     },
                 )
+                return None
+        except Exception as e:
+            logger.error("API request exception", error=str(e), retry_count=retry_count)
+            return None
 
     def is_ready(self) -> bool:
         """
@@ -226,16 +228,12 @@ class HuggingFaceAPICuisineClassifier(BaseCuisineClassifier):
             True if the API is ready, False otherwise
         """
         try:
-            # Make a small test request
             test_payload = {
                 "inputs": "test",
                 "parameters": {"candidate_labels": ["Italian", "Chinese"]},
             }
-
-            self._make_api_request(test_payload)
-            logger.info("Hugging Face API is ready", model_name=self.model_name)
-            return True
-
+            result = self._make_api_request(test_payload)
+            return bool(result)
         except Exception as e:
             logger.error(
                 "Hugging Face API not ready", error=str(e), model_name=self.model_name
@@ -261,14 +259,19 @@ class HuggingFaceAPICuisineClassifier(BaseCuisineClassifier):
             )
 
         try:
-            # Prepare API payload for zero-shot classification
             payload = {
                 "inputs": recipe_text,
                 "parameters": {"candidate_labels": self.supported_cuisines},
             }
-
-            # Make API request
             result = self._make_api_request(payload)
+            if not result:
+                logger.error("API request failed, returning default classification")
+                return CuisineClassification(
+                    primary_cuisine="Other",
+                    confidence=0.0,
+                    confidence_level=ConfidenceLevel.LOW,
+                    reasoning="API request failed",
+                )
 
             # Extract results
             if isinstance(result, dict) and "labels" in result and "scores" in result:
@@ -282,9 +285,9 @@ class HuggingFaceAPICuisineClassifier(BaseCuisineClassifier):
                 ):  # Top 5
                     alternatives.append({"cuisine": label, "confidence": float(score)})
 
-                # Generate reasoning
-                reasoning = self._generate_reasoning(
-                    recipe_text, primary_cuisine, confidence
+                # Simple reasoning
+                reasoning = (
+                    f"Classified as {primary_cuisine} based on recipe content analysis"
                 )
 
                 logger.debug(
@@ -302,13 +305,13 @@ class HuggingFaceAPICuisineClassifier(BaseCuisineClassifier):
                 )
             else:
                 logger.error("Unexpected API response format", response=result)
-                raise ClassificationError(
-                    "Unexpected API response format", error_details={"response": result}
+                return CuisineClassification(
+                    primary_cuisine="Other",
+                    confidence=0.0,
+                    confidence_level=ConfidenceLevel.LOW,
+                    reasoning="Unexpected API response format",
                 )
 
-        except ClassificationError:
-            # Re-raise classification errors as-is
-            raise
         except Exception as e:
             logger.error(
                 "Recipe cuisine classification failed via API",
@@ -337,7 +340,6 @@ class HuggingFaceAPICuisineClassifier(BaseCuisineClassifier):
             List of CuisineClassification objects
         """
         results = []
-
         logger.info(
             "Starting batch classification via API", batch_size=len(recipe_texts)
         )
@@ -376,72 +378,6 @@ class HuggingFaceAPICuisineClassifier(BaseCuisineClassifier):
         )
 
         return results
-
-    def _generate_reasoning(
-        self, recipe_text: str, cuisine: str, confidence: float
-    ) -> str:
-        """
-        Generate a simple reasoning explanation for the classification.
-
-        Args:
-            recipe_text: The input recipe text
-            cuisine: Predicted cuisine
-            confidence: Confidence score
-
-        Returns:
-            Reasoning string
-        """
-        # Extract key ingredients/terms that might indicate cuisine
-        cuisine_keywords = {
-            "Italian": [
-                "pasta",
-                "tomato",
-                "basil",
-                "parmesan",
-                "mozzarella",
-                "olive oil",
-            ],
-            "Chinese": ["soy sauce", "ginger", "garlic", "rice", "sesame", "wok"],
-            "Mexican": ["cumin", "chili", "lime", "cilantro", "beans", "tortilla"],
-            "Indian": [
-                "curry",
-                "turmeric",
-                "garam masala",
-                "coconut",
-                "naan",
-                "basmati",
-            ],
-            "Japanese": ["sushi", "miso", "soy sauce", "rice", "nori", "wasabi"],
-            "French": ["butter", "wine", "herbs", "cream", "baguette", "cheese"],
-            "Thai": [
-                "fish sauce",
-                "lime",
-                "coconut milk",
-                "lemongrass",
-                "chili",
-                "basil",
-            ],
-            "Mediterranean": [
-                "olive oil",
-                "lemon",
-                "feta",
-                "olives",
-                "herbs",
-                "tomato",
-            ],
-        }
-
-        found_keywords = []
-        if cuisine in cuisine_keywords:
-            for keyword in cuisine_keywords[cuisine]:
-                if keyword.lower() in recipe_text.lower():
-                    found_keywords.append(keyword)
-
-        if found_keywords:
-            keywords_str = ", ".join(found_keywords[:3])
-            return f"Classified as {cuisine} based on key ingredients: {keywords_str}"
-        else:
-            return f"Classified as {cuisine} based on overall text patterns"
 
     @lru_cache(maxsize=100)
     def _cached_classification(self, recipe_text: str) -> CuisineClassification:

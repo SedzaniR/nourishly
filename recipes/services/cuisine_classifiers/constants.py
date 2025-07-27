@@ -46,3 +46,5 @@ SUPPORTED_CUISINES = [
     "Scandinavian",
     "Other",
 ]
+
+MAXIMUM_INGREDIENTS_TO_USE = 15

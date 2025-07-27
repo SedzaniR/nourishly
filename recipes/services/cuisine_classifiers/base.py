@@ -7,6 +7,7 @@ from .constants import (
     LOW_CONFIDENCE_CUISINE_CLASSIFIER_THRESHOLD,
     MEDIUM_CONFIDENCE_CUISINE_CLASSIFIER_THRESHOLD,
     SUPPORTED_CUISINES,
+    MAXIMUM_INGREDIENTS_TO_USE,
 )
 
 
@@ -61,7 +62,6 @@ class CuisineClassification:
             self.confidence_level = ConfidenceLevel.MEDIUM
         else:
             self.confidence_level = ConfidenceLevel.HIGH
-
         if self.alternatives is None:
             self.alternatives = []
 
@@ -75,20 +75,20 @@ class BaseCuisineClassifier(ABC):
     uses the API approach to avoid memory constraints.
 
     Attributes:
-        api_identifier: Identifier for the API configuration
+        api_token: Hugging Face API token
         config: Additional configuration parameters
         supported_cuisines: List of cuisine types supported by the classifier
     """
 
-    def __init__(self, api_identifier: Optional[str] = None, **kwargs):
+    def __init__(self, api_token: Optional[str] = None, **kwargs):
         """
         Initialize the cuisine classifier.
 
         Args:
-            api_identifier: Identifier for the API configuration
+            api_token: Hugging Face API token
             **kwargs: Additional configuration parameters
         """
-        self.api_identifier = api_identifier
+        self.api_token = api_token
         self.config = kwargs
         self.supported_cuisines = SUPPORTED_CUISINES
 
@@ -142,14 +142,13 @@ class BaseCuisineClassifier(ABC):
         Returns:
             Combined text ready for classification
         """
+
         text_parts = []
 
         if title:
             text_parts.append(f"Title: {title}")
-
         if ingredients:
-            # Use more ingredients since they're strong signals
-            ingredients_text = ", ".join(ingredients[:15])  # Increased from 10
+            ingredients_text = ", ".join(ingredients[:MAXIMUM_INGREDIENTS_TO_USE])
             text_parts.append(f"Ingredients: {ingredients_text}")
 
         return ". ".join(text_parts)
@@ -167,7 +166,7 @@ class BaseCuisineClassifier(ABC):
         Returns:
             CuisineClassification object
         """
-        if ingredients is None:
+        if not ingredients:
             ingredients = []
 
         recipe_text = self._prepare_recipe_text(title, ingredients)
@@ -200,14 +199,7 @@ class BaseCuisineClassifier(ABC):
         Returns:
             True if text is valid for classification
         """
-        if not recipe_text or not recipe_text.strip():
-            return False
-
-        # Basic validation - at least 3 characters
-        if len(recipe_text.strip()) < 3:
-            return False
-
-        return True
+        return recipe_text and recipe_text.strip()
 
     def get_classification_metadata(self) -> Dict[str, Any]:
         """
@@ -217,7 +209,7 @@ class BaseCuisineClassifier(ABC):
             Dictionary with classifier metadata
         """
         return {
-            "api_identifier": self.api_identifier,
+            "api_token": self.api_token,
             "supported_cuisines_count": len(self.supported_cuisines),
             "supported_cuisines": self.supported_cuisines,
             "config": self.config,
