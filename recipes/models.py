@@ -368,3 +368,24 @@ class RecipeDietaryRestriction(models.Model):
 
     def __str__(self) -> str:
         return f"{self.recipe.title} - {self.dietary_restriction.display_name}"
+
+
+class RecipeNutrition(TimeStampedModel):
+    """Macro nutrition information for a recipe."""
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    recipe = models.ForeignKey(
+        "Recipe", on_delete=models.CASCADE, related_name="macro_nutrition"
+    )
+    calories = models.FloatField(help_text="Calories per serving")
+    protein = models.FloatField(help_text="Protein per serving")
+    carbohydrates = models.FloatField(help_text="Carbohydrates per serving")
+    fat = models.FloatField(help_text="Fat per serving")
+    fiber = models.FloatField(help_text="Fiber per serving")
+    sugar = models.FloatField(help_text="Sugar per serving")
+    sodium = models.FloatField(help_text="Sodium per serving")
+    cholesterol = models.FloatField(help_text="Cholesterol per serving")
+    saturated_fat = models.FloatField(help_text="Saturated fat per serving")
+    monounsaturated_fat = models.FloatField(help_text="Monounsaturated fat per serving")
+    polyunsaturated_fat = models.FloatField(help_text="Polyunsaturated fat per serving")
+    cholesterol = models.FloatField(help_text="Cholesterol per serving")
