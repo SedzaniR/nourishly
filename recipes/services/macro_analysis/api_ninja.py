@@ -141,7 +141,7 @@ class ApiNinjaMacroAnalyzer(BaseMacroAnalyzer):
             MacroAnalysisResult: Analysis result with total recipe macros.
         """
         self._log_analysis_request(
-            recipe_text[:100] + "..." if len(recipe_text) > 100 else recipe_text,
+            recipe_text,
             0,
             AnalysisType.RECIPE,
         )
@@ -211,8 +211,8 @@ class ApiNinjaMacroAnalyzer(BaseMacroAnalyzer):
                 recipe_ingredients.append(ingredient_result)
 
                 # Sum up totals
-                total_calories += ingredient_macros.calories
-                total_protein += ingredient_macros.protein
+                # total_calories += ingredient_macros.calories
+                # total_protein += ingredient_macros.protein
                 total_carbs += ingredient_macros.carbohydrates
                 total_fat += ingredient_macros.fat
 
@@ -227,7 +227,9 @@ class ApiNinjaMacroAnalyzer(BaseMacroAnalyzer):
                 if ingredient_macros.saturated_fat:
                     total_saturated_fat += ingredient_macros.saturated_fat
 
-                if item.get("serving_size_g"):
+                if item.get("serving_size_g") and not isinstance(
+                    item.get("serving_size_g"), str
+                ):
                     total_weight += item.get("serving_size_g")
 
             # Create total recipe macros

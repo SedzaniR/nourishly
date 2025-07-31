@@ -7,7 +7,15 @@ from core.logger import log_info, log_error, log_debug
 
 
 class MacroAnalysisStatus(Enum):
-    """Status of macro analysis operation."""
+    """
+
+    Status of macro analysis operation.
+    SUCCESS: The analysis was successful.
+    FAILED: The analysis failed.
+    PARTIAL: The analysis was successful, but some nutrients were not found.
+    NOT_FOUND: The analysis failed because the food item was not found in the database.
+
+    """
 
     SUCCESS = "success"
     FAILED = "failed"
@@ -34,7 +42,12 @@ class AnalysisType(Enum):
 
 @dataclass
 class NutrientInfo:
-    """Individual nutrient information."""
+    """
+    Individual nutrient information. This is a generic nutrient info class that can be used for any nutrient.
+    The per_100g flag is used to indicate if the value is per 100g of the food item. This is a useful data class abstraction
+    for usage in standalone nutrition analysis for one food item. e.g.
+
+    """
 
     name: str
     value: float
@@ -45,35 +58,60 @@ class NutrientInfo:
 
 @dataclass
 class MacroNutrients:
-    """Essential macro nutrients for a food item."""
+    """
+    This represents the current macro nutrients that are being analyzed for a food item.
+    This is a useful data class abstraction for usage in nutrition analysis for only macro analysis.
+    The macros are not per 100g, but rather the total macros for the food item.
 
-    calories: float  # kcal per 100g or total
-    protein: float  # grams per 100g or total
-    carbohydrates: float  # grams per 100g or total
-    fat: float  # grams per 100g or total
-    fiber: Optional[float] = None  # grams per 100g or total
-    sugar: Optional[float] = None  # grams per 100g or total
-    sodium: Optional[float] = None  # mg per 100g or total
-    cholesterol: Optional[float] = None  # mg per 100g or total
-    saturated_fat: Optional[float] = None  # grams per 100g or total
-    monounsaturated_fat: Optional[float] = None  # grams per 100g or total
-    polyunsaturated_fat: Optional[float] = None  # grams per 100g or total
+    """
+
+    calories: float = 0
+    protein: float = 0
+    carbohydrates: float = 0
+    fat: float = 0
+    fiber: float = 0
+    sugar: float = 0
+    sodium: float = 0
+    cholesterol: float = 0
+    saturated_fat: float = 0
+    monounsaturated_fat: float = 0
+    polyunsaturated_fat: float = 0
 
 
 @dataclass
 class RecipeIngredientResult:
-    """Individual ingredient result within a recipe analysis."""
+    """
+    Individual ingredient result within a recipe analysis.
+    This is a useful data class abstraction for usage in nutrition analysis for recipe analysis.
+    The macros are not per 100g, but rather the total macros for the food item.
+    """
 
     name: str
-    quantity: Optional[float] = None  # Detected quantity in grams
-    unit: Optional[str] = None  # Detected unit (cups, tsp, etc.)
+    quantity: Optional[float] = None
+    unit: Optional[str] = None
     macro_nutrients: Optional[MacroNutrients] = None
     confidence: float = 1.0
 
 
 @dataclass
 class MacroAnalysisResult:
-    """Result of macro nutrient analysis."""
+    """
+    Result of macro nutrient analysis.
+
+    food_name: The name of the food item or recipe that is being analyzed.
+    status: The status of the analysis.
+    analysis_type: The type of analysis being performed.
+    macro_nutrients: The macro nutrients for the food item, aggregated if multiple ingredients are present in the recipe.
+    recipe_ingredients: The ingredients in the recipe. with their quantity, unit, and macro nutrients. This is useful if a user wants to know the macro nutrients for each ingredient in the recipe
+    total_weight: The total weight of the recipe in grams.
+    servings: The number of servings in the recipe.
+    additional_nutrients: Any additional nutrients that were found in the analysis.
+    source: The source of the analysis.
+    confidence: The confidence in the analysis.
+    error_message: The error message if the analysis failed.
+    raw_data: The raw data from the analysis. This is useful for debugging and for future reference.
+
+    """
 
     food_name: str
     status: MacroAnalysisStatus
@@ -82,68 +120,15 @@ class MacroAnalysisResult:
 
     # For recipe analysis
     recipe_ingredients: Optional[List[RecipeIngredientResult]] = None
-    total_weight: Optional[float] = None  # Total recipe weight in grams
-    servings: Optional[int] = None  # Number of servings
+    total_weight: Optional[float] = None
+    servings: Optional[int] = None
 
     # Common fields
     additional_nutrients: Optional[List[NutrientInfo]] = None
     source: Optional[str] = None
-    confidence: float = 1.0  # Overall confidence in the analysis
+    confidence: float = 1.0
     error_message: Optional[str] = None
     raw_data: Optional[Dict[str, Any]] = None
-
-    @property
-    def per_serving_macros(self) -> Optional[MacroNutrients]:
-        """Calculate macro nutrients per serving for recipes."""
-        if (
-            self.analysis_type != AnalysisType.RECIPE
-            or not self.macro_nutrients
-            or not self.servings
-            or self.servings <= 0
-        ):
-            return None
-
-        return MacroNutrients(
-            calories=self.macro_nutrients.calories / self.servings,
-            protein=self.macro_nutrients.protein / self.servings,
-            carbohydrates=self.macro_nutrients.carbohydrates / self.servings,
-            fat=self.macro_nutrients.fat / self.servings,
-            fiber=(
-                self.macro_nutrients.fiber / self.servings
-                if self.macro_nutrients.fiber
-                else None
-            ),
-            sugar=(
-                self.macro_nutrients.sugar / self.servings
-                if self.macro_nutrients.sugar
-                else None
-            ),
-            sodium=(
-                self.macro_nutrients.sodium / self.servings
-                if self.macro_nutrients.sodium
-                else None
-            ),
-            cholesterol=(
-                self.macro_nutrients.cholesterol / self.servings
-                if self.macro_nutrients.cholesterol
-                else None
-            ),
-            saturated_fat=(
-                self.macro_nutrients.saturated_fat / self.servings
-                if self.macro_nutrients.saturated_fat
-                else None
-            ),
-            monounsaturated_fat=(
-                self.macro_nutrients.monounsaturated_fat / self.servings
-                if self.macro_nutrients.monounsaturated_fat
-                else None
-            ),
-            polyunsaturated_fat=(
-                self.macro_nutrients.polyunsaturated_fat / self.servings
-                if self.macro_nutrients.polyunsaturated_fat
-                else None
-            ),
-        )
 
 
 class BaseMacroAnalyzer(ABC):
