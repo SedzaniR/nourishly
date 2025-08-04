@@ -4,15 +4,14 @@ from huggingface_hub import InferenceClient
 
 from .constants import PREFERRED_SENTENCE_TRANSFORMERS_MODEL_ID
 
+from dotenv import load_dotenv
 
-HF_API_KEY = os.getenv("HUGGINGFACE_API_TOKEN")
-
-
-# Singleton client
+load_dotenv()
 
 
 class HuggingFaceInferenceClient:
     def __init__(self, model_id: str = PREFERRED_SENTENCE_TRANSFORMERS_MODEL_ID):
+        HF_API_KEY = os.getenv("HUGGINGFACE_API_TOKEN")
         self.model_id = model_id
         self.hf_client = InferenceClient(model=self.model_id, api_key=HF_API_KEY)
 
