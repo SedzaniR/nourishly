@@ -4,10 +4,6 @@ from huggingface_hub import InferenceClient
 
 from .constants import PREFERRED_SENTENCE_TRANSFORMERS_MODEL_ID
 
-from dotenv import load_dotenv
-
-load_dotenv()
-
 
 class HuggingFaceInferenceClient:
     def __init__(self, model_id: str = PREFERRED_SENTENCE_TRANSFORMERS_MODEL_ID):

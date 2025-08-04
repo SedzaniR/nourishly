@@ -11,7 +11,6 @@ from functools import lru_cache
 from typing import Dict, List, Optional
 
 import requests
-from dotenv import load_dotenv
 
 from core.logger import get_logger
 
@@ -29,7 +28,6 @@ from .constants import (
 )
 
 logger = get_logger()
-load_dotenv()
 
 
 class HuggingFaceAPICuisineClassifier(BaseCuisineClassifier):

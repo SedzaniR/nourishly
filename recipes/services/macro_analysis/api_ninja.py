@@ -1,10 +1,6 @@
 import os
 import requests
 from typing import List, Optional, Dict, Any
-from dotenv import load_dotenv
-
-# Load environment variables from .env file
-load_dotenv()
 
 from .base import (
     BaseMacroAnalyzer,

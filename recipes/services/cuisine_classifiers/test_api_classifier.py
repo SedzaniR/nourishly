@@ -6,12 +6,9 @@ Just tests if we can send data to Hugging Face and get results.
 
 import sys
 import os
-from dotenv import load_dotenv
 
 # Add the project root to Python path for imports
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../../.."))
-
-load_dotenv()
 
 
 def test_api_classifier():
