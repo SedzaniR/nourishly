@@ -1,7 +1,10 @@
 import uuid
+
 from django.db import models
 from django.utils.text import slugify
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.contrib.postgres.fields import ArrayField
+
 from typing import Optional, List
 
 from core.base_models import TimeStampedModel
@@ -45,6 +48,7 @@ class Recipe(TimeStampedModel):
     review_count = models.PositiveIntegerField(
         blank=True, null=True, help_text="Number of reviews/ratings"
     )
+    embedding = ArrayField(models.FloatField(), size=384, null=True, blank=True)
 
     class Meta:
         ordering = ["-created_at"]
