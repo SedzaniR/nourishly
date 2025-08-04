@@ -1,8 +1,7 @@
-# recipes/services/huggingface_client.py
 from huggingface_hub import InferenceClient
 import os
 
-HF_API_KEY = os.getenv("HF_API_KEY")
+HF_API_KEY = os.getenv("HUGGINGFACE_API_TOKEN")
 HF_MODEL_ID = "sentence-transformers/all-MiniLM-L6-v2"
 
 # Singleton client
