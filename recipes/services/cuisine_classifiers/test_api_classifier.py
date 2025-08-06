@@ -19,7 +19,7 @@ def test_api_classifier():
 
     try:
         from core.logger import get_logger
-        from recipes.services.cuisine_classifiers.huggingface_api import (
+        from core.services.huggingface.huggingface_api import (
             HuggingFaceAPICuisineClassifier,
         )
         from recipes.services.cuisine_classifiers.constants import SUPPORTED_CUISINES

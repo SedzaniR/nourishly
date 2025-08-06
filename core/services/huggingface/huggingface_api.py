@@ -5,21 +5,20 @@ This classifier uses the Hugging Face Inference API to classify recipe cuisine t
 without loading models locally, saving memory and computational resources.
 """
 
-import os
-import time
 from functools import lru_cache
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Any
 
-import requests
-
+from .base import BaseHuggingFaceAPIClient
 from core.logger import get_logger
 
-from .base import (
+logger = get_logger()
+
+from recipes.services.cuisine_classifiers.base import (
     BaseCuisineClassifier,
     ConfidenceLevel,
     CuisineClassification,
 )
-from .constants import (
+from recipes.services.cuisine_classifiers.constants import (
     DEFAULT_API_MAX_RETRIES,
     DEFAULT_API_RATE_LIMIT_DELAY,
     DEFAULT_API_RETRY_DELAY,
@@ -27,10 +26,8 @@ from .constants import (
     DEFAULT_HUGGINGFACE_MODEL,
 )
 
-logger = get_logger()
 
-
-class HuggingFaceAPICuisineClassifier(BaseCuisineClassifier):
+class HuggingFaceAPICuisineClassifier(BaseHuggingFaceAPIClient, BaseCuisineClassifier):
     """
     Hugging Face Inference API-based cuisine classifier.
 
@@ -54,8 +51,6 @@ class HuggingFaceAPICuisineClassifier(BaseCuisineClassifier):
         ```
     """
 
-    HUGGINGFACE_MODEL_BASE_URL = "https://api-inference.huggingface.co/models"
-
     def __init__(
         self,
         api_token: Optional[str] = None,
@@ -70,173 +65,41 @@ class HuggingFaceAPICuisineClassifier(BaseCuisineClassifier):
             model_name: Name of the Hugging Face model to use
             **kwargs: Additional configuration
         """
-        # Use passed api_token or fall back to environment variable
-        if api_token is None:
-            api_token = os.environ.get("HUGGINGFACE_API_TOKEN")
+        model_id = model_name or DEFAULT_HUGGINGFACE_MODEL
 
-        self.api_token = api_token  # Can be None for free tier
-        self.model_name = model_name or DEFAULT_HUGGINGFACE_MODEL
-        super().__init__(api_identifier=f"hf_api:{self.model_name}", **kwargs)
-
-        # API configuration
-        self.api_url = f"{self.HUGGINGFACE_MODEL_BASE_URL}/{self.model_name}"
-        self.headers = {}
-        if self.api_token:
-            self.headers["Authorization"] = f"Bearer {self.api_token}"
-
-        # Rate limiting and retry configuration
-        self.rate_limit_delay = kwargs.get(
-            "rate_limit_delay", DEFAULT_API_RATE_LIMIT_DELAY
+        # Initialize the API client
+        BaseHuggingFaceAPIClient.__init__(
+            self,
+            model_id=model_id,
+            api_token=api_token,
+            timeout=kwargs.get("timeout", DEFAULT_API_TIMEOUT),
+            max_retries=kwargs.get("max_retries", DEFAULT_API_MAX_RETRIES),
+            retry_delay=kwargs.get("retry_delay", DEFAULT_API_RETRY_DELAY),
+            rate_limit_delay=kwargs.get(
+                "rate_limit_delay", DEFAULT_API_RATE_LIMIT_DELAY
+            ),
+            **kwargs,
         )
-        self.max_retries = kwargs.get("max_retries", DEFAULT_API_MAX_RETRIES)
-        self.retry_delay = kwargs.get("retry_delay", DEFAULT_API_RETRY_DELAY)
-        self.timeout = kwargs.get("timeout", DEFAULT_API_TIMEOUT)
 
-        # Track last request time for rate limiting
-        self._last_request_time = 0
-
-        logger.info(
-            "Initialized Hugging Face API classifier",
-            model_name=self.model_name,
-            has_api_token=bool(self.api_token),
+        # Initialize the cuisine classifier
+        BaseCuisineClassifier.__init__(
+            self, api_identifier=f"hf_api:{model_id}", **kwargs
         )
 
     @property
     def classifier_name(self) -> str:
-        return f"HuggingFace API ({self.model_name})"
+        return f"HuggingFace API ({self.model_id})"
 
-    def _rate_limit(self) -> None:
-        """Implement rate limiting between API requests."""
+    @property
+    def service_name(self) -> str:
+        return "Hugging Face Cuisine Classifier"
 
-        current_time = time.time()
-        time_since_last = current_time - self._last_request_time
-
-        if time_since_last < self.rate_limit_delay:
-            sleep_time = self.rate_limit_delay - time_since_last
-            logger.debug("Rate limiting API request", sleep_time=sleep_time)
-            time.sleep(sleep_time)
-        else:
-            self._last_request_time = time.time()
-
-    def _make_api_request(self, payload: Dict, retry_count: int = 0) -> Optional[Dict]:
-        """
-        Make a request to the Hugging Face Inference API with retry logic.
-
-        Args:
-            payload: Request payload
-            retry_count: Current retry attempt
-
-        Returns:
-            API response data, or None if the request fails
-        """
-        self._rate_limit()
-
-        try:
-            response = requests.post(
-                self.api_url, headers=self.headers, json=payload, timeout=self.timeout
-            )
-
-            if response.status_code == 200:
-                return response.json()
-            elif response.status_code == 503:
-                # Model is loading, wait and retry
-                if retry_count < self.max_retries:
-                    wait_time = self.retry_delay * (retry_count + 1)
-                    logger.warning(
-                        "Model is loading, retrying",
-                        retry_count=retry_count,
-                        wait_time=wait_time,
-                    )
-                    time.sleep(wait_time)
-                    return self._make_api_request(payload, retry_count + 1)
-                else:
-                    logger.error(
-                        "Model failed to load after maximum retries",
-                        error_details={"max_retries": self.max_retries},
-                    )
-                    return None
-            elif response.status_code == 429:
-                # Rate limited, wait and retry
-                if retry_count < self.max_retries:
-                    wait_time = (
-                        self.retry_delay * (retry_count + 1) * 2
-                    )  # Longer wait for rate limits
-                    logger.warning(
-                        "Rate limited, retrying",
-                        retry_count=retry_count,
-                        wait_time=wait_time,
-                    )
-                    time.sleep(wait_time)
-                    return self._make_api_request(payload, retry_count + 1)
-                else:
-                    logger.error(
-                        "Rate limit exceeded, maximum retries reached",
-                        error_details={
-                            "max_retries": self.max_retries,
-                            "rate_limited": True,
-                        },
-                    )
-                    return None
-            else:
-                error_msg = f"API request failed with status {response.status_code}: {response.text}"
-                logger.error(
-                    "Hugging Face API request failed",
-                    status_code=response.status_code,
-                    error_text=error_msg,
-                )
-                return None
-
-        except requests.exceptions.Timeout:
-            if retry_count < self.max_retries:
-                logger.warning("API request timeout, retrying", retry_count=retry_count)
-                time.sleep(self.retry_delay)
-                return self._make_api_request(payload, retry_count + 1)
-            else:
-                logger.error(
-                    "API request timeout after maximum retries",
-                    error_details={
-                        "timeout": self.timeout,
-                        "max_retries": self.max_retries,
-                    },
-                )
-                return None
-        except requests.exceptions.RequestException as e:
-            logger.error("API request exception", error=str(e), retry_count=retry_count)
-            if retry_count < self.max_retries:
-                time.sleep(self.retry_delay)
-                return self._make_api_request(payload, retry_count + 1)
-            else:
-                logger.error(
-                    "API request failed after maximum retries",
-                    error_details={
-                        "original_error": str(e),
-                        "max_retries": self.max_retries,
-                    },
-                )
-                return None
-        except Exception as e:
-            logger.error("API request exception", error=str(e), retry_count=retry_count)
-            return None
-
-    def is_ready(self) -> bool:
-        """
-        Check if the API is accessible and the model is ready.
-
-        Returns:
-            True if the API is ready, False otherwise
-        """
-        try:
-            test_payload = {
-                "inputs": "test",
-                "parameters": {"candidate_labels": ["Italian", "Chinese"]},
-            }
-            result = self._make_api_request(test_payload)
-            return bool(result)
-        except Exception as e:
-            logger.error(
-                "Hugging Face API not ready", error=str(e), model_name=self.model_name
-            )
-            return False
+    def _get_health_check_payload(self) -> Dict[str, Any]:
+        """Return a test payload for health checks."""
+        return {
+            "inputs": "test",
+            "parameters": {"candidate_labels": ["Italian", "Chinese"]},
+        }
 
     def classify_recipe(self, recipe_text: str) -> CuisineClassification:
         """
@@ -315,7 +178,7 @@ class HuggingFaceAPICuisineClassifier(BaseCuisineClassifier):
                 "Recipe cuisine classification failed via API",
                 error=str(e),
                 recipe_text_length=len(recipe_text) if recipe_text else 0,
-                model_name=self.model_name,
+                model_id=self.model_id,
             )
             return CuisineClassification(
                 primary_cuisine="Other",
