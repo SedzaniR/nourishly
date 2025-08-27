@@ -363,29 +363,6 @@ class BaseRecipeProvider(ABC):
         pass
 
     @abstractmethod
-    def extract_structured_data(self, html_content: str) -> Optional[Dict[str, Any]]:
-        """Extract structured data (JSON-LD, microdata) from HTML content.
-
-        Many recipe websites include structured data that makes scraping easier
-        and more reliable. This method extracts that structured data.
-
-        Args:
-            html_content: Raw HTML content of the recipe page.
-
-        Returns:
-            A dictionary containing structured data, or None if no
-            structured data is found.
-
-        Example:
-            ```python
-            structured_data = scraper.extract_structured_data(html_content)
-            if structured_data:
-                title = structured_data.get('name')
-            ```
-        """
-        pass
-
-    @abstractmethod
     def _normalize_recipe_data(
         self, raw_data: Dict[str, Any], source_url: str
     ) -> RecipeData:
@@ -454,43 +431,6 @@ class BaseRecipeProvider(ABC):
         text = re.sub(r"\s+", " ", text.strip())
 
         return text if text else None
-
-    def _parse_time_string(self, time_str: Optional[str]) -> Optional[int]:
-        """Parse time strings (e.g., "30 minutes", "1 hour 15 min") to minutes.
-
-        Args:
-            time_str: Time string to parse.
-
-        Returns:
-            Time in minutes, or None if parsing fails.
-        """
-        if not time_str:
-            return None
-
-        import re
-
-        # Common time patterns
-        time_str = time_str.lower()
-
-        # Extract hours and minutes
-        hour_match = re.search(r"(\d+)\s*h(?:our)?s?", time_str)
-        minute_match = re.search(r"(\d+)\s*m(?:in)?(?:ute)?s?", time_str)
-
-        total_minutes = 0
-
-        if hour_match:
-            total_minutes += int(hour_match.group(1)) * 60
-
-        if minute_match:
-            total_minutes += int(minute_match.group(1))
-
-        # If no specific pattern found, try to extract just numbers
-        if total_minutes == 0:
-            number_match = re.search(r"(\d+)", time_str)
-            if number_match:
-                total_minutes = int(number_match.group(1))
-
-        return total_minutes if total_minutes > 0 else None
 
     def _extract_rating(self, rating_str: Optional[str]) -> Optional[float]:
         """Extract numeric rating from rating strings.

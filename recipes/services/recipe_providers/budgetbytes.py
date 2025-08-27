@@ -313,7 +313,7 @@ class BudgetBytesScraper(BaseRecipeProvider):
                 raise ValueError("Failed to extract recipe title")
 
             raw_ingredient_list: List[str] = service_utils.safely_extract_info_from_function_call(scraper.ingredients, [])
-
+            print("raw ingredients extract", raw_ingredient_list)
             if not raw_ingredient_list:
                 log_error("Failed to extract ingredients", source_url=source_url)
                 raise ValueError("Failed to extract raw ingredients")
@@ -340,10 +340,10 @@ class BudgetBytesScraper(BaseRecipeProvider):
                 description=service_utils.safely_extract_info_from_function_call(scraper.description),
                 ingredients=structured_ingredients,
                 instructions=instructions,
-                prep_time=self._parse_time_duration(
+                prep_time=utils.parse_time_duration(
                     service_utils.safely_extract_info_from_function_call(scraper.prep_time)
                 ),
-                cook_time=self._parse_time_duration(
+                cook_time=utils.parse_time_duration(
                     service_utils.safely_extract_info_from_function_call(scraper.cook_time)
                 ),
                 servings=service_utils.safely_extract_info_from_function_call(scraper.yields),
@@ -368,13 +368,14 @@ class BudgetBytesScraper(BaseRecipeProvider):
             return recipe_data
 
         except Exception as normalization_exception:
+           
             log_error(
                 f"Failed to normalize recipe data {normalization_exception}",
                 error=str(normalization_exception),
                 raw_ingredient_list=raw_ingredient_list,
                 source_url=source_url,
             )
-            return None
+            raise Exception(f"Failed to extract recipe informarion {normalization_exception}")
 
     def _parse_ingredients(self, raw_ingredients: List[str]) -> List[IngredientData]:
         """Parse ingredients into structured IngredientData format.

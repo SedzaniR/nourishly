@@ -4,8 +4,9 @@ from typing import Optional, Tuple, Any, List
 from urllib.parse import ParseResult, urlparse
 
 from core.logger import log_debug, log_error
+from recipes import services
 from recipes.services.recipe_providers.base import MacroNutrition
-from recipes.utils import extract_numeric_value_from_string, safely_extract_info_from_function_call
+from recipes.utils import extract_numeric_value_from_string, safely_extract_info_from_function_call, parse_time_string
 from recipes.services.recipe_providers import constants
 
 def parse_quantity(quantity_str: str) -> Optional[float]:
@@ -82,7 +83,7 @@ def is_recipe_provider_url(url: str,recipe_provider_domain:str) -> bool:
         """
         try:
             parsed: ParseResult = urlparse(url)
-            return recipe_provider_domain in parsed.netloc.lower()
+            return recipe_provider_domain.lower() in parsed.netloc.lower()
         except:
             return False
 
@@ -208,7 +209,7 @@ def extract_tags(scraper: Any) -> List[str]:
     # Remove duplicates and None values
     return [tag for tag in extracted_tags if tag and tag.strip()]
 
-def parse_time_duration(self, duration: Any) -> Optional[int]:
+def parse_time_duration(duration: Any) -> Optional[int]:
         """Parse time duration to minutes.
 
         Args:
@@ -228,4 +229,4 @@ def parse_time_duration(self, duration: Any) -> Optional[int]:
         if hasattr(duration, "total_seconds"):
             return int(duration.total_seconds() / 60)
 
-        return self._parse_time_string(str(duration))
+        return parse_time_string(str(duration))

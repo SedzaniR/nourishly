@@ -47,7 +47,7 @@ def extract_numeric_value_from_string(value: Any) -> Optional[float]:
 
 
 def safely_extract_info_from_function_call(
-        self, method: Callable[[], Any], default_value: Any = None
+        method: Callable[[], Any], default_value: Any = None
     ) -> Any:
         """Safely extract data from recipe-scrapers methods.
 
@@ -67,3 +67,38 @@ def safely_extract_info_from_function_call(
             return extraction_result if extraction_result is not None else default_value
         except Exception:
             return default_value
+
+def parse_time_string(time_str: Optional[str]) -> Optional[int]:
+        """Parse time strings (e.g., "30 minutes", "1 hour 15 min") to minutes.
+
+        Args:
+            time_str: Time string to parse.
+
+        Returns:
+            Time in minutes, or None if parsing fails.
+        """
+        if not time_str:
+            return None
+
+        # Common time patterns
+        time_str = time_str.lower()
+
+        # Extract hours and minutes
+        hour_match = re.search(r"(\d+)\s*h(?:our)?s?", time_str)
+        minute_match = re.search(r"(\d+)\s*m(?:in)?(?:ute)?s?", time_str)
+
+        total_minutes = 0
+
+        if hour_match:
+            total_minutes += int(hour_match.group(1)) * 60
+
+        if minute_match:
+            total_minutes += int(minute_match.group(1))
+
+        # If no specific pattern found, try to extract just numbers
+        if total_minutes == 0:
+            number_match = re.search(r"(\d+)", time_str)
+            if number_match:
+                total_minutes = int(number_match.group(1))
+
+        return total_minutes if total_minutes > 0 else None
