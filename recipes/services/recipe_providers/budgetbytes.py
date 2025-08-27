@@ -139,11 +139,8 @@ class BudgetBytesScraper(BaseRecipeProvider):
 
         for sitemap_url in constants.BUDGET_BYTES_SITEMAP_URLS:
             try:
-                # Rate limiting
                 time.sleep(constants.BUDGET_BYTES_RATE_LIMIT)
-
                 log_info("Attempting to fetch sitemap", sitemap_url=sitemap_url)
-
                 response = requests.get(
                     sitemap_url,
                     timeout=30,
@@ -165,7 +162,7 @@ class BudgetBytesScraper(BaseRecipeProvider):
                         break
                 else:
                     log_warning(
-                        "Sitemap request failed",
+                        f"Sitemap request failed {sitemap_url}",
                         sitemap_url=sitemap_url,
                         status_code=response.status_code,
                     )
@@ -175,12 +172,12 @@ class BudgetBytesScraper(BaseRecipeProvider):
                 continue
             except requests.exceptions.RequestException as e:
                 log_error(
-                    "Failed to fetch sitemap", sitemap_url=sitemap_url, error=str(e)
+                    f"Failed to fetch sitemap {sitemap_url}", sitemap_url=sitemap_url, error=str(e)
                 )
                 continue
             except Exception as e:
                 log_error(
-                    "Unexpected error fetching sitemap",
+                    f"Unexpected error fetching sitemap {sitemap_url}",
                     sitemap_url=sitemap_url,
                     error=str(e),
                 )
@@ -213,16 +210,12 @@ class BudgetBytesScraper(BaseRecipeProvider):
         try:
             root = ET.fromstring(xml_content)
 
-            # Define XML namespaces
-            namespaces = {"sitemap": "http://www.sitemaps.org/schemas/sitemap/0.9"}
-
-            # Handle sitemap index (points to other sitemaps)
             if root.tag.endswith("sitemapindex"):
                 log_info("Processing sitemap index")
 
                 # Get all sub-sitemap URLs
                 sub_sitemap_urls = []
-                for sitemap in root.findall(".//sitemap:loc", namespaces):
+                for sitemap in root.findall(".//sitemap:loc", constants.BUDGET_BYTES_SITEMAP_NAMESPACE):
                     sub_sitemap_url = sitemap.text
                     if sub_sitemap_url and "post-sitemap" in sub_sitemap_url:
                         sub_sitemap_urls.append(sub_sitemap_url)
@@ -254,15 +247,15 @@ class BudgetBytesScraper(BaseRecipeProvider):
             elif root.tag.endswith("urlset"):
                 log_info("Processing regular sitemap")
 
-                for url_elem in root.findall(".//sitemap:url", namespaces):
-                    loc_elem = url_elem.find("sitemap:loc", namespaces)
+                for url_elem in root.findall(".//sitemap:url", constants.BUDGET_BYTES_SITEMAP_NAMESPACE):
+                    loc_elem = url_elem.find("sitemap:loc", constants.BUDGET_BYTES_SITEMAP_NAMESPACE)
                     if loc_elem is not None and loc_elem.text:
                         urls.append(loc_elem.text)
 
         except ET.ParseError as e:
-            log_error("Failed to parse sitemap XML", error=str(e))
+            log_error(f"Failed to parse sitemap XML", error=str(e))
         except Exception as e:
-            log_error("Unexpected error parsing sitemap", error=str(e))
+            log_error(f"Unexpected error parsing sitemap", error=str(e))
 
         return urls
 

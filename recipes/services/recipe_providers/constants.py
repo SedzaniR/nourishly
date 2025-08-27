@@ -78,10 +78,8 @@ BUDGET_BYTES_BASE_URL: str = "https://www.budgetbytes.com"
 BUDGET_BYTES_RATE_LIMIT: float = 2.0
 
 BUDGET_BYTES_SITEMAP_URLS = [
-    "https://www.budgetbytes.com/sitemap.xml",
-    "https://www.budgetbytes.com/sitemap_index.xml",
     "https://www.budgetbytes.com/post-sitemap.xml",
-    "https://www.budgetbytes.com/recipe-sitemap.xml",
+
 ]
 
 MACROS_TO_EXTRACT = [
@@ -93,3 +91,5 @@ MACROS_TO_EXTRACT = [
     "sugar",
     "sodium",
 ]
+
+BUDGET_BYTES_SITEMAP_NAMESPACE = {"sitemap": "http://www.sitemaps.org/schemas/sitemap/0.9"}
