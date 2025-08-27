@@ -663,7 +663,7 @@ class BudgetBytesScraper(BaseRecipeProvider):
 
             if not raw_ingredient_list:
                 log_error("Failed to extract ingredients", source_url=source_url)
-                raise ValueError("Failed to extract ingredients")
+                raise ValueError("Failed to extract raw ingredients")
 
             structured_ingredients: List[IngredientData] = self._parse_ingredients(
                 raw_ingredient_list
@@ -673,15 +673,7 @@ class BudgetBytesScraper(BaseRecipeProvider):
                 "Ingredient parsing completed",
                 raw_count=len(raw_ingredient_list),
                 parsed_count=len(structured_ingredients),
-                sample_raw=raw_ingredient_list[:2] if raw_ingredient_list else [],
-                sample_parsed=(
-                    [
-                        f"{ingredient.quantity or ''} {ingredient.unit or ''} {ingredient.name}".strip()
-                        for ingredient in structured_ingredients[:2]
-                    ]
-                    if structured_ingredients
-                    else []
-                ),
+                sample_raw=raw_ingredient_list[:2],
             )
 
             # Create RecipeData object
