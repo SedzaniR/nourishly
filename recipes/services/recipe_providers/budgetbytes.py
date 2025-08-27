@@ -10,6 +10,7 @@ from bs4 import BeautifulSoup
 import requests
 from recipe_scrapers import SCRAPERS, scrape_me
 from ingredient_parser import parse_ingredient
+from ingredient_parser.dataclasses import ParsedIngredient
 
 from core.logger import log_debug, log_error, log_info, log_warning
 from recipes.services.recipe_providers import constants
@@ -135,16 +136,10 @@ class BudgetBytesScraper(BaseRecipeProvider):
         """
 
         # Potential sitemap URLs to try
-        sitemap_urls = [
-            "https://www.budgetbytes.com/sitemap.xml",
-            "https://www.budgetbytes.com/sitemap_index.xml",
-            "https://www.budgetbytes.com/post-sitemap.xml",
-            "https://www.budgetbytes.com/recipe-sitemap.xml",
-        ]
 
         discovered_urls = []
 
-        for sitemap_url in sitemap_urls:
+        for sitemap_url in constants.BUDGET_BYTES_SITEMAP_URLS:
             try:
                 # Rate limiting
                 time.sleep(constants.BUDGET_BYTES_RATE_LIMIT)
@@ -1078,15 +1073,7 @@ class BudgetBytesScraper(BaseRecipeProvider):
             # Return only if we got at least one value
             if any(
                 getattr(macros, field) is not None
-                for field in [
-                    "calories",
-                    "protein",
-                    "carbohydrates",
-                    "fat",
-                    "fiber",
-                    "sugar",
-                    "sodium",
-                ]
+                for field in constants.MACROS_TO_EXTRACT
             ):
                 log_debug(
                     "Macros extracted", calories=macros.calories, protein=macros.protein
