@@ -1,22 +1,24 @@
-from fractions import Fraction
 import re
 import time
-from datetime import datetime
 import xml.etree.ElementTree as ET
-from typing import Any, Callable, Dict, List, Match, Optional
-
+from typing import List, Match, Optional
 
 import requests
-from recipe_scrapers import SCRAPERS, scrape_me
+from recipe_scrapers import scrape_me
 from ingredient_parser import parse_ingredient
 from ingredient_parser.dataclasses import ParsedIngredient
 
 from core.logger import log_debug, log_error, log_info, log_warning
-from recipes.services.recipe_providers import constants
-from recipes.utils import extract_numeric_value_from_string
-from recipes.services.recipe_providers import utils
+from . import constants
+from recipes.services.recipe_providers.utils import (
+    is_recipe_provider_url,
+    parse_time_duration,
+    extract_tags,
+    extract_dietary_restrictions,
+    extract_macros,
+)
 from recipes import utils as service_utils
-from .base import BaseRecipeProvider, IngredientData, MacroNutrition, RecipeData
+from ..base import BaseRecipeProvider, IngredientData, RecipeData
 
 
 class BudgetBytesScraper(BaseRecipeProvider):
@@ -73,7 +75,7 @@ class BudgetBytesScraper(BaseRecipeProvider):
             >>> print(recipe.title if recipe else "Failed to scrape")
         """
 
-        if not utils.is_recipe_provider_url(url,self.provider_name):
+        if not is_recipe_provider_url(url,self.provider_name):
             log_error("Invalid Budget Bytes URL", url=url, provider=self.provider_name)
             raise ValueError("Invalid Budget Bytes URL")
 
@@ -340,10 +342,10 @@ class BudgetBytesScraper(BaseRecipeProvider):
                 description=service_utils.safely_extract_info_from_function_call(scraper.description),
                 ingredients=structured_ingredients,
                 instructions=instructions,
-                prep_time=utils.parse_time_duration(
+                prep_time=parse_time_duration(
                     service_utils.safely_extract_info_from_function_call(scraper.prep_time)
                 ),
-                cook_time=utils.parse_time_duration(
+                cook_time=parse_time_duration(
                     service_utils.safely_extract_info_from_function_call(scraper.cook_time)
                 ),
                 servings=service_utils.safely_extract_info_from_function_call(scraper.yields),
@@ -351,10 +353,10 @@ class BudgetBytesScraper(BaseRecipeProvider):
                 image_url=service_utils.safely_extract_info_from_function_call(scraper.image),
                 author=service_utils.safely_extract_info_from_function_call(scraper.author),
                 rating=service_utils.safely_extract_info_from_function_call(scraper.ratings),
-                tags=utils.extract_tags(scraper),
-                dietary_restrictions=utils.extract_dietary_restrictions(scraper),
+                tags=extract_tags(scraper),
+                dietary_restrictions=extract_dietary_restrictions(scraper),
                 nutrition=service_utils.safely_extract_info_from_function_call(scraper.nutrients),
-                macros=utils.extract_macros(scraper),
+                macros=extract_macros(scraper),
             )
 
             log_info(

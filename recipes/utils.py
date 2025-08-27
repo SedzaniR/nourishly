@@ -8,6 +8,8 @@ different recipe providers and services.
 import re
 from typing import Optional, Any, Callable
 
+from core.logger import log_error
+
 
 def extract_numeric_value_from_string(value: Any) -> Optional[float]:
     """Extract numeric value from various data types and formats.
@@ -66,6 +68,7 @@ def safely_extract_info_from_function_call(
             extraction_result: Any = method()
             return extraction_result if extraction_result is not None else default_value
         except Exception:
+            log_error("Failed to extract data from method")
             return default_value
 
 def parse_time_string(time_str: Optional[str]) -> Optional[int]:
