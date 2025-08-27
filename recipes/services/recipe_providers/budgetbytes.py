@@ -252,57 +252,28 @@ class BudgetBytesScraper(BaseRecipeProvider):
         recipe_urls = []
 
         # Patterns for recipe URLs vs other pages
-        recipe_patterns = [
-            r"budgetbytes\.com/[^/]+/$",  # Single recipe pages like /recipe-name/
-            r"budgetbytes\.com/[a-z0-9-]+/$",  # Recipe slugs (letters, numbers, hyphens)
-        ]
-
-        exclude_patterns = [
-            r"budgetbytes\.com/category/",  # Category pages
-            r"budgetbytes\.com/tag/",  # Tag pages
-            r"budgetbytes\.com/page/",  # Pagination
-            r"budgetbytes\.com/author/",  # Author pages
-            r"budgetbytes\.com/\d{4}/",  # Date archives (2024/)
-            r"budgetbytes\.com/search/",  # Search pages
-            r"budgetbytes\.com/index/",  # Index pages
-            r"budgetbytes\.com/(about|contact|faq|privacy|terms)",  # Static pages
-            r"budgetbytes\.com/(login|register|account)",  # User pages
-            r"budgetbytes\.com/extra-bytes/",  # Non-recipe content
-            r"budgetbytes\.com/weekly-recap",  # Weekly recap posts
-            r"budgetbytes\.com/.*-recap",  # Other recap posts
-            r"budgetbytes\.com/.*-challenge",  # Challenge posts
-            r"budgetbytes\.com/.*-week-\d+",  # Weekly challenge posts
-            r"budgetbytes\.com/feeding-america",  # Special campaign posts
-            r"budgetbytes\.com/meal-plans?$",  # Meal plan pages (not recipes)
-            r"budgetbytes\.com/.*-meal-plan",  # Weekly meal plan posts
-            r"budgetbytes\.com/roundup",  # Recipe roundup posts
-            r"budgetbytes\.com/.*-giveaway",  # Giveaway posts
-            r"budgetbytes\.com/best-of-",  # Best of compilation posts
-            r"budgetbytes\.com/top-\d+",  # Top N recipes posts
-            r"budgetbytes\.com/.*-\d{4}/$",  # Year-based compilation posts (e.g., best-of-2023)
-            r"budgetbytes\.com/prices-and-portions",  # Non-recipe informational pages
-        ]
+        
 
         for url in urls:
             # Skip if URL doesn't contain budgetbytes.com
-            if "budgetbytes.com" not in url:
+            if constants.BUDGET_BYTES_DOMAIN not in url:
                 continue
 
             # Check if it should be excluded first
             is_excluded = any(
-                re.search(pattern, url, re.IGNORECASE) for pattern in exclude_patterns
+                re.search(pattern, url, re.IGNORECASE) for pattern in constants.BUDGET_BYTES_EXCLUDED_RECIPE_PATTERNS
             )
             if is_excluded:
                 continue
 
             # Check if it matches recipe pattern
             is_recipe = any(
-                re.search(pattern, url, re.IGNORECASE) for pattern in recipe_patterns
+                re.search(pattern, url, re.IGNORECASE) for pattern in constants.BUDGET_BYTES_RECIPE_PATTERNS
             )
 
             # Additional heuristic: recipe URLs are typically shorter and don't have multiple path segments
             path_segments = (
-                url.replace("https://www.budgetbytes.com/", "").strip("/").split("/")
+                url.replace(constants.BUDGET_BYTES_BASE_URL, "").strip("/").split("/")
             )
             is_simple_path = len(path_segments) == 1 and len(path_segments[0]) > 3
 
