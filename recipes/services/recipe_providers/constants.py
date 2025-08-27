@@ -1,3 +1,6 @@
+from ast import Str
+
+
 COMMON_UNITS = [
     "tablespoons",
     "tablespoon",
@@ -75,6 +78,7 @@ UNICODE_FRACTIONS = {
 }
 
 BUDGET_BYTES_BASE_URL: str = "https://www.budgetbytes.com"
+BUDGET_BYTES_DOMAIN:str = "budgetbytes.com"
 BUDGET_BYTES_RATE_LIMIT: float = 2.0
 
 BUDGET_BYTES_SITEMAP_URLS = [
@@ -93,3 +97,13 @@ MACROS_TO_EXTRACT = [
 ]
 
 BUDGET_BYTES_SITEMAP_NAMESPACE = {"sitemap": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+
+BUDGET_BYTES_CATEGORY_URLS = [
+            "https://www.budgetbytes.com/category/recipes/main-dish/",
+            "https://www.budgetbytes.com/category/recipes/side-dish/",
+            "https://www.budgetbytes.com/category/recipes/breakfast/",
+            "https://www.budgetbytes.com/category/recipes/appetizer/",
+            "https://www.budgetbytes.com/category/recipes/dessert/",
+            "https://www.budgetbytes.com/category/recipes/soup/",
+            "https://www.budgetbytes.com/category/recipes/salad/",
+        ]
