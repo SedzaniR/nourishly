@@ -79,7 +79,7 @@ class BudgetBytesScraper(BaseRecipeProvider):
         log_info("Starting recipe scrape", url=url, provider=self.provider_name)
         time.sleep(constants.BUDGET_BYTES_RATE_LIMIT)
 
-        scraper: Any = scrape_me(url)
+        scraper: ParsedIngredient = scrape_me(url)
         recipe_data: RecipeData = self._normalize_recipe_data(scraper, url)
         log_info(
             "Recipe scraped successfully",
@@ -134,8 +134,6 @@ class BudgetBytesScraper(BaseRecipeProvider):
         Returns:
             List[str]: List of discovered recipe URLs
         """
-
-        # Potential sitemap URLs to try
 
         discovered_urls = []
 
@@ -638,7 +636,7 @@ class BudgetBytesScraper(BaseRecipeProvider):
         log_info("Structured data extraction handled by recipe-scrapers")
         return None
 
-    def _normalize_recipe_data(self, scraper, source_url: str) -> RecipeData:
+    def _normalize_recipe_data(self, scraper, source_url: str) -> RecipeData | None:
         """Convert recipe-scrapers data to standardized RecipeData format.
 
         Args:
@@ -665,6 +663,11 @@ class BudgetBytesScraper(BaseRecipeProvider):
                 log_error("Failed to extract ingredients", source_url=source_url)
                 raise ValueError("Failed to extract raw ingredients")
 
+            instructions: List[str] = self._safe_extract(scraper.instructions_list, [])
+            if not instructions:
+                log_error("Failed to extract instructions", source_url=source_url)
+                raise ValueError("Failed to extract instructions")
+
             structured_ingredients: List[IngredientData] = self._parse_ingredients(
                 raw_ingredient_list
             )
@@ -676,14 +679,12 @@ class BudgetBytesScraper(BaseRecipeProvider):
                 sample_raw=raw_ingredient_list[:2],
             )
 
-            # Create RecipeData object
             recipe_data: RecipeData = RecipeData(
                 title=recipe_title,
                 source_url=source_url,
-                # Recipe content - let recipe-scrapers handle the extraction
                 description=self._safe_extract(scraper.description),
                 ingredients=structured_ingredients,
-                instructions=self._safe_extract(scraper.instructions_list, []),
+                instructions=instructions,
                 prep_time=self._parse_time_duration(
                     self._safe_extract(scraper.prep_time)
                 ),
@@ -693,16 +694,11 @@ class BudgetBytesScraper(BaseRecipeProvider):
                 servings=self._safe_extract(scraper.yields),
                 cuisine_type=self._safe_extract(scraper.cuisine),
                 image_url=self._safe_extract(scraper.image),
-                # Additional metadata
                 author=self._safe_extract(scraper.author),
                 rating=self._safe_extract(scraper.ratings),
-                # Extract tags from category
                 tags=self._extract_tags(scraper),
-                # Extract dietary restrictions
                 dietary_restrictions=self._extract_dietary_restrictions(scraper),
-                # Store raw nutrition data from recipe-scrapers
                 nutrition=self._safe_extract(scraper.nutrients),
-                # Extract structured macros
                 macros=self._extract_macros(scraper),
             )
 
@@ -718,20 +714,12 @@ class BudgetBytesScraper(BaseRecipeProvider):
 
         except Exception as normalization_exception:
             log_error(
-                "Failed to normalize recipe data",
+                f"Failed to normalize recipe data {normalization_exception}",
                 error=str(normalization_exception),
+                raw_ingredient_list=raw_ingredient_list,
                 source_url=source_url,
             )
-
-            # Return minimal RecipeData object on error
-            return RecipeData(
-                title="Unknown Recipe",
-                source_url=source_url,
-                provider=self.provider_name,
-                scraped_at=datetime.now().isoformat(),
-                scrape_success=False,
-                scrape_errors=[str(normalization_exception)],
-            )
+            return None
 
     def _safe_extract(
         self, method: Callable[[], Any], default_value: Any = None
@@ -804,7 +792,6 @@ class BudgetBytesScraper(BaseRecipeProvider):
         parsed_ingredients: List[IngredientData] = []
 
         for ingredient_text in raw_ingredients:
-
             if not ingredient_text:
                 log_error(
                     "Empty ingredient text",
@@ -813,19 +800,18 @@ class BudgetBytesScraper(BaseRecipeProvider):
                 )
                 raise ValueError("Cannot process empty ingredients")
 
-            cleaned = self._remove_cost_info(ingredient_text)
+            cleaned_ingredient_text = self._remove_cost_info(ingredient_text)
 
-            parsed: Optional[ParsedIngredient] = parse_ingredient(cleaned)
-
-            if not parsed or not isinstance(parsed, ParsedIngredient):
+            parsed: Optional[ParsedIngredient] = parse_ingredient(
+                cleaned_ingredient_text
+            )
+            
+            if not parsed or (parsed and not (parsed.name)):
                 log_info(
-                    f"Failed to parse ingredient with ingredient_parser: {cleaned}",
-                    ingredient=cleaned,
+                    f"Failed to parse ingredient with ingredient_parser: {cleaned_ingredient_text}",
+                    ingredient=cleaned_ingredient_text,
                 )
-                # Fallback to basic parsing
-                ingredient_data = IngredientData(
-                    name=cleaned, original_text=ingredient_text
-                )
+                raise Exception("Failed to extract ingredient information.")
             else:
                 ingredient_data = IngredientData(
                     name=parsed.name[0].text if parsed.name else "unknown",
@@ -834,7 +820,7 @@ class BudgetBytesScraper(BaseRecipeProvider):
                     ),
                     unit=str(parsed.amount[0].unit) if parsed.amount else None,
                     notes=parsed.preparation.text if parsed.preparation else None,
-                    original_text=ingredient_text,  # Keep original with cost info
+                    original_text=ingredient_text,
                 )
 
             parsed_ingredients.append(ingredient_data)

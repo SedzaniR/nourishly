@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from optparse import Option
 from typing import List, Dict, Any, Optional, Union
 from dataclasses import dataclass
 
@@ -160,6 +161,8 @@ class RecipeData:
     # Additional metadata
     author: Optional[str] = None
     rating: Optional[float] = None
+    provider: Optional[str] = None
+
 
     def __post_init__(self):
         """Initialize empty lists for optional list fields if None.
