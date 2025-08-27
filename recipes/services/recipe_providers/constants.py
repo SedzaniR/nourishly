@@ -73,3 +73,6 @@ UNICODE_FRACTIONS = {
     "⅝": 0.625,
     "⅞": 0.875,
 }
+
+BUDGET_BYTES_BASE_URL: str = "https://www.budgetbytes.com"
+BUDGET_BYTES_RATE_LIMIT: float = 2.0
