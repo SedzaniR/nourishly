@@ -6,6 +6,12 @@ A modern nutrition and wellness API built with Django and Django Ninja, designed
 
 - **Subscription Management**: Comprehensive subscription plans with payment processing
 - **User Profiles**: Personalized nutrition goals and dietary preferences with BMI calculations
+- **Recipe Services**: Complete recipe management with scraping, analysis, and classification
+  - **Recipe Scraping**: Automated recipe extraction from Budget Bytes and other providers
+  - **Macro Analysis**: Nutritional analysis using API Ninja and USDA databases
+  - **Cuisine Classification**: AI-powered cuisine classification using Hugging Face models
+  - **Ingredient Parsing**: Structured ingredient parsing with quantities and units
+- **AI Integration**: Hugging Face services for embeddings and text classification
 - **Centralized Logging**: Advanced logging system with structured data and performance monitoring
 - **RESTful API**: Modern API built with Django Ninja for type safety and performance
 - **Database Architecture**: Clean architecture with selectors pattern for database queries
@@ -17,9 +23,11 @@ A modern nutrition and wellness API built with Django and Django Ninja, designed
 nourishly/
 ├── api/                 # Main API router (Django Ninja)
 ├── core/                # Shared utilities, base models, logging system
+│   └── services/        # Hugging Face AI services
 ├── subscriptions/       # Subscription and payment management
 ├── users/               # User auth and preference profiles
-├── recipes/             # Recipe and ingredient management (planned)
+├── recipes/             # Recipe and ingredient management
+│   └── services/        # Recipe scraping, macro analysis, cuisine classification
 ├── planner/             # Meal planning engine (planned)
 ├── classify/            # Cuisine classification (planned)
 ├── nourishly/           # Project settings (separated by environment)
@@ -27,6 +35,24 @@ nourishly/
 ├── docs/                # Project documentation
 └── logs/                # Application logs
 ```
+
+## 🔧 Implemented Services
+
+### Recipe Services
+- **Recipe Scraping**: Automated extraction from Budget Bytes and other recipe providers
+- **Macro Analysis**: Nutritional analysis using API Ninja and USDA databases
+- **Cuisine Classification**: AI-powered cuisine classification using Hugging Face models
+- **Ingredient Parsing**: Structured ingredient parsing with quantities and units
+
+### AI Services
+- **Hugging Face Integration**: Embeddings generation and text classification
+- **Cuisine Classification**: Multi-language cuisine detection with confidence scoring
+- **Recipe Analysis**: Natural language processing for recipe understanding
+
+### External API Integrations
+- **API Ninja**: Nutrition data and macro analysis
+- **USDA Database**: Comprehensive nutritional information
+- **Hugging Face**: AI models for classification and embeddings
 
 ## 🏛️ Architecture Patterns
 
@@ -91,6 +117,26 @@ Before you begin, ensure you have the following installed:
    ```bash
    cp .env.example .env
    # Edit .env with your configuration
+   ```
+
+   **Required Environment Variables:**
+   ```bash
+   # Django Configuration
+   SECRET_KEY=your-secret-key-here
+   DEBUG=True
+   DJANGO_ENV=development
+   
+   # Database Configuration
+   DATABASE_URL=postgresql://user:password@localhost:5432/nourishly_dev
+   
+   # API Keys for External Services
+   HUGGINGFACE_API_TOKEN=your-huggingface-token
+   API_NINJA_KEY=your-api-ninja-key
+   USDA_API_KEY=your-usda-api-key
+   
+   # Logging Configuration
+   LOG_LEVEL=INFO
+   LOG_FILE_PATH=logs/nourishly.log
    ```
 
 5. **Set up PostgreSQL database**
@@ -180,6 +226,10 @@ The API is built with Django Ninja and provides automatic documentation:
   - `/api/subscriptions/` - Subscription management
   - `/api/subscriptions/plans` - Available subscription plans
   - `/api/subscriptions/status` - User subscription status
+  - `/api/recipes/` - Recipe management and scraping
+  - `/api/recipes/analyze/` - Macro nutritional analysis
+  - `/api/recipes/classify/` - Cuisine classification
+  - `/api/recipes/scrape/` - Recipe scraping from providers
 
 ## 🤝 Contributing
 
@@ -224,14 +274,18 @@ We have several pull request templates to help you create better PRs:
 
 ### Core Apps
 - **`core/`** - Shared utilities, base models, logging system, middleware
+  - **`services/huggingface/`** - Hugging Face AI services for embeddings and classification
 - **`api/`** - Main API router and health check endpoints
 - **`users/`** - Custom user model with nutrition-specific fields
 - **`subscriptions/`** - Complete subscription and payment management
+- **`recipes/`** - Recipe and ingredient management with comprehensive services
+  - **`services/recipe_providers/`** - Recipe scraping from Budget Bytes and other providers
+  - **`services/macro_analysis/`** - Nutritional analysis using API Ninja and USDA
+  - **`services/cuisine_classifiers/`** - AI-powered cuisine classification
 
 ### Planned Apps
-- **`recipes/`** - Recipe and ingredient management
 - **`planner/`** - Meal planning engine
-- **`classify/`** - AI-powered cuisine classification
+- **`classify/`** - Additional classification services
 
 ### Key Files
 - **`.cursor/rules/`** - AI development patterns and conventions
