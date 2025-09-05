@@ -150,7 +150,7 @@ class BudgetBytesScraper(BaseRecipeProvider):
 
                 if response.status_code == 200:
                     log_info("Successfully fetched sitemap", sitemap_url=sitemap_url)
-                    discovered_urls = self._parse_sitemap(response.content)
+                    discovered_urls += self._parse_sitemap(response.content)
 
                     if discovered_urls:
                         log_info(
@@ -158,7 +158,7 @@ class BudgetBytesScraper(BaseRecipeProvider):
                             total_urls=len(discovered_urls),
                             sitemap_url=sitemap_url,
                         )
-                        break
+                        
                 else:
                     log_warning(
                         f"Sitemap request failed {sitemap_url}",
@@ -190,6 +190,7 @@ class BudgetBytesScraper(BaseRecipeProvider):
                 total_discovered=len(discovered_urls),
                 recipes_found=len(recipe_urls),
             )
+            log_debug(f"Recipe URLs: {len(recipe_urls)}")
             return recipe_urls[:limit]
 
         return []

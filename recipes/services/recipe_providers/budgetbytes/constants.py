@@ -8,6 +8,7 @@ BUDGET_BYTES_RATE_LIMIT: float = 2.0
 # Sitemap configuration
 BUDGET_BYTES_SITEMAP_URLS = [
     "https://www.budgetbytes.com/post-sitemap.xml",
+    "https://www.budgetbytes.com/post-sitemap2.xml"
 ]
 
 BUDGET_BYTES_SITEMAP_NAMESPACE = {

@@ -1,7 +1,7 @@
 """BudgetBytes recipe provider package."""
 
 from .constants import *
-from .scraper import BudgetBytesScraper
+from .budgetbytes import BudgetBytesScraper
 
 __all__ = [
     'BudgetBytesScraper',
