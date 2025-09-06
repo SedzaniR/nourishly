@@ -256,7 +256,7 @@ class BaseRecipeProvider(ABC):
         pass
 
     @abstractmethod
-    def scrape_recipe_from_url(self, url: str) -> Optional[RecipeData]:
+    def process_recipe_from_url(self, url: str) -> Optional[RecipeData]:
         """Scrape a recipe from a specific URL.
 
         This is the primary method for extracting recipe data from a given URL.
@@ -276,7 +276,7 @@ class BaseRecipeProvider(ABC):
 
         Example:
             ```python
-            recipe = scraper.scrape_recipe_from_url("https://example.com/chocolate-cake")
+            recipe = scraper.process_recipe_from_url("https://example.com/chocolate-cake")
             if recipe:
                 print(f"Scraped recipe: {recipe.title}")
             ```
@@ -326,7 +326,7 @@ class BaseRecipeProvider(ABC):
         Example:
             ```python
             if scraper.validate_scraping_config():
-                recipe = scraper.scrape_recipe_from_url(url)
+                recipe = scraper.process_recipe_from_url(url)
             else:
                 print("Scraper not properly configured")
             ```
@@ -354,7 +354,7 @@ class BaseRecipeProvider(ABC):
             ```python
             if scraper.is_site_accessible():
                 # Safe to scrape
-                recipe = scraper.scrape_recipe_from_url(url)
+                recipe = scraper.process_recipe_from_url(url)
             else:
                 # Handle inaccessible site
                 print("Site currently inaccessible")

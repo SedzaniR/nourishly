@@ -54,7 +54,7 @@ class BudgetBytesScraper(BaseRecipeProvider):
         """
         return "BudgetBytes"
 
-    def scrape_recipe_from_url(self, url: str) -> Optional[RecipeData]:
+    def process_recipe_from_url(self, url: str) -> Optional[RecipeData]:
         """Scrape a recipe from a specific Budget Bytes URL using recipe-scrapers.
 
         Args:
@@ -69,7 +69,7 @@ class BudgetBytesScraper(BaseRecipeProvider):
 
         Example:
             >>> scraper = BudgetBytesScraper()
-            >>> recipe = scraper.scrape_recipe_from_url(
+            >>> recipe = scraper.process_recipe_from_url(
             ...     "https://www.budgetbytes.com/thai-curry-fried-rice/"
             ... )
             >>> print(recipe.title if recipe else "Failed to scrape")
@@ -93,11 +93,10 @@ class BudgetBytesScraper(BaseRecipeProvider):
 
         return recipe_data
 
-    def discover_recipe_urls(self, start_url: str, limit: int = 10) -> List[str]:
+    def discover_recipe_urls(self,limit: int = 10) -> List[str]:
         """Discover recipe URLs from Budget Bytes sitemap.
 
         Args:
-            start_url (str): The Budget Bytes sitemap URL or category URL to start from.
             limit (int, optional): Maximum number of recipe URLs to return. Defaults to 10.
 
         Returns:
@@ -105,7 +104,7 @@ class BudgetBytesScraper(BaseRecipeProvider):
 
         Example:
             >>> scraper = BudgetBytesScraper()
-            >>> urls = scraper.discover_recipe_urls("https://www.budgetbytes.com", limit=50)
+            >>> urls = scraper.discover_recipe_urls(limit=50)
             >>> len(urls) <= 50
             True
         """
@@ -316,7 +315,6 @@ class BudgetBytesScraper(BaseRecipeProvider):
                 raise ValueError("Failed to extract recipe title")
 
             raw_ingredient_list: List[str] = service_utils.safely_extract_info_from_function_call(scraper.ingredients, [])
-            print("raw ingredients extract", raw_ingredient_list)
             if not raw_ingredient_list:
                 log_error("Failed to extract ingredients", source_url=source_url)
                 raise ValueError("Failed to extract raw ingredients")

@@ -8,7 +8,7 @@ without loading models locally, saving memory and computational resources.
 from functools import lru_cache
 from typing import Dict, List, Optional, Any
 
-from .base import BaseHuggingFaceAPIClient
+from .base import BaseHuggingFaceClassificationAPIClient
 from core.logger import get_logger
 
 logger = get_logger()
@@ -27,7 +27,7 @@ from recipes.services.cuisine_classifiers.constants import (
 )
 
 
-class HuggingFaceAPICuisineClassifier(BaseHuggingFaceAPIClient, BaseCuisineClassifier):
+class HuggingFaceAPICuisineClassifier(BaseHuggingFaceClassificationAPIClient, BaseCuisineClassifier):
     """
     Hugging Face Inference API-based cuisine classifier.
 
@@ -68,7 +68,7 @@ class HuggingFaceAPICuisineClassifier(BaseHuggingFaceAPIClient, BaseCuisineClass
         model_id = model_name or DEFAULT_HUGGINGFACE_MODEL
 
         # Initialize the API client
-        BaseHuggingFaceAPIClient.__init__(
+        BaseHuggingFaceClassificationAPIClient.__init__(
             self,
             model_id=model_id,
             api_token=api_token,

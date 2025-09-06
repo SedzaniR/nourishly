@@ -6,7 +6,7 @@ DEFAULT_VISION_MODEL_ID = "google/vit-base-patch16-224"
 
 # Classification Models
 DEFAULT_CLASSIFICATION_MODEL_ID = "facebook/bart-large-mnli"
-
+HUGGINGFACE_API_BASE_URL = "https://api-inference.huggingface.co/models"
 # API Configuration
 DEFAULT_API_TIMEOUT = 30
 DEFAULT_API_MAX_RETRIES = 3
