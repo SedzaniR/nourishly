@@ -7,16 +7,15 @@ This module provides base classes for different types of Hugging Face interactio
 """
 
 import os
-import time
 from abc import ABC, abstractmethod
-from typing import Dict, Any, Optional, Union
+from typing import Any, Dict, Optional
 
 import requests
-from tenacity import retry, stop_after_attempt, wait_exponential,retry_if_exception_type
 from huggingface_hub import InferenceClient
+from tenacity import (retry, retry_if_exception_type, stop_after_attempt,
+                      wait_exponential)
 
 from core.services.huggingface import constants
-
 
 
 class BaseHuggingFaceInferenceClient(ABC):
@@ -56,7 +55,6 @@ class BaseHuggingFaceInferenceClient(ABC):
     @abstractmethod
     def service_name(self) -> str:
         """Return a human-readable name for this service."""
-        pass
 
     def get_model_info(self) -> Dict[str, Any]:
         """Get information about the current model."""
@@ -128,7 +126,6 @@ class BaseHuggingFaceClassificationAPIClient(ABC):
     @abstractmethod
     def service_name(self) -> str:
         """Return a human-readable name for this service."""
-        pass
 
     @retry(
         stop=stop_after_attempt(3),
@@ -208,7 +205,6 @@ class BaseHuggingFaceClassificationAPIClient(ABC):
 
         Each service should implement this to provide an appropriate test payload.
         """
-        pass
 
     def get_model_info(self) -> Dict[str, Any]:
         """Get information about the current model and configuration."""
