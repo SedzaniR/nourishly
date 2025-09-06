@@ -17,11 +17,7 @@ from recipes.services.cuisine_classifiers.base import (
     CuisineClassification,
 )
 from recipes.services.cuisine_classifiers.constants import (
-    DEFAULT_API_MAX_RETRIES,
-    DEFAULT_API_RATE_LIMIT_DELAY,
-    DEFAULT_API_RETRY_DELAY,
-    DEFAULT_API_TIMEOUT,
-    DEFAULT_HUGGINGFACE_MODEL,
+    DEFAULT_CLASSIFICATION_MODEL_ID,
 )
 
 
@@ -63,19 +59,13 @@ class HuggingFaceAPICuisineClassifier(BaseHuggingFaceClassificationAPIClient, Ba
             model_name: Name of the Hugging Face model to use
             **kwargs: Additional configuration
         """
-        model_id = model_name or DEFAULT_HUGGINGFACE_MODEL
+        model_id = model_name or DEFAULT_CLASSIFICATION_MODEL_ID
 
         # Initialize the API client
         BaseHuggingFaceClassificationAPIClient.__init__(
             self,
             model_id=model_id,
             api_token=api_token,
-            timeout=kwargs.get("timeout", DEFAULT_API_TIMEOUT),
-            max_retries=kwargs.get("max_retries", DEFAULT_API_MAX_RETRIES),
-            retry_delay=kwargs.get("retry_delay", DEFAULT_API_RETRY_DELAY),
-            rate_limit_delay=kwargs.get(
-                "rate_limit_delay", DEFAULT_API_RATE_LIMIT_DELAY
-            ),
             **kwargs,
         )
 

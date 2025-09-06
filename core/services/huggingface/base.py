@@ -79,17 +79,11 @@ class BaseHuggingFaceClassificationAPIClient(ABC):
 
     Includes built-in retry logic, rate limiting, and error handling.
     """
-    max_retries = 3
-    retry_delay_total_time = 30
    
-
     def __init__(
         self,
         model_id: Optional[str]=constants.DEFAULT_CLASSIFICATION_MODEL_ID,
         api_token: Optional[str]=os.getenv("HUGGINGFACE_API_TOKEN"),
-        timeout: int = 30,
-        max_retries: int = 3,
-        retry_delay_total_time: float = 30.0,
         **kwargs,
     ):
         """
@@ -101,16 +95,11 @@ class BaseHuggingFaceClassificationAPIClient(ABC):
             api_token (Optional[str]): Hugging Face API token. If not provided, will attempt 
                 to load from the environment variable `HUGGINGFACE_API_TOKEN`.
             timeout (int): Request timeout in seconds. Defaults to 30.
-            max_retries (int): Maximum number of retries for idempotent requests. Defaults to 3.
-            retry_delay_total_time (float): Backoff interval (in seconds). Defaults to 30.0.
-            rate_limit_delay (float): Delay (in seconds) between unique requests to avoid rate limiting. Defaults to 0.1.
+            
         """
     
         self.model_id = model_id or constants.DEFAULT_CLASSIFICATION_MODEL_ID
         self.api_token = api_token or os.getenv("HUGGINGFACE_API_TOKEN")
-        self.timeout = timeout
-        self.max_retries = max_retries
-        self.retry_delay_total_time = retry_delay_total_time
         self.extra = kwargs
 
         if not self.model_id:
