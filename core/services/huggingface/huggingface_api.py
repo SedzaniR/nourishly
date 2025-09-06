@@ -136,7 +136,6 @@ class HuggingFaceAPICuisineClassifier(BaseHuggingFaceClassificationAPIClient, Ba
                 primary_cuisine = result["labels"][0]
                 confidence = result["scores"][0]
 
-                # Build alternatives list
                 alternatives = []
                 for label, score in zip(
                     result["labels"][1:6], result["scores"][1:6]

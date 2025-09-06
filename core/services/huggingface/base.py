@@ -7,15 +7,18 @@ This module provides base classes for different types of Hugging Face interactio
 """
 
 import os
+import time
 from abc import ABC, abstractmethod
-from typing import Any, Dict, Optional
+from typing import Dict, Any, Optional, Union
 
 import requests
+from tenacity import retry, stop_after_attempt, wait_exponential,retry_if_exception_type
 from huggingface_hub import InferenceClient
-from tenacity import (retry, retry_if_exception_type, stop_after_attempt,
-                      wait_exponential)
 
 from core.services.huggingface import constants
+from core.logger import get_logger
+
+logger = get_logger()
 
 
 class BaseHuggingFaceInferenceClient(ABC):
@@ -55,6 +58,7 @@ class BaseHuggingFaceInferenceClient(ABC):
     @abstractmethod
     def service_name(self) -> str:
         """Return a human-readable name for this service."""
+        pass
 
     def get_model_info(self) -> Dict[str, Any]:
         """Get information about the current model."""
@@ -122,10 +126,12 @@ class BaseHuggingFaceClassificationAPIClient(ABC):
         # Track last request time for rate limiting
         self._last_request_time = 0
 
+
     @property
     @abstractmethod
     def service_name(self) -> str:
         """Return a human-readable name for this service."""
+        pass
 
     @retry(
         stop=stop_after_attempt(3),
@@ -166,12 +172,26 @@ class BaseHuggingFaceClassificationAPIClient(ABC):
 
             else:
                 response.raise_for_status()
+
         except requests.exceptions.Timeout as e:
+            logger.warning(
+                "API request timeout, retrying...",
+                extra={"model_id": self.api_url}
+            )
             raise e
+
         except requests.exceptions.RequestException as e:
+            logger.warning(
+                "Request exception occurred, retrying...",
+                extra={"error": str(e), "model_id": self.api_url}
+            )
             raise e
 
         except Exception as e:
+            logger.warning(
+                "Unexpected exception, retrying...",
+                extra={"error": str(e), "model_id": self.api_url}
+            )
             raise e
 
     @retry(
@@ -196,6 +216,9 @@ class BaseHuggingFaceClassificationAPIClient(ABC):
             result = self._make_api_request(test_payload)
             return bool(result)
         except Exception as e:
+            logger.error(
+                "Hugging Face API not ready", error=str(e), model_id=self.model_id
+            )
             raise e
 
     @abstractmethod
@@ -205,6 +228,7 @@ class BaseHuggingFaceClassificationAPIClient(ABC):
 
         Each service should implement this to provide an appropriate test payload.
         """
+        pass
 
     def get_model_info(self) -> Dict[str, Any]:
         """Get information about the current model and configuration."""
