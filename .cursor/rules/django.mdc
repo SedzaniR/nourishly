@@ -1,3 +1,8 @@
+---
+alwaysApply: true
+---
+
+
 # Django Project Rules for Nourishly
 
 ## Project Overview
@@ -330,7 +335,5 @@ def business_operation(user, data):
 8. **Optimize for performance**
 9. **Follow security best practices**
 10. **Keep code DRY and maintainable**
-description:
-globs:
-alwaysApply: false
----
+
+

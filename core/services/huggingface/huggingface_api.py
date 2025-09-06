@@ -9,9 +9,7 @@ from functools import lru_cache
 from typing import Dict, List, Optional, Any
 
 from .base import BaseHuggingFaceClassificationAPIClient
-from core.logger import get_logger
 
-logger = get_logger()
 
 from recipes.services.cuisine_classifiers.base import (
     BaseCuisineClassifier,
@@ -126,7 +124,6 @@ class HuggingFaceAPICuisineClassifier(BaseHuggingFaceClassificationAPIClient, Ba
             }
             result = self._make_api_request(payload)
             if not result:
-                logger.error("API request failed, returning default classification")
                 return CuisineClassification(
                     primary_cuisine="Other",
                     confidence=0.0,
@@ -151,12 +148,6 @@ class HuggingFaceAPICuisineClassifier(BaseHuggingFaceClassificationAPIClient, Ba
                     f"Classified as {primary_cuisine} based on recipe content analysis"
                 )
 
-                logger.debug(
-                    "Recipe classified via API",
-                    predicted_cuisine=primary_cuisine,
-                    confidence=confidence,
-                )
-
                 return CuisineClassification(
                     primary_cuisine=primary_cuisine,
                     confidence=float(confidence),
@@ -165,7 +156,6 @@ class HuggingFaceAPICuisineClassifier(BaseHuggingFaceClassificationAPIClient, Ba
                     reasoning=reasoning,
                 )
             else:
-                logger.error("Unexpected API response format", response=result)
                 return CuisineClassification(
                     primary_cuisine="Other",
                     confidence=0.0,
@@ -174,12 +164,6 @@ class HuggingFaceAPICuisineClassifier(BaseHuggingFaceClassificationAPIClient, Ba
                 )
 
         except Exception as e:
-            logger.error(
-                "Recipe cuisine classification failed via API",
-                error=str(e),
-                recipe_text_length=len(recipe_text) if recipe_text else 0,
-                model_id=self.model_id,
-            )
             return CuisineClassification(
                 primary_cuisine="Other",
                 confidence=0.0,
@@ -201,28 +185,14 @@ class HuggingFaceAPICuisineClassifier(BaseHuggingFaceClassificationAPIClient, Ba
             List of CuisineClassification objects
         """
         results = []
-        logger.info(
-            "Starting batch classification via API", batch_size=len(recipe_texts)
-        )
+     
 
         for i, recipe_text in enumerate(recipe_texts):
             try:
                 result = self.classify_recipe(recipe_text)
                 results.append(result)
 
-                # Log progress for large batches
-                if len(recipe_texts) > 10 and (i + 1) % 10 == 0:
-                    logger.debug(
-                        "Batch classification progress",
-                        completed=i + 1,
-                        total=len(recipe_texts),
-                    )
-
             except Exception as e:
-                logger.error(
-                    "Failed to classify recipe in batch", index=i, error=str(e)
-                )
-                # Add error result to maintain list consistency
                 results.append(
                     CuisineClassification(
                         primary_cuisine="Other",
@@ -231,13 +201,6 @@ class HuggingFaceAPICuisineClassifier(BaseHuggingFaceClassificationAPIClient, Ba
                         reasoning=f"Batch classification error: {str(e)}",
                     )
                 )
-
-        logger.info(
-            "Completed batch classification via API",
-            total_recipes=len(recipe_texts),
-            successful=len([r for r in results if r.confidence > 0]),
-        )
-
         return results
 
     @lru_cache(maxsize=100)
