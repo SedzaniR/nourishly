@@ -34,14 +34,13 @@ class BaseHuggingFaceInferenceClient(ABC):
     Subclasses should implement the specific functionality they need.
     """
 
-    def __init__(self, model_id: str, api_token: Optional[str] = None, **kwargs):
+    def __init__(self, model_id: str, api_token: Optional[str] = None):
         """
         Initialize the Hugging Face InferenceClient.
 
         Args:
             model_id: Hugging Face model identifier
             api_token: Optional API token (falls back to environment variable)
-            **kwargs: Additional configuration
         """
         self.model_id = model_id
 
@@ -84,7 +83,6 @@ class BaseHuggingFaceClassificationAPIClient(ABC):
         self,
         model_id: Optional[str]=constants.DEFAULT_CLASSIFICATION_MODEL_ID,
         api_token: Optional[str]=os.getenv("HUGGINGFACE_API_TOKEN"),
-        **kwargs,
     ):
         """
         Initialize a Hugging Face classification client.

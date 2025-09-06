@@ -49,7 +49,6 @@ class HuggingFaceAPICuisineClassifier(BaseHuggingFaceClassificationAPIClient, Ba
         self,
         api_token: Optional[str] = None,
         model_name: Optional[str] = None,
-        **kwargs,
     ):
         """
         Initialize the Hugging Face API cuisine classifier.
@@ -57,7 +56,7 @@ class HuggingFaceAPICuisineClassifier(BaseHuggingFaceClassificationAPIClient, Ba
         Args:
             api_token: Hugging Face API token (optional for public models)
             model_name: Name of the Hugging Face model to use
-            **kwargs: Additional configuration
+            
         """
         model_id = model_name or DEFAULT_CLASSIFICATION_MODEL_ID
 
@@ -65,13 +64,12 @@ class HuggingFaceAPICuisineClassifier(BaseHuggingFaceClassificationAPIClient, Ba
         BaseHuggingFaceClassificationAPIClient.__init__(
             self,
             model_id=model_id,
-            api_token=api_token,
-            **kwargs,
+            api_token=api_token
         )
 
         # Initialize the cuisine classifier
         BaseCuisineClassifier.__init__(
-            self, api_identifier=f"hf_api:{model_id}", **kwargs
+            self, api_identifier=f"hf_api:{model_id}"
         )
 
     @property
