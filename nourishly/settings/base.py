@@ -114,41 +114,43 @@ LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
     "formatters": {
-        "custom": {
-            "format": "[%(asctime)s] %(levelname)s[%(module)s:%(lineno)d] - %(message)s",
+        "default": {
+            "format": "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)d] %(message)s",
             "datefmt": "%Y-%m-%d %H:%M:%S",
         },
     },
     "handlers": {
         "console": {
-            "level": "INFO",
             "class": "logging.StreamHandler",
-            "formatter": "custom",
+            "level": "INFO",
+            "formatter": "default",
         },
         "file": {
             "class": "logging.handlers.RotatingFileHandler",
             "filename": BASE_DIR / "logs" / "nourishly.log",
-            "maxBytes": 1024 * 1024 * 10,  # 10MB
+            "maxBytes": 10 * 1024 * 1024,  # 10MB
             "backupCount": 5,
-            "formatter": "custom",
+            "formatter": "default",
             "encoding": "utf-8",
+            "level": "INFO",
         },
         "error_file": {
             "class": "logging.handlers.RotatingFileHandler",
             "filename": BASE_DIR / "logs" / "nourishly_error.log",
-            "maxBytes": 1024 * 1024 * 10,  # 10MB
+            "maxBytes": 10 * 1024 * 1024,
             "backupCount": 5,
-            "formatter": "custom",
+            "formatter": "default",
             "encoding": "utf-8",
             "level": "ERROR",
         },
     },
+    # Root logger — applies to *all apps by default*
+    "root": {
+        "handlers": ["console", "file", "error_file"],
+        "level": "INFO",
+    },
+    # Only override specific noisy loggers
     "loggers": {
-        "django": {
-            "handlers": ["console", "file", "error_file"],
-            "level": "INFO",
-            "propagate": False,
-        },
         "django.request": {
             "handlers": ["error_file"],
             "level": "ERROR",
@@ -159,77 +161,11 @@ LOGGING = {
             "level": "WARNING",
             "propagate": False,
         },
-        "django.utils.autoreload": {
-            "handlers": ["console"],
-            "level": "ERROR",
-            "propagate": False,
-        },
-        # Third-party library loggers - set to ERROR to reduce noise
-        "paramiko": {
-            "handlers": ["console"],
-            "level": "ERROR",
-            "propagate": False,
-        },
-        "urllib3": {
-            "handlers": ["console"],
-            "level": "ERROR",
-            "propagate": False,
-        },
-        "botocore": {
-            "handlers": ["console"],
-            "level": "ERROR",
-            "propagate": False,
-        },
-        "requests": {
-            "handlers": ["console"],
-            "level": "ERROR",
-            "propagate": False,
-        },
-        "huggingface_hub": {
-            "handlers": ["console"],
-            "level": "ERROR",
-            "propagate": False,
-        },
-        # Application loggers
-        "nourishly": {
-            "handlers": ["console", "file", "error_file"],
-            "level": "INFO",
-            "propagate": False,
-        },
-        "recipes": {
-            "handlers": ["console", "file", "error_file"],
-            "level": "INFO",
-            "propagate": False,
-        },
-        "subscriptions": {
-            "handlers": ["console", "file", "error_file"],
-            "level": "INFO",
-            "propagate": False,
-        },
-        "users": {
-            "handlers": ["console", "file", "error_file"],
-            "level": "INFO",
-            "propagate": False,
-        },
-        "api": {
-            "handlers": ["console", "file", "error_file"],
-            "level": "INFO",
-            "propagate": False,
-        },
-        "core": {
-            "handlers": ["console", "file", "error_file"],
-            "level": "INFO",
-            "propagate": False,
-        },
-        # Root-level logger for unhandled loggers
-        "": {
-            "handlers": ["console", "error_file"],
-            "level": "ERROR",
-            "propagate": False,
-        },
-    },
-    "root": {
-        "handlers": ["console", "file", "error_file"],
-        "level": "INFO",
+        # Third-party noise reduction
+        "urllib3": {"level": "ERROR"},
+        "botocore": {"level": "ERROR"},
+        "requests": {"level": "ERROR"},
+        "paramiko": {"level": "ERROR"},
+        "huggingface_hub": {"level": "ERROR"},
     },
 }

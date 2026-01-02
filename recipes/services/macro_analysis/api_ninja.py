@@ -1,7 +1,7 @@
 import os
 import requests
 from typing import List, Optional, Dict, Any
-
+import logging
 from .base import (
     BaseMacroAnalyzer,
     MacroAnalysisResult,
@@ -14,7 +14,7 @@ from .base import (
 )
 from .constants import API_NINJA_BASE_URL
 
-from core.logger import log_info, log_error, log_debug
+logger = logging.getLogger(__name__)
 
 
 class ApiNinjaMacroAnalyzer(BaseMacroAnalyzer):
@@ -33,7 +33,7 @@ class ApiNinjaMacroAnalyzer(BaseMacroAnalyzer):
         """
         if not api_key:
             api_key = os.environ.get("API_NINJA_KEY")
-        log_info("Initializing API NINJA Nutrition API")
+        logger.info("Initializing API NINJA Nutrition API")
         super().__init__(api_key=api_key, timeout=timeout)
 
     def analyze_ingredient(
@@ -52,7 +52,10 @@ class ApiNinjaMacroAnalyzer(BaseMacroAnalyzer):
 
         if not self.api_key:
             error_msg = "API Ninja API key not provided"
-            log_error("API Ninja analysis failed", error=error_msg)
+            logger.error(
+                "API Ninja analysis failed",
+                extra={"extra_fields": {"error": error_msg}},
+            )
             return self._create_error_result(
                 ingredient_name, error_msg, AnalysisType.INGREDIENT
             )
@@ -117,8 +120,9 @@ class ApiNinjaMacroAnalyzer(BaseMacroAnalyzer):
             error_msg = (
                 f"Unexpected error during API Ninja ingredient analysis: {str(e)}"
             )
-            log_error(
-                "API Ninja unexpected error", food_name=ingredient_name, error=str(e)
+            logger.error(
+                "API Ninja unexpected error",
+                extra={"extra_fields": {"food_name": ingredient_name, "error": str(e)}},
             )
             return self._create_error_result(
                 ingredient_name, error_msg, AnalysisType.INGREDIENT
