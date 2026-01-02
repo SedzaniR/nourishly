@@ -36,7 +36,7 @@ jobs:
             }
 
             const fs = require("fs");
-            const templatePath = `.github/pr-templates/${TEMPLATE_MAP[prefix]}`;
+            const templatePath = `.github/PULL_REQUEST_TEMPLATE/${TEMPLATE_MAP[prefix]}`;
 
             const templateBody = fs.readFileSync(templatePath, "utf8");
 
