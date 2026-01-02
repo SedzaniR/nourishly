@@ -1,10 +1,16 @@
 import re
 from typing import Optional, Any, List
+import logging
 
-from core.logger import log_debug, log_error
 from recipes.services.recipe_providers.base import MacroNutrition
-from recipes.utils import extract_numeric_value_from_string, safely_extract_info_from_function_call
+from recipes.utils import (
+    extract_numeric_value_from_string,
+    safely_extract_info_from_function_call,
+)
 from recipes.services.recipe_providers import constants
+
+logger = logging.getLogger(__name__)
+
 
 def extract_macros(scraper: Any) -> Optional[MacroNutrition]:
     """Extract nutritional macro information from recipe scraper.
@@ -26,18 +32,14 @@ def extract_macros(scraper: Any) -> Optional[MacroNutrition]:
         # Use utility to extract numbers from strings like "211 kcal", "13 g"
         macros = MacroNutrition(
             calories=extract_numeric_value_from_string(nutrients.get("calories")),
-            protein=extract_numeric_value_from_string(
-                nutrients.get("proteinContent")
-            ),
+            protein=extract_numeric_value_from_string(nutrients.get("proteinContent")),
             carbohydrates=extract_numeric_value_from_string(
                 nutrients.get("carbohydrateContent")
             ),
             fat=extract_numeric_value_from_string(nutrients.get("fatContent")),
             fiber=extract_numeric_value_from_string(nutrients.get("fiberContent")),
             sugar=extract_numeric_value_from_string(nutrients.get("sugarContent")),
-            sodium=extract_numeric_value_from_string(
-                nutrients.get("sodiumContent")
-            ),
+            sodium=extract_numeric_value_from_string(nutrients.get("sodiumContent")),
             saturated_fat=extract_numeric_value_from_string(
                 nutrients.get("saturatedFatContent")
             ),
@@ -48,18 +50,17 @@ def extract_macros(scraper: Any) -> Optional[MacroNutrition]:
 
         # Return only if we got at least one value
         if any(
-            getattr(macros, field) is not None
-            for field in constants.MACROS_TO_EXTRACT
+            getattr(macros, field) is not None for field in constants.MACROS_TO_EXTRACT
         ):
-            log_debug(
-                "Macros extracted", calories=macros.calories, protein=macros.protein
+            logger.debug(
+                f"Macros extracted - Calories: {macros.calories}, Protein: {macros.protein}"
             )
             return macros
 
         return None
 
     except Exception as e:
-        log_error("Failed to extract macros", error=str(e))
+        logger.error(f"Failed to extract macros - Error: {str(e)}")
         return None
 
 
@@ -78,7 +79,9 @@ def extract_dietary_restrictions(scraper: Any) -> List[str]:
         extracts dietary guidelines or restrictions for the recipe.
     """
     try:
-        restrictions = safely_extract_info_from_function_call(scraper.dietary_restrictions)
+        restrictions = safely_extract_info_from_function_call(
+            scraper.dietary_restrictions
+        )
 
         if not restrictions:
             return []
@@ -102,6 +105,7 @@ def extract_dietary_restrictions(scraper: Any) -> List[str]:
     except Exception:
         # If dietary_restrictions method fails, return empty list
         return []
+
 
 def extract_tags(scraper: Any) -> List[str]:
     """Extract tags from recipe-scrapers data.
