@@ -15,3 +15,5 @@ redis==5.0.1
 
 # Monitoring (optional)
 sentry-sdk==2.32.0
+
+tenacity
