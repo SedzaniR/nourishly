@@ -2,13 +2,13 @@ import re
 import time
 import xml.etree.ElementTree as ET
 from typing import List, Match, Optional
-
+import logging
 import requests
 from recipe_scrapers import scrape_me
 from ingredient_parser import parse_ingredient
 from ingredient_parser.dataclasses import ParsedIngredient
 
-from core.logger import log_debug, log_error, log_info, log_warning
+
 from . import constants
 from recipes.services.recipe_providers.utils import (
     is_recipe_provider_url,
@@ -19,6 +19,8 @@ from recipes.services.recipe_providers.utils import (
 )
 from recipes import utils as service_utils
 from ..base import BaseRecipeProvider, IngredientData, RecipeData
+
+logger = logging.getLogger(__name__)
 
 
 class BudgetBytesScraper(BaseRecipeProvider):
@@ -43,7 +45,7 @@ class BudgetBytesScraper(BaseRecipeProvider):
             rate_limit=kwargs.get("rate_limit", constants.BUDGET_BYTES_RATE_LIMIT),
             **kwargs,
         )
-        log_info("Budget Bytes scraper initialized", base_url=self.base_url)
+        logger.info("Budget Bytes scraper initialized", base_url=self.base_url)
 
     @property
     def provider_name(self) -> str:
@@ -75,16 +77,18 @@ class BudgetBytesScraper(BaseRecipeProvider):
             >>> print(recipe.title if recipe else "Failed to scrape")
         """
 
-        if not is_recipe_provider_url(url,self.provider_name):
-            log_error("Invalid Budget Bytes URL", url=url, provider=self.provider_name)
+        if not is_recipe_provider_url(url, self.provider_name):
+            logger.error(
+                "Invalid Budget Bytes URL", url=url, provider=self.provider_name
+            )
             raise ValueError("Invalid Budget Bytes URL")
 
-        log_info("Starting recipe scrape", url=url, provider=self.provider_name)
+        logger.info("Starting recipe scrape", url=url, provider=self.provider_name)
         time.sleep(constants.BUDGET_BYTES_RATE_LIMIT)
 
         scraper: ParsedIngredient = scrape_me(url)
         recipe_data: RecipeData = self._normalize_recipe_data(scraper, url)
-        log_info(
+        logger.info(
             "Recipe scraped successfully",
             url=url,
             title=recipe_data.title,
@@ -93,7 +97,7 @@ class BudgetBytesScraper(BaseRecipeProvider):
 
         return recipe_data
 
-    def discover_recipe_urls(self,limit: int = 10) -> List[str]:
+    def discover_recipe_urls(self, limit: int = 10) -> List[str]:
         """Discover recipe URLs from Budget Bytes sitemap.
 
         Args:
@@ -109,13 +113,13 @@ class BudgetBytesScraper(BaseRecipeProvider):
             True
         """
 
-        log_info(
+        logger.info(
             "Starting sitemap-based recipe URL discovery",
             limit=limit,
         )
         recipe_urls = self._discover_from_sitemap(limit)
 
-        log_info(
+        logger.info(
             "Recipe URL discovery completed",
             discovered_count=len(recipe_urls),
             method="sitemap" if recipe_urls else "category_fallback",
@@ -138,7 +142,7 @@ class BudgetBytesScraper(BaseRecipeProvider):
         for sitemap_url in constants.BUDGET_BYTES_SITEMAP_URLS:
             try:
                 time.sleep(constants.BUDGET_BYTES_RATE_LIMIT)
-                log_info("Attempting to fetch sitemap", sitemap_url=sitemap_url)
+                logger.info("Attempting to fetch sitemap", sitemap_url=sitemap_url)
                 response = requests.get(
                     sitemap_url,
                     timeout=30,
@@ -148,48 +152,47 @@ class BudgetBytesScraper(BaseRecipeProvider):
                 )
 
                 if response.status_code == 200:
-                    log_info("Successfully fetched sitemap", sitemap_url=sitemap_url)
+                    logger.info("Successfully fetched sitemap", sitemap_url=sitemap_url)
                     discovered_urls += self._parse_sitemap(response.content)
 
                     if discovered_urls:
-                        log_info(
+                        logger.info(
                             "Found URLs in sitemap",
                             total_urls=len(discovered_urls),
                             sitemap_url=sitemap_url,
                         )
-                        
+
                 else:
-                    log_warning(
+                    logger.warning(
                         f"Sitemap request failed {sitemap_url}",
                         sitemap_url=sitemap_url,
                         status_code=response.status_code,
                     )
 
             except requests.exceptions.Timeout:
-                log_error("Sitemap request timed out", sitemap_url=sitemap_url)
-                continue
+                logger.error("Sitemap request timed out", sitemap_url=sitemap_url)
             except requests.exceptions.RequestException as e:
-                log_error(
-                    f"Failed to fetch sitemap {sitemap_url}", sitemap_url=sitemap_url, error=str(e)
+                logger.error(
+                    f"Failed to fetch sitemap {sitemap_url}",
+                    sitemap_url=sitemap_url,
+                    error=str(e),
                 )
-                continue
             except Exception as e:
-                log_error(
+                logger.error(
                     f"Unexpected error fetching sitemap {sitemap_url}",
                     sitemap_url=sitemap_url,
                     error=str(e),
                 )
-                continue
 
         # Filter for recipe URLs and apply limit
         if discovered_urls:
             recipe_urls = self._filter_recipe_urls(discovered_urls)
-            log_info(
+            logger.info(
                 "Filtered recipe URLs",
                 total_discovered=len(discovered_urls),
                 recipes_found=len(recipe_urls),
             )
-            log_debug(f"Recipe URLs: {len(recipe_urls)}")
+            logger.debug(f"Recipe URLs: {len(recipe_urls)}")
             return recipe_urls[:limit]
 
         return []
@@ -210,16 +213,18 @@ class BudgetBytesScraper(BaseRecipeProvider):
             root = ET.fromstring(xml_content)
 
             if root.tag.endswith("sitemapindex"):
-                log_info("Processing sitemap index")
+                logger.info("Processing sitemap index")
 
                 # Get all sub-sitemap URLs
                 sub_sitemap_urls = []
-                for sitemap in root.findall(".//sitemap:loc", constants.BUDGET_BYTES_SITEMAP_NAMESPACE):
+                for sitemap in root.findall(
+                    ".//sitemap:loc", constants.BUDGET_BYTES_SITEMAP_NAMESPACE
+                ):
                     sub_sitemap_url = sitemap.text
                     if sub_sitemap_url and "post-sitemap" in sub_sitemap_url:
                         sub_sitemap_urls.append(sub_sitemap_url)
 
-                log_info(
+                logger.info(
                     "Found post sitemaps",
                     count=len(sub_sitemap_urls),
                     urls=sub_sitemap_urls,
@@ -227,17 +232,21 @@ class BudgetBytesScraper(BaseRecipeProvider):
 
             # Handle regular sitemap (contains URLs)
             elif root.tag.endswith("urlset"):
-                log_info("Processing regular sitemap")
+                logger.info("Processing regular sitemap")
 
-                for url_elem in root.findall(".//sitemap:url", constants.BUDGET_BYTES_SITEMAP_NAMESPACE):
-                    loc_elem = url_elem.find("sitemap:loc", constants.BUDGET_BYTES_SITEMAP_NAMESPACE)
+                for url_elem in root.findall(
+                    ".//sitemap:url", constants.BUDGET_BYTES_SITEMAP_NAMESPACE
+                ):
+                    loc_elem = url_elem.find(
+                        "sitemap:loc", constants.BUDGET_BYTES_SITEMAP_NAMESPACE
+                    )
                     if loc_elem is not None and loc_elem.text:
                         urls.append(loc_elem.text)
 
         except ET.ParseError as e:
-            log_error(f"Failed to parse sitemap XML", error=str(e))
+            logger.error(f"Failed to parse sitemap XML", error=str(e))
         except Exception as e:
-            log_error(f"Unexpected error parsing sitemap", error=str(e))
+            logger.error(f"Unexpected error parsing sitemap", error=str(e))
 
         return urls
 
@@ -254,7 +263,6 @@ class BudgetBytesScraper(BaseRecipeProvider):
         recipe_urls = []
 
         # Patterns for recipe URLs vs other pages
-        
 
         for url in urls:
             # Skip if URL doesn't contain budgetbytes.com
@@ -263,14 +271,16 @@ class BudgetBytesScraper(BaseRecipeProvider):
 
             # Check if it should be excluded first
             is_excluded = any(
-                re.search(pattern, url, re.IGNORECASE) for pattern in constants.BUDGET_BYTES_EXCLUDED_RECIPE_PATTERNS
+                re.search(pattern, url, re.IGNORECASE)
+                for pattern in constants.BUDGET_BYTES_EXCLUDED_RECIPE_PATTERNS
             )
             if is_excluded:
                 continue
 
             # Check if it matches recipe pattern
             is_recipe = any(
-                re.search(pattern, url, re.IGNORECASE) for pattern in constants.BUDGET_BYTES_RECIPE_PATTERNS
+                re.search(pattern, url, re.IGNORECASE)
+                for pattern in constants.BUDGET_BYTES_RECIPE_PATTERNS
             )
 
             # Additional heuristic: recipe URLs are typically shorter and don't have multiple path segments
@@ -292,7 +302,6 @@ class BudgetBytesScraper(BaseRecipeProvider):
 
         return unique_recipe_urls
 
-
     def _normalize_recipe_data(self, scraper, source_url: str) -> RecipeData | None:
         """Convert recipe-scrapers data to standardized RecipeData format.
 
@@ -309,26 +318,36 @@ class BudgetBytesScraper(BaseRecipeProvider):
         """
         try:
 
-            recipe_title: str = service_utils.safely_extract_info_from_function_call(scraper.title, "Unknown Recipe")
+            recipe_title: str = service_utils.safely_extract_info_from_function_call(
+                scraper.title, "Unknown Recipe"
+            )
             if recipe_title == "Unknown Recipe":
-                log_error("Failed to extract recipe title", source_url=source_url)
+                logger.error("Failed to extract recipe title", source_url=source_url)
                 raise ValueError("Failed to extract recipe title")
 
-            raw_ingredient_list: List[str] = service_utils.safely_extract_info_from_function_call(scraper.ingredients, [])
+            raw_ingredient_list: List[str] = (
+                service_utils.safely_extract_info_from_function_call(
+                    scraper.ingredients, []
+                )
+            )
             if not raw_ingredient_list:
-                log_error("Failed to extract ingredients", source_url=source_url)
+                logger.error("Failed to extract ingredients", source_url=source_url)
                 raise ValueError("Failed to extract raw ingredients")
 
-            instructions: List[str] = service_utils.safely_extract_info_from_function_call(scraper.instructions_list, [])
+            instructions: List[str] = (
+                service_utils.safely_extract_info_from_function_call(
+                    scraper.instructions_list, []
+                )
+            )
             if not instructions:
-                log_error("Failed to extract instructions", source_url=source_url)
+                logger.error("Failed to extract instructions", source_url=source_url)
                 raise ValueError("Failed to extract instructions")
 
             structured_ingredients: List[IngredientData] = self._parse_ingredients(
                 raw_ingredient_list
             )
 
-            log_debug(
+            logger.debug(
                 "Ingredient parsing completed",
                 raw_count=len(raw_ingredient_list),
                 parsed_count=len(structured_ingredients),
@@ -338,27 +357,45 @@ class BudgetBytesScraper(BaseRecipeProvider):
             recipe_data: RecipeData = RecipeData(
                 title=recipe_title,
                 source_url=source_url,
-                description=service_utils.safely_extract_info_from_function_call(scraper.description),
+                description=service_utils.safely_extract_info_from_function_call(
+                    scraper.description
+                ),
                 ingredients=structured_ingredients,
                 instructions=instructions,
                 prep_time=parse_time_duration(
-                    service_utils.safely_extract_info_from_function_call(scraper.prep_time)
+                    service_utils.safely_extract_info_from_function_call(
+                        scraper.prep_time
+                    )
                 ),
                 cook_time=parse_time_duration(
-                    service_utils.safely_extract_info_from_function_call(scraper.cook_time)
+                    service_utils.safely_extract_info_from_function_call(
+                        scraper.cook_time
+                    )
                 ),
-                servings=service_utils.safely_extract_info_from_function_call(scraper.yields),
-                cuisine_type=service_utils.safely_extract_info_from_function_call(scraper.cuisine),
-                image_url=service_utils.safely_extract_info_from_function_call(scraper.image),
-                author=service_utils.safely_extract_info_from_function_call(scraper.author),
-                rating=service_utils.safely_extract_info_from_function_call(scraper.ratings),
+                servings=service_utils.safely_extract_info_from_function_call(
+                    scraper.yields
+                ),
+                cuisine_type=service_utils.safely_extract_info_from_function_call(
+                    scraper.cuisine
+                ),
+                image_url=service_utils.safely_extract_info_from_function_call(
+                    scraper.image
+                ),
+                author=service_utils.safely_extract_info_from_function_call(
+                    scraper.author
+                ),
+                rating=service_utils.safely_extract_info_from_function_call(
+                    scraper.ratings
+                ),
                 tags=extract_tags(scraper),
                 dietary_restrictions=extract_dietary_restrictions(scraper),
-                nutrition=service_utils.safely_extract_info_from_function_call(scraper.nutrients),
+                nutrition=service_utils.safely_extract_info_from_function_call(
+                    scraper.nutrients
+                ),
                 macros=extract_macros(scraper),
             )
 
-            log_info(
+            logger.info(
                 "Recipe data normalized successfully",
                 title=recipe_data.title,
                 ingredients_count=len(recipe_data.ingredients or []),
@@ -369,14 +406,16 @@ class BudgetBytesScraper(BaseRecipeProvider):
             return recipe_data
 
         except Exception as normalization_exception:
-           
-            log_error(
+
+            logger.error(
                 f"Failed to normalize recipe data {normalization_exception}",
                 error=str(normalization_exception),
                 raw_ingredient_list=raw_ingredient_list,
                 source_url=source_url,
             )
-            raise Exception(f"Failed to extract recipe informarion {normalization_exception}")
+            raise Exception(
+                f"Failed to extract recipe informarion {normalization_exception}"
+            )
 
     def _parse_ingredients(self, raw_ingredients: List[str]) -> List[IngredientData]:
         """Parse ingredients into structured IngredientData format.
@@ -405,7 +444,7 @@ class BudgetBytesScraper(BaseRecipeProvider):
 
         for ingredient_text in raw_ingredients:
             if not ingredient_text:
-                log_error(
+                logger.error(
                     "Empty ingredient text",
                     raw_ingredients=raw_ingredients,
                     ingredient_text=ingredient_text,
@@ -417,9 +456,9 @@ class BudgetBytesScraper(BaseRecipeProvider):
             parsed: Optional[ParsedIngredient] = parse_ingredient(
                 cleaned_ingredient_text
             )
-            
+
             if not parsed or (parsed and not (parsed.name)):
-                log_info(
+                logger.info(
                     f"Failed to parse ingredient with ingredient_parser: {cleaned_ingredient_text}",
                     ingredient=cleaned_ingredient_text,
                 )
