@@ -6,7 +6,7 @@ A modern nutrition and wellness API built with Django and Django Ninja, designed
 
 - **Subscription Management**: Comprehensive subscription plans with payment processing
 - **User Profiles**: Personalized nutrition goals and dietary preferences with BMI calculations
-- **Recipe Services**: Complete recipe management with scraping, analysis, and classification
+- **Recipe Services**: Recipe scraping, analysis, and classification services (backend services only)
   - **Recipe Scraping**: Automated recipe extraction from Budget Bytes and other providers
   - **Macro Analysis**: Nutritional analysis using API Ninja and USDA databases
   - **Cuisine Classification**: AI-powered cuisine classification using Hugging Face models
@@ -87,7 +87,7 @@ logger.info(f"Operation completed - User ID: {user.id}")
 logger.error(f"Operation failed - Error: {str(e)}")
 ```
 
-See [Logging Documentation](./docs/logging.md) for more details.
+The project uses a custom logging wrapper (`core.logger`) for consistent logging across the application. See [Logging Documentation](./docs/logging.md) for more details.
 
 ## 📋 Prerequisites
 
@@ -224,15 +224,18 @@ python manage.py runserver
 
 The API is built with Django Ninja and provides automatic documentation:
 
-- **Development**: Visit `http://127.0.0.1:8000/api/docs` for interactive API documentation
+- **Development**: Visit `http://127.0.0.1:8000/api/docs` for interactive API documentation (when API is registered in URL configuration)
 - **Available Endpoints**:
-  - `/api/subscriptions/` - Subscription management
   - `/api/subscriptions/plans` - Available subscription plans
+  - `/api/subscriptions/plans/{plan_id}` - Get specific subscription plan
+  - `/api/subscriptions/subscriptions` - List user subscriptions
+  - `/api/subscriptions/subscriptions/current` - Get current active subscription
+  - `/api/subscriptions/subscriptions` (POST) - Create new subscription
+  - `/api/subscriptions/subscriptions/{subscription_id}/cancel` - Cancel subscription
+  - `/api/subscriptions/payments` - Payment history
   - `/api/subscriptions/status` - User subscription status
-  - `/api/recipes/` - Recipe management and scraping
-  - `/api/recipes/analyze/` - Macro nutritional analysis
-  - `/api/recipes/classify/` - Cuisine classification
-  - `/api/recipes/scrape/` - Recipe scraping from providers
+  - `/api/subscriptions/features` - Available subscription features
+  - `/api/health` - Health check endpoint
 
 ## 🤝 Contributing
 
@@ -270,8 +273,8 @@ We have several pull request templates to help you create better PRs:
 
 - [Logging System](./docs/logging.md) - Comprehensive logging documentation
 - [Cursor Rules](./.cursor/README.md) - AI development patterns and rules
-- [API Development Rules](./.cursor/rules/api.mdc) - Django Ninja API patterns
-- [Model Development Rules](./.cursor/rules/models.mdc) - Django model patterns
+- [API Development Rules](./.cursor/rules/api/RULE.md) - Django Ninja API patterns
+- [Model Development Rules](./.cursor/rules/models/RULE.md) - Django model patterns
 
 ## 🏗️ Project Structure
 
@@ -280,8 +283,8 @@ We have several pull request templates to help you create better PRs:
   - **`services/huggingface/`** - Hugging Face AI services for embeddings and classification
 - **`api/`** - Main API router and health check endpoints
 - **`users/`** - Custom user model with nutrition-specific fields
-- **`subscriptions/`** - Complete subscription and payment management
-- **`recipes/`** - Recipe and ingredient management with comprehensive services
+- **`subscriptions/`** - Complete subscription and payment management with API endpoints
+- **`recipes/`** - Recipe and ingredient management with comprehensive services (backend services only, no API endpoints)
   - **`services/recipe_providers/`** - Recipe scraping from Budget Bytes and other providers
   - **`services/macro_analysis/`** - Nutritional analysis using API Ninja and USDA
   - **`services/cuisine_classifiers/`** - AI-powered cuisine classification
