@@ -2,9 +2,11 @@ from abc import ABC, abstractmethod
 from optparse import Option
 from typing import List, Dict, Any, Optional, Union
 from dataclasses import dataclass
+import logging
 
-from core.logger import log_error, log_info
 from recipe_scrapers import SCRAPERS, scrape_me
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -166,7 +168,6 @@ class RecipeData:
     rating: Optional[float] = None
     provider: Optional[str] = None
 
-
     def __post_init__(self):
         """Initialize empty lists for optional list fields if None.
 
@@ -214,7 +215,11 @@ class BaseRecipeProvider(ABC):
     """
 
     def __init__(
-        self,provider_domain:str, base_url: Optional[str] = None,  rate_limit: float = 1.0, **kwargs
+        self,
+        provider_domain: str,
+        base_url: Optional[str] = None,
+        rate_limit: float = 1.0,
+        **kwargs,
     ):
         """Initialize the recipe scraper.
 
@@ -460,7 +465,7 @@ class BaseRecipeProvider(ABC):
 
         return None
 
-    def is_site_accessible(self,test_url) -> bool:
+    def is_site_accessible(self, test_url) -> bool:
         """Check if Budget Bytes website is accessible for scraping.
 
         Performs a test scrape of a known Budget Bytes recipe to verify
@@ -474,30 +479,26 @@ class BaseRecipeProvider(ABC):
             so it may be slow and should be used sparingly.
         """
         try:
-           
+
             scraper: Any = scrape_me(test_url)
 
             # If we can get a title, site is accessible
             title: str = scraper.title()
             is_accessible: bool = bool(title)
 
-            log_info(
-                "Site accessibility check",
-                is_accessible=is_accessible,
-                site=self.base_url,
+            logger.info(
+                f"Site accessibility check - Is accessible: {is_accessible}, Site: {self.base_url}"
             )
 
             return is_accessible
 
         except Exception as accessibility_exception:
-            log_error(
-                "Site accessibility check failed",
-                error=str(accessibility_exception),
-                site=self.base_url,
+            logger.error(
+                f"Site accessibility check failed - Error: {str(accessibility_exception)}, Site: {self.base_url}"
             )
             return False
-    
-    def validate_scraping_config(self,recipe_provider_scraper_name) -> bool:
+
+    def validate_scraping_config(self, recipe_provider_scraper_name) -> bool:
         """Validate the scraper configuration.
 
         Checks if Budget Bytes is supported by the recipe-scrapers library.
@@ -518,17 +519,14 @@ class BaseRecipeProvider(ABC):
                 recipe_provider_scraper_name in site.lower() for site in supported_sites
             )
 
-            log_info(
-                "Scraper configuration validated",
-                is_supported=is_supported,
-                total_supported_sites=len(supported_sites),
+            logger.info(
+                f"Scraper configuration validated - Is supported: {is_supported}, Total supported sites: {len(supported_sites)}"
             )
 
             return is_supported
 
         except Exception as validation_exception:
-            log_error(
-                "Scraper configuration validation failed",
-                error=str(validation_exception),
+            logger.error(
+                f"Scraper configuration validation failed - Error: {str(validation_exception)}"
             )
             return False
