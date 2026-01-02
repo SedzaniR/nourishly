@@ -1,4 +1,4 @@
-# Nourishly
+# Nourishly v0
 
 A modern nutrition and wellness API built with Django and Django Ninja, designed to help users make healthier food choices and track their nutritional intake.
 
