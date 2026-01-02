@@ -44,6 +44,8 @@ nourishly/
 - **Cuisine Classification**: AI-powered cuisine classification using Hugging Face models
 - **Ingredient Parsing**: Structured ingredient parsing with quantities and units
 
+See [Recipes App Documentation](./docs/recipes.md) for detailed information about models, services, and usage examples.
+
 ### AI Services
 - **Hugging Face Integration**: Embeddings generation and text classification
 - **Cuisine Classification**: Multi-language cuisine detection with confidence scoring
@@ -272,6 +274,7 @@ We have several pull request templates to help you create better PRs:
 ## 📖 Documentation
 
 - [Logging System](./docs/logging.md) - Comprehensive logging documentation
+- [Recipes App](./docs/recipes.md) - Complete recipes app documentation including models, services, and usage examples
 - [Cursor Rules](./.cursor/README.md) - AI development patterns and rules
 - [API Development Rules](./.cursor/rules/api/RULE.md) - Django Ninja API patterns
 - [Model Development Rules](./.cursor/rules/models/RULE.md) - Django model patterns
