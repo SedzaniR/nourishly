@@ -3,7 +3,9 @@ from typing import List, Dict, Optional, Any
 from dataclasses import dataclass
 from enum import Enum
 
-from core.logger import log_info, log_error, log_debug
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class MacroAnalysisStatus(Enum):
@@ -208,10 +210,8 @@ class BaseMacroAnalyzer(ABC):
         Returns:
             List[MacroAnalysisResult]: List of analysis results.
         """
-        log_info(
-            "Starting batch ingredient analysis",
-            service=self.service_name,
-            ingredient_count=len(ingredient_names),
+        logger.info(
+            f"Starting batch ingredient analysis - Service: {self.service_name}, Ingredient count: {len(ingredient_names)}"
         )
 
         results = []
@@ -221,19 +221,13 @@ class BaseMacroAnalyzer(ABC):
                 result = self.analyze_ingredient(ingredient_name)
                 results.append(result)
 
-                log_debug(
-                    "Ingredient analysis completed",
-                    service=self.service_name,
-                    ingredient_name=ingredient_name,
-                    status=result.status.value,
+                logger.debug(
+                    f"Ingredient analysis completed - Service: {self.service_name}, Ingredient name: {ingredient_name}, Status: {result.status.value}"
                 )
 
             except Exception as e:
-                log_error(
-                    "Ingredient analysis failed",
-                    service=self.service_name,
-                    ingredient_name=ingredient_name,
-                    error=str(e),
+                logger.error(
+                    f"Ingredient analysis failed - Service: {self.service_name}, Ingredient name: {ingredient_name}, Error: {str(e)}"
                 )
 
                 results.append(
@@ -245,13 +239,8 @@ class BaseMacroAnalyzer(ABC):
                     )
                 )
 
-        log_info(
-            "Batch ingredient analysis completed",
-            service=self.service_name,
-            total_ingredients=len(ingredient_names),
-            successful_analyses=len(
-                [r for r in results if r.status == MacroAnalysisStatus.SUCCESS]
-            ),
+        logger.info(
+            f"Batch ingredient analysis completed - Service: {self.service_name}, Total ingredients: {len(ingredient_names)}, Successful analyses: {len([r for r in results if r.status == MacroAnalysisStatus.SUCCESS])}"
         )
 
         return results
@@ -267,10 +256,8 @@ class BaseMacroAnalyzer(ABC):
         Returns:
             List[MacroAnalysisResult]: List of analysis results.
         """
-        log_info(
-            "Starting batch recipe analysis",
-            service=self.service_name,
-            recipe_count=len(recipe_texts),
+        logger.info(
+            f"Starting batch recipe analysis - Service: {self.service_name}, Recipe count: {len(recipe_texts)}"
         )
 
         results = []
@@ -280,27 +267,13 @@ class BaseMacroAnalyzer(ABC):
                 result = self.analyze_recipe(recipe_text)
                 results.append(result)
 
-                log_debug(
-                    "Recipe analysis completed",
-                    service=self.service_name,
-                    recipe_name=(
-                        recipe_text[:50] + "..."
-                        if len(recipe_text) > 50
-                        else recipe_text
-                    ),
-                    status=result.status.value,
+                logger.debug(
+                    f"Recipe analysis completed - Service: {self.service_name}, Recipe name: {recipe_text[:50] + '...' if len(recipe_text) > 50 else recipe_text}, Status: {result.status.value}"
                 )
 
             except Exception as e:
-                log_error(
-                    "Recipe analysis failed",
-                    service=self.service_name,
-                    recipe_text=(
-                        recipe_text[:50] + "..."
-                        if len(recipe_text) > 50
-                        else recipe_text
-                    ),
-                    error=str(e),
+                logger.error(
+                    f"Recipe analysis failed - Service: {self.service_name}, Recipe name: {recipe_text[:50] + '...' if len(recipe_text) > 50 else recipe_text}, Error: {str(e)}"
                 )
 
                 results.append(
@@ -316,13 +289,8 @@ class BaseMacroAnalyzer(ABC):
                     )
                 )
 
-        log_info(
-            "Batch recipe analysis completed",
-            service=self.service_name,
-            total_recipes=len(recipe_texts),
-            successful_analyses=len(
-                [r for r in results if r.status == MacroAnalysisStatus.SUCCESS]
-            ),
+        logger.info(
+            f"Batch recipe analysis completed - Service: {self.service_name}, Total recipes: {len(recipe_texts)}, Successful analyses: {len([r for r in results if r.status == MacroAnalysisStatus.SUCCESS])}"
         )
 
         return results
@@ -337,12 +305,8 @@ class BaseMacroAnalyzer(ABC):
             quantity: Quantity being analyzed.
             analysis_type: Type of analysis being performed.
         """
-        log_info(
-            "Macro analysis request",
-            service=self.service_name,
-            food_name=food_name,
-            quantity=quantity,
-            analysis_type=analysis_type.value,
+        logger.info(
+            f"Macro analysis request - Service: {self.service_name}, Food name: {food_name}, Quantity: {quantity}, Analysis type: {analysis_type.value}"
         )
 
     def _log_analysis_result(self, result: MacroAnalysisResult) -> None:
@@ -352,24 +316,12 @@ class BaseMacroAnalyzer(ABC):
             result: The analysis result to log.
         """
         if result.status == MacroAnalysisStatus.SUCCESS:
-            log_info(
-                "Macro analysis successful",
-                service=self.service_name,
-                food_name=result.food_name,
-                analysis_type=result.analysis_type.value,
-                calories=(
-                    result.macro_nutrients.calories if result.macro_nutrients else None
-                ),
-                confidence=result.confidence,
+            logger.info(
+                f"Macro analysis successful - Service: {self.service_name}, Food name: {result.food_name}, Analysis type: {result.analysis_type.value}, Calories: {result.macro_nutrients.calories if result.macro_nutrients else None}, Confidence: {result.confidence}"
             )
         else:
-            log_error(
-                "Macro analysis failed",
-                service=self.service_name,
-                food_name=result.food_name,
-                analysis_type=result.analysis_type.value,
-                status=result.status.value,
-                error=result.error_message,
+            logger.error(
+                f"Macro analysis failed - Service: {self.service_name}, Food name: {result.food_name}, Analysis type: {result.analysis_type.value}, Status: {result.status.value}, Error: {result.error_message}"
             )
 
     def _create_error_result(
