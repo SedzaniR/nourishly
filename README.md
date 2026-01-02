@@ -12,7 +12,7 @@ A modern nutrition and wellness API built with Django and Django Ninja, designed
   - **Cuisine Classification**: AI-powered cuisine classification using Hugging Face models
   - **Ingredient Parsing**: Structured ingredient parsing with quantities and units
 - **AI Integration**: Hugging Face services for embeddings and text classification
-- **Centralized Logging**: Advanced logging system with structured data and performance monitoring
+- **Standard Logging**: Python's standard logging module configured through Django settings
 - **RESTful API**: Modern API built with Django Ninja for type safety and performance
 - **Database Architecture**: Clean architecture with selectors pattern for database queries
 - **Development Tools**: Comprehensive development setup with linting, testing, and debugging tools
@@ -77,13 +77,17 @@ user = User.objects.create(**data)
 ```
 
 ### Logging System
-Centralized logging with structured data:
+Standard Python logging with Django configuration:
 ```python
-from core.logger import log_info, log_error
+import logging
 
-log_info("Operation completed", user_id=user.id)
-log_error("Operation failed", error=str(e))
+logger = logging.getLogger(__name__)
+
+logger.info(f"Operation completed - User ID: {user.id}")
+logger.error(f"Operation failed - Error: {str(e)}")
 ```
+
+See [Logging Documentation](./docs/logging.md) for more details.
 
 ## 📋 Prerequisites
 
@@ -134,9 +138,8 @@ Before you begin, ensure you have the following installed:
    API_NINJA_KEY=your-api-ninja-key
    USDA_API_KEY=your-usda-api-key
    
-   # Logging Configuration
-   LOG_LEVEL=INFO
-   LOG_FILE_PATH=logs/nourishly.log
+   # Logging is configured in Django settings (nourishly/settings/base.py)
+   # No environment variables needed for logging
    ```
 
 5. **Set up PostgreSQL database**
