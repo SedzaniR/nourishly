@@ -3,7 +3,6 @@ from django.conf import settings
 from django.core.validators import MinValueValidator, MaxValueValidator
 from decimal import Decimal
 from core.base_models import TimeStampedModel
-from core.logger import log_info
 
 
 class Plan(TimeStampedModel):
@@ -90,22 +89,6 @@ class Plan(TimeStampedModel):
 
     def save(self, *args, **kwargs):
         """Override save to add logging."""
-        is_new = self.pk is None
-
-        if is_new:
-            log_info(
-                "Creating new subscription plan",
-                plan_name=self.name,
-                plan_slug=self.slug,
-                price=self.price,
-            )
-        else:
-            log_info(
-                "Updating subscription plan",
-                plan_name=self.name,
-                plan_slug=self.slug,
-                price=self.price,
-            )
 
         super().save(*args, **kwargs)
 
@@ -210,25 +193,6 @@ class Subscription(TimeStampedModel):
 
     def save(self, *args, **kwargs):
         """Override save to add logging."""
-        is_new = self.pk is None
-
-        if is_new:
-            log_info(
-                "Creating new subscription",
-                user_id=self.user.id,
-                username=self.user.username,
-                plan_name=self.plan.name,
-                status=self.status,
-            )
-        else:
-            log_info(
-                "Updating subscription",
-                user_id=self.user.id,
-                username=self.user.username,
-                plan_name=self.plan.name,
-                status=self.status,
-            )
-
         super().save(*args, **kwargs)
 
     @property
@@ -268,14 +232,6 @@ class Subscription(TimeStampedModel):
             self.end_date = timezone.now()
 
         self.save()
-
-        log_info(
-            "Subscription canceled",
-            user_id=self.user.id,
-            username=self.user.username,
-            plan_name=self.plan.name,
-            at_period_end=at_period_end,
-        )
 
 
 class Payment(TimeStampedModel):
