@@ -36,3 +36,4 @@ MACRO_CALORIES_PER_GRAM = {
 # Rate limiting for API requests
 RATE_LIMIT_REQUESTS_PER_MINUTE = 60
 RATE_LIMIT_REQUESTS_PER_HOUR = 1000
+API_NINJA_BASE_URL = "https://api.api-ninjas.com/v1/nutrition"

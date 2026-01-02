@@ -5,8 +5,9 @@ from core.logger import get_logger
 from recipes.models import Recipe
 from recipes.services.recipe_providers.budgetbytes import BudgetBytesScraper
 
+
 class Command(BaseCommand):
-    help = 'Discover recipe URLs from Budget Bytes'
+    help = "Discover recipe URLs from Budget Bytes"
 
     def handle(self, *args, **options):
 
@@ -20,22 +21,27 @@ class Command(BaseCommand):
             logger.info(f"Discovered recipe URL: {url}")
             recipe_data = budget_bytes_scraper.process_recipe_from_url(url)
             if recipe_data:
-                #recipe data will be the standard information that budget bytes provides
+                logger.info(f"Recipe data: {recipe_data}")
                 if not recipe_data.cuisine_type:
-                    recipe_data.cuisine_type = huggingface_api_client.classify_recipe(recipe_data.title)
+                    recipe_data.cuisine_type = huggingface_api_client.classify_recipe(
+                        recipe_data.title
+                    )
+                    logger.info(
+                        f"Cuisine type classified from huggingface: {recipe_data.cuisine_type}"
+                    )
                 if not recipe_data.macros:
-                    #service to get macros
-                    pass
+                    logger.info(
+                        "No macros found, using macros from macro analysis service"
+                    )
 
-                #we may need to use other services to supplement the information
+                # we may need to use other services to supplement the information
                 # we need to decide which information is important enough to be supplemented
-                
+
                 logger.info("Recipe data found, creating recipe")
-                #need to add ingredient
-                #add recipe ingredient
-                #add recipe tag
-                #add vector
+                # need to add ingredient
+                # add recipe ingredient
+                # add recipe tag
+                # add vector
                 quit()
-            
 
         logger.info("Budget bytes recipe discovery completed")

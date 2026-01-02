@@ -12,6 +12,8 @@ from .base import (
     AnalysisType,
     RecipeIngredientResult,
 )
+from .constants import API_NINJA_BASE_URL
+
 from core.logger import log_info, log_error, log_debug
 
 
@@ -21,8 +23,6 @@ class ApiNinjaMacroAnalyzer(BaseMacroAnalyzer):
     API Ninja supports both individual ingredient analysis and full recipe analysis
     using natural language processing to extract nutrition information from text.
     """
-
-    BASE_URL = "https://api.api-ninjas.com/v1/nutrition"
 
     def __init__(self, api_key: Optional[str] = None, timeout: int = 30):
         """Initialize API Ninja analyzer.
@@ -316,7 +316,7 @@ class ApiNinjaMacroAnalyzer(BaseMacroAnalyzer):
             params = {"query": "apple"}
 
             response = requests.get(
-                self.BASE_URL,
+                API_NINJA_BASE_URL,
                 headers=headers,
                 params=params,
                 timeout=5,  # Short timeout for availability check
@@ -354,11 +354,11 @@ class ApiNinjaMacroAnalyzer(BaseMacroAnalyzer):
             log_debug(
                 "Making API Ninja request",
                 query=query[:100] + "..." if len(query) > 100 else query,
-                url=self.BASE_URL,
+                url=API_NINJA_BASE_URL,
             )
 
             response = requests.get(
-                self.BASE_URL, headers=headers, params=params, timeout=self.timeout
+                API_NINJA_BASE_URL, headers=headers, params=params, timeout=self.timeout
             )
 
             if response.status_code == 404:
