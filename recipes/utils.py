@@ -8,7 +8,9 @@ different recipe providers and services.
 import re
 from typing import Optional, Any, Callable
 
-from core.logger import log_error
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def extract_numeric_value_from_string(value: Any) -> Optional[float]:
@@ -68,7 +70,7 @@ def safely_extract_info_from_function_call(
         extraction_result: Any = method()
         return extraction_result if extraction_result is not None else default_value
     except Exception as e:
-        log_error(
+        logger.error(
             f"Failed to extract data from method {method.__name__} with default value {default_value} and error {str(e)}",
         )
         return default_value

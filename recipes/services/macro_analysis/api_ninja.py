@@ -52,10 +52,7 @@ class ApiNinjaMacroAnalyzer(BaseMacroAnalyzer):
 
         if not self.api_key:
             error_msg = "API Ninja API key not provided"
-            logger.error(
-                "API Ninja analysis failed",
-                extra={"extra_fields": {"error": error_msg}},
-            )
+            logger.error(f"API Ninja analysis failed - Error: {error_msg}")
             return self._create_error_result(
                 ingredient_name, error_msg, AnalysisType.INGREDIENT
             )
@@ -121,8 +118,8 @@ class ApiNinjaMacroAnalyzer(BaseMacroAnalyzer):
                 f"Unexpected error during API Ninja ingredient analysis: {str(e)}"
             )
             logger.error(
-                "API Ninja unexpected error",
-                extra={"extra_fields": {"food_name": ingredient_name, "error": str(e)}},
+                f"API Ninja unexpected error - Food name: {ingredient_name}, Error: {str(e)}",
+                exc_info=True,
             )
             return self._create_error_result(
                 ingredient_name, error_msg, AnalysisType.INGREDIENT
@@ -148,7 +145,7 @@ class ApiNinjaMacroAnalyzer(BaseMacroAnalyzer):
 
         if not self.api_key:
             error_msg = "API Ninja API key not provided"
-            log_error("API Ninja recipe analysis failed", error=error_msg)
+            logger.error(f"API Ninja recipe analysis failed - Error: {error_msg}")
             return self._create_error_result(
                 recipe_text, error_msg, AnalysisType.RECIPE
             )
@@ -273,8 +270,12 @@ class ApiNinjaMacroAnalyzer(BaseMacroAnalyzer):
 
         except Exception as e:
             error_msg = f"Unexpected error during API Ninja recipe analysis: {str(e)}"
-            log_error(
-                "API Ninja recipe error", recipe_text=recipe_text[:100], error=str(e)
+            recipe_preview = (
+                recipe_text[:100] + "..." if len(recipe_text) > 100 else recipe_text
+            )
+            logger.error(
+                f"API Ninja recipe error - Recipe text: {recipe_preview}, Error: {str(e)}",
+                exc_info=True,
             )
             return self._create_error_result(
                 recipe_text, error_msg, AnalysisType.RECIPE
@@ -293,7 +294,7 @@ class ApiNinjaMacroAnalyzer(BaseMacroAnalyzer):
         Returns:
             List[str]: List of matching food names.
         """
-        log_info("Searching foods in API Ninja", query=query)
+        logger.info(f"Searching foods in API Ninja - Query: {query}")
 
         # API Ninja doesn't have a search endpoint, so we try to analyze the query
         result = self.analyze_ingredient(query)
@@ -310,7 +311,7 @@ class ApiNinjaMacroAnalyzer(BaseMacroAnalyzer):
             bool: True if service is available, False otherwise.
         """
         if not self.api_key:
-            log_error("API Ninja availability check failed", reason="No API key")
+            logger.error("API Ninja availability check failed - Reason: No API key")
             return False
 
         try:
@@ -331,15 +332,15 @@ class ApiNinjaMacroAnalyzer(BaseMacroAnalyzer):
                 404,
             ]  # 404 is also valid (food not found)
 
-            log_info(
-                "API Ninja availability check",
-                available=is_available,
-                status_code=response.status_code,
+            logger.info(
+                f"API Ninja availability check - Available: {is_available}, Status code: {response.status_code}"
             )
             return is_available
 
         except Exception as e:
-            log_error("API Ninja availability check failed", error=str(e))
+            logger.error(
+                f"API Ninja availability check failed - Error: {str(e)}", exc_info=True
+            )
             return False
 
     def _make_api_request(self, query: str) -> Dict[str, Any]:
@@ -355,10 +356,9 @@ class ApiNinjaMacroAnalyzer(BaseMacroAnalyzer):
             headers = {"X-Api-Key": self.api_key, "Content-Type": "application/json"}
             params = {"query": query}
 
-            log_debug(
-                "Making API Ninja request",
-                query=query[:100] + "..." if len(query) > 100 else query,
-                url=API_NINJA_BASE_URL,
+            query_preview = query[:100] + "..." if len(query) > 100 else query
+            logger.debug(
+                f"Making API Ninja request - Query: {query_preview}, URL: {API_NINJA_BASE_URL}"
             )
 
             response = requests.get(
@@ -381,7 +381,7 @@ class ApiNinjaMacroAnalyzer(BaseMacroAnalyzer):
 
         except requests.exceptions.Timeout:
             error_msg = f"API Ninja request timed out after {self.timeout} seconds"
-            log_error("API Ninja timeout", timeout=self.timeout)
+            logger.error(f"API Ninja timeout - Timeout: {self.timeout} seconds")
             return {
                 "status": MacroAnalysisStatus.FAILED,
                 "error_message": error_msg,
@@ -389,7 +389,7 @@ class ApiNinjaMacroAnalyzer(BaseMacroAnalyzer):
 
         except requests.exceptions.RequestException as e:
             error_msg = f"API Ninja request failed: {str(e)}"
-            log_error("API Ninja request error", error=str(e))
+            logger.error(f"API Ninja request error - Error: {str(e)}", exc_info=True)
             return {
                 "status": MacroAnalysisStatus.FAILED,
                 "error_message": error_msg,
