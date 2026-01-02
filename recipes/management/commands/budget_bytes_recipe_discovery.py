@@ -1,19 +1,18 @@
+import logging
 from django.core.management.base import BaseCommand
 
 from core.services.huggingface.huggingface_api import HuggingFaceAPICuisineClassifier
-from core.logger import get_logger
-
 from recipes.services.macro_analysis.api_ninja import ApiNinjaMacroAnalyzer
 from recipes.models import Recipe
 from recipes.services.recipe_providers.budgetbytes import BudgetBytesScraper
+
+logger = logging.getLogger(__name__)
 
 
 class Command(BaseCommand):
     help = "Discover recipe URLs from Budget Bytes"
 
     def handle(self, *args, **options):
-
-        logger = get_logger()
         logger.info("Starting budget bytes recipe discovery")
 
         budget_bytes_scraper = BudgetBytesScraper()

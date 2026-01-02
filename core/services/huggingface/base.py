@@ -12,13 +12,19 @@ from abc import ABC, abstractmethod
 from typing import Dict, Any, Optional, Union
 
 import requests
-from tenacity import retry, stop_after_attempt, wait_exponential,retry_if_exception_type
+from tenacity import (
+    retry,
+    stop_after_attempt,
+    wait_exponential,
+    retry_if_exception_type,
+)
 from huggingface_hub import InferenceClient
 
-from core.services.huggingface import constants
-from core.logger import get_logger
+import logging
 
-logger = get_logger()
+from core.services.huggingface import constants
+
+logger = logging.getLogger(__name__)
 
 
 class BaseHuggingFaceInferenceClient(ABC):
@@ -78,33 +84,36 @@ class BaseHuggingFaceClassificationAPIClient(ABC):
 
     Includes built-in retry logic, rate limiting, and error handling.
     """
-   
+
     def __init__(
         self,
-        model_id: Optional[str]=constants.DEFAULT_CLASSIFICATION_MODEL_ID,
-        api_token: Optional[str]=os.getenv("HUGGINGFACE_API_TOKEN"),
+        model_id: Optional[str] = constants.DEFAULT_CLASSIFICATION_MODEL_ID,
+        api_token: Optional[str] = os.getenv("HUGGINGFACE_API_TOKEN"),
     ):
         """
         Initialize a Hugging Face classification client.
 
         Args:
-            model_id (Optional[str]): Model identifier, e.g. "facebook/bart-large-mnli". 
+            model_id (Optional[str]): Model identifier, e.g. "facebook/bart-large-mnli".
                 If not provided, defaults to `DEFAULT_CLASSIFICATION_MODEL_ID` from `constants.py`.
-            api_token (Optional[str]): Hugging Face API token. If not provided, will attempt 
+            api_token (Optional[str]): Hugging Face API token. If not provided, will attempt
                 to load from the environment variable `HUGGINGFACE_API_TOKEN`.
             timeout (int): Request timeout in seconds. Defaults to 30.
-            
+
         """
-    
+
         self.model_id = model_id or constants.DEFAULT_CLASSIFICATION_MODEL_ID
         self.api_token = api_token or os.getenv("HUGGINGFACE_API_TOKEN")
-        self.extra = kwargs
 
         if not self.model_id:
-            raise ValueError("Missing model_id. Provide one or set DEFAULT_CLASSIFICATION_MODEL_ID.")
+            raise ValueError(
+                "Missing model_id. Provide one or set DEFAULT_CLASSIFICATION_MODEL_ID."
+            )
         if not self.api_token:
-            raise EnvironmentError("Missing api_token. Set HUGGINGFACE_API_TOKEN in env or pass explicitly.")
-            
+            raise EnvironmentError(
+                "Missing api_token. Set HUGGINGFACE_API_TOKEN in env or pass explicitly."
+            )
+
         self.api_url = f"{constants.HUGGINGFACE_API_BASE_URL}/{self.model_id}"
         self.headers = {"Content-Type": "application/json"}
         if self.api_token:
@@ -112,7 +121,6 @@ class BaseHuggingFaceClassificationAPIClient(ABC):
 
         # Track last request time for rate limiting
         self._last_request_time = 0
-
 
     @property
     @abstractmethod
@@ -124,11 +132,11 @@ class BaseHuggingFaceClassificationAPIClient(ABC):
         stop=stop_after_attempt(3),
         wait=wait_exponential(multiplier=1, min=1, max=30),
         retry=(
-            retry_if_exception_type(requests.exceptions.Timeout) |
-            retry_if_exception_type(requests.exceptions.RequestException) |
-            retry_if_exception_type(Exception)  
+            retry_if_exception_type(requests.exceptions.Timeout)
+            | retry_if_exception_type(requests.exceptions.RequestException)
+            | retry_if_exception_type(Exception)
         ),
-        reraise=True  # re-raise the last exception after retries are exhausted
+        reraise=True,  # re-raise the last exception after retries are exhausted
     )
     def _make_api_request(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -144,17 +152,14 @@ class BaseHuggingFaceClassificationAPIClient(ABC):
 
         try:
             response = requests.post(
-                self.api_url,
-                headers=self.headers,
-                json=payload,
-                timeout=self.timeout
+                self.api_url, headers=self.headers, json=payload, timeout=self.timeout
             )
 
             if response.status_code == 200:
                 return response.json()
-            
+
             elif response.status_code in {503, 429}:
-               
+
                 raise Exception(f"API returned {response.status_code}, retrying...")
 
             else:
@@ -162,22 +167,21 @@ class BaseHuggingFaceClassificationAPIClient(ABC):
 
         except requests.exceptions.Timeout as e:
             logger.warning(
-                "API request timeout, retrying...",
-                extra={"model_id": self.api_url}
+                "API request timeout, retrying...", extra={"model_id": self.api_url}
             )
             raise e
 
         except requests.exceptions.RequestException as e:
             logger.warning(
                 "Request exception occurred, retrying...",
-                extra={"error": str(e), "model_id": self.api_url}
+                extra={"error": str(e), "model_id": self.api_url},
             )
             raise e
 
         except Exception as e:
             logger.warning(
                 "Unexpected exception, retrying...",
-                extra={"error": str(e), "model_id": self.api_url}
+                extra={"error": str(e), "model_id": self.api_url},
             )
             raise e
 
@@ -185,11 +189,11 @@ class BaseHuggingFaceClassificationAPIClient(ABC):
         stop=stop_after_attempt(3),
         wait=wait_exponential(multiplier=1, min=1, max=30),
         retry=(
-            retry_if_exception_type(requests.exceptions.Timeout) |
-            retry_if_exception_type(requests.exceptions.RequestException) |
-            retry_if_exception_type(Exception)  
+            retry_if_exception_type(requests.exceptions.Timeout)
+            | retry_if_exception_type(requests.exceptions.RequestException)
+            | retry_if_exception_type(Exception)
         ),
-        reraise=True  # re-raise the last exception after retries are exhausted
+        reraise=True,  # re-raise the last exception after retries are exhausted
     )
     def is_ready(self) -> bool:
         """
