@@ -1,5 +1,6 @@
 """Macro analysis services package."""
 
+import logging
 from typing import Dict, List, Optional, Type, Union
 from django.conf import settings
 
@@ -11,7 +12,8 @@ from .base import (
 )
 from .api_ninja import ApiNinjaMacroAnalyzer
 from .constants import MacroAnalysisProvider, PROVIDER_CONFIDENCE_LEVELS
-from core.logger import log_info, log_error, log_warning
+
+logger = logging.getLogger(__name__)
 
 
 class MacroAnalysisFactory:
@@ -56,7 +58,7 @@ class MacroAnalysisFactory:
 
         analyzer_class = self._providers[provider]
 
-        log_info(f"Creating {provider.value} macro analyzer", provider=provider.value)
+        logger.info(f"Creating {provider.value} macro analyzer")
 
         return analyzer_class(**kwargs)
 
@@ -80,7 +82,7 @@ class MacroAnalysisFactory:
             analyzer_class: The analyzer class to register.
         """
         cls._providers[provider] = analyzer_class
-        log_info(f"Registered macro analysis provider", provider=provider.value)
+        logger.info(f"Registered macro analysis provider - Provider: {provider.value}")
 
 
 class MacroAnalysisManager:
@@ -149,19 +151,13 @@ class MacroAnalysisManager:
             if result.status == MacroAnalysisStatus.SUCCESS:
                 return result
 
-            log_warning(
-                "Primary provider failed, trying fallbacks",
-                primary_provider=primary_provider.value,
-                status=result.status.value,
-                ingredient_name=ingredient_name,
+            logger.warning(
+                f"Primary provider failed, trying fallbacks - Primary provider: {primary_provider.value}, Status: {result.status.value}, Ingredient name: {ingredient_name}"
             )
 
         except Exception as e:
-            log_error(
-                "Primary provider error, trying fallbacks",
-                primary_provider=primary_provider.value,
-                error=str(e),
-                ingredient_name=ingredient_name,
+            logger.error(
+                f"Primary provider error, trying fallbacks - Primary provider: {primary_provider.value}, Error: {str(e)}, Ingredient name: {ingredient_name}"
             )
 
         # Try fallback providers
@@ -171,25 +167,20 @@ class MacroAnalysisManager:
                 result = analyzer.analyze_ingredient(ingredient_name, quantity)
 
                 if result.status == MacroAnalysisStatus.SUCCESS:
-                    log_info(
-                        "Fallback provider succeeded",
-                        fallback_provider=fallback_provider.value,
-                        ingredient_name=ingredient_name,
+                    logger.info(
+                        f"Fallback provider succeeded - Fallback provider: {fallback_provider.value}, Ingredient name: {ingredient_name}"
                     )
                     return result
 
             except Exception as e:
-                log_error(
-                    "Fallback provider error",
-                    fallback_provider=fallback_provider.value,
-                    error=str(e),
-                    ingredient_name=ingredient_name,
+                logger.error(
+                    f"Fallback provider error - Fallback provider: {fallback_provider.value}, Error: {str(e)}, Ingredient name: {ingredient_name}"
                 )
                 continue
 
         # All providers failed
-        log_error(
-            "All ingredient analysis providers failed", ingredient_name=ingredient_name
+        logger.error(
+            f"All ingredient analysis providers failed - Ingredient name: {ingredient_name}"
         )
         return MacroAnalysisResult(
             food_name=ingredient_name,
@@ -233,23 +224,19 @@ class MacroAnalysisManager:
             if result.status == MacroAnalysisStatus.SUCCESS:
                 return result
 
-            log_warning(
-                "Primary provider failed, trying fallbacks",
-                primary_provider=primary_provider.value,
-                status=result.status.value,
-                recipe_text=(
-                    recipe_text[:50] + "..." if len(recipe_text) > 50 else recipe_text
-                ),
+            recipe_preview = (
+                recipe_text[:50] + "..." if len(recipe_text) > 50 else recipe_text
+            )
+            logger.warning(
+                f"Primary provider failed, trying fallbacks - Primary provider: {primary_provider.value}, Status: {result.status.value}, Recipe text: {recipe_preview}"
             )
 
         except Exception as e:
-            log_error(
-                "Primary provider error, trying fallbacks",
-                primary_provider=primary_provider.value,
-                error=str(e),
-                recipe_text=(
-                    recipe_text[:50] + "..." if len(recipe_text) > 50 else recipe_text
-                ),
+            recipe_preview = (
+                recipe_text[:50] + "..." if len(recipe_text) > 50 else recipe_text
+            )
+            logger.error(
+                f"Primary provider error, trying fallbacks - Primary provider: {primary_provider.value}, Error: {str(e)}, Recipe text: {recipe_preview}"
             )
 
         # Try fallback providers
@@ -259,32 +246,29 @@ class MacroAnalysisManager:
                 result = analyzer.analyze_recipe(recipe_text, servings)
 
                 if result.status == MacroAnalysisStatus.SUCCESS:
-                    log_info(
-                        "Fallback provider succeeded",
-                        fallback_provider=fallback_provider.value,
-                        recipe_text=(
-                            recipe_text[:50] + "..."
-                            if len(recipe_text) > 50
-                            else recipe_text
-                        ),
+                    recipe_preview = (
+                        recipe_text[:50] + "..."
+                        if len(recipe_text) > 50
+                        else recipe_text
+                    )
+                    logger.info(
+                        f"Fallback provider succeeded - Fallback provider: {fallback_provider.value}, Recipe text: {recipe_preview}"
                     )
                     return result
 
             except Exception as e:
-                log_error(
-                    "Fallback provider error",
-                    fallback_provider=fallback_provider.value,
-                    error=str(e),
-                    recipe_text=(
-                        recipe_text[:50] + "..."
-                        if len(recipe_text) > 50
-                        else recipe_text
-                    ),
+                recipe_preview = (
+                    recipe_text[:50] + "..." if len(recipe_text) > 50 else recipe_text
+                )
+                logger.error(
+                    f"Fallback provider error - Fallback provider: {fallback_provider.value}, Error: {str(e)}, Recipe text: {recipe_preview}"
                 )
                 continue
 
         # All providers failed
-        log_error("All recipe analysis providers failed", recipe_text=recipe_text[:100])
+        logger.error(
+            f"All recipe analysis providers failed - Recipe text: {recipe_text[:100]}"
+        )
         return MacroAnalysisResult(
             food_name=(
                 recipe_text[:50] + "..." if len(recipe_text) > 50 else recipe_text
@@ -326,7 +310,9 @@ class MacroAnalysisManager:
                 analyzer = self.get_analyzer(provider)
                 availability[provider] = analyzer.is_available()
             except Exception as e:
-                log_error(f"Error checking {provider.value} availability", error=str(e))
+                logger.error(
+                    f"Error checking {provider.value} availability - Error: {str(e)}"
+                )
                 availability[provider] = False
 
         return availability
