@@ -1,0 +1,65 @@
+name: Enforce PR Type & Template
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  enforce:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Enforce branch prefix & PR template
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const branch = pr.head.ref;
+
+            const TEMPLATE_MAP = {
+              "feature": "feature.md",
+              "bugfix": "bugfix.md",
+              "chore": "chore.md",
+              "hotfix": "hotfix.md",
+            };
+
+            const prefix = branch.split("/")[0];
+
+            if (!TEMPLATE_MAP[prefix]) {
+              core.setFailed(
+                `❌ Invalid branch prefix "${prefix}".\n` +
+                `Allowed prefixes: ${Object.keys(TEMPLATE_MAP).join(", ")}`
+              );
+              return;
+            }
+
+            const fs = require("fs");
+            const templatePath = `.github/pr-templates/${TEMPLATE_MAP[prefix]}`;
+
+            const templateBody = fs.readFileSync(templatePath, "utf8");
+
+            // Prevent overwriting if already applied
+            if (pr.body && pr.body.includes(`<!-- TEMPLATE:${prefix} -->`)) {
+              return;
+            }
+
+            const finalBody =
+              `<!-- TEMPLATE:${prefix} -->\n\n` +
+              templateBody;
+
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pr.number,
+              body: finalBody
+            });
+
+            // Optional: apply label
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pr.number,
+              labels: [prefix]
+            });
