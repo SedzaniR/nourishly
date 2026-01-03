@@ -138,7 +138,7 @@ class BudgetBytesScraper(BaseRecipeProvider):
                 logger.info(f"Attempting to fetch sitemap: {sitemap_url}")
                 response = requests.get(
                     sitemap_url,
-                    timeout=30,
+                    timeout=constants.BUDGET_BYTES_TIMEOUT,
                     headers={
                         "User-Agent": "Mozilla/5.0 (compatible; Recipe Scraper; +https://nourishly.app)"
                     },
