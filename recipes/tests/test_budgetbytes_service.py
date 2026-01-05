@@ -287,6 +287,108 @@ class ParseIngredientsTestCase(TestCase):
             "Failed to extract ingredient information", str(context.exception)
         )
 
+    @patch("recipes.services.recipe_providers.budgetbytes.budgetbytes.parse_ingredient")
+    def test_parse_ingredients_multiple_ingredients(self, mock_parse_ingredient):
+        """Test parsing multiple ingredients returns list of IngredientData."""
+
+        def parse_side_effect(ingredient_text):
+            mock_parsed = Mock()
+            if "flour" in ingredient_text:
+                mock_parsed.name = [Mock(text="flour")]
+                mock_parsed.amount = [Mock(quantity=2.0, unit="cups")]
+                mock_parsed.preparation = None
+            elif "sugar" in ingredient_text:
+                mock_parsed.name = [Mock(text="sugar")]
+                mock_parsed.amount = [Mock(quantity=1.0, unit="cup")]
+                mock_parsed.preparation = None
+            return mock_parsed
+
+        mock_parse_ingredient.side_effect = parse_side_effect
+
+        scraper = BudgetBytesScraper()
+        raw_ingredients = ["2 cups flour", "1 cup sugar"]
+        result = scraper._parse_ingredients(raw_ingredients)
+
+        self.assertEqual(len(result), 2)
+        self.assertEqual(result[0].name, "flour")
+        self.assertEqual(result[0].quantity, 2.0)
+        self.assertEqual(result[1].name, "sugar")
+        self.assertEqual(result[1].quantity, 1.0)
+
+    @patch("recipes.services.recipe_providers.budgetbytes.budgetbytes.parse_ingredient")
+    def test_parse_ingredients_no_amount(self, mock_parse_ingredient):
+        """Test parsing ingredient with no amount sets quantity and unit to None."""
+        mock_parsed = Mock()
+        mock_parsed.name = [Mock(text="salt")]
+        mock_parsed.amount = []  # No amount
+        mock_parsed.preparation = None
+        mock_parse_ingredient.return_value = mock_parsed
+
+        scraper = BudgetBytesScraper()
+        raw_ingredients = ["salt to taste"]
+        result = scraper._parse_ingredients(raw_ingredients)
+
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0].name, "salt")
+        self.assertIsNone(result[0].quantity)
+        self.assertIsNone(result[0].unit)
+
+    @patch("recipes.services.recipe_providers.budgetbytes.budgetbytes.parse_ingredient")
+    def test_parse_ingredients_no_unit(self, mock_parse_ingredient):
+        """Test parsing ingredient with amount but no unit converts None to string 'None'."""
+        mock_parsed = Mock()
+        mock_parsed.name = [Mock(text="eggs")]
+        mock_parsed.amount = [Mock(quantity=3.0, unit=None)]  # Has quantity but no unit
+        mock_parsed.preparation = None
+        mock_parse_ingredient.return_value = mock_parsed
+
+        scraper = BudgetBytesScraper()
+        raw_ingredients = ["3 eggs"]
+        result = scraper._parse_ingredients(raw_ingredients)
+
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0].name, "eggs")
+        self.assertEqual(result[0].quantity, 3.0)
+        # The code does str(parsed.amount[0].unit) which converts None to "None"
+        self.assertEqual(result[0].unit, "None")
+
+    @patch("recipes.services.recipe_providers.budgetbytes.budgetbytes.parse_ingredient")
+    def test_parse_ingredients_no_preparation(self, mock_parse_ingredient):
+        """Test parsing ingredient with no preparation notes sets notes to None."""
+        mock_parsed = Mock()
+        mock_parsed.name = [Mock(text="butter")]
+        mock_parsed.amount = [Mock(quantity=1.0, unit="tbsp")]
+        mock_parsed.preparation = None  # No preparation notes
+        mock_parse_ingredient.return_value = mock_parsed
+
+        scraper = BudgetBytesScraper()
+        raw_ingredients = ["1 tbsp butter"]
+        result = scraper._parse_ingredients(raw_ingredients)
+
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0].name, "butter")
+        self.assertIsNone(result[0].notes)
+
+    @patch("recipes.services.recipe_providers.budgetbytes.budgetbytes.parse_ingredient")
+    def test_parse_ingredients_amount_with_none_quantity(self, mock_parse_ingredient):
+        """Test parsing ingredient with amount object but quantity is None raises TypeError."""
+        mock_parsed = Mock()
+        mock_parsed.name = [Mock(text="pepper")]
+        # Amount exists but quantity is None
+        mock_amount = Mock()
+        mock_amount.quantity = None
+        mock_amount.unit = "tsp"
+        mock_parsed.amount = [mock_amount]
+        mock_parsed.preparation = None
+        mock_parse_ingredient.return_value = mock_parsed
+
+        scraper = BudgetBytesScraper()
+        raw_ingredients = ["pepper to taste"]
+
+        # The code does: float(parsed.amount[0].quantity) which will raise TypeError if quantity is None
+        with self.assertRaises(TypeError):
+            scraper._parse_ingredients(raw_ingredients)
+
 
 class RemoveCostInfoTestCase(TestCase):
     """Test _remove_cost_info method."""
