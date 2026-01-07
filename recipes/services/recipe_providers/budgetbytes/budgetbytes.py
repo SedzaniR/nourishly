@@ -30,31 +30,14 @@ class BudgetBytesScraper(BaseRecipeProvider):
     Simple wrapper around recipe-scrapers for Budget Bytes recipes.
     """
 
-    def __init__(self, **kwargs):
-        """Initialize the Budget Bytes scraper.
-
-        Args:
-            **kwargs: Additional configuration options including:
-                - rate_limit (float): Delay between requests in seconds (default: 2.0)
-                - timeout (int): Request timeout in seconds
-                - user_agent (str): Custom user agent string
-        """
+    def __init__(self):
+        """Initialize the Budget Bytes scraper."""
         super().__init__(
-            base_url=constants.BUDGET_BYTES_BASE_URL,
+            provider_name="BudgetBytes",
             provider_domain=constants.BUDGET_BYTES_DOMAIN,
-            rate_limit=kwargs.get("rate_limit", constants.BUDGET_BYTES_RATE_LIMIT),
-            **kwargs,
+            base_url=constants.BUDGET_BYTES_BASE_URL,
+            rate_limit=constants.BUDGET_BYTES_RATE_LIMIT,
         )
-        logger.info(f"Budget Bytes scraper initialized with base URL: {self.base_url}")
-
-    @property
-    def provider_name(self) -> str:
-        """Return the provider name.
-
-        Returns:
-            str: The provider identifier "BudgetBytes"
-        """
-        return "BudgetBytes"
 
     def process_recipe_from_url(self, url: str) -> Optional[RecipeData]:
         """Scrape a recipe from a specific Budget Bytes URL using recipe-scrapers.
@@ -417,15 +400,13 @@ class BudgetBytesScraper(BaseRecipeProvider):
         - comment: IngredientText - additional notes
         """
 
+        if not raw_ingredients or any(not ingredient for ingredient in raw_ingredients):
+            logger.error(f"No raw ingredients provided to parse: {raw_ingredients}")
+            raise ValueError("Cannot process empty ingredients")
+
         parsed_ingredients: List[IngredientData] = []
 
         for ingredient_text in raw_ingredients:
-            if not ingredient_text:
-                logger.error(
-                    f"Empty ingredient text encountered in raw ingredients list: {raw_ingredients}"
-                )
-                raise ValueError("Cannot process empty ingredients")
-
             cleaned_ingredient_text = self._remove_cost_info(ingredient_text)
 
             parsed: Optional[ParsedIngredient] = parse_ingredient(

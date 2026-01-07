@@ -1,0 +1,200 @@
+2025-07-24 20:50:53 - nourishly - ERROR - :0 - Invalid Budget Bytes URL
+2025-07-24 21:06:33 - nourishly - ERROR - logger:335 - Invalid Budget Bytes URL
+2025-07-24 23:08:37 - nourishly - ERROR - unknown:0 - Testing error log
+2025-07-24 21:09:46 - nourishly - ERROR - budgetbytes:48 - Invalid Budget Bytes URL
+2025-07-24 21:25:15 - nourishly - ERROR - budgetbytes:258 - Failed to normalize recipe data
+2025-07-24 21:25:15 - nourishly - ERROR - budgetbytes:88 - Failed to scrape recipe
+2025-07-24 21:27:01 - nourishly - ERROR - budgetbytes:260 - Failed to normalize recipe data
+2025-07-24 21:27:01 - nourishly - ERROR - budgetbytes:89 - Failed to scrape recipe
+2025-07-29 19:11:11 - nourishly - ERROR - api_ninja:117 - API Ninja unexpected error
+2025-07-29 19:18:19 - nourishly - ERROR - api_ninja:124 - API Ninja unexpected error
+2025-07-29 19:20:41 - nourishly - ERROR - api_ninja:124 - API Ninja unexpected error
+2025-07-31 18:16:15 - nourishly - ERROR - api_ninja:274 - API Ninja recipe error
+2025-07-31 18:23:23 - nourishly - ERROR - api_ninja:274 - API Ninja recipe error
+2025-08-06 20:15:40 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:15:40 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:15:40 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:15:40 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:15:40 - nourishly - ERROR - budgetbytes:466 - Failed to crawl category page
+2025-08-06 20:15:40 - nourishly - ERROR - budgetbytes:466 - Failed to crawl category page
+2025-08-06 20:15:40 - nourishly - ERROR - budgetbytes:466 - Failed to crawl category page
+2025-08-06 20:15:40 - nourishly - ERROR - budgetbytes:466 - Failed to crawl category page
+2025-08-06 20:15:40 - nourishly - ERROR - budgetbytes:466 - Failed to crawl category page
+2025-08-06 20:15:40 - nourishly - ERROR - budgetbytes:466 - Failed to crawl category page
+2025-08-06 20:15:40 - nourishly - ERROR - budgetbytes:466 - Failed to crawl category page
+2025-08-06 20:16:32 - nourishly - ERROR - budgetbytes:285 - Failed to fetch sub-sitemap
+2025-08-06 20:16:32 - nourishly - ERROR - budgetbytes:285 - Failed to fetch sub-sitemap
+2025-08-06 20:17:47 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:17:47 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:17:47 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:17:47 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:17:47 - nourishly - ERROR - budgetbytes:475 - Failed to crawl category page
+2025-08-06 20:17:47 - nourishly - ERROR - budgetbytes:475 - Failed to crawl category page
+2025-08-06 20:17:47 - nourishly - ERROR - budgetbytes:475 - Failed to crawl category page
+2025-08-06 20:17:47 - nourishly - ERROR - budgetbytes:475 - Failed to crawl category page
+2025-08-06 20:17:47 - nourishly - ERROR - budgetbytes:475 - Failed to crawl category page
+2025-08-06 20:17:47 - nourishly - ERROR - budgetbytes:475 - Failed to crawl category page
+2025-08-06 20:17:47 - nourishly - ERROR - budgetbytes:475 - Failed to crawl category page
+2025-08-06 20:18:38 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:18:38 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:18:38 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:18:38 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:18:38 - nourishly - ERROR - budgetbytes:493 - Failed to crawl category page
+2025-08-06 20:18:38 - nourishly - ERROR - budgetbytes:493 - Failed to crawl category page
+2025-08-06 20:18:38 - nourishly - ERROR - budgetbytes:493 - Failed to crawl category page
+2025-08-06 20:18:38 - nourishly - ERROR - budgetbytes:493 - Failed to crawl category page
+2025-08-06 20:18:38 - nourishly - ERROR - budgetbytes:493 - Failed to crawl category page
+2025-08-06 20:18:38 - nourishly - ERROR - budgetbytes:493 - Failed to crawl category page
+2025-08-06 20:18:38 - nourishly - ERROR - budgetbytes:493 - Failed to crawl category page
+2025-08-06 20:19:02 - nourishly - ERROR - budgetbytes:304 - Failed to fetch sub-sitemap (Exception)
+2025-08-06 20:19:02 - nourishly - ERROR - budgetbytes:304 - Failed to fetch sub-sitemap (Exception)
+2025-08-06 20:19:04 - nourishly - ERROR - budgetbytes:304 - Failed to fetch sub-sitemap (Exception)
+2025-08-06 20:19:04 - nourishly - ERROR - budgetbytes:304 - Failed to fetch sub-sitemap (Exception)
+2025-08-06 20:19:40 - nourishly - ERROR - budgetbytes:304 - Failed to fetch sub-sitemap (Exception)
+2025-08-06 20:19:40 - nourishly - ERROR - budgetbytes:304 - Failed to fetch sub-sitemap (Exception)
+2025-08-06 20:19:42 - nourishly - ERROR - budgetbytes:304 - Failed to fetch sub-sitemap (Exception)
+2025-08-06 20:19:42 - nourishly - ERROR - budgetbytes:304 - Failed to fetch sub-sitemap (Exception)
+2025-08-26 18:41:30 - nourishly - ERROR - budgetbytes:348 - Failed to fetch sub-sitemap (Exception)
+2025-08-26 18:41:30 - nourishly - ERROR - budgetbytes:348 - Failed to fetch sub-sitemap (Exception)
+2025-08-26 18:41:32 - nourishly - ERROR - budgetbytes:348 - Failed to fetch sub-sitemap (Exception)
+2025-08-26 18:41:32 - nourishly - ERROR - budgetbytes:348 - Failed to fetch sub-sitemap (Exception)
+2025-08-26 19:08:59 - nourishly - ERROR - budgetbytes:71 - Invalid Budget Bytes URL
+2025-08-27 16:57:48 - nourishly - ERROR - budgetbytes:715 - Failed to normalize recipe data
+2025-08-27 17:00:36 - nourishly - ERROR - budgetbytes:715 - Failed to normalize recipe data
+2025-08-27 17:02:02 - nourishly - ERROR - budgetbytes:716 - Failed to normalize recipe data Failed to extract ingredient information.
+2025-08-27 17:03:56 - nourishly - ERROR - budgetbytes:716 - Failed to normalize recipe data log_debug() takes 1 positional argument but 2 were given
+2025-08-27 17:04:27 - nourishly - ERROR - budgetbytes:716 - Failed to normalize recipe data Failed to extract ingredient information.
+2025-08-27 17:06:30 - nourishly - ERROR - budgetbytes:716 - Failed to normalize recipe data Failed to extract ingredient information.
+2025-08-27 17:10:17 - nourishly - ERROR - budgetbytes:716 - Failed to normalize recipe data Failed to extract ingredient information.
+2025-08-27 17:11:53 - nourishly - ERROR - budgetbytes:716 - Failed to normalize recipe data Failed to extract ingredient information.
+2025-08-27 17:27:48 - nourishly - ERROR - budgetbytes:324 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 17:27:48 - nourishly - ERROR - budgetbytes:324 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 17:27:50 - nourishly - ERROR - budgetbytes:324 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 17:27:50 - nourishly - ERROR - budgetbytes:324 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 17:42:41 - nourishly - ERROR - budgetbytes:258 - Unexpected error parsing sitemap
+2025-08-27 17:42:43 - nourishly - ERROR - budgetbytes:258 - Unexpected error parsing sitemap
+2025-08-27 17:42:58 - nourishly - ERROR - budgetbytes:258 - Unexpected error parsing sitemap
+2025-08-27 17:43:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:43:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:43:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:43:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:43:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:43:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:43:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:44:58 - nourishly - ERROR - budgetbytes:258 - Unexpected error parsing sitemap
+2025-08-27 17:45:00 - nourishly - ERROR - budgetbytes:258 - Unexpected error parsing sitemap
+2025-08-27 17:45:14 - nourishly - ERROR - budgetbytes:258 - Unexpected error parsing sitemap
+2025-08-27 17:45:16 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:45:16 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:45:16 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:45:16 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:45:16 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:45:16 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:45:16 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:47:30 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 17:47:30 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 17:47:33 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 17:47:33 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 18:02:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:02:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:02:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:02:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:02:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:02:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:02:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:03:11 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 18:03:11 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 18:03:11 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:03:11 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:03:11 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:03:11 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:03:11 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:03:11 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:03:11 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:04:30 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 18:04:30 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 18:04:33 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 18:04:33 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 18:07:22 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 18:07:22 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 19:26:09 - nourishly - ERROR - budgetbytes:77 - Invalid Budget Bytes URL
+2025-08-27 19:30:30 - nourishly - ERROR - budgetbytes:318 - Failed to extract ingredients
+2025-08-27 19:30:30 - nourishly - ERROR - budgetbytes:371 - Failed to normalize recipe data Failed to extract raw ingredients
+2025-08-27 19:34:27 - nourishly - ERROR - budgetbytes:318 - Failed to extract ingredients
+2025-08-27 19:34:27 - nourishly - ERROR - budgetbytes:371 - Failed to normalize recipe data Failed to extract raw ingredients
+2025-08-27 19:35:54 - nourishly - ERROR - budgetbytes:318 - Failed to extract ingredients
+2025-08-27 19:35:54 - nourishly - ERROR - budgetbytes:372 - Failed to normalize recipe data Failed to extract raw ingredients
+2025-08-27 19:38:22 - nourishly - ERROR - budgetbytes:318 - Failed to extract ingredients
+2025-08-27 19:38:22 - nourishly - ERROR - budgetbytes:372 - Failed to normalize recipe data Failed to extract raw ingredients
+2025-08-27 19:41:59 - nourishly - ERROR - budgetbytes:318 - Failed to extract ingredients
+2025-08-27 19:41:59 - nourishly - ERROR - budgetbytes:372 - Failed to normalize recipe data Failed to extract raw ingredients
+2025-08-27 20:00:12 - nourishly - ERROR - utils:71 - Failed to extract data from method
+2025-09-05 21:17:10 - nourishly - ERROR - utils:71 - Failed to extract data from method
+2026-01-02 16:48:34 - nourishly - ERROR - utils:71 - Failed to extract data from method
+2026-01-02 16:52:11 - nourishly - ERROR - utils:71 - Failed to extract data from method
+2026-01-02 16:53:56 - nourishly - ERROR - utils:71 - Failed to extract data from method dietary_restrictions with default value None and error recipe-scrapers (15.8.0) exception: No dietary restrictions data in SchemaOrg.
+[2026-01-02 17:36:41] ERROR[logger:43] - Failed to extract data from method dietary_restrictions with default value None and error recipe-scrapers (15.8.0) exception: No dietary restrictions data in SchemaOrg.
+[2026-01-02 18:00:12] ERROR[logger:43] - Failed to extract data from method dietary_restrictions with default value None and error recipe-scrapers (15.8.0) exception: No dietary restrictions data in SchemaOrg.
+[2026-01-02 18:11:37] ERROR [nourishly:43] Failed to extract data from method dietary_restrictions with default value None and error recipe-scrapers (15.8.0) exception: No dietary restrictions data in SchemaOrg.
+[2026-01-03 15:10:15] ERROR [recipes.utils:73] Failed to extract data from method dietary_restrictions with default value None and error recipe-scrapers (15.8.0) exception: No dietary restrictions data in SchemaOrg.
+[2026-01-05 19:35:10] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:64] Invalid Budget Bytes URL: https://www.example.com/recipe/ (provider: BudgetBytes)
+[2026-01-05 19:35:10] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:287] Failed to extract recipe title from https://www.budgetbytes.com/recipe/
+[2026-01-05 19:35:10] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:373] Failed to normalize recipe data from https://www.budgetbytes.com/recipe/ - Error: Failed to extract recipe title, Raw ingredients: N/A
+[2026-01-05 19:41:23] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:64] Invalid Budget Bytes URL: https://www.example.com/recipe/ (provider: BudgetBytes)
+[2026-01-05 19:53:29] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:64] Invalid Budget Bytes URL: https://www.example.com/recipe/ (provider: BudgetBytes)
+[2026-01-05 19:56:55] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap.xml - Error: Connection error
+[2026-01-05 19:56:55] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap2.xml - Error: Connection error
+[2026-01-05 19:56:55] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 19:56:55] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 19:56:55] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:64] Invalid Budget Bytes URL: https://www.example.com/recipe/ (provider: BudgetBytes)
+[2026-01-05 20:02:13] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap.xml - Error: Connection error
+[2026-01-05 20:02:13] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap2.xml - Error: Connection error
+[2026-01-05 20:02:13] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:02:13] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:02:13] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:64] Invalid Budget Bytes URL: https://www.example.com/recipe/ (provider: BudgetBytes)
+[2026-01-05 20:02:24] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap.xml - Error: Connection error
+[2026-01-05 20:02:24] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap2.xml - Error: Connection error
+[2026-01-05 20:02:24] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:02:24] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:02:24] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:407] Empty ingredient text encountered in raw ingredients list: ['']
+[2026-01-05 20:02:24] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:64] Invalid Budget Bytes URL: https://www.example.com/recipe/ (provider: BudgetBytes)
+[2026-01-05 20:05:49] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap.xml - Error: Connection error
+[2026-01-05 20:05:49] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap2.xml - Error: Connection error
+[2026-01-05 20:05:49] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:05:49] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:05:49] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: []
+[2026-01-05 20:05:49] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:64] Invalid Budget Bytes URL: https://www.example.com/recipe/ (provider: BudgetBytes)
+[2026-01-05 20:06:51] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap.xml - Error: Connection error
+[2026-01-05 20:06:51] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap2.xml - Error: Connection error
+[2026-01-05 20:06:51] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:06:51] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:06:51] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: []
+[2026-01-05 20:06:51] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:411] Empty ingredient text encountered in raw ingredients list: ['']
+[2026-01-05 20:06:51] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:64] Invalid Budget Bytes URL: https://www.example.com/recipe/ (provider: BudgetBytes)
+[2026-01-05 20:07:23] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap.xml - Error: Connection error
+[2026-01-05 20:07:23] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap2.xml - Error: Connection error
+[2026-01-05 20:07:23] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:07:23] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:07:23] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: []
+[2026-01-05 20:07:23] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: ['']
+[2026-01-05 20:07:23] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:64] Invalid Budget Bytes URL: https://www.example.com/recipe/ (provider: BudgetBytes)
+[2026-01-05 20:09:28] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap.xml - Error: Connection error
+[2026-01-05 20:09:28] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap2.xml - Error: Connection error
+[2026-01-05 20:09:28] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:09:28] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:09:28] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: []
+[2026-01-05 20:09:28] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: ['']
+[2026-01-05 20:09:28] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:64] Invalid Budget Bytes URL: https://www.example.com/recipe/ (provider: BudgetBytes)
+[2026-01-05 20:12:04] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: []
+[2026-01-05 20:12:04] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: ['']
+[2026-01-05 20:15:08] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: []
+[2026-01-05 20:15:08] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: ['']
+[2026-01-05 20:15:28] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: []
+[2026-01-05 20:15:28] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: ['']
+[2026-01-05 20:33:31] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap.xml - Error: Connection error
+[2026-01-05 20:33:31] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap2.xml - Error: Connection error
+[2026-01-05 20:33:31] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:33:31] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:33:31] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: []
+[2026-01-05 20:33:31] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: ['']
+[2026-01-05 20:33:31] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:64] Invalid Budget Bytes URL: https://www.example.com/recipe/ (provider: BudgetBytes)

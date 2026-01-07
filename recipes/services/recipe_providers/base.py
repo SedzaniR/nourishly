@@ -216,49 +216,28 @@ class BaseRecipeProvider(ABC):
 
     def __init__(
         self,
+        provider_name: str,
         provider_domain: str,
         base_url: Optional[str] = None,
         rate_limit: float = 1.0,
-        **kwargs,
     ):
         """Initialize the recipe scraper.
 
         Args:
+            provider_name: Name of the provider.
+            provider_domain: Domain of the provider.
             base_url: Base URL of the website to scrape. If None, will be
                 determined from the provider implementation.
             rate_limit: Minimum delay between requests in seconds to be respectful
                 to the target website.
-            **kwargs: Additional configuration parameters that may be needed
-                by specific scrapers (e.g., timeout, user_agent, proxies).
         """
         self.base_url = base_url
         self.rate_limit = rate_limit
-        self.config = kwargs
-
-        # Default headers for web scraping
-        self.headers = {
-            "User-Agent": kwargs.get(
-                "user_agent",
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-            ),
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-            "Accept-Language": "en-US,en;q=0.5",
-            "Accept-Encoding": "gzip, deflate",
-            "Connection": "keep-alive",
-        }
-
-    @property
-    @abstractmethod
-    def provider_name(self) -> str:
-        """Return the name of this provider.
-
-        This should be a unique identifier for the provider that can be
-        used for logging, debugging, and provider selection.
-
-        Returns:
-            A string representing the provider name (e.g., "spoonacular", "edamam").
-        """
-        pass
+        self.provider_name = provider_name
+        self.provider_domain = provider_domain
+        logger.info(
+            f"Recipe provider initialized - Name: {self.provider_name}, Domain: {self.provider_domain}"
+        )
 
     @abstractmethod
     def process_recipe_from_url(self, url: str) -> Optional[RecipeData]:

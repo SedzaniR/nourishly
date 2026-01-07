@@ -1,0 +1,4 @@
+INFO 2025-07-18 14:47:42,341 autoreload 58353 8743526144 Watching for file changes with StatReloader
+INFO 2025-07-18 14:50:48,550  58353 6164230144 API Request: GET / - 200
+INFO 2025-07-18 14:50:48,551 basehttp 58353 6164230144 "GET / HTTP/1.1" 200 12068
+INFO 2025-07-18 14:51:24,985 autoreload 58353 8743526144 /Users/sedzaniragau/Projects/nourishly/core/logger.py changed, reloading.

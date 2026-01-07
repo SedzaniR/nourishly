@@ -1,0 +1,198 @@
+name: Run Tests
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  push:
+    branches:
+      - main
+      - develop
+
+permissions:
+  contents: read
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      recipe-providers: ${{ steps.filter.outputs.recipe-providers }}
+      macro-analysis: ${{ steps.filter.outputs.macro-analysis }}
+      cuisine-classifiers: ${{ steps.filter.outputs.cuisine-classifiers }}
+      recipe-utils: ${{ steps.filter.outputs.recipe-utils }}
+      recipe-base: ${{ steps.filter.outputs.recipe-base }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            recipe-providers:
+              - 'recipes/services/recipe_providers/**'
+              - 'recipes/tests/services/recipe_providers/**'
+            macro-analysis:
+              - 'recipes/services/macro_analysis/**'
+              - 'recipes/tests/services/macro_analysis/**'
+            cuisine-classifiers:
+              - 'recipes/services/cuisine_classifiers/**'
+              - 'recipes/tests/services/cuisine_classifiers/**'
+            recipe-utils:
+              - 'recipes/utils.py'
+              - 'recipes/tests/test_utils.py'
+            recipe-base:
+              - 'recipes/services/recipe_providers/base.py'
+              - 'recipes/tests/services/recipe_providers/test_base.py'
+
+  test-recipe-providers:
+    needs: detect-changes
+    if: ${{ needs.detect-changes.outputs.recipe-providers == 'true' || needs.detect-changes.outputs.recipe-base == 'true' }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.13"]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Cache pip packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements/**/*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements/base.txt
+          pip install -r requirements/test.txt
+
+      - name: Run BudgetBytes service tests
+        env:
+          DJANGO_SETTINGS_MODULE: nourishly.settings.test
+        run: |
+          python manage.py test recipes.tests.services.recipe_providers.test_budgetbytes_service --verbosity=2
+        continue-on-error: false
+
+      - name: Run all recipe provider tests
+        env:
+          DJANGO_SETTINGS_MODULE: nourishly.settings.test
+        run: |
+          python manage.py test recipes.tests.services.recipe_providers --verbosity=1
+        continue-on-error: false
+
+  test-macro-analysis:
+    needs: detect-changes
+    if: ${{ needs.detect-changes.outputs.macro-analysis == 'true' }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.13"]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Cache pip packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements/**/*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements/base.txt
+          pip install -r requirements/test.txt
+
+      - name: Run macro analysis tests
+        env:
+          DJANGO_SETTINGS_MODULE: nourishly.settings.test
+        run: |
+          python manage.py test recipes.tests.services.macro_analysis --verbosity=2
+        continue-on-error: false
+
+  test-cuisine-classifiers:
+    needs: detect-changes
+    if: ${{ needs.detect-changes.outputs.cuisine-classifiers == 'true' }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.13"]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Cache pip packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements/**/*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements/base.txt
+          pip install -r requirements/test.txt
+
+      - name: Run cuisine classifier tests
+        env:
+          DJANGO_SETTINGS_MODULE: nourishly.settings.test
+        run: |
+          python manage.py test recipes.tests.services.cuisine_classifiers --verbosity=2
+        continue-on-error: false
+
+  test-all:
+    # Always run on push to main/develop, or if no specific service changed
+    if: ${{ github.event_name == 'push' || (needs.detect-changes.outputs.recipe-providers != 'true' && needs.detect-changes.outputs.macro-analysis != 'true' && needs.detect-changes.outputs.cuisine-classifiers != 'true') }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.13"]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Cache pip packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements/**/*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements/base.txt
+          pip install -r requirements/test.txt
+
+      - name: Run all recipe tests
+        env:
+          DJANGO_SETTINGS_MODULE: nourishly.settings.test
+        run: |
+          python manage.py test recipes.tests --verbosity=1
+        continue-on-error: false
