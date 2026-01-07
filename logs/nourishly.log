@@ -1,0 +1,1317 @@
+2025-07-10 22:16:27 - nourishly - INFO - :0 - API Request: GET / - 200
+2025-07-10 22:16:29 - nourishly - INFO - :0 - API Request: GET /favicon.ico - 404
+2025-07-10 22:16:35 - nourishly - INFO - :0 - API Request: GET /admin - 404
+2025-07-10 22:16:35 - nourishly - INFO - :0 - API Request: GET /admin/ - 302
+2025-07-10 22:16:35 - nourishly - INFO - :0 - API Request: GET /admin/login/ - 200
+2025-07-10 22:17:52 - nourishly - INFO - :0 - Creating new user
+2025-07-10 22:17:52 - nourishly - INFO - :0 - User created successfully
+2025-07-10 22:20:04 - nourishly - INFO - :0 - Updating user
+2025-07-10 22:20:04 - nourishly - INFO - :0 - User updated successfully
+2025-07-10 22:20:04 - nourishly - INFO - :0 - API Request: POST /admin/login/ - 302
+2025-07-10 22:20:04 - nourishly - INFO - :0 - API Request: GET /admin/ - 200
+2025-07-10 22:20:09 - nourishly - INFO - :0 - API Request: GET /admin/users/user/ - 200
+2025-07-10 22:20:09 - nourishly - INFO - :0 - API Request: GET /admin/jsi18n/ - 200
+2025-07-18 14:41:34 - nourishly - INFO - :0 - API Request: GET / - 200
+2025-07-18 14:41:34 - nourishly - INFO - :0 - API Request: GET /favicon.ico - 404
+2025-07-18 14:52:51 - nourishly - INFO - :0 - API Request: GET / - 200
+2025-07-18 14:53:30 - nourishly - INFO - :0 - API Request: GET /wjwkw - 404
+2025-07-24 20:49:48 - nourishly - INFO - :0 - Budget Bytes scraper initialized
+2025-07-24 20:50:53 - nourishly - ERROR - :0 - Invalid Budget Bytes URL
+2025-07-24 21:04:36 - nourishly - INFO - :0 - Scraper configuration validated
+2025-07-24 21:06:12 - nourishly - INFO - logger:325 - Budget Bytes scraper initialized
+2025-07-24 21:06:25 - nourishly - INFO - logger:325 - Scraper configuration validated
+2025-07-24 21:06:33 - nourishly - ERROR - logger:335 - Invalid Budget Bytes URL
+2025-07-24 23:08:37 - nourishly - INFO - unknown:0 - Testing logger from test function
+2025-07-24 23:08:37 - nourishly - ERROR - unknown:0 - Testing error log
+2025-07-24 23:08:37 - nourishly - INFO - budgetbytes:29 - Budget Bytes scraper initialized
+2025-07-24 23:08:37 - nourishly - INFO - budgetbytes:96 - Scraper configuration validated
+2025-07-24 23:08:37 - nourishly - INFO - unknown:0 - Validation result
+2025-07-24 21:09:24 - nourishly - INFO - budgetbytes:96 - Scraper configuration validated
+2025-07-24 21:09:46 - nourishly - ERROR - budgetbytes:48 - Invalid Budget Bytes URL
+2025-07-24 21:25:13 - nourishly - INFO - budgetbytes:72 - Starting recipe scrape
+2025-07-24 21:25:15 - nourishly - ERROR - budgetbytes:258 - Failed to normalize recipe data
+2025-07-24 21:25:15 - nourishly - ERROR - budgetbytes:88 - Failed to scrape recipe
+2025-07-24 21:26:59 - nourishly - INFO - budgetbytes:73 - Starting recipe scrape
+2025-07-24 21:27:01 - nourishly - ERROR - budgetbytes:260 - Failed to normalize recipe data
+2025-07-24 21:27:01 - nourishly - ERROR - budgetbytes:89 - Failed to scrape recipe
+2025-07-24 21:28:22 - nourishly - INFO - budgetbytes:73 - Starting recipe scrape
+2025-07-24 21:28:24 - nourishly - INFO - budgetbytes:248 - Recipe data normalized successfully
+2025-07-24 21:28:24 - nourishly - INFO - budgetbytes:79 - Recipe scraped successfully
+2025-07-24 21:41:17 - nourishly - INFO - budgetbytes:72 - Starting recipe scrape
+2025-07-24 21:41:19 - nourishly - INFO - budgetbytes:266 - Recipe data normalized successfully
+2025-07-24 21:41:19 - nourishly - INFO - budgetbytes:78 - Recipe scraped successfully
+2025-07-24 21:51:06 - nourishly - INFO - budgetbytes:73 - Starting recipe scrape
+2025-07-24 21:51:08 - nourishly - INFO - budgetbytes:267 - Recipe data normalized successfully
+2025-07-24 21:51:08 - nourishly - INFO - budgetbytes:79 - Recipe scraped successfully
+2025-07-24 21:54:12 - nourishly - INFO - budgetbytes:73 - Starting recipe scrape
+2025-07-24 21:54:14 - nourishly - INFO - budgetbytes:267 - Recipe data normalized successfully
+2025-07-24 21:54:14 - nourishly - INFO - budgetbytes:79 - Recipe scraped successfully
+2025-07-24 22:04:08 - nourishly - INFO - budgetbytes:73 - Starting recipe scrape
+2025-07-24 22:04:11 - nourishly - INFO - budgetbytes:274 - Recipe data normalized successfully
+2025-07-24 22:04:11 - nourishly - INFO - budgetbytes:79 - Recipe scraped successfully
+2025-07-26 17:14:03 - nourishly - INFO - budgetbytes:37 - Budget Bytes scraper initialized
+2025-07-26 17:15:52 - nourishly - INFO - budgetbytes:73 - Starting recipe scrape
+2025-07-26 17:15:55 - nourishly - DEBUG - budgetbytes:235 - Ingredient parsing completed
+2025-07-26 17:15:55 - nourishly - INFO - budgetbytes:274 - Recipe data normalized successfully
+2025-07-26 17:15:55 - nourishly - INFO - budgetbytes:79 - Recipe scraped successfully
+2025-07-26 17:39:12 - nourishly - INFO - budgetbytes:37 - Budget Bytes scraper initialized
+2025-07-26 18:08:33 - nourishly - INFO - budgetbytes:38 - Budget Bytes scraper initialized
+2025-07-26 18:08:41 - nourishly - INFO - budgetbytes:74 - Starting recipe scrape
+2025-07-26 18:08:44 - nourishly - DEBUG - budgetbytes:236 - Ingredient parsing completed
+2025-07-26 18:08:44 - nourishly - DEBUG - budgetbytes:666 - Macros extracted
+2025-07-26 18:08:44 - nourishly - INFO - budgetbytes:279 - Recipe data normalized successfully
+2025-07-26 18:08:44 - nourishly - INFO - budgetbytes:80 - Recipe scraped successfully
+2025-07-26 19:33:56 - nourishly - INFO - budgetbytes:39 - Budget Bytes scraper initialized
+2025-07-26 19:35:11 - nourishly - INFO - budgetbytes:39 - Budget Bytes scraper initialized
+2025-07-26 19:35:22 - nourishly - INFO - budgetbytes:75 - Starting recipe scrape
+2025-07-26 19:35:25 - nourishly - DEBUG - budgetbytes:237 - Ingredient parsing completed
+2025-07-26 19:35:25 - nourishly - DEBUG - budgetbytes:712 - Macros extracted
+2025-07-26 19:35:25 - nourishly - INFO - budgetbytes:282 - Recipe data normalized successfully
+2025-07-26 19:35:25 - nourishly - INFO - budgetbytes:81 - Recipe scraped successfully
+2025-07-27 12:35:38 - nourishly - INFO - budgetbytes:41 - Budget Bytes scraper initialized
+2025-07-27 12:35:49 - nourishly - INFO - budgetbytes:77 - Starting recipe scrape
+2025-07-27 12:35:52 - nourishly - DEBUG - budgetbytes:239 - Ingredient parsing completed
+2025-07-27 12:35:52 - nourishly - DEBUG - budgetbytes:712 - Macros extracted
+2025-07-27 12:35:52 - nourishly - INFO - budgetbytes:284 - Recipe data normalized successfully
+2025-07-27 12:35:52 - nourishly - INFO - budgetbytes:83 - Recipe scraped successfully
+2025-07-29 19:10:23 - nourishly - INFO - api_ninja:40 - Initializing API NINJA Nutrition API
+2025-07-29 19:11:10 - nourishly - INFO - base:355 - Macro analysis request
+2025-07-29 19:11:10 - nourishly - DEBUG - api_ninja:345 - Making API Ninja request
+2025-07-29 19:11:11 - nourishly - ERROR - api_ninja:117 - API Ninja unexpected error
+2025-07-29 19:18:15 - nourishly - INFO - api_ninja:40 - Initializing API NINJA Nutrition API
+2025-07-29 19:18:18 - nourishly - INFO - base:355 - Macro analysis request
+2025-07-29 19:18:18 - nourishly - DEBUG - api_ninja:356 - Making API Ninja request
+2025-07-29 19:18:19 - nourishly - ERROR - api_ninja:124 - API Ninja unexpected error
+2025-07-29 19:20:40 - nourishly - INFO - base:355 - Macro analysis request
+2025-07-29 19:20:40 - nourishly - DEBUG - api_ninja:356 - Making API Ninja request
+2025-07-29 19:20:41 - nourishly - ERROR - api_ninja:124 - API Ninja unexpected error
+2025-07-29 19:22:19 - nourishly - INFO - base:355 - Macro analysis request
+2025-07-29 19:22:19 - nourishly - DEBUG - api_ninja:356 - Making API Ninja request
+2025-07-29 19:22:20 - nourishly - INFO - base:370 - Macro analysis successful
+2025-07-31 18:10:51 - nourishly - INFO - api_ninja:40 - Initializing API NINJA Nutrition API
+2025-07-31 18:11:27 - nourishly - INFO - base:355 - Macro analysis request
+2025-07-31 18:11:27 - nourishly - DEBUG - api_ninja:356 - Making API Ninja request
+2025-07-31 18:11:29 - nourishly - INFO - base:370 - Macro analysis successful
+2025-07-31 18:13:13 - nourishly - INFO - base:355 - Macro analysis request
+2025-07-31 18:13:13 - nourishly - DEBUG - api_ninja:356 - Making API Ninja request
+2025-07-31 18:13:15 - nourishly - INFO - base:370 - Macro analysis successful
+2025-07-31 18:14:09 - nourishly - INFO - budgetbytes:41 - Budget Bytes scraper initialized
+2025-07-31 18:14:28 - nourishly - INFO - budgetbytes:41 - Budget Bytes scraper initialized
+2025-07-31 18:14:36 - nourishly - INFO - budgetbytes:77 - Starting recipe scrape
+2025-07-31 18:14:39 - nourishly - DEBUG - budgetbytes:239 - Ingredient parsing completed
+2025-07-31 18:14:39 - nourishly - DEBUG - budgetbytes:639 - Macros extracted
+2025-07-31 18:14:39 - nourishly - INFO - budgetbytes:284 - Recipe data normalized successfully
+2025-07-31 18:14:39 - nourishly - INFO - budgetbytes:83 - Recipe scraped successfully
+2025-07-31 18:16:15 - nourishly - INFO - base:355 - Macro analysis request
+2025-07-31 18:16:15 - nourishly - DEBUG - api_ninja:356 - Making API Ninja request
+2025-07-31 18:16:15 - nourishly - ERROR - api_ninja:274 - API Ninja recipe error
+2025-07-31 18:22:52 - nourishly - INFO - api_ninja:40 - Initializing API NINJA Nutrition API
+2025-07-31 18:23:23 - nourishly - INFO - base:355 - Macro analysis request
+2025-07-31 18:23:23 - nourishly - DEBUG - api_ninja:356 - Making API Ninja request
+2025-07-31 18:23:23 - nourishly - ERROR - api_ninja:274 - API Ninja recipe error
+2025-07-31 18:26:29 - nourishly - INFO - base:355 - Macro analysis request
+2025-07-31 18:26:29 - nourishly - DEBUG - api_ninja:358 - Making API Ninja request
+2025-07-31 18:26:29 - nourishly - INFO - base:370 - Macro analysis successful
+2025-08-06 20:15:40 - nourishly - INFO - budgetbytes:43 - Budget Bytes scraper initialized
+2025-08-06 20:15:40 - nourishly - INFO - budgetbytes:119 - Starting sitemap-based recipe URL discovery
+2025-08-06 20:15:40 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:15:40 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:15:40 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:15:40 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:15:40 - nourishly - INFO - budgetbytes:126 - Sitemap discovery failed, falling back to category crawling
+2025-08-06 20:15:40 - nourishly - INFO - budgetbytes:361 - Starting category-based recipe discovery (fallback method)
+2025-08-06 20:15:40 - nourishly - ERROR - budgetbytes:466 - Failed to crawl category page
+2025-08-06 20:15:40 - nourishly - INFO - budgetbytes:384 - Crawled category page
+2025-08-06 20:15:40 - nourishly - ERROR - budgetbytes:466 - Failed to crawl category page
+2025-08-06 20:15:40 - nourishly - INFO - budgetbytes:384 - Crawled category page
+2025-08-06 20:15:40 - nourishly - ERROR - budgetbytes:466 - Failed to crawl category page
+2025-08-06 20:15:40 - nourishly - INFO - budgetbytes:384 - Crawled category page
+2025-08-06 20:15:40 - nourishly - ERROR - budgetbytes:466 - Failed to crawl category page
+2025-08-06 20:15:40 - nourishly - INFO - budgetbytes:384 - Crawled category page
+2025-08-06 20:15:40 - nourishly - ERROR - budgetbytes:466 - Failed to crawl category page
+2025-08-06 20:15:40 - nourishly - INFO - budgetbytes:384 - Crawled category page
+2025-08-06 20:15:40 - nourishly - ERROR - budgetbytes:466 - Failed to crawl category page
+2025-08-06 20:15:40 - nourishly - INFO - budgetbytes:384 - Crawled category page
+2025-08-06 20:15:40 - nourishly - ERROR - budgetbytes:466 - Failed to crawl category page
+2025-08-06 20:15:40 - nourishly - INFO - budgetbytes:384 - Crawled category page
+2025-08-06 20:15:40 - nourishly - INFO - budgetbytes:129 - Recipe URL discovery completed
+2025-08-06 20:16:32 - nourishly - INFO - budgetbytes:43 - Budget Bytes scraper initialized
+2025-08-06 20:16:32 - nourishly - INFO - budgetbytes:229 - Processing sitemap index
+2025-08-06 20:16:32 - nourishly - ERROR - budgetbytes:285 - Failed to fetch sub-sitemap
+2025-08-06 20:16:32 - nourishly - ERROR - budgetbytes:285 - Failed to fetch sub-sitemap
+2025-08-06 20:17:12 - nourishly - INFO - budgetbytes:43 - Budget Bytes scraper initialized
+2025-08-06 20:17:12 - nourishly - INFO - budgetbytes:244 - Processing regular sitemap
+2025-08-06 20:17:37 - nourishly - INFO - budgetbytes:43 - Budget Bytes scraper initialized
+2025-08-06 20:17:47 - nourishly - INFO - budgetbytes:43 - Budget Bytes scraper initialized
+2025-08-06 20:17:47 - nourishly - INFO - budgetbytes:119 - Starting sitemap-based recipe URL discovery
+2025-08-06 20:17:47 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:17:47 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:17:47 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:17:47 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:17:47 - nourishly - INFO - budgetbytes:126 - Sitemap discovery failed, falling back to category crawling
+2025-08-06 20:17:47 - nourishly - INFO - budgetbytes:370 - Starting category-based recipe discovery (fallback method)
+2025-08-06 20:17:47 - nourishly - ERROR - budgetbytes:475 - Failed to crawl category page
+2025-08-06 20:17:47 - nourishly - INFO - budgetbytes:393 - Crawled category page
+2025-08-06 20:17:47 - nourishly - ERROR - budgetbytes:475 - Failed to crawl category page
+2025-08-06 20:17:47 - nourishly - INFO - budgetbytes:393 - Crawled category page
+2025-08-06 20:17:47 - nourishly - ERROR - budgetbytes:475 - Failed to crawl category page
+2025-08-06 20:17:47 - nourishly - INFO - budgetbytes:393 - Crawled category page
+2025-08-06 20:17:47 - nourishly - ERROR - budgetbytes:475 - Failed to crawl category page
+2025-08-06 20:17:47 - nourishly - INFO - budgetbytes:393 - Crawled category page
+2025-08-06 20:17:47 - nourishly - ERROR - budgetbytes:475 - Failed to crawl category page
+2025-08-06 20:17:47 - nourishly - INFO - budgetbytes:393 - Crawled category page
+2025-08-06 20:17:47 - nourishly - ERROR - budgetbytes:475 - Failed to crawl category page
+2025-08-06 20:17:47 - nourishly - INFO - budgetbytes:393 - Crawled category page
+2025-08-06 20:17:47 - nourishly - ERROR - budgetbytes:475 - Failed to crawl category page
+2025-08-06 20:17:47 - nourishly - INFO - budgetbytes:393 - Crawled category page
+2025-08-06 20:17:47 - nourishly - INFO - budgetbytes:129 - Recipe URL discovery completed
+2025-08-06 20:18:38 - nourishly - INFO - budgetbytes:43 - Budget Bytes scraper initialized
+2025-08-06 20:18:38 - nourishly - INFO - budgetbytes:119 - Starting sitemap-based recipe URL discovery
+2025-08-06 20:18:38 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:18:38 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:18:38 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:18:38 - nourishly - ERROR - budgetbytes:195 - Unexpected error fetching sitemap
+2025-08-06 20:18:38 - nourishly - INFO - budgetbytes:126 - Sitemap discovery failed, falling back to category crawling
+2025-08-06 20:18:38 - nourishly - INFO - budgetbytes:388 - Starting category-based recipe discovery (fallback method)
+2025-08-06 20:18:38 - nourishly - ERROR - budgetbytes:493 - Failed to crawl category page
+2025-08-06 20:18:38 - nourishly - INFO - budgetbytes:411 - Crawled category page
+2025-08-06 20:18:38 - nourishly - ERROR - budgetbytes:493 - Failed to crawl category page
+2025-08-06 20:18:38 - nourishly - INFO - budgetbytes:411 - Crawled category page
+2025-08-06 20:18:38 - nourishly - ERROR - budgetbytes:493 - Failed to crawl category page
+2025-08-06 20:18:38 - nourishly - INFO - budgetbytes:411 - Crawled category page
+2025-08-06 20:18:38 - nourishly - ERROR - budgetbytes:493 - Failed to crawl category page
+2025-08-06 20:18:38 - nourishly - INFO - budgetbytes:411 - Crawled category page
+2025-08-06 20:18:38 - nourishly - ERROR - budgetbytes:493 - Failed to crawl category page
+2025-08-06 20:18:38 - nourishly - INFO - budgetbytes:411 - Crawled category page
+2025-08-06 20:18:38 - nourishly - ERROR - budgetbytes:493 - Failed to crawl category page
+2025-08-06 20:18:38 - nourishly - INFO - budgetbytes:411 - Crawled category page
+2025-08-06 20:18:38 - nourishly - ERROR - budgetbytes:493 - Failed to crawl category page
+2025-08-06 20:18:38 - nourishly - INFO - budgetbytes:411 - Crawled category page
+2025-08-06 20:18:38 - nourishly - INFO - budgetbytes:129 - Recipe URL discovery completed
+2025-08-06 20:18:58 - nourishly - INFO - budgetbytes:43 - Budget Bytes scraper initialized
+2025-08-06 20:18:58 - nourishly - INFO - budgetbytes:119 - Starting sitemap-based recipe URL discovery
+2025-08-06 20:19:00 - nourishly - INFO - budgetbytes:164 - Attempting to fetch sitemap
+2025-08-06 20:19:02 - nourishly - INFO - budgetbytes:171 - Successfully fetched sitemap
+2025-08-06 20:19:02 - nourishly - INFO - budgetbytes:229 - Processing sitemap index
+2025-08-06 20:19:02 - nourishly - INFO - budgetbytes:238 - Found post sitemaps
+2025-08-06 20:19:02 - nourishly - ERROR - budgetbytes:304 - Failed to fetch sub-sitemap (Exception)
+2025-08-06 20:19:02 - nourishly - WARNING - budgetbytes:251 - Failed to fetch sub-sitemap
+2025-08-06 20:19:02 - nourishly - ERROR - budgetbytes:304 - Failed to fetch sub-sitemap (Exception)
+2025-08-06 20:19:02 - nourishly - WARNING - budgetbytes:251 - Failed to fetch sub-sitemap
+2025-08-06 20:19:04 - nourishly - INFO - budgetbytes:164 - Attempting to fetch sitemap
+2025-08-06 20:19:04 - nourishly - INFO - budgetbytes:171 - Successfully fetched sitemap
+2025-08-06 20:19:04 - nourishly - INFO - budgetbytes:229 - Processing sitemap index
+2025-08-06 20:19:04 - nourishly - INFO - budgetbytes:238 - Found post sitemaps
+2025-08-06 20:19:04 - nourishly - ERROR - budgetbytes:304 - Failed to fetch sub-sitemap (Exception)
+2025-08-06 20:19:04 - nourishly - WARNING - budgetbytes:251 - Failed to fetch sub-sitemap
+2025-08-06 20:19:04 - nourishly - ERROR - budgetbytes:304 - Failed to fetch sub-sitemap (Exception)
+2025-08-06 20:19:04 - nourishly - WARNING - budgetbytes:251 - Failed to fetch sub-sitemap
+2025-08-06 20:19:06 - nourishly - INFO - budgetbytes:164 - Attempting to fetch sitemap
+2025-08-06 20:19:17 - nourishly - INFO - budgetbytes:171 - Successfully fetched sitemap
+2025-08-06 20:19:18 - nourishly - INFO - budgetbytes:255 - Processing regular sitemap
+2025-08-06 20:19:18 - nourishly - INFO - budgetbytes:175 - Found URLs in sitemap
+2025-08-06 20:19:18 - nourishly - INFO - budgetbytes:201 - Filtered recipe URLs
+2025-08-06 20:19:18 - nourishly - INFO - budgetbytes:129 - Recipe URL discovery completed
+2025-08-06 20:19:37 - nourishly - INFO - budgetbytes:43 - Budget Bytes scraper initialized
+2025-08-06 20:19:37 - nourishly - INFO - budgetbytes:119 - Starting sitemap-based recipe URL discovery
+2025-08-06 20:19:39 - nourishly - INFO - budgetbytes:164 - Attempting to fetch sitemap
+2025-08-06 20:19:40 - nourishly - INFO - budgetbytes:171 - Successfully fetched sitemap
+2025-08-06 20:19:40 - nourishly - INFO - budgetbytes:229 - Processing sitemap index
+2025-08-06 20:19:40 - nourishly - INFO - budgetbytes:238 - Found post sitemaps
+2025-08-06 20:19:40 - nourishly - ERROR - budgetbytes:304 - Failed to fetch sub-sitemap (Exception)
+2025-08-06 20:19:40 - nourishly - WARNING - budgetbytes:251 - Failed to fetch sub-sitemap
+2025-08-06 20:19:40 - nourishly - ERROR - budgetbytes:304 - Failed to fetch sub-sitemap (Exception)
+2025-08-06 20:19:40 - nourishly - WARNING - budgetbytes:251 - Failed to fetch sub-sitemap
+2025-08-06 20:19:42 - nourishly - INFO - budgetbytes:164 - Attempting to fetch sitemap
+2025-08-06 20:19:42 - nourishly - INFO - budgetbytes:171 - Successfully fetched sitemap
+2025-08-06 20:19:42 - nourishly - INFO - budgetbytes:229 - Processing sitemap index
+2025-08-06 20:19:42 - nourishly - INFO - budgetbytes:238 - Found post sitemaps
+2025-08-06 20:19:42 - nourishly - ERROR - budgetbytes:304 - Failed to fetch sub-sitemap (Exception)
+2025-08-06 20:19:42 - nourishly - WARNING - budgetbytes:251 - Failed to fetch sub-sitemap
+2025-08-06 20:19:42 - nourishly - ERROR - budgetbytes:304 - Failed to fetch sub-sitemap (Exception)
+2025-08-06 20:19:42 - nourishly - WARNING - budgetbytes:251 - Failed to fetch sub-sitemap
+2025-08-06 20:19:44 - nourishly - INFO - budgetbytes:164 - Attempting to fetch sitemap
+2025-08-06 20:19:44 - nourishly - INFO - budgetbytes:171 - Successfully fetched sitemap
+2025-08-06 20:19:44 - nourishly - INFO - budgetbytes:255 - Processing regular sitemap
+2025-08-06 20:19:44 - nourishly - INFO - budgetbytes:175 - Found URLs in sitemap
+2025-08-06 20:19:44 - nourishly - INFO - budgetbytes:201 - Filtered recipe URLs
+2025-08-06 20:19:44 - nourishly - INFO - budgetbytes:129 - Recipe URL discovery completed
+2025-08-26 18:36:58 - nourishly - INFO - budgetbytes:43 - Budget Bytes scraper initialized
+2025-08-26 18:41:21 - nourishly - INFO - budgetbytes:119 - Starting sitemap-based recipe URL discovery
+2025-08-26 18:41:23 - nourishly - INFO - budgetbytes:168 - Attempting to fetch sitemap
+2025-08-26 18:41:30 - nourishly - INFO - budgetbytes:179 - Successfully fetched sitemap
+2025-08-26 18:41:30 - nourishly - INFO - budgetbytes:245 - Processing sitemap index
+2025-08-26 18:41:30 - nourishly - INFO - budgetbytes:254 - Found post sitemaps
+2025-08-26 18:41:30 - nourishly - ERROR - budgetbytes:348 - Failed to fetch sub-sitemap (Exception)
+2025-08-26 18:41:30 - nourishly - WARNING - budgetbytes:275 - Failed to fetch sub-sitemap
+2025-08-26 18:41:30 - nourishly - ERROR - budgetbytes:348 - Failed to fetch sub-sitemap (Exception)
+2025-08-26 18:41:30 - nourishly - WARNING - budgetbytes:275 - Failed to fetch sub-sitemap
+2025-08-26 18:41:32 - nourishly - INFO - budgetbytes:168 - Attempting to fetch sitemap
+2025-08-26 18:41:32 - nourishly - INFO - budgetbytes:179 - Successfully fetched sitemap
+2025-08-26 18:41:32 - nourishly - INFO - budgetbytes:245 - Processing sitemap index
+2025-08-26 18:41:32 - nourishly - INFO - budgetbytes:254 - Found post sitemaps
+2025-08-26 18:41:32 - nourishly - ERROR - budgetbytes:348 - Failed to fetch sub-sitemap (Exception)
+2025-08-26 18:41:32 - nourishly - WARNING - budgetbytes:275 - Failed to fetch sub-sitemap
+2025-08-26 18:41:32 - nourishly - ERROR - budgetbytes:348 - Failed to fetch sub-sitemap (Exception)
+2025-08-26 18:41:32 - nourishly - WARNING - budgetbytes:275 - Failed to fetch sub-sitemap
+2025-08-26 18:41:34 - nourishly - INFO - budgetbytes:168 - Attempting to fetch sitemap
+2025-08-26 18:41:49 - nourishly - INFO - budgetbytes:179 - Successfully fetched sitemap
+2025-08-26 18:41:49 - nourishly - INFO - budgetbytes:279 - Processing regular sitemap
+2025-08-26 18:41:49 - nourishly - INFO - budgetbytes:183 - Found URLs in sitemap
+2025-08-26 18:41:49 - nourishly - INFO - budgetbytes:215 - Filtered recipe URLs
+2025-08-26 18:41:49 - nourishly - INFO - budgetbytes:133 - Recipe URL discovery completed
+2025-08-26 19:08:11 - nourishly - INFO - budgetbytes:38 - Budget Bytes scraper initialized
+2025-08-26 19:08:59 - nourishly - ERROR - budgetbytes:71 - Invalid Budget Bytes URL
+2025-08-26 19:50:40 - nourishly - INFO - budgetbytes:41 - Budget Bytes scraper initialized
+2025-08-26 19:51:00 - nourishly - INFO - budgetbytes:77 - Starting recipe scrape
+2025-08-26 19:51:03 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:51:03 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser
+2025-08-26 19:51:03 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:51:03 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser
+2025-08-26 19:51:03 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:51:03 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser
+2025-08-26 19:51:03 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:51:03 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser
+2025-08-26 19:51:03 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:51:03 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser
+2025-08-26 19:51:03 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:51:03 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser
+2025-08-26 19:51:03 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:51:03 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser
+2025-08-26 19:51:03 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:51:03 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser
+2025-08-26 19:51:03 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:51:03 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser
+2025-08-26 19:51:03 - nourishly - DEBUG - budgetbytes:676 - Ingredient parsing completed
+2025-08-26 19:51:03 - nourishly - DEBUG - budgetbytes:1084 - Macros extracted
+2025-08-26 19:51:03 - nourishly - INFO - budgetbytes:721 - Recipe data normalized successfully
+2025-08-26 19:51:03 - nourishly - INFO - budgetbytes:82 - Recipe scraped successfully
+2025-08-26 19:55:23 - nourishly - INFO - budgetbytes:77 - Starting recipe scrape
+2025-08-26 19:55:25 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:55:25 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser: 1 cup uncooked long grain rice
+2025-08-26 19:55:25 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:55:25 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser: 2 cubes bullion, vegetable, or chicken
+2025-08-26 19:55:25 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:55:25 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser: 1/4 tsp chili powder
+2025-08-26 19:55:25 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:55:25 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser: 1/4 bunch fresh cilantro
+2025-08-26 19:55:25 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:55:25 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser: 6 poblano peppers
+2025-08-26 19:55:25 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:55:25 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser: 4 oz. cheese
+2025-08-26 19:55:25 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:55:25 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser: 3/4 cup divided salsa
+2025-08-26 19:55:25 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:55:25 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser: 1 15oz. can black beans
+2025-08-26 19:55:25 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:55:25 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser: non-stick spray (if needed)
+2025-08-26 19:55:25 - nourishly - DEBUG - budgetbytes:676 - Ingredient parsing completed
+2025-08-26 19:55:25 - nourishly - DEBUG - budgetbytes:1084 - Macros extracted
+2025-08-26 19:55:25 - nourishly - INFO - budgetbytes:721 - Recipe data normalized successfully
+2025-08-26 19:55:25 - nourishly - INFO - budgetbytes:82 - Recipe scraped successfully
+2025-08-26 19:56:57 - nourishly - INFO - budgetbytes:77 - Starting recipe scrape
+2025-08-26 19:57:00 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:57:00 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser: 1 cup uncooked long grain rice
+2025-08-26 19:57:00 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:57:00 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser: 2 cubes bullion, vegetable, or chicken
+2025-08-26 19:57:00 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:57:00 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser: 1/4 tsp chili powder
+2025-08-26 19:57:00 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:57:00 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser: 1/4 bunch fresh cilantro
+2025-08-26 19:57:00 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:57:00 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser: 6 poblano peppers
+2025-08-26 19:57:00 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:57:00 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser: 4 oz. cheese
+2025-08-26 19:57:00 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:57:00 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser: 3/4 cup divided salsa
+2025-08-26 19:57:00 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:57:00 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser: 1 15oz. can black beans
+2025-08-26 19:57:00 - nourishly - DEBUG - budgetbytes:812 - Parsing ingredient
+2025-08-26 19:57:00 - nourishly - DEBUG - budgetbytes:838 - Failed to parse ingredient with ingredient_parser: non-stick spray (if needed)
+2025-08-26 19:57:00 - nourishly - DEBUG - budgetbytes:676 - Ingredient parsing completed
+2025-08-26 19:57:00 - nourishly - DEBUG - budgetbytes:1084 - Macros extracted
+2025-08-26 19:57:00 - nourishly - INFO - budgetbytes:721 - Recipe data normalized successfully
+2025-08-26 19:57:00 - nourishly - INFO - budgetbytes:82 - Recipe scraped successfully
+2025-08-26 19:59:52 - nourishly - INFO - budgetbytes:78 - Starting recipe scrape
+2025-08-26 19:59:55 - nourishly - DEBUG - budgetbytes:813 - Parsing ingredient
+2025-08-26 19:59:55 - nourishly - DEBUG - budgetbytes:837 - Parsed ingredient using method
+2025-08-26 19:59:55 - nourishly - DEBUG - budgetbytes:813 - Parsing ingredient
+2025-08-26 19:59:55 - nourishly - DEBUG - budgetbytes:837 - Parsed ingredient using method
+2025-08-26 19:59:55 - nourishly - DEBUG - budgetbytes:813 - Parsing ingredient
+2025-08-26 19:59:55 - nourishly - DEBUG - budgetbytes:837 - Parsed ingredient using method
+2025-08-26 19:59:55 - nourishly - DEBUG - budgetbytes:813 - Parsing ingredient
+2025-08-26 19:59:55 - nourishly - DEBUG - budgetbytes:837 - Parsed ingredient using method
+2025-08-26 19:59:55 - nourishly - DEBUG - budgetbytes:813 - Parsing ingredient
+2025-08-26 19:59:55 - nourishly - DEBUG - budgetbytes:837 - Parsed ingredient using method
+2025-08-26 19:59:55 - nourishly - DEBUG - budgetbytes:813 - Parsing ingredient
+2025-08-26 19:59:55 - nourishly - DEBUG - budgetbytes:837 - Parsed ingredient using method
+2025-08-26 19:59:55 - nourishly - DEBUG - budgetbytes:813 - Parsing ingredient
+2025-08-26 19:59:55 - nourishly - DEBUG - budgetbytes:837 - Parsed ingredient using method
+2025-08-26 19:59:55 - nourishly - DEBUG - budgetbytes:813 - Parsing ingredient
+2025-08-26 19:59:55 - nourishly - DEBUG - budgetbytes:837 - Parsed ingredient using method
+2025-08-26 19:59:55 - nourishly - DEBUG - budgetbytes:813 - Parsing ingredient
+2025-08-26 19:59:55 - nourishly - DEBUG - budgetbytes:837 - Parsed ingredient using method
+2025-08-26 19:59:55 - nourishly - DEBUG - budgetbytes:677 - Ingredient parsing completed
+2025-08-26 19:59:55 - nourishly - DEBUG - budgetbytes:1085 - Macros extracted
+2025-08-26 19:59:55 - nourishly - INFO - budgetbytes:722 - Recipe data normalized successfully
+2025-08-26 19:59:55 - nourishly - INFO - budgetbytes:83 - Recipe scraped successfully
+2025-08-27 16:57:08 - nourishly - INFO - budgetbytes:43 - Budget Bytes scraper initialized
+2025-08-27 16:57:46 - nourishly - INFO - budgetbytes:79 - Starting recipe scrape
+2025-08-27 16:57:48 - nourishly - INFO - budgetbytes:817 - Failed to parse ingredient with ingredient_parser: 2 cubes bullion, vegetable, or chicken
+2025-08-27 16:57:48 - nourishly - ERROR - budgetbytes:715 - Failed to normalize recipe data
+2025-08-27 17:00:31 - nourishly - INFO - budgetbytes:43 - Budget Bytes scraper initialized
+2025-08-27 17:00:34 - nourishly - INFO - budgetbytes:79 - Starting recipe scrape
+2025-08-27 17:00:36 - nourishly - INFO - budgetbytes:817 - Failed to parse ingredient with ingredient_parser: 2 cubes bullion, vegetable, or chicken
+2025-08-27 17:00:36 - nourishly - ERROR - budgetbytes:715 - Failed to normalize recipe data
+2025-08-27 17:01:44 - nourishly - INFO - budgetbytes:79 - Starting recipe scrape
+2025-08-27 17:01:46 - nourishly - INFO - budgetbytes:818 - Failed to parse ingredient with ingredient_parser: 2 cubes bullion, vegetable, or chicken
+2025-08-27 17:02:00 - nourishly - INFO - budgetbytes:79 - Starting recipe scrape
+2025-08-27 17:02:02 - nourishly - INFO - budgetbytes:818 - Failed to parse ingredient with ingredient_parser: 2 cubes bullion, vegetable, or chicken
+2025-08-27 17:02:02 - nourishly - ERROR - budgetbytes:716 - Failed to normalize recipe data Failed to extract ingredient information.
+2025-08-27 17:03:54 - nourishly - INFO - budgetbytes:79 - Starting recipe scrape
+2025-08-27 17:03:56 - nourishly - ERROR - budgetbytes:716 - Failed to normalize recipe data log_debug() takes 1 positional argument but 2 were given
+2025-08-27 17:04:25 - nourishly - INFO - budgetbytes:79 - Starting recipe scrape
+2025-08-27 17:04:27 - nourishly - INFO - budgetbytes:818 - Failed to parse ingredient with ingredient_parser: 2 cubes bullion, vegetable, or chicken
+2025-08-27 17:04:27 - nourishly - ERROR - budgetbytes:716 - Failed to normalize recipe data Failed to extract ingredient information.
+2025-08-27 17:06:27 - nourishly - INFO - budgetbytes:79 - Starting recipe scrape
+2025-08-27 17:06:30 - nourishly - INFO - budgetbytes:818 - Failed to parse ingredient with ingredient_parser: 2 cubes bullion, vegetable, or chicken
+2025-08-27 17:06:30 - nourishly - ERROR - budgetbytes:716 - Failed to normalize recipe data Failed to extract ingredient information.
+2025-08-27 17:10:15 - nourishly - INFO - budgetbytes:79 - Starting recipe scrape
+2025-08-27 17:10:17 - nourishly - INFO - budgetbytes:818 - Failed to parse ingredient with ingredient_parser: 2 cubes bullion, vegetable, or chicken
+2025-08-27 17:10:17 - nourishly - ERROR - budgetbytes:716 - Failed to normalize recipe data Failed to extract ingredient information.
+2025-08-27 17:11:51 - nourishly - INFO - budgetbytes:79 - Starting recipe scrape
+2025-08-27 17:11:53 - nourishly - INFO - budgetbytes:818 - Failed to parse ingredient with ingredient_parser: non-stick spray (if needed)
+2025-08-27 17:11:53 - nourishly - ERROR - budgetbytes:716 - Failed to normalize recipe data Failed to extract ingredient information.
+2025-08-27 17:12:31 - nourishly - INFO - budgetbytes:79 - Starting recipe scrape
+2025-08-27 17:12:33 - nourishly - INFO - budgetbytes:705 - Recipe data normalized successfully
+2025-08-27 17:12:33 - nourishly - INFO - budgetbytes:84 - Recipe scraped successfully
+2025-08-27 17:27:41 - nourishly - INFO - budgetbytes:110 - Starting sitemap-based recipe URL discovery
+2025-08-27 17:27:43 - nourishly - INFO - budgetbytes:145 - Attempting to fetch sitemap
+2025-08-27 17:27:48 - nourishly - INFO - budgetbytes:156 - Successfully fetched sitemap
+2025-08-27 17:27:48 - nourishly - INFO - budgetbytes:221 - Processing sitemap index
+2025-08-27 17:27:48 - nourishly - INFO - budgetbytes:230 - Found post sitemaps
+2025-08-27 17:27:48 - nourishly - ERROR - budgetbytes:324 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 17:27:48 - nourishly - WARNING - budgetbytes:251 - Failed to fetch sub-sitemap
+2025-08-27 17:27:48 - nourishly - ERROR - budgetbytes:324 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 17:27:48 - nourishly - WARNING - budgetbytes:251 - Failed to fetch sub-sitemap
+2025-08-27 17:27:50 - nourishly - INFO - budgetbytes:145 - Attempting to fetch sitemap
+2025-08-27 17:27:50 - nourishly - INFO - budgetbytes:156 - Successfully fetched sitemap
+2025-08-27 17:27:50 - nourishly - INFO - budgetbytes:221 - Processing sitemap index
+2025-08-27 17:27:50 - nourishly - INFO - budgetbytes:230 - Found post sitemaps
+2025-08-27 17:27:50 - nourishly - ERROR - budgetbytes:324 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 17:27:50 - nourishly - WARNING - budgetbytes:251 - Failed to fetch sub-sitemap
+2025-08-27 17:27:50 - nourishly - ERROR - budgetbytes:324 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 17:27:50 - nourishly - WARNING - budgetbytes:251 - Failed to fetch sub-sitemap
+2025-08-27 17:27:52 - nourishly - INFO - budgetbytes:145 - Attempting to fetch sitemap
+2025-08-27 17:28:06 - nourishly - INFO - budgetbytes:156 - Successfully fetched sitemap
+2025-08-27 17:28:06 - nourishly - INFO - budgetbytes:255 - Processing regular sitemap
+2025-08-27 17:28:06 - nourishly - INFO - budgetbytes:160 - Found URLs in sitemap
+2025-08-27 17:28:06 - nourishly - INFO - budgetbytes:192 - Filtered recipe URLs
+2025-08-27 17:28:06 - nourishly - INFO - budgetbytes:120 - Recipe URL discovery completed
+2025-08-27 17:42:34 - nourishly - INFO - budgetbytes:110 - Starting sitemap-based recipe URL discovery
+2025-08-27 17:42:36 - nourishly - INFO - budgetbytes:143 - Attempting to fetch sitemap
+2025-08-27 17:42:41 - nourishly - INFO - budgetbytes:153 - Successfully fetched sitemap
+2025-08-27 17:42:41 - nourishly - INFO - budgetbytes:214 - Processing sitemap index
+2025-08-27 17:42:41 - nourishly - ERROR - budgetbytes:258 - Unexpected error parsing sitemap
+2025-08-27 17:42:43 - nourishly - INFO - budgetbytes:143 - Attempting to fetch sitemap
+2025-08-27 17:42:43 - nourishly - INFO - budgetbytes:153 - Successfully fetched sitemap
+2025-08-27 17:42:43 - nourishly - INFO - budgetbytes:214 - Processing sitemap index
+2025-08-27 17:42:43 - nourishly - ERROR - budgetbytes:258 - Unexpected error parsing sitemap
+2025-08-27 17:42:45 - nourishly - INFO - budgetbytes:143 - Attempting to fetch sitemap
+2025-08-27 17:42:58 - nourishly - INFO - budgetbytes:153 - Successfully fetched sitemap
+2025-08-27 17:42:58 - nourishly - INFO - budgetbytes:248 - Processing regular sitemap
+2025-08-27 17:42:58 - nourishly - ERROR - budgetbytes:258 - Unexpected error parsing sitemap
+2025-08-27 17:43:00 - nourishly - INFO - budgetbytes:143 - Attempting to fetch sitemap
+2025-08-27 17:43:03 - nourishly - WARNING - budgetbytes:164 - Sitemap request failed https://www.budgetbytes.com/recipe-sitemap.xml
+2025-08-27 17:43:03 - nourishly - INFO - budgetbytes:117 - Sitemap discovery failed, falling back to category crawling
+2025-08-27 17:43:03 - nourishly - INFO - budgetbytes:415 - Starting category-based recipe discovery (fallback method)
+2025-08-27 17:43:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:43:03 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 17:43:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:43:03 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 17:43:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:43:03 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 17:43:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:43:03 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 17:43:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:43:03 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 17:43:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:43:03 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 17:43:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:43:03 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 17:43:03 - nourishly - INFO - budgetbytes:120 - Recipe URL discovery completed
+2025-08-27 17:44:51 - nourishly - INFO - budgetbytes:110 - Starting sitemap-based recipe URL discovery
+2025-08-27 17:44:53 - nourishly - INFO - budgetbytes:143 - Attempting to fetch sitemap
+2025-08-27 17:44:58 - nourishly - INFO - budgetbytes:153 - Successfully fetched sitemap
+2025-08-27 17:44:58 - nourishly - INFO - budgetbytes:214 - Processing sitemap index
+2025-08-27 17:44:58 - nourishly - ERROR - budgetbytes:258 - Unexpected error parsing sitemap
+2025-08-27 17:45:00 - nourishly - INFO - budgetbytes:143 - Attempting to fetch sitemap
+2025-08-27 17:45:00 - nourishly - INFO - budgetbytes:153 - Successfully fetched sitemap
+2025-08-27 17:45:00 - nourishly - INFO - budgetbytes:214 - Processing sitemap index
+2025-08-27 17:45:00 - nourishly - ERROR - budgetbytes:258 - Unexpected error parsing sitemap
+2025-08-27 17:45:02 - nourishly - INFO - budgetbytes:143 - Attempting to fetch sitemap
+2025-08-27 17:45:14 - nourishly - INFO - budgetbytes:153 - Successfully fetched sitemap
+2025-08-27 17:45:14 - nourishly - INFO - budgetbytes:248 - Processing regular sitemap
+2025-08-27 17:45:14 - nourishly - ERROR - budgetbytes:258 - Unexpected error parsing sitemap
+2025-08-27 17:45:16 - nourishly - INFO - budgetbytes:143 - Attempting to fetch sitemap
+2025-08-27 17:45:16 - nourishly - WARNING - budgetbytes:164 - Sitemap request failed https://www.budgetbytes.com/recipe-sitemap.xml
+2025-08-27 17:45:16 - nourishly - INFO - budgetbytes:117 - Sitemap discovery failed, falling back to category crawling
+2025-08-27 17:45:16 - nourishly - INFO - budgetbytes:415 - Starting category-based recipe discovery (fallback method)
+2025-08-27 17:45:16 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:45:16 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 17:45:16 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:45:16 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 17:45:16 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:45:16 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 17:45:16 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:45:16 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 17:45:16 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:45:16 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 17:45:16 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:45:16 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 17:45:16 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 17:45:16 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 17:45:16 - nourishly - INFO - budgetbytes:120 - Recipe URL discovery completed
+2025-08-27 17:47:23 - nourishly - INFO - budgetbytes:43 - Budget Bytes scraper initialized
+2025-08-27 17:47:26 - nourishly - INFO - budgetbytes:110 - Starting sitemap-based recipe URL discovery
+2025-08-27 17:47:28 - nourishly - INFO - budgetbytes:143 - Attempting to fetch sitemap
+2025-08-27 17:47:30 - nourishly - INFO - budgetbytes:153 - Successfully fetched sitemap
+2025-08-27 17:47:30 - nourishly - INFO - budgetbytes:214 - Processing sitemap index
+2025-08-27 17:47:30 - nourishly - INFO - budgetbytes:223 - Found post sitemaps
+2025-08-27 17:47:30 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 17:47:30 - nourishly - WARNING - budgetbytes:244 - Failed to fetch sub-sitemap
+2025-08-27 17:47:30 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 17:47:30 - nourishly - WARNING - budgetbytes:244 - Failed to fetch sub-sitemap
+2025-08-27 17:47:32 - nourishly - INFO - budgetbytes:143 - Attempting to fetch sitemap
+2025-08-27 17:47:33 - nourishly - INFO - budgetbytes:153 - Successfully fetched sitemap
+2025-08-27 17:47:33 - nourishly - INFO - budgetbytes:214 - Processing sitemap index
+2025-08-27 17:47:33 - nourishly - INFO - budgetbytes:223 - Found post sitemaps
+2025-08-27 17:47:33 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 17:47:33 - nourishly - WARNING - budgetbytes:244 - Failed to fetch sub-sitemap
+2025-08-27 17:47:33 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 17:47:33 - nourishly - WARNING - budgetbytes:244 - Failed to fetch sub-sitemap
+2025-08-27 17:47:35 - nourishly - INFO - budgetbytes:143 - Attempting to fetch sitemap
+2025-08-27 17:47:47 - nourishly - INFO - budgetbytes:153 - Successfully fetched sitemap
+2025-08-27 17:47:47 - nourishly - INFO - budgetbytes:248 - Processing regular sitemap
+2025-08-27 17:47:47 - nourishly - INFO - budgetbytes:157 - Found URLs in sitemap
+2025-08-27 17:47:47 - nourishly - INFO - budgetbytes:189 - Filtered recipe URLs
+2025-08-27 17:47:47 - nourishly - INFO - budgetbytes:120 - Recipe URL discovery completed
+2025-08-27 18:01:54 - nourishly - INFO - budgetbytes:43 - Budget Bytes scraper initialized
+2025-08-27 18:01:59 - nourishly - INFO - budgetbytes:110 - Starting sitemap-based recipe URL discovery
+2025-08-27 18:02:01 - nourishly - INFO - budgetbytes:143 - Attempting to fetch sitemap
+2025-08-27 18:02:03 - nourishly - WARNING - budgetbytes:164 - Sitemap request failed https://www.budgetbytes.com/recipe-sitemap.xml
+2025-08-27 18:02:03 - nourishly - INFO - budgetbytes:117 - Sitemap discovery failed, falling back to category crawling
+2025-08-27 18:02:03 - nourishly - INFO - budgetbytes:415 - Starting category-based recipe discovery (fallback method)
+2025-08-27 18:02:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:02:03 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 18:02:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:02:03 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 18:02:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:02:03 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 18:02:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:02:03 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 18:02:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:02:03 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 18:02:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:02:03 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 18:02:03 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:02:03 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 18:02:03 - nourishly - INFO - budgetbytes:120 - Recipe URL discovery completed
+2025-08-27 18:02:59 - nourishly - INFO - budgetbytes:43 - Budget Bytes scraper initialized
+2025-08-27 18:03:02 - nourishly - INFO - budgetbytes:110 - Starting sitemap-based recipe URL discovery
+2025-08-27 18:03:04 - nourishly - INFO - budgetbytes:143 - Attempting to fetch sitemap
+2025-08-27 18:03:11 - nourishly - INFO - budgetbytes:153 - Successfully fetched sitemap
+2025-08-27 18:03:11 - nourishly - INFO - budgetbytes:214 - Processing sitemap index
+2025-08-27 18:03:11 - nourishly - INFO - budgetbytes:223 - Found post sitemaps
+2025-08-27 18:03:11 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 18:03:11 - nourishly - WARNING - budgetbytes:244 - Failed to fetch sub-sitemap
+2025-08-27 18:03:11 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 18:03:11 - nourishly - WARNING - budgetbytes:244 - Failed to fetch sub-sitemap
+2025-08-27 18:03:11 - nourishly - INFO - budgetbytes:117 - Sitemap discovery failed, falling back to category crawling
+2025-08-27 18:03:11 - nourishly - INFO - budgetbytes:415 - Starting category-based recipe discovery (fallback method)
+2025-08-27 18:03:11 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:03:11 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 18:03:11 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:03:11 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 18:03:11 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:03:11 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 18:03:11 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:03:11 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 18:03:11 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:03:11 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 18:03:11 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:03:11 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 18:03:11 - nourishly - ERROR - budgetbytes:533 - Failed to crawl category page
+2025-08-27 18:03:11 - nourishly - INFO - budgetbytes:440 - Crawled category page
+2025-08-27 18:03:11 - nourishly - INFO - budgetbytes:120 - Recipe URL discovery completed
+2025-08-27 18:04:19 - nourishly - INFO - budgetbytes:43 - Budget Bytes scraper initialized
+2025-08-27 18:04:23 - nourishly - INFO - budgetbytes:110 - Starting sitemap-based recipe URL discovery
+2025-08-27 18:04:25 - nourishly - INFO - budgetbytes:143 - Attempting to fetch sitemap
+2025-08-27 18:04:30 - nourishly - INFO - budgetbytes:153 - Successfully fetched sitemap
+2025-08-27 18:04:30 - nourishly - INFO - budgetbytes:214 - Processing sitemap index
+2025-08-27 18:04:30 - nourishly - INFO - budgetbytes:223 - Found post sitemaps
+2025-08-27 18:04:30 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 18:04:30 - nourishly - WARNING - budgetbytes:244 - Failed to fetch sub-sitemap
+2025-08-27 18:04:30 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 18:04:30 - nourishly - WARNING - budgetbytes:244 - Failed to fetch sub-sitemap
+2025-08-27 18:04:32 - nourishly - INFO - budgetbytes:143 - Attempting to fetch sitemap
+2025-08-27 18:04:33 - nourishly - INFO - budgetbytes:153 - Successfully fetched sitemap
+2025-08-27 18:04:33 - nourishly - INFO - budgetbytes:214 - Processing sitemap index
+2025-08-27 18:04:33 - nourishly - INFO - budgetbytes:223 - Found post sitemaps
+2025-08-27 18:04:33 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 18:04:33 - nourishly - WARNING - budgetbytes:244 - Failed to fetch sub-sitemap
+2025-08-27 18:04:33 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 18:04:33 - nourishly - WARNING - budgetbytes:244 - Failed to fetch sub-sitemap
+2025-08-27 18:04:35 - nourishly - INFO - budgetbytes:143 - Attempting to fetch sitemap
+2025-08-27 18:04:48 - nourishly - INFO - budgetbytes:153 - Successfully fetched sitemap
+2025-08-27 18:04:48 - nourishly - INFO - budgetbytes:248 - Processing regular sitemap
+2025-08-27 18:04:48 - nourishly - INFO - budgetbytes:157 - Found URLs in sitemap
+2025-08-27 18:04:48 - nourishly - INFO - budgetbytes:189 - Filtered recipe URLs
+2025-08-27 18:04:48 - nourishly - INFO - budgetbytes:120 - Recipe URL discovery completed
+2025-08-27 18:07:13 - nourishly - INFO - budgetbytes:43 - Budget Bytes scraper initialized
+2025-08-27 18:07:17 - nourishly - INFO - budgetbytes:110 - Starting sitemap-based recipe URL discovery
+2025-08-27 18:07:19 - nourishly - INFO - budgetbytes:143 - Attempting to fetch sitemap
+2025-08-27 18:07:22 - nourishly - INFO - budgetbytes:153 - Successfully fetched sitemap
+2025-08-27 18:07:22 - nourishly - INFO - budgetbytes:214 - Processing sitemap index
+2025-08-27 18:07:22 - nourishly - INFO - budgetbytes:223 - Found post sitemaps
+2025-08-27 18:07:22 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 18:07:22 - nourishly - WARNING - budgetbytes:244 - Failed to fetch sub-sitemap
+2025-08-27 18:07:22 - nourishly - ERROR - budgetbytes:317 - Failed to fetch sub-sitemap (Exception)
+2025-08-27 18:07:22 - nourishly - WARNING - budgetbytes:244 - Failed to fetch sub-sitemap
+2025-08-27 18:07:24 - nourishly - INFO - budgetbytes:143 - Attempting to fetch sitemap
+2025-08-27 18:07:36 - nourishly - INFO - budgetbytes:153 - Successfully fetched sitemap
+2025-08-27 18:07:36 - nourishly - INFO - budgetbytes:248 - Processing regular sitemap
+2025-08-27 18:07:36 - nourishly - INFO - budgetbytes:157 - Found URLs in sitemap
+2025-08-27 18:07:36 - nourishly - INFO - budgetbytes:189 - Filtered recipe URLs
+2025-08-27 18:07:36 - nourishly - INFO - budgetbytes:120 - Recipe URL discovery completed
+2025-08-27 18:10:21 - nourishly - INFO - budgetbytes:43 - Budget Bytes scraper initialized
+2025-08-27 18:10:24 - nourishly - INFO - budgetbytes:110 - Starting sitemap-based recipe URL discovery
+2025-08-27 18:10:26 - nourishly - INFO - budgetbytes:143 - Attempting to fetch sitemap
+2025-08-27 18:10:47 - nourishly - INFO - budgetbytes:153 - Successfully fetched sitemap
+2025-08-27 18:10:47 - nourishly - INFO - budgetbytes:248 - Processing regular sitemap
+2025-08-27 18:10:47 - nourishly - INFO - budgetbytes:157 - Found URLs in sitemap
+2025-08-27 18:10:47 - nourishly - INFO - budgetbytes:189 - Filtered recipe URLs
+2025-08-27 18:10:47 - nourishly - INFO - budgetbytes:120 - Recipe URL discovery completed
+2025-08-27 18:24:58 - nourishly - INFO - budgetbytes:43 - Budget Bytes scraper initialized
+2025-08-27 18:25:00 - nourishly - INFO - budgetbytes:110 - Starting sitemap-based recipe URL discovery
+2025-08-27 18:25:02 - nourishly - INFO - budgetbytes:139 - Attempting to fetch sitemap
+2025-08-27 18:25:17 - nourishly - INFO - budgetbytes:149 - Successfully fetched sitemap
+2025-08-27 18:25:17 - nourishly - INFO - budgetbytes:227 - Processing regular sitemap
+2025-08-27 18:25:17 - nourishly - INFO - budgetbytes:153 - Found URLs in sitemap
+2025-08-27 18:25:17 - nourishly - INFO - budgetbytes:185 - Filtered recipe URLs
+2025-08-27 18:25:17 - nourishly - INFO - budgetbytes:116 - Recipe URL discovery completed
+2025-08-27 19:25:52 - nourishly - INFO - budgetbytes:44 - Budget Bytes scraper initialized
+2025-08-27 19:26:09 - nourishly - ERROR - budgetbytes:77 - Invalid Budget Bytes URL
+2025-08-27 19:30:27 - nourishly - INFO - budgetbytes:80 - Starting recipe scrape
+2025-08-27 19:30:30 - nourishly - ERROR - budgetbytes:318 - Failed to extract ingredients
+2025-08-27 19:30:30 - nourishly - ERROR - budgetbytes:371 - Failed to normalize recipe data Failed to extract raw ingredients
+2025-08-27 19:34:24 - nourishly - INFO - budgetbytes:80 - Starting recipe scrape
+2025-08-27 19:34:27 - nourishly - ERROR - budgetbytes:318 - Failed to extract ingredients
+2025-08-27 19:34:27 - nourishly - ERROR - budgetbytes:371 - Failed to normalize recipe data Failed to extract raw ingredients
+2025-08-27 19:35:51 - nourishly - INFO - budgetbytes:80 - Starting recipe scrape
+2025-08-27 19:35:54 - nourishly - ERROR - budgetbytes:318 - Failed to extract ingredients
+2025-08-27 19:35:54 - nourishly - ERROR - budgetbytes:372 - Failed to normalize recipe data Failed to extract raw ingredients
+2025-08-27 19:38:20 - nourishly - INFO - budgetbytes:80 - Starting recipe scrape
+2025-08-27 19:38:22 - nourishly - ERROR - budgetbytes:318 - Failed to extract ingredients
+2025-08-27 19:38:22 - nourishly - ERROR - budgetbytes:372 - Failed to normalize recipe data Failed to extract raw ingredients
+2025-08-27 19:41:56 - nourishly - INFO - budgetbytes:80 - Starting recipe scrape
+2025-08-27 19:41:59 - nourishly - ERROR - budgetbytes:318 - Failed to extract ingredients
+2025-08-27 19:41:59 - nourishly - ERROR - budgetbytes:372 - Failed to normalize recipe data Failed to extract raw ingredients
+2025-08-27 19:42:45 - nourishly - INFO - budgetbytes:80 - Starting recipe scrape
+2025-08-27 19:42:49 - nourishly - DEBUG - budgetbytes:330 - Ingredient parsing completed
+2025-08-27 19:42:49 - nourishly - DEBUG - utils:135 - Macros extracted
+2025-08-27 19:42:49 - nourishly - INFO - budgetbytes:360 - Recipe data normalized successfully
+2025-08-27 19:42:49 - nourishly - INFO - budgetbytes:85 - Recipe scraped successfully
+2025-08-27 20:00:10 - nourishly - INFO - budgetbytes:86 - Starting recipe scrape
+2025-08-27 20:00:12 - nourishly - DEBUG - budgetbytes:336 - Ingredient parsing completed
+2025-08-27 20:00:12 - nourishly - ERROR - utils:71 - Failed to extract data from method
+2025-08-27 20:00:12 - nourishly - DEBUG - utils:135 - Macros extracted
+2025-08-27 20:00:12 - nourishly - INFO - budgetbytes:366 - Recipe data normalized successfully
+2025-08-27 20:00:12 - nourishly - INFO - budgetbytes:91 - Recipe scraped successfully
+2025-09-05 19:48:08 - nourishly - INFO - budgetbytes:46 - Budget Bytes scraper initialized
+2025-09-05 19:48:20 - nourishly - INFO - budgetbytes:113 - Starting sitemap-based recipe URL discovery
+2025-09-05 19:48:22 - nourishly - INFO - budgetbytes:142 - Attempting to fetch sitemap
+2025-09-05 19:48:26 - nourishly - INFO - budgetbytes:152 - Successfully fetched sitemap
+2025-09-05 19:48:26 - nourishly - INFO - budgetbytes:231 - Processing regular sitemap
+2025-09-05 19:48:26 - nourishly - INFO - budgetbytes:156 - Found URLs in sitemap
+2025-09-05 19:48:26 - nourishly - INFO - budgetbytes:188 - Filtered recipe URLs
+2025-09-05 19:48:26 - nourishly - DEBUG - budgetbytes:193 - Recipe URLs: 918
+2025-09-05 19:48:26 - nourishly - INFO - budgetbytes:119 - Recipe URL discovery completed
+2025-09-05 19:57:00 - nourishly - INFO - budgetbytes:113 - Starting sitemap-based recipe URL discovery
+2025-09-05 19:57:02 - nourishly - INFO - budgetbytes:142 - Attempting to fetch sitemap
+2025-09-05 19:57:03 - nourishly - INFO - budgetbytes:152 - Successfully fetched sitemap
+2025-09-05 19:57:03 - nourishly - INFO - budgetbytes:231 - Processing regular sitemap
+2025-09-05 19:57:03 - nourishly - INFO - budgetbytes:156 - Found URLs in sitemap
+2025-09-05 19:57:03 - nourishly - INFO - budgetbytes:188 - Filtered recipe URLs
+2025-09-05 19:57:03 - nourishly - DEBUG - budgetbytes:193 - Recipe URLs: 0
+2025-09-05 19:57:03 - nourishly - INFO - budgetbytes:119 - Recipe URL discovery completed
+2025-09-05 20:00:21 - nourishly - INFO - budgetbytes:113 - Starting sitemap-based recipe URL discovery
+2025-09-05 20:00:23 - nourishly - INFO - budgetbytes:142 - Attempting to fetch sitemap
+2025-09-05 20:00:28 - nourishly - INFO - budgetbytes:152 - Successfully fetched sitemap
+2025-09-05 20:00:28 - nourishly - INFO - budgetbytes:231 - Processing regular sitemap
+2025-09-05 20:00:28 - nourishly - INFO - budgetbytes:156 - Found URLs in sitemap
+2025-09-05 20:00:28 - nourishly - INFO - budgetbytes:188 - Filtered recipe URLs
+2025-09-05 20:00:28 - nourishly - DEBUG - budgetbytes:193 - Recipe URLs: 918
+2025-09-05 20:00:28 - nourishly - INFO - budgetbytes:119 - Recipe URL discovery completed
+2025-09-05 20:00:53 - nourishly - INFO - budgetbytes:113 - Starting sitemap-based recipe URL discovery
+2025-09-05 20:00:55 - nourishly - INFO - budgetbytes:142 - Attempting to fetch sitemap
+2025-09-05 20:00:59 - nourishly - INFO - budgetbytes:152 - Successfully fetched sitemap
+2025-09-05 20:00:59 - nourishly - INFO - budgetbytes:231 - Processing regular sitemap
+2025-09-05 20:00:59 - nourishly - INFO - budgetbytes:156 - Found URLs in sitemap
+2025-09-05 20:00:59 - nourishly - INFO - budgetbytes:188 - Filtered recipe URLs
+2025-09-05 20:00:59 - nourishly - DEBUG - budgetbytes:193 - Recipe URLs: 893
+2025-09-05 20:00:59 - nourishly - INFO - budgetbytes:119 - Recipe URL discovery completed
+2025-09-05 20:04:32 - nourishly - INFO - budgetbytes:113 - Starting sitemap-based recipe URL discovery
+2025-09-05 20:04:34 - nourishly - INFO - budgetbytes:142 - Attempting to fetch sitemap
+2025-09-05 20:04:37 - nourishly - INFO - budgetbytes:152 - Successfully fetched sitemap
+2025-09-05 20:04:37 - nourishly - INFO - budgetbytes:231 - Processing regular sitemap
+2025-09-05 20:04:37 - nourishly - INFO - budgetbytes:156 - Found URLs in sitemap
+2025-09-05 20:04:39 - nourishly - INFO - budgetbytes:142 - Attempting to fetch sitemap
+2025-09-05 20:04:43 - nourishly - INFO - budgetbytes:152 - Successfully fetched sitemap
+2025-09-05 20:04:43 - nourishly - INFO - budgetbytes:231 - Processing regular sitemap
+2025-09-05 20:04:43 - nourishly - INFO - budgetbytes:156 - Found URLs in sitemap
+2025-09-05 20:04:43 - nourishly - INFO - budgetbytes:188 - Filtered recipe URLs
+2025-09-05 20:04:43 - nourishly - DEBUG - budgetbytes:193 - Recipe URLs: 893
+2025-09-05 20:04:43 - nourishly - INFO - budgetbytes:119 - Recipe URL discovery completed
+2025-09-05 20:10:27 - nourishly - INFO - budgetbytes:113 - Starting sitemap-based recipe URL discovery
+2025-09-05 20:10:29 - nourishly - INFO - budgetbytes:142 - Attempting to fetch sitemap
+2025-09-05 20:10:33 - nourishly - INFO - budgetbytes:152 - Successfully fetched sitemap
+2025-09-05 20:10:33 - nourishly - INFO - budgetbytes:231 - Processing regular sitemap
+2025-09-05 20:10:33 - nourishly - INFO - budgetbytes:156 - Found URLs in sitemap
+2025-09-05 20:10:35 - nourishly - INFO - budgetbytes:142 - Attempting to fetch sitemap
+2025-09-05 20:10:36 - nourishly - INFO - budgetbytes:152 - Successfully fetched sitemap
+2025-09-05 20:10:36 - nourishly - INFO - budgetbytes:231 - Processing regular sitemap
+2025-09-05 20:10:36 - nourishly - INFO - budgetbytes:156 - Found URLs in sitemap
+2025-09-05 20:10:36 - nourishly - INFO - budgetbytes:188 - Filtered recipe URLs
+2025-09-05 20:10:36 - nourishly - DEBUG - budgetbytes:193 - Recipe URLs: 1811
+2025-09-05 20:10:36 - nourishly - INFO - budgetbytes:119 - Recipe URL discovery completed
+2025-09-05 21:15:02 - nourishly - INFO - budget_bytes_recipe_discovery:13 - Starting budget bytes recipe discovery
+2025-09-05 21:16:55 - nourishly - INFO - budget_bytes_recipe_discovery:13 - Starting budget bytes recipe discovery
+2025-09-05 21:16:55 - nourishly - INFO - budgetbytes:46 - Budget Bytes scraper initialized
+2025-09-05 21:16:55 - nourishly - INFO - budgetbytes:112 - Starting sitemap-based recipe URL discovery
+2025-09-05 21:16:57 - nourishly - INFO - budgetbytes:141 - Attempting to fetch sitemap
+2025-09-05 21:17:01 - nourishly - INFO - budgetbytes:151 - Successfully fetched sitemap
+2025-09-05 21:17:01 - nourishly - INFO - budgetbytes:230 - Processing regular sitemap
+2025-09-05 21:17:01 - nourishly - INFO - budgetbytes:155 - Found URLs in sitemap
+2025-09-05 21:17:03 - nourishly - INFO - budgetbytes:141 - Attempting to fetch sitemap
+2025-09-05 21:17:07 - nourishly - INFO - budgetbytes:151 - Successfully fetched sitemap
+2025-09-05 21:17:07 - nourishly - INFO - budgetbytes:230 - Processing regular sitemap
+2025-09-05 21:17:07 - nourishly - INFO - budgetbytes:155 - Found URLs in sitemap
+2025-09-05 21:17:07 - nourishly - INFO - budgetbytes:187 - Filtered recipe URLs
+2025-09-05 21:17:07 - nourishly - DEBUG - budgetbytes:192 - Recipe URLs: 1811
+2025-09-05 21:17:07 - nourishly - INFO - budgetbytes:118 - Recipe URL discovery completed
+2025-09-05 21:17:07 - nourishly - INFO - budget_bytes_recipe_discovery:19 - Discovered recipe URL: https://www.budgetbytes.com/stuffed-poblano-peppers/
+2025-09-05 21:17:07 - nourishly - INFO - budgetbytes:82 - Starting recipe scrape
+2025-09-05 21:17:10 - nourishly - DEBUG - budgetbytes:331 - Ingredient parsing completed
+2025-09-05 21:17:10 - nourishly - ERROR - utils:71 - Failed to extract data from method
+2025-09-05 21:17:10 - nourishly - DEBUG - recipe_scrapers:54 - Macros extracted
+2025-09-05 21:17:10 - nourishly - INFO - budgetbytes:361 - Recipe data normalized successfully
+2025-09-05 21:17:10 - nourishly - INFO - budgetbytes:87 - Recipe scraped successfully
+2025-09-05 21:17:10 - nourishly - INFO - budget_bytes_recipe_discovery:25 - Recipe data found, creating recipe
+2025-09-05 21:17:10 - nourishly - DEBUG - budget_bytes_recipe_discovery:26 - Recipe data: RecipeData(title='Stuffed Poblano Peppers', source_url='https://www.budgetbytes.com/stuffed-poblano-peppers/', description='Stuffed poblano peppers are a fun, filling, and flavorful vegetarian meal. The southwest flavors are vibrant while beans and rice keep you feeling full.', ingredients=[IngredientData(name='long grain rice', quantity=1.0, unit='cup', notes='uncooked', original_text='1 cup uncooked long grain rice ($0.30)'), IngredientData(name='bullion', quantity=2.0, unit='cubes', notes=None, original_text='2 cubes bullion, vegetable, or chicken ($0.24)'), IngredientData(name='chili powder', quantity=0.25, unit='teaspoon', notes=None, original_text='1/4 tsp chili powder ($0.05)'), IngredientData(name='fresh cilantro', quantity=0.25, unit='bunches', notes=None, original_text='1/4 bunch fresh cilantro ($0.17)'), IngredientData(name='poblano peppers', quantity=6.0, unit='', notes=None, original_text='6 poblano peppers ($2.98)'), IngredientData(name='cheese', quantity=4.0, unit='ounce', notes=None, original_text='4 oz. cheese ($0.99)'), IngredientData(name='salsa', quantity=0.75, unit='cup', notes='divided', original_text='3/4 cup divided salsa ($0.52)'), IngredientData(name='black beans', quantity=1.0, unit='can', notes=None, original_text='1 15oz. can black beans ($0.87)'), IngredientData(name='non-stick spray', quantity=None, unit=None, notes=None, original_text='non-stick spray (if needed) ($0.10)')], instructions=['Cook the rice in a medium pot with 1.75 cups of water and two buillion cubes. (instructions for cooking rice here) While the rice is cooking, finely chop the cilantro. Mix the cilantro and chili powder into the rice after it has finished cooking. Set the rice aside until you are ready to use it.', 'While the rice is cooking, roast the poblanos. Preheat the broiler to 400 degrees. Spray a baking sheet and coat all sides of the poblano peppers with non-stick spray (you can rub olive oil all over them but I find spraying is much easier). Place the baking sheet a few inches under the broiler (I use the second rack level) and broil on each side for 5 minutes.', 'After broiling the poblanos, the skin should be blistered and bubbly. Immediately place the peppers into a ziplock bag for about 15 minutes to allow the steam to loosen the skin. Remove them from the bag and peel away as much of the skin as possible (be gentle and it is okay if you can’t get ALL of the skin).', 'Cut a boat shaped piece out of each pepper and then carefully remove the seeds and seed pod. Save the pieces of pepper that are removed to make the openings because it makes a great ingredient for salads, burrito bowls or quesadillas (breakfast quesadilla anyone?).', 'Preheat the oven to 350 degrees (bake, not broil this time). Gently fill the peppers with layers of seasoned rice, salsa, cheese and beans. I began with rice (1/3 to 1/2 cup), then 1 Tbsp of salsa, 1/3 oz. of cheese, beans (as much as I could stuff in), then more salsa and cheese (same amounts as before).', 'Place the peppers back in the oven and bake until they are heated through and the cheese is melted (about 20 minutes). Enjoy!'], prep_time=30, cook_time=90, servings='6 servings', cuisine_type='Southwest', difficulty_level=None, image_url='https://www.budgetbytes.com/wp-content/uploads/2010/02/Stuffed20Poblanos202.jpg', nutrition={'servingSize': '1 Serving', 'calories': '290.52 kcal', 'carbohydrateContent': '47.75 g', 'proteinContent': '13.53 g', 'fatContent': '5.08 g', 'fiberContent': '9.8 g', 'sodiumContent': '921.68 mg'}, macros=MacroNutrition(calories=290.52, protein=13.53, carbohydrates=47.75, fat=5.08, fiber=9.8, sugar=None, sodium=921.68, saturated_fat=None, cholesterol=None), tags=['Diner,Main Course,Side Dish', 'Southwest'], dietary_restrictions=[], author='Beth Moncel', rating=4.67, provider=None)
+2026-01-02 16:44:01 - nourishly - INFO - budget_bytes_recipe_discovery:17 - Starting budget bytes recipe discovery
+2026-01-02 16:44:01 - nourishly - INFO - budgetbytes:46 - Budget Bytes scraper initialized
+2026-01-02 16:48:02 - nourishly - INFO - budget_bytes_recipe_discovery:17 - Starting budget bytes recipe discovery
+2026-01-02 16:48:02 - nourishly - INFO - budgetbytes:46 - Budget Bytes scraper initialized
+2026-01-02 16:48:16 - nourishly - INFO - budget_bytes_recipe_discovery:17 - Starting budget bytes recipe discovery
+2026-01-02 16:48:16 - nourishly - INFO - budgetbytes:46 - Budget Bytes scraper initialized
+2026-01-02 16:48:16 - nourishly - INFO - api_ninja:36 - Initializing API NINJA Nutrition API
+2026-01-02 16:48:16 - nourishly - INFO - budgetbytes:112 - Starting sitemap-based recipe URL discovery
+2026-01-02 16:48:18 - nourishly - INFO - budgetbytes:141 - Attempting to fetch sitemap
+2026-01-02 16:48:24 - nourishly - INFO - budgetbytes:151 - Successfully fetched sitemap
+2026-01-02 16:48:24 - nourishly - INFO - budgetbytes:230 - Processing regular sitemap
+2026-01-02 16:48:24 - nourishly - INFO - budgetbytes:155 - Found URLs in sitemap
+2026-01-02 16:48:26 - nourishly - INFO - budgetbytes:141 - Attempting to fetch sitemap
+2026-01-02 16:48:31 - nourishly - INFO - budgetbytes:151 - Successfully fetched sitemap
+2026-01-02 16:48:31 - nourishly - INFO - budgetbytes:230 - Processing regular sitemap
+2026-01-02 16:48:31 - nourishly - INFO - budgetbytes:155 - Found URLs in sitemap
+2026-01-02 16:48:32 - nourishly - INFO - budgetbytes:187 - Filtered recipe URLs
+2026-01-02 16:48:32 - nourishly - DEBUG - budgetbytes:192 - Recipe URLs: 1868
+2026-01-02 16:48:32 - nourishly - INFO - budgetbytes:118 - Recipe URL discovery completed
+2026-01-02 16:48:32 - nourishly - INFO - budget_bytes_recipe_discovery:24 - Discovered recipe URL: https://www.budgetbytes.com/stuffed-poblano-peppers/
+2026-01-02 16:48:32 - nourishly - INFO - budgetbytes:82 - Starting recipe scrape
+2026-01-02 16:48:34 - nourishly - DEBUG - budgetbytes:331 - Ingredient parsing completed
+2026-01-02 16:48:34 - nourishly - ERROR - utils:71 - Failed to extract data from method
+2026-01-02 16:48:34 - nourishly - DEBUG - recipe_scrapers:54 - Macros extracted
+2026-01-02 16:48:34 - nourishly - INFO - budgetbytes:361 - Recipe data normalized successfully
+2026-01-02 16:48:34 - nourishly - INFO - budgetbytes:87 - Recipe scraped successfully
+2026-01-02 16:48:34 - nourishly - INFO - budget_bytes_recipe_discovery:27 - Recipe data: RecipeData(title='Stuffed Poblano Peppers', source_url='https://www.budgetbytes.com/stuffed-poblano-peppers/', description='Stuffed poblano peppers are a fun, filling, and flavorful vegetarian meal. The southwest flavors are vibrant while beans and rice keep you feeling full.', ingredients=[IngredientData(name='long grain rice', quantity=1.0, unit='cup', notes='uncooked', original_text='1 cup uncooked long grain rice ($0.30)'), IngredientData(name='bullion', quantity=2.0, unit='cubes', notes=None, original_text='2 cubes bullion, vegetable, or chicken ($0.24)'), IngredientData(name='chili powder', quantity=0.25, unit='teaspoon', notes=None, original_text='1/4 tsp chili powder ($0.05)'), IngredientData(name='fresh cilantro', quantity=0.25, unit='bunches', notes=None, original_text='1/4 bunch fresh cilantro ($0.17)'), IngredientData(name='poblano peppers', quantity=6.0, unit='', notes=None, original_text='6 poblano peppers ($2.98)'), IngredientData(name='cheese', quantity=4.0, unit='ounce', notes=None, original_text='4 oz. cheese ($0.99)'), IngredientData(name='salsa', quantity=0.75, unit='cup', notes='divided', original_text='3/4 cup divided salsa ($0.52)'), IngredientData(name='black beans', quantity=1.0, unit='can', notes=None, original_text='1 15oz. can black beans ($0.87)'), IngredientData(name='non-stick spray', quantity=None, unit=None, notes=None, original_text='non-stick spray (if needed) ($0.10)')], instructions=['Cook the rice in a medium pot with 1.75 cups of water and two buillion cubes. (instructions for cooking rice here) While the rice is cooking, finely chop the cilantro. Mix the cilantro and chili powder into the rice after it has finished cooking. Set the rice aside until you are ready to use it.', 'While the rice is cooking, roast the poblanos. Preheat the broiler to 400 degrees. Spray a baking sheet and coat all sides of the poblano peppers with non-stick spray (you can rub olive oil all over them but I find spraying is much easier). Place the baking sheet a few inches under the broiler (I use the second rack level) and broil on each side for 5 minutes.', 'After broiling the poblanos, the skin should be blistered and bubbly. Immediately place the peppers into a ziplock bag for about 15 minutes to allow the steam to loosen the skin. Remove them from the bag and peel away as much of the skin as possible (be gentle and it is okay if you can’t get ALL of the skin).', 'Cut a boat shaped piece out of each pepper and then carefully remove the seeds and seed pod. Save the pieces of pepper that are removed to make the openings because it makes a great ingredient for salads, burrito bowls or quesadillas (breakfast quesadilla anyone?).', 'Preheat the oven to 350 degrees (bake, not broil this time). Gently fill the peppers with layers of seasoned rice, salsa, cheese and beans. I began with rice (1/3 to 1/2 cup), then 1 Tbsp of salsa, 1/3 oz. of cheese, beans (as much as I could stuff in), then more salsa and cheese (same amounts as before).', 'Place the peppers back in the oven and bake until they are heated through and the cheese is melted (about 20 minutes). Enjoy!'], prep_time=30, cook_time=90, servings='6 servings', cuisine_type='Southwest', difficulty_level=None, image_url='https://www.budgetbytes.com/wp-content/uploads/2010/02/Stuffed20Poblanos202.jpg', nutrition={'servingSize': '1 Serving', 'calories': '290.52 kcal', 'carbohydrateContent': '47.75 g', 'proteinContent': '13.53 g', 'fatContent': '5.08 g', 'fiberContent': '9.8 g', 'sodiumContent': '921.68 mg'}, macros=MacroNutrition(calories=290.52, protein=13.53, carbohydrates=47.75, fat=5.08, fiber=9.8, sugar=None, sodium=921.68, saturated_fat=None, cholesterol=None), tags=['Diner,Main Course,Side Dish', 'Southwest'], dietary_restrictions=[], author='Beth Moncel', rating=4.67, provider=None)
+2026-01-02 16:48:34 - nourishly - INFO - budget_bytes_recipe_discovery:49 - Recipe data found, creating recipe
+2026-01-02 16:51:53 - nourishly - INFO - budget_bytes_recipe_discovery:17 - Starting budget bytes recipe discovery
+2026-01-02 16:51:53 - nourishly - INFO - budgetbytes:46 - Budget Bytes scraper initialized
+2026-01-02 16:51:53 - nourishly - INFO - api_ninja:36 - Initializing API NINJA Nutrition API
+2026-01-02 16:51:53 - nourishly - INFO - budgetbytes:112 - Starting sitemap-based recipe URL discovery
+2026-01-02 16:51:55 - nourishly - INFO - budgetbytes:141 - Attempting to fetch sitemap
+2026-01-02 16:52:00 - nourishly - INFO - budgetbytes:151 - Successfully fetched sitemap
+2026-01-02 16:52:01 - nourishly - INFO - budgetbytes:230 - Processing regular sitemap
+2026-01-02 16:52:01 - nourishly - INFO - budgetbytes:155 - Found URLs in sitemap
+2026-01-02 16:52:03 - nourishly - INFO - budgetbytes:141 - Attempting to fetch sitemap
+2026-01-02 16:52:08 - nourishly - INFO - budgetbytes:151 - Successfully fetched sitemap
+2026-01-02 16:52:08 - nourishly - INFO - budgetbytes:230 - Processing regular sitemap
+2026-01-02 16:52:08 - nourishly - INFO - budgetbytes:155 - Found URLs in sitemap
+2026-01-02 16:52:08 - nourishly - INFO - budgetbytes:187 - Filtered recipe URLs
+2026-01-02 16:52:08 - nourishly - DEBUG - budgetbytes:192 - Recipe URLs: 1868
+2026-01-02 16:52:08 - nourishly - INFO - budgetbytes:118 - Recipe URL discovery completed
+2026-01-02 16:52:08 - nourishly - INFO - budget_bytes_recipe_discovery:24 - Discovered recipe URL: https://www.budgetbytes.com/stuffed-poblano-peppers/
+2026-01-02 16:52:08 - nourishly - INFO - budgetbytes:82 - Starting recipe scrape
+2026-01-02 16:52:11 - nourishly - DEBUG - budgetbytes:331 - Ingredient parsing completed
+2026-01-02 16:52:11 - nourishly - ERROR - utils:71 - Failed to extract data from method
+2026-01-02 16:52:11 - nourishly - DEBUG - recipe_scrapers:54 - Macros extracted
+2026-01-02 16:52:11 - nourishly - INFO - budgetbytes:361 - Recipe data normalized successfully
+2026-01-02 16:52:11 - nourishly - INFO - budgetbytes:87 - Recipe scraped successfully
+2026-01-02 16:52:11 - nourishly - INFO - budget_bytes_recipe_discovery:27 - Recipe data: RecipeData(title='Stuffed Poblano Peppers', source_url='https://www.budgetbytes.com/stuffed-poblano-peppers/', description='Stuffed poblano peppers are a fun, filling, and flavorful vegetarian meal. The southwest flavors are vibrant while beans and rice keep you feeling full.', ingredients=[IngredientData(name='long grain rice', quantity=1.0, unit='cup', notes='uncooked', original_text='1 cup uncooked long grain rice ($0.30)'), IngredientData(name='bullion', quantity=2.0, unit='cubes', notes=None, original_text='2 cubes bullion, vegetable, or chicken ($0.24)'), IngredientData(name='chili powder', quantity=0.25, unit='teaspoon', notes=None, original_text='1/4 tsp chili powder ($0.05)'), IngredientData(name='fresh cilantro', quantity=0.25, unit='bunches', notes=None, original_text='1/4 bunch fresh cilantro ($0.17)'), IngredientData(name='poblano peppers', quantity=6.0, unit='', notes=None, original_text='6 poblano peppers ($2.98)'), IngredientData(name='cheese', quantity=4.0, unit='ounce', notes=None, original_text='4 oz. cheese ($0.99)'), IngredientData(name='salsa', quantity=0.75, unit='cup', notes='divided', original_text='3/4 cup divided salsa ($0.52)'), IngredientData(name='black beans', quantity=1.0, unit='can', notes=None, original_text='1 15oz. can black beans ($0.87)'), IngredientData(name='non-stick spray', quantity=None, unit=None, notes=None, original_text='non-stick spray (if needed) ($0.10)')], instructions=['Cook the rice in a medium pot with 1.75 cups of water and two buillion cubes. (instructions for cooking rice here) While the rice is cooking, finely chop the cilantro. Mix the cilantro and chili powder into the rice after it has finished cooking. Set the rice aside until you are ready to use it.', 'While the rice is cooking, roast the poblanos. Preheat the broiler to 400 degrees. Spray a baking sheet and coat all sides of the poblano peppers with non-stick spray (you can rub olive oil all over them but I find spraying is much easier). Place the baking sheet a few inches under the broiler (I use the second rack level) and broil on each side for 5 minutes.', 'After broiling the poblanos, the skin should be blistered and bubbly. Immediately place the peppers into a ziplock bag for about 15 minutes to allow the steam to loosen the skin. Remove them from the bag and peel away as much of the skin as possible (be gentle and it is okay if you can’t get ALL of the skin).', 'Cut a boat shaped piece out of each pepper and then carefully remove the seeds and seed pod. Save the pieces of pepper that are removed to make the openings because it makes a great ingredient for salads, burrito bowls or quesadillas (breakfast quesadilla anyone?).', 'Preheat the oven to 350 degrees (bake, not broil this time). Gently fill the peppers with layers of seasoned rice, salsa, cheese and beans. I began with rice (1/3 to 1/2 cup), then 1 Tbsp of salsa, 1/3 oz. of cheese, beans (as much as I could stuff in), then more salsa and cheese (same amounts as before).', 'Place the peppers back in the oven and bake until they are heated through and the cheese is melted (about 20 minutes). Enjoy!'], prep_time=30, cook_time=90, servings='6 servings', cuisine_type='Southwest', difficulty_level=None, image_url='https://www.budgetbytes.com/wp-content/uploads/2010/02/Stuffed20Poblanos202.jpg', nutrition={'servingSize': '1 Serving', 'calories': '290.52 kcal', 'carbohydrateContent': '47.75 g', 'proteinContent': '13.53 g', 'fatContent': '5.08 g', 'fiberContent': '9.8 g', 'sodiumContent': '921.68 mg'}, macros=MacroNutrition(calories=290.52, protein=13.53, carbohydrates=47.75, fat=5.08, fiber=9.8, sugar=None, sodium=921.68, saturated_fat=None, cholesterol=None), tags=['Diner,Main Course,Side Dish', 'Southwest'], dietary_restrictions=[], author='Beth Moncel', rating=4.67, provider=None)
+2026-01-02 16:52:11 - nourishly - INFO - budget_bytes_recipe_discovery:49 - Recipe data found, creating recipe
+2026-01-02 16:53:38 - nourishly - INFO - budget_bytes_recipe_discovery:17 - Starting budget bytes recipe discovery
+2026-01-02 16:53:38 - nourishly - INFO - budgetbytes:46 - Budget Bytes scraper initialized
+2026-01-02 16:53:38 - nourishly - INFO - api_ninja:36 - Initializing API NINJA Nutrition API
+2026-01-02 16:53:38 - nourishly - INFO - budgetbytes:112 - Starting sitemap-based recipe URL discovery
+2026-01-02 16:53:40 - nourishly - INFO - budgetbytes:141 - Attempting to fetch sitemap
+2026-01-02 16:53:46 - nourishly - INFO - budgetbytes:151 - Successfully fetched sitemap
+2026-01-02 16:53:46 - nourishly - INFO - budgetbytes:230 - Processing regular sitemap
+2026-01-02 16:53:46 - nourishly - INFO - budgetbytes:155 - Found URLs in sitemap
+2026-01-02 16:53:48 - nourishly - INFO - budgetbytes:141 - Attempting to fetch sitemap
+2026-01-02 16:53:53 - nourishly - INFO - budgetbytes:151 - Successfully fetched sitemap
+2026-01-02 16:53:53 - nourishly - INFO - budgetbytes:230 - Processing regular sitemap
+2026-01-02 16:53:53 - nourishly - INFO - budgetbytes:155 - Found URLs in sitemap
+2026-01-02 16:53:53 - nourishly - INFO - budgetbytes:187 - Filtered recipe URLs
+2026-01-02 16:53:53 - nourishly - DEBUG - budgetbytes:192 - Recipe URLs: 1868
+2026-01-02 16:53:53 - nourishly - INFO - budgetbytes:118 - Recipe URL discovery completed
+2026-01-02 16:53:53 - nourishly - INFO - budget_bytes_recipe_discovery:24 - Discovered recipe URL: https://www.budgetbytes.com/stuffed-poblano-peppers/
+2026-01-02 16:53:53 - nourishly - INFO - budgetbytes:82 - Starting recipe scrape
+2026-01-02 16:53:56 - nourishly - DEBUG - budgetbytes:331 - Ingredient parsing completed
+2026-01-02 16:53:56 - nourishly - ERROR - utils:71 - Failed to extract data from method dietary_restrictions with default value None and error recipe-scrapers (15.8.0) exception: No dietary restrictions data in SchemaOrg.
+2026-01-02 16:53:56 - nourishly - DEBUG - recipe_scrapers:54 - Macros extracted
+2026-01-02 16:53:56 - nourishly - INFO - budgetbytes:361 - Recipe data normalized successfully
+2026-01-02 16:53:56 - nourishly - INFO - budgetbytes:87 - Recipe scraped successfully
+2026-01-02 16:53:56 - nourishly - INFO - budget_bytes_recipe_discovery:27 - Recipe data: RecipeData(title='Stuffed Poblano Peppers', source_url='https://www.budgetbytes.com/stuffed-poblano-peppers/', description='Stuffed poblano peppers are a fun, filling, and flavorful vegetarian meal. The southwest flavors are vibrant while beans and rice keep you feeling full.', ingredients=[IngredientData(name='long grain rice', quantity=1.0, unit='cup', notes='uncooked', original_text='1 cup uncooked long grain rice ($0.30)'), IngredientData(name='bullion', quantity=2.0, unit='cubes', notes=None, original_text='2 cubes bullion, vegetable, or chicken ($0.24)'), IngredientData(name='chili powder', quantity=0.25, unit='teaspoon', notes=None, original_text='1/4 tsp chili powder ($0.05)'), IngredientData(name='fresh cilantro', quantity=0.25, unit='bunches', notes=None, original_text='1/4 bunch fresh cilantro ($0.17)'), IngredientData(name='poblano peppers', quantity=6.0, unit='', notes=None, original_text='6 poblano peppers ($2.98)'), IngredientData(name='cheese', quantity=4.0, unit='ounce', notes=None, original_text='4 oz. cheese ($0.99)'), IngredientData(name='salsa', quantity=0.75, unit='cup', notes='divided', original_text='3/4 cup divided salsa ($0.52)'), IngredientData(name='black beans', quantity=1.0, unit='can', notes=None, original_text='1 15oz. can black beans ($0.87)'), IngredientData(name='non-stick spray', quantity=None, unit=None, notes=None, original_text='non-stick spray (if needed) ($0.10)')], instructions=['Cook the rice in a medium pot with 1.75 cups of water and two buillion cubes. (instructions for cooking rice here) While the rice is cooking, finely chop the cilantro. Mix the cilantro and chili powder into the rice after it has finished cooking. Set the rice aside until you are ready to use it.', 'While the rice is cooking, roast the poblanos. Preheat the broiler to 400 degrees. Spray a baking sheet and coat all sides of the poblano peppers with non-stick spray (you can rub olive oil all over them but I find spraying is much easier). Place the baking sheet a few inches under the broiler (I use the second rack level) and broil on each side for 5 minutes.', 'After broiling the poblanos, the skin should be blistered and bubbly. Immediately place the peppers into a ziplock bag for about 15 minutes to allow the steam to loosen the skin. Remove them from the bag and peel away as much of the skin as possible (be gentle and it is okay if you can’t get ALL of the skin).', 'Cut a boat shaped piece out of each pepper and then carefully remove the seeds and seed pod. Save the pieces of pepper that are removed to make the openings because it makes a great ingredient for salads, burrito bowls or quesadillas (breakfast quesadilla anyone?).', 'Preheat the oven to 350 degrees (bake, not broil this time). Gently fill the peppers with layers of seasoned rice, salsa, cheese and beans. I began with rice (1/3 to 1/2 cup), then 1 Tbsp of salsa, 1/3 oz. of cheese, beans (as much as I could stuff in), then more salsa and cheese (same amounts as before).', 'Place the peppers back in the oven and bake until they are heated through and the cheese is melted (about 20 minutes). Enjoy!'], prep_time=30, cook_time=90, servings='6 servings', cuisine_type='Southwest', difficulty_level=None, image_url='https://www.budgetbytes.com/wp-content/uploads/2010/02/Stuffed20Poblanos202.jpg', nutrition={'servingSize': '1 Serving', 'calories': '290.52 kcal', 'carbohydrateContent': '47.75 g', 'proteinContent': '13.53 g', 'fatContent': '5.08 g', 'fiberContent': '9.8 g', 'sodiumContent': '921.68 mg'}, macros=MacroNutrition(calories=290.52, protein=13.53, carbohydrates=47.75, fat=5.08, fiber=9.8, sugar=None, sodium=921.68, saturated_fat=None, cholesterol=None), tags=['Diner,Main Course,Side Dish', 'Southwest'], dietary_restrictions=[], author='Beth Moncel', rating=4.67, provider=None)
+2026-01-02 16:53:56 - nourishly - INFO - budget_bytes_recipe_discovery:49 - Recipe data found, creating recipe
+[2026-01-02 17:36:22] INFO[budget_bytes_recipe_discovery:16] - Starting budget bytes recipe discovery
+[2026-01-02 17:36:22] INFO[logger:43] - Budget Bytes scraper initialized
+[2026-01-02 17:36:22] INFO[logger:43] - Initializing API NINJA Nutrition API
+[2026-01-02 17:36:22] INFO[logger:43] - Starting sitemap-based recipe URL discovery
+[2026-01-02 17:36:24] INFO[logger:43] - Attempting to fetch sitemap
+[2026-01-02 17:36:30] INFO[logger:43] - Successfully fetched sitemap
+[2026-01-02 17:36:30] INFO[logger:43] - Processing regular sitemap
+[2026-01-02 17:36:30] INFO[logger:43] - Found URLs in sitemap
+[2026-01-02 17:36:32] INFO[logger:43] - Attempting to fetch sitemap
+[2026-01-02 17:36:39] INFO[logger:43] - Successfully fetched sitemap
+[2026-01-02 17:36:39] INFO[logger:43] - Processing regular sitemap
+[2026-01-02 17:36:39] INFO[logger:43] - Found URLs in sitemap
+[2026-01-02 17:36:39] INFO[logger:43] - Filtered recipe URLs
+[2026-01-02 17:36:39] INFO[logger:43] - Recipe URL discovery completed
+[2026-01-02 17:36:39] INFO[budget_bytes_recipe_discovery:23] - Discovered recipe URL: https://www.budgetbytes.com/stuffed-poblano-peppers/
+[2026-01-02 17:36:39] INFO[logger:43] - Starting recipe scrape
+[2026-01-02 17:36:41] ERROR[logger:43] - Failed to extract data from method dietary_restrictions with default value None and error recipe-scrapers (15.8.0) exception: No dietary restrictions data in SchemaOrg.
+[2026-01-02 17:36:41] INFO[logger:43] - Recipe data normalized successfully
+[2026-01-02 17:36:41] INFO[logger:43] - Recipe scraped successfully
+[2026-01-02 17:36:41] INFO[budget_bytes_recipe_discovery:26] - Recipe data: RecipeData(title='Stuffed Poblano Peppers', source_url='https://www.budgetbytes.com/stuffed-poblano-peppers/', description='Stuffed poblano peppers are a fun, filling, and flavorful vegetarian meal. The southwest flavors are vibrant while beans and rice keep you feeling full.', ingredients=[IngredientData(name='long grain rice', quantity=1.0, unit='cup', notes='uncooked', original_text='1 cup uncooked long grain rice ($0.30)'), IngredientData(name='bullion', quantity=2.0, unit='cubes', notes=None, original_text='2 cubes bullion, vegetable, or chicken ($0.24)'), IngredientData(name='chili powder', quantity=0.25, unit='teaspoon', notes=None, original_text='1/4 tsp chili powder ($0.05)'), IngredientData(name='fresh cilantro', quantity=0.25, unit='bunches', notes=None, original_text='1/4 bunch fresh cilantro ($0.17)'), IngredientData(name='poblano peppers', quantity=6.0, unit='', notes=None, original_text='6 poblano peppers ($2.98)'), IngredientData(name='cheese', quantity=4.0, unit='ounce', notes=None, original_text='4 oz. cheese ($0.99)'), IngredientData(name='salsa', quantity=0.75, unit='cup', notes='divided', original_text='3/4 cup divided salsa ($0.52)'), IngredientData(name='black beans', quantity=1.0, unit='can', notes=None, original_text='1 15oz. can black beans ($0.87)'), IngredientData(name='non-stick spray', quantity=None, unit=None, notes=None, original_text='non-stick spray (if needed) ($0.10)')], instructions=['Cook the rice in a medium pot with 1.75 cups of water and two buillion cubes. (instructions for cooking rice here) While the rice is cooking, finely chop the cilantro. Mix the cilantro and chili powder into the rice after it has finished cooking. Set the rice aside until you are ready to use it.', 'While the rice is cooking, roast the poblanos. Preheat the broiler to 400 degrees. Spray a baking sheet and coat all sides of the poblano peppers with non-stick spray (you can rub olive oil all over them but I find spraying is much easier). Place the baking sheet a few inches under the broiler (I use the second rack level) and broil on each side for 5 minutes.', 'After broiling the poblanos, the skin should be blistered and bubbly. Immediately place the peppers into a ziplock bag for about 15 minutes to allow the steam to loosen the skin. Remove them from the bag and peel away as much of the skin as possible (be gentle and it is okay if you can’t get ALL of the skin).', 'Cut a boat shaped piece out of each pepper and then carefully remove the seeds and seed pod. Save the pieces of pepper that are removed to make the openings because it makes a great ingredient for salads, burrito bowls or quesadillas (breakfast quesadilla anyone?).', 'Preheat the oven to 350 degrees (bake, not broil this time). Gently fill the peppers with layers of seasoned rice, salsa, cheese and beans. I began with rice (1/3 to 1/2 cup), then 1 Tbsp of salsa, 1/3 oz. of cheese, beans (as much as I could stuff in), then more salsa and cheese (same amounts as before).', 'Place the peppers back in the oven and bake until they are heated through and the cheese is melted (about 20 minutes). Enjoy!'], prep_time=30, cook_time=90, servings='6 servings', cuisine_type='Southwest', difficulty_level=None, image_url='https://www.budgetbytes.com/wp-content/uploads/2010/02/Stuffed20Poblanos202.jpg', nutrition={'servingSize': '1 Serving', 'calories': '290.52 kcal', 'carbohydrateContent': '47.75 g', 'proteinContent': '13.53 g', 'fatContent': '5.08 g', 'fiberContent': '9.8 g', 'sodiumContent': '921.68 mg'}, macros=MacroNutrition(calories=290.52, protein=13.53, carbohydrates=47.75, fat=5.08, fiber=9.8, sugar=None, sodium=921.68, saturated_fat=None, cholesterol=None), tags=['Diner,Main Course,Side Dish', 'Southwest'], dietary_restrictions=[], author='Beth Moncel', rating=4.67, provider=None)
+[2026-01-02 17:36:41] INFO[budget_bytes_recipe_discovery:48] - Recipe data found, creating recipe
+[2026-01-02 17:53:53] INFO[budget_bytes_recipe_discovery:16] - Starting budget bytes recipe discovery
+[2026-01-02 17:59:53] INFO[budget_bytes_recipe_discovery:16] - Starting budget bytes recipe discovery
+[2026-01-02 17:59:53] INFO[budgetbytes:48] - Budget Bytes scraper initialized with base URL: https://www.budgetbytes.com
+[2026-01-02 17:59:53] INFO[logger:43] - Initializing API NINJA Nutrition API
+[2026-01-02 17:59:53] INFO[budgetbytes:120] - Starting sitemap-based recipe URL discovery
+[2026-01-02 17:59:55] INFO[budgetbytes:153] - Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-02 18:00:01] INFO[budgetbytes:163] - Successfully fetched sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-02 18:00:01] INFO[budgetbytes:261] - Processing regular sitemap
+[2026-01-02 18:00:01] INFO[budgetbytes:167] - Found URLs in sitemap
+[2026-01-02 18:00:03] INFO[budgetbytes:153] - Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-02 18:00:09] INFO[budgetbytes:163] - Successfully fetched sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-02 18:00:09] INFO[budgetbytes:261] - Processing regular sitemap
+[2026-01-02 18:00:09] INFO[budgetbytes:167] - Found URLs in sitemap
+[2026-01-02 18:00:09] INFO[budgetbytes:208] - Filtered recipe URLs
+[2026-01-02 18:00:09] INFO[budgetbytes:126] - Recipe URL discovery completed from sitemap
+[2026-01-02 18:00:09] INFO[budget_bytes_recipe_discovery:23] - Discovered recipe URL: https://www.budgetbytes.com/stuffed-poblano-peppers/
+[2026-01-02 18:00:09] INFO[budgetbytes:86] - Starting recipe scrape from URL: https://www.budgetbytes.com/stuffed-poblano-peppers/
+[2026-01-02 18:00:12] ERROR[logger:43] - Failed to extract data from method dietary_restrictions with default value None and error recipe-scrapers (15.8.0) exception: No dietary restrictions data in SchemaOrg.
+[2026-01-02 18:00:12] INFO[budgetbytes:434] - Recipe data normalized successfully
+[2026-01-02 18:00:12] INFO[budgetbytes:91] - Recipe scraped successfully from
+[2026-01-02 18:00:12] INFO[budget_bytes_recipe_discovery:26] - Recipe data: RecipeData(title='Stuffed Poblano Peppers', source_url='https://www.budgetbytes.com/stuffed-poblano-peppers/', description='Stuffed poblano peppers are a fun, filling, and flavorful vegetarian meal. The southwest flavors are vibrant while beans and rice keep you feeling full.', ingredients=[IngredientData(name='long grain rice', quantity=1.0, unit='cup', notes='uncooked', original_text='1 cup uncooked long grain rice ($0.30)'), IngredientData(name='bullion', quantity=2.0, unit='cubes', notes=None, original_text='2 cubes bullion, vegetable, or chicken ($0.24)'), IngredientData(name='chili powder', quantity=0.25, unit='teaspoon', notes=None, original_text='1/4 tsp chili powder ($0.05)'), IngredientData(name='fresh cilantro', quantity=0.25, unit='bunches', notes=None, original_text='1/4 bunch fresh cilantro ($0.17)'), IngredientData(name='poblano peppers', quantity=6.0, unit='', notes=None, original_text='6 poblano peppers ($2.98)'), IngredientData(name='cheese', quantity=4.0, unit='ounce', notes=None, original_text='4 oz. cheese ($0.99)'), IngredientData(name='salsa', quantity=0.75, unit='cup', notes='divided', original_text='3/4 cup divided salsa ($0.52)'), IngredientData(name='black beans', quantity=1.0, unit='can', notes=None, original_text='1 15oz. can black beans ($0.87)'), IngredientData(name='non-stick spray', quantity=None, unit=None, notes=None, original_text='non-stick spray (if needed) ($0.10)')], instructions=['Cook the rice in a medium pot with 1.75 cups of water and two buillion cubes. (instructions for cooking rice here) While the rice is cooking, finely chop the cilantro. Mix the cilantro and chili powder into the rice after it has finished cooking. Set the rice aside until you are ready to use it.', 'While the rice is cooking, roast the poblanos. Preheat the broiler to 400 degrees. Spray a baking sheet and coat all sides of the poblano peppers with non-stick spray (you can rub olive oil all over them but I find spraying is much easier). Place the baking sheet a few inches under the broiler (I use the second rack level) and broil on each side for 5 minutes.', 'After broiling the poblanos, the skin should be blistered and bubbly. Immediately place the peppers into a ziplock bag for about 15 minutes to allow the steam to loosen the skin. Remove them from the bag and peel away as much of the skin as possible (be gentle and it is okay if you can’t get ALL of the skin).', 'Cut a boat shaped piece out of each pepper and then carefully remove the seeds and seed pod. Save the pieces of pepper that are removed to make the openings because it makes a great ingredient for salads, burrito bowls or quesadillas (breakfast quesadilla anyone?).', 'Preheat the oven to 350 degrees (bake, not broil this time). Gently fill the peppers with layers of seasoned rice, salsa, cheese and beans. I began with rice (1/3 to 1/2 cup), then 1 Tbsp of salsa, 1/3 oz. of cheese, beans (as much as I could stuff in), then more salsa and cheese (same amounts as before).', 'Place the peppers back in the oven and bake until they are heated through and the cheese is melted (about 20 minutes). Enjoy!'], prep_time=30, cook_time=90, servings='6 servings', cuisine_type='Southwest', difficulty_level=None, image_url='https://www.budgetbytes.com/wp-content/uploads/2010/02/Stuffed20Poblanos202.jpg', nutrition={'servingSize': '1 Serving', 'calories': '290.52 kcal', 'carbohydrateContent': '47.75 g', 'proteinContent': '13.53 g', 'fatContent': '5.08 g', 'fiberContent': '9.8 g', 'sodiumContent': '921.68 mg'}, macros=MacroNutrition(calories=290.52, protein=13.53, carbohydrates=47.75, fat=5.08, fiber=9.8, sugar=None, sodium=921.68, saturated_fat=None, cholesterol=None), tags=['Diner,Main Course,Side Dish', 'Southwest'], dietary_restrictions=[], author='Beth Moncel', rating=4.67, provider=None)
+[2026-01-02 18:00:12] INFO[budget_bytes_recipe_discovery:48] - Recipe data found, creating recipe
+[2026-01-02 18:11:17] INFO [recipes.management.commands.budget_bytes_recipe_discovery:16] Starting budget bytes recipe discovery
+[2026-01-02 18:11:17] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:48] Budget Bytes scraper initialized with base URL: https://www.budgetbytes.com
+[2026-01-02 18:11:17] INFO [recipes.services.macro_analysis.api_ninja:36] Initializing API NINJA Nutrition API
+[2026-01-02 18:11:17] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:113] Starting sitemap-based recipe URL discovery (limit: 10)
+[2026-01-02 18:11:19] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:138] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-02 18:11:25] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:148] Successfully fetched sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-02 18:11:25] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:214] Processing regular sitemap
+[2026-01-02 18:11:25] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:152] Found 958 URLs in sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-02 18:11:27] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:138] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-02 18:11:34] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:148] Successfully fetched sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-02 18:11:34] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:214] Processing regular sitemap
+[2026-01-02 18:11:34] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:152] Found 1903 URLs in sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-02 18:11:34] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:173] Filtered recipe URLs - Total discovered: 1903, Recipes found: 1868
+[2026-01-02 18:11:34] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:117] Recipe URL discovery completed from sitemap - Total discovered: 10 (method: sitemap)
+[2026-01-02 18:11:34] INFO [recipes.management.commands.budget_bytes_recipe_discovery:23] Discovered recipe URL: https://www.budgetbytes.com/stuffed-poblano-peppers/
+[2026-01-02 18:11:34] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:86] Starting recipe scrape from URL: https://www.budgetbytes.com/stuffed-poblano-peppers/
+[2026-01-02 18:11:37] ERROR [nourishly:43] Failed to extract data from method dietary_restrictions with default value None and error recipe-scrapers (15.8.0) exception: No dietary restrictions data in SchemaOrg.
+[2026-01-02 18:11:37] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:377] Recipe data normalized successfully - Title: Stuffed Poblano Peppers, Ingredients: 9, Instructions: 6, Has structured ingredients: True
+[2026-01-02 18:11:37] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:91] Recipe scraped successfully from https://www.budgetbytes.com/stuffed-poblano-peppers/ - Title: Stuffed Poblano Peppers (provider: BudgetBytes)
+[2026-01-02 18:11:37] INFO [recipes.management.commands.budget_bytes_recipe_discovery:26] Recipe data: RecipeData(title='Stuffed Poblano Peppers', source_url='https://www.budgetbytes.com/stuffed-poblano-peppers/', description='Stuffed poblano peppers are a fun, filling, and flavorful vegetarian meal. The southwest flavors are vibrant while beans and rice keep you feeling full.', ingredients=[IngredientData(name='long grain rice', quantity=1.0, unit='cup', notes='uncooked', original_text='1 cup uncooked long grain rice ($0.30)'), IngredientData(name='bullion', quantity=2.0, unit='cubes', notes=None, original_text='2 cubes bullion, vegetable, or chicken ($0.24)'), IngredientData(name='chili powder', quantity=0.25, unit='teaspoon', notes=None, original_text='1/4 tsp chili powder ($0.05)'), IngredientData(name='fresh cilantro', quantity=0.25, unit='bunches', notes=None, original_text='1/4 bunch fresh cilantro ($0.17)'), IngredientData(name='poblano peppers', quantity=6.0, unit='', notes=None, original_text='6 poblano peppers ($2.98)'), IngredientData(name='cheese', quantity=4.0, unit='ounce', notes=None, original_text='4 oz. cheese ($0.99)'), IngredientData(name='salsa', quantity=0.75, unit='cup', notes='divided', original_text='3/4 cup divided salsa ($0.52)'), IngredientData(name='black beans', quantity=1.0, unit='can', notes=None, original_text='1 15oz. can black beans ($0.87)'), IngredientData(name='non-stick spray', quantity=None, unit=None, notes=None, original_text='non-stick spray (if needed) ($0.10)')], instructions=['Cook the rice in a medium pot with 1.75 cups of water and two buillion cubes. (instructions for cooking rice here) While the rice is cooking, finely chop the cilantro. Mix the cilantro and chili powder into the rice after it has finished cooking. Set the rice aside until you are ready to use it.', 'While the rice is cooking, roast the poblanos. Preheat the broiler to 400 degrees. Spray a baking sheet and coat all sides of the poblano peppers with non-stick spray (you can rub olive oil all over them but I find spraying is much easier). Place the baking sheet a few inches under the broiler (I use the second rack level) and broil on each side for 5 minutes.', 'After broiling the poblanos, the skin should be blistered and bubbly. Immediately place the peppers into a ziplock bag for about 15 minutes to allow the steam to loosen the skin. Remove them from the bag and peel away as much of the skin as possible (be gentle and it is okay if you can’t get ALL of the skin).', 'Cut a boat shaped piece out of each pepper and then carefully remove the seeds and seed pod. Save the pieces of pepper that are removed to make the openings because it makes a great ingredient for salads, burrito bowls or quesadillas (breakfast quesadilla anyone?).', 'Preheat the oven to 350 degrees (bake, not broil this time). Gently fill the peppers with layers of seasoned rice, salsa, cheese and beans. I began with rice (1/3 to 1/2 cup), then 1 Tbsp of salsa, 1/3 oz. of cheese, beans (as much as I could stuff in), then more salsa and cheese (same amounts as before).', 'Place the peppers back in the oven and bake until they are heated through and the cheese is melted (about 20 minutes). Enjoy!'], prep_time=30, cook_time=90, servings='6 servings', cuisine_type='Southwest', difficulty_level=None, image_url='https://www.budgetbytes.com/wp-content/uploads/2010/02/Stuffed20Poblanos202.jpg', nutrition={'servingSize': '1 Serving', 'calories': '290.52 kcal', 'carbohydrateContent': '47.75 g', 'proteinContent': '13.53 g', 'fatContent': '5.08 g', 'fiberContent': '9.8 g', 'sodiumContent': '921.68 mg'}, macros=MacroNutrition(calories=290.52, protein=13.53, carbohydrates=47.75, fat=5.08, fiber=9.8, sugar=None, sodium=921.68, saturated_fat=None, cholesterol=None), tags=['Diner,Main Course,Side Dish', 'Southwest'], dietary_restrictions=[], author='Beth Moncel', rating=4.67, provider=None)
+[2026-01-02 18:11:37] INFO [recipes.management.commands.budget_bytes_recipe_discovery:48] Recipe data found, creating recipe
+[2026-01-03 15:09:54] INFO [recipes.management.commands.budget_bytes_recipe_discovery:16] Starting budget bytes recipe discovery
+[2026-01-03 15:09:54] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:48] Budget Bytes scraper initialized with base URL: https://www.budgetbytes.com
+[2026-01-03 15:09:54] INFO [recipes.services.macro_analysis.api_ninja:36] Initializing API NINJA Nutrition API
+[2026-01-03 15:09:54] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:113] Starting sitemap-based recipe URL discovery (limit: 10)
+[2026-01-03 15:09:56] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:138] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-03 15:10:02] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:148] Successfully fetched sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-03 15:10:02] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:214] Processing regular sitemap
+[2026-01-03 15:10:02] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:152] Found 958 URLs in sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-03 15:10:04] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:138] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-03 15:10:11] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:148] Successfully fetched sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-03 15:10:11] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:214] Processing regular sitemap
+[2026-01-03 15:10:11] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:152] Found 1904 URLs in sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-03 15:10:11] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:173] Filtered recipe URLs - Total discovered: 1904, Recipes found: 1869
+[2026-01-03 15:10:11] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:117] Recipe URL discovery completed from sitemap - Total discovered: 10 (method: sitemap)
+[2026-01-03 15:10:11] INFO [recipes.management.commands.budget_bytes_recipe_discovery:23] Discovered recipe URL: https://www.budgetbytes.com/stuffed-poblano-peppers/
+[2026-01-03 15:10:11] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:86] Starting recipe scrape from URL: https://www.budgetbytes.com/stuffed-poblano-peppers/
+[2026-01-03 15:10:15] ERROR [recipes.utils:73] Failed to extract data from method dietary_restrictions with default value None and error recipe-scrapers (15.8.0) exception: No dietary restrictions data in SchemaOrg.
+[2026-01-03 15:10:15] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:377] Recipe data normalized successfully - Title: Stuffed Poblano Peppers, Ingredients: 9, Instructions: 6, Has structured ingredients: True
+[2026-01-03 15:10:15] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:91] Recipe scraped successfully from https://www.budgetbytes.com/stuffed-poblano-peppers/ - Title: Stuffed Poblano Peppers (provider: BudgetBytes)
+[2026-01-03 15:10:15] INFO [recipes.management.commands.budget_bytes_recipe_discovery:26] Recipe data: RecipeData(title='Stuffed Poblano Peppers', source_url='https://www.budgetbytes.com/stuffed-poblano-peppers/', description='Stuffed poblano peppers are a fun, filling, and flavorful vegetarian meal. The southwest flavors are vibrant while beans and rice keep you feeling full.', ingredients=[IngredientData(name='long grain rice', quantity=1.0, unit='cup', notes='uncooked', original_text='1 cup uncooked long grain rice ($0.30)'), IngredientData(name='bullion', quantity=2.0, unit='cubes', notes=None, original_text='2 cubes bullion, vegetable, or chicken ($0.24)'), IngredientData(name='chili powder', quantity=0.25, unit='teaspoon', notes=None, original_text='1/4 tsp chili powder ($0.05)'), IngredientData(name='fresh cilantro', quantity=0.25, unit='bunches', notes=None, original_text='1/4 bunch fresh cilantro ($0.17)'), IngredientData(name='poblano peppers', quantity=6.0, unit='', notes=None, original_text='6 poblano peppers ($2.98)'), IngredientData(name='cheese', quantity=4.0, unit='ounce', notes=None, original_text='4 oz. cheese ($0.99)'), IngredientData(name='salsa', quantity=0.75, unit='cup', notes='divided', original_text='3/4 cup divided salsa ($0.52)'), IngredientData(name='black beans', quantity=1.0, unit='can', notes=None, original_text='1 15oz. can black beans ($0.87)'), IngredientData(name='non-stick spray', quantity=None, unit=None, notes=None, original_text='non-stick spray (if needed) ($0.10)')], instructions=['Cook the rice in a medium pot with 1.75 cups of water and two buillion cubes. (instructions for cooking rice here) While the rice is cooking, finely chop the cilantro. Mix the cilantro and chili powder into the rice after it has finished cooking. Set the rice aside until you are ready to use it.', 'While the rice is cooking, roast the poblanos. Preheat the broiler to 400 degrees. Spray a baking sheet and coat all sides of the poblano peppers with non-stick spray (you can rub olive oil all over them but I find spraying is much easier). Place the baking sheet a few inches under the broiler (I use the second rack level) and broil on each side for 5 minutes.', 'After broiling the poblanos, the skin should be blistered and bubbly. Immediately place the peppers into a ziplock bag for about 15 minutes to allow the steam to loosen the skin. Remove them from the bag and peel away as much of the skin as possible (be gentle and it is okay if you can’t get ALL of the skin).', 'Cut a boat shaped piece out of each pepper and then carefully remove the seeds and seed pod. Save the pieces of pepper that are removed to make the openings because it makes a great ingredient for salads, burrito bowls or quesadillas (breakfast quesadilla anyone?).', 'Preheat the oven to 350 degrees (bake, not broil this time). Gently fill the peppers with layers of seasoned rice, salsa, cheese and beans. I began with rice (1/3 to 1/2 cup), then 1 Tbsp of salsa, 1/3 oz. of cheese, beans (as much as I could stuff in), then more salsa and cheese (same amounts as before).', 'Place the peppers back in the oven and bake until they are heated through and the cheese is melted (about 20 minutes). Enjoy!'], prep_time=30, cook_time=90, servings='6 servings', cuisine_type='Southwest', difficulty_level=None, image_url='https://www.budgetbytes.com/wp-content/uploads/2010/02/Stuffed20Poblanos202.jpg', nutrition={'servingSize': '1 Serving', 'calories': '290.52 kcal', 'carbohydrateContent': '47.75 g', 'proteinContent': '13.53 g', 'fatContent': '5.08 g', 'fiberContent': '9.8 g', 'sodiumContent': '921.68 mg'}, macros=MacroNutrition(calories=290.52, protein=13.53, carbohydrates=47.75, fat=5.08, fiber=9.8, sugar=None, sodium=921.68, saturated_fat=None, cholesterol=None), tags=['Diner,Main Course,Side Dish', 'Southwest'], dietary_restrictions=[], author='Beth Moncel', rating=4.67, provider=None)
+[2026-01-03 15:10:15] INFO [recipes.management.commands.budget_bytes_recipe_discovery:48] Recipe data found, creating recipe
+[2026-01-03 15:57:45] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:48] Budget Bytes scraper initialized with base URL: https://www.budgetbytes.com
+[2026-01-03 15:57:45] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:48] Budget Bytes scraper initialized with base URL: https://www.budgetbytes.com
+[2026-01-03 15:57:45] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:48] Budget Bytes scraper initialized with base URL: https://www.budgetbytes.com
+[2026-01-03 16:02:11] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:48] Budget Bytes scraper initialized with base URL: https://www.budgetbytes.com
+[2026-01-03 16:02:11] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:48] Budget Bytes scraper initialized with base URL: https://www.budgetbytes.com
+[2026-01-03 16:02:11] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:48] Budget Bytes scraper initialized with base URL: https://www.budgetbytes.com
+[2026-01-03 16:20:00] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-03 16:20:00] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-03 16:21:39] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:35:10] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:35:10] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:35:10] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:96] Starting sitemap-based recipe URL discovery (limit: 10)
+[2026-01-05 19:35:10] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:100] Recipe URL discovery completed from sitemap - Total discovered: 0 (method: category_fallback)
+[2026-01-05 19:35:10] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:35:10] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:96] Starting sitemap-based recipe URL discovery (limit: 2)
+[2026-01-05 19:35:10] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:100] Recipe URL discovery completed from sitemap - Total discovered: 3 (method: sitemap)
+[2026-01-05 19:35:10] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:35:10] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:64] Invalid Budget Bytes URL: https://www.example.com/recipe/ (provider: BudgetBytes)
+[2026-01-05 19:35:10] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:35:10] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:69] Starting recipe scrape from URL: https://www.budgetbytes.com/recipe/
+[2026-01-05 19:35:10] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:287] Failed to extract recipe title from https://www.budgetbytes.com/recipe/
+[2026-01-05 19:35:10] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:373] Failed to normalize recipe data from https://www.budgetbytes.com/recipe/ - Error: Failed to extract recipe title, Raw ingredients: N/A
+[2026-01-05 19:35:10] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:35:10] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:69] Starting recipe scrape from URL: https://www.budgetbytes.com/thai-curry-fried-rice/
+[2026-01-05 19:35:10] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:360] Recipe data normalized successfully - Title: Thai Curry Fried Rice, Ingredients: 2, Instructions: 2, Has structured ingredients: True
+[2026-01-05 19:35:10] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:74] Recipe scraped successfully from https://www.budgetbytes.com/thai-curry-fried-rice/ - Title: Thai Curry Fried Rice (provider: BudgetBytes)
+[2026-01-05 19:41:23] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:41:23] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:41:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:96] Starting sitemap-based recipe URL discovery (limit: 10)
+[2026-01-05 19:41:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:100] Recipe URL discovery completed from sitemap - Total discovered: 0 (method: category_fallback)
+[2026-01-05 19:41:23] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:41:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:96] Starting sitemap-based recipe URL discovery (limit: 2)
+[2026-01-05 19:41:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:100] Recipe URL discovery completed from sitemap - Total discovered: 3 (method: sitemap)
+[2026-01-05 19:41:23] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:41:23] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:64] Invalid Budget Bytes URL: https://www.example.com/recipe/ (provider: BudgetBytes)
+[2026-01-05 19:41:23] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:41:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:69] Starting recipe scrape from URL: https://www.budgetbytes.com/recipe/
+[2026-01-05 19:41:23] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:41:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:69] Starting recipe scrape from URL: https://www.budgetbytes.com/test-recipe/
+[2026-01-05 19:41:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:74] Recipe scraped successfully from https://www.budgetbytes.com/test-recipe/ - Title: Test Recipe (provider: BudgetBytes)
+[2026-01-05 19:53:29] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:53:29] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:53:29] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:96] Starting sitemap-based recipe URL discovery (limit: 10)
+[2026-01-05 19:53:29] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:100] Recipe URL discovery completed from sitemap - Total discovered: 0 (method: category_fallback)
+[2026-01-05 19:53:29] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:53:29] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:96] Starting sitemap-based recipe URL discovery (limit: 2)
+[2026-01-05 19:53:29] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:100] Recipe URL discovery completed from sitemap - Total discovered: 3 (method: sitemap)
+[2026-01-05 19:53:29] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:53:29] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:64] Invalid Budget Bytes URL: https://www.example.com/recipe/ (provider: BudgetBytes)
+[2026-01-05 19:53:29] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:53:29] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:69] Starting recipe scrape from URL: https://www.budgetbytes.com/recipe/
+[2026-01-05 19:53:29] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:53:29] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:69] Starting recipe scrape from URL: https://www.budgetbytes.com/test-recipe/
+[2026-01-05 19:53:29] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:74] Recipe scraped successfully from https://www.budgetbytes.com/test-recipe/ - Title: Test Recipe (provider: BudgetBytes)
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 19:56:55] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap.xml - Error: Connection error
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 19:56:55] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap2.xml - Error: Connection error
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:131] Successfully fetched sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:197] Processing regular sitemap
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:135] Found 2 URLs in sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:131] Successfully fetched sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:197] Processing regular sitemap
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:135] Found 4 URLs in sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:156] Filtered recipe URLs - Total discovered: 4, Recipes found: 2
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 19:56:55] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 19:56:55] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:96] Starting sitemap-based recipe URL discovery (limit: 10)
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:100] Recipe URL discovery completed from sitemap - Total discovered: 0 (method: category_fallback)
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:96] Starting sitemap-based recipe URL discovery (limit: 2)
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:100] Recipe URL discovery completed from sitemap - Total discovered: 3 (method: sitemap)
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:56:55] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:64] Invalid Budget Bytes URL: https://www.example.com/recipe/ (provider: BudgetBytes)
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:69] Starting recipe scrape from URL: https://www.budgetbytes.com/recipe/
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:69] Starting recipe scrape from URL: https://www.budgetbytes.com/test-recipe/
+[2026-01-05 19:56:55] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:74] Recipe scraped successfully from https://www.budgetbytes.com/test-recipe/ - Title: Test Recipe (provider: BudgetBytes)
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:02:13] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap.xml - Error: Connection error
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:02:13] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap2.xml - Error: Connection error
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:131] Successfully fetched sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:197] Processing regular sitemap
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:135] Found 2 URLs in sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:131] Successfully fetched sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:197] Processing regular sitemap
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:135] Found 4 URLs in sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:156] Filtered recipe URLs - Total discovered: 4, Recipes found: 2
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:02:13] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:02:13] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:96] Starting sitemap-based recipe URL discovery (limit: 10)
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:100] Recipe URL discovery completed from sitemap - Total discovered: 0 (method: category_fallback)
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:96] Starting sitemap-based recipe URL discovery (limit: 2)
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:100] Recipe URL discovery completed from sitemap - Total discovered: 3 (method: sitemap)
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:13] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:64] Invalid Budget Bytes URL: https://www.example.com/recipe/ (provider: BudgetBytes)
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:69] Starting recipe scrape from URL: https://www.budgetbytes.com/recipe/
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:69] Starting recipe scrape from URL: https://www.budgetbytes.com/test-recipe/
+[2026-01-05 20:02:13] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:74] Recipe scraped successfully from https://www.budgetbytes.com/test-recipe/ - Title: Test Recipe (provider: BudgetBytes)
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:02:24] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap.xml - Error: Connection error
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:02:24] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap2.xml - Error: Connection error
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:131] Successfully fetched sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:197] Processing regular sitemap
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:135] Found 2 URLs in sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:131] Successfully fetched sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:197] Processing regular sitemap
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:135] Found 4 URLs in sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:156] Filtered recipe URLs - Total discovered: 4, Recipes found: 2
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:02:24] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:02:24] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:96] Starting sitemap-based recipe URL discovery (limit: 10)
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:100] Recipe URL discovery completed from sitemap - Total discovered: 0 (method: category_fallback)
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:96] Starting sitemap-based recipe URL discovery (limit: 2)
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:100] Recipe URL discovery completed from sitemap - Total discovered: 3 (method: sitemap)
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:24] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:407] Empty ingredient text encountered in raw ingredients list: ['']
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:422] Failed to parse ingredient with ingredient_parser: 2 cups flour - Parsed but no name (parsed: <Mock name='parse_ingredient()' id='4689864288'>)
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:422] Failed to parse ingredient with ingredient_parser: 2 cups flour - None
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:24] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:64] Invalid Budget Bytes URL: https://www.example.com/recipe/ (provider: BudgetBytes)
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:69] Starting recipe scrape from URL: https://www.budgetbytes.com/recipe/
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:69] Starting recipe scrape from URL: https://www.budgetbytes.com/test-recipe/
+[2026-01-05 20:02:24] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:74] Recipe scraped successfully from https://www.budgetbytes.com/test-recipe/ - Title: Test Recipe (provider: BudgetBytes)
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:05:49] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap.xml - Error: Connection error
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:05:49] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap2.xml - Error: Connection error
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:131] Successfully fetched sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:197] Processing regular sitemap
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:135] Found 2 URLs in sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:131] Successfully fetched sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:197] Processing regular sitemap
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:135] Found 4 URLs in sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:156] Filtered recipe URLs - Total discovered: 4, Recipes found: 2
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:05:49] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:05:49] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:96] Starting sitemap-based recipe URL discovery (limit: 10)
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:100] Recipe URL discovery completed from sitemap - Total discovered: 0 (method: category_fallback)
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:96] Starting sitemap-based recipe URL discovery (limit: 2)
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:100] Recipe URL discovery completed from sitemap - Total discovered: 3 (method: sitemap)
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:05:49] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: []
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:421] Failed to parse ingredient with ingredient_parser: 2 cups flour - Parsed but no name (parsed: <Mock name='parse_ingredient()' id='4628245072'>)
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:421] Failed to parse ingredient with ingredient_parser: 2 cups flour - None
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:05:49] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:64] Invalid Budget Bytes URL: https://www.example.com/recipe/ (provider: BudgetBytes)
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:69] Starting recipe scrape from URL: https://www.budgetbytes.com/recipe/
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:69] Starting recipe scrape from URL: https://www.budgetbytes.com/test-recipe/
+[2026-01-05 20:05:49] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:74] Recipe scraped successfully from https://www.budgetbytes.com/test-recipe/ - Title: Test Recipe (provider: BudgetBytes)
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:06:51] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap.xml - Error: Connection error
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:06:51] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap2.xml - Error: Connection error
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:131] Successfully fetched sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:197] Processing regular sitemap
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:135] Found 2 URLs in sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:131] Successfully fetched sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:197] Processing regular sitemap
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:135] Found 4 URLs in sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:156] Filtered recipe URLs - Total discovered: 4, Recipes found: 2
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:06:51] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:06:51] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:96] Starting sitemap-based recipe URL discovery (limit: 10)
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:100] Recipe URL discovery completed from sitemap - Total discovered: 0 (method: category_fallback)
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:96] Starting sitemap-based recipe URL discovery (limit: 2)
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:100] Recipe URL discovery completed from sitemap - Total discovered: 3 (method: sitemap)
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:06:51] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: []
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:06:51] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:411] Empty ingredient text encountered in raw ingredients list: ['']
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:426] Failed to parse ingredient with ingredient_parser: 2 cups flour - Parsed but no name (parsed: <Mock name='parse_ingredient()' id='4732396816'>)
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:426] Failed to parse ingredient with ingredient_parser: 2 cups flour - None
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:06:51] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:64] Invalid Budget Bytes URL: https://www.example.com/recipe/ (provider: BudgetBytes)
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:69] Starting recipe scrape from URL: https://www.budgetbytes.com/recipe/
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:69] Starting recipe scrape from URL: https://www.budgetbytes.com/test-recipe/
+[2026-01-05 20:06:51] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:74] Recipe scraped successfully from https://www.budgetbytes.com/test-recipe/ - Title: Test Recipe (provider: BudgetBytes)
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:07:23] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap.xml - Error: Connection error
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:07:23] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap2.xml - Error: Connection error
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:131] Successfully fetched sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:197] Processing regular sitemap
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:135] Found 2 URLs in sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:131] Successfully fetched sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:197] Processing regular sitemap
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:135] Found 4 URLs in sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:156] Filtered recipe URLs - Total discovered: 4, Recipes found: 2
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:07:23] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:07:23] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:96] Starting sitemap-based recipe URL discovery (limit: 10)
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:100] Recipe URL discovery completed from sitemap - Total discovered: 0 (method: category_fallback)
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:96] Starting sitemap-based recipe URL discovery (limit: 2)
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:100] Recipe URL discovery completed from sitemap - Total discovered: 3 (method: sitemap)
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:07:23] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: []
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:07:23] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: ['']
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:420] Failed to parse ingredient with ingredient_parser: 2 cups flour - Parsed but no name (parsed: <Mock name='parse_ingredient()' id='4657210640'>)
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:420] Failed to parse ingredient with ingredient_parser: 2 cups flour - None
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:07:23] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:64] Invalid Budget Bytes URL: https://www.example.com/recipe/ (provider: BudgetBytes)
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:69] Starting recipe scrape from URL: https://www.budgetbytes.com/recipe/
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:69] Starting recipe scrape from URL: https://www.budgetbytes.com/test-recipe/
+[2026-01-05 20:07:23] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:74] Recipe scraped successfully from https://www.budgetbytes.com/test-recipe/ - Title: Test Recipe (provider: BudgetBytes)
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:09:28] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap.xml - Error: Connection error
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:09:28] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap2.xml - Error: Connection error
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:131] Successfully fetched sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:197] Processing regular sitemap
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:135] Found 2 URLs in sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:131] Successfully fetched sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:197] Processing regular sitemap
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:135] Found 4 URLs in sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:156] Filtered recipe URLs - Total discovered: 4, Recipes found: 2
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:09:28] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:09:28] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:96] Starting sitemap-based recipe URL discovery (limit: 10)
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:100] Recipe URL discovery completed from sitemap - Total discovered: 0 (method: category_fallback)
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:96] Starting sitemap-based recipe URL discovery (limit: 2)
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:100] Recipe URL discovery completed from sitemap - Total discovered: 3 (method: sitemap)
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:09:28] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: []
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:09:28] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: ['']
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:420] Failed to parse ingredient with ingredient_parser: 2 cups flour - Parsed but no name (parsed: <Mock name='parse_ingredient()' id='4594936064'>)
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:420] Failed to parse ingredient with ingredient_parser: 2 cups flour - None
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:09:28] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:64] Invalid Budget Bytes URL: https://www.example.com/recipe/ (provider: BudgetBytes)
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:69] Starting recipe scrape from URL: https://www.budgetbytes.com/recipe/
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:69] Starting recipe scrape from URL: https://www.budgetbytes.com/test-recipe/
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:74] Recipe scraped successfully from https://www.budgetbytes.com/test-recipe/ - Title: Test Recipe (provider: BudgetBytes)
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:09:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:12:04] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:12:04] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: []
+[2026-01-05 20:12:04] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:12:04] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: ['']
+[2026-01-05 20:12:04] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:12:04] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:420] Failed to parse ingredient with ingredient_parser: 2 cups flour - Parsed but no name (parsed: <Mock name='parse_ingredient()' id='4587162320'>)
+[2026-01-05 20:12:04] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:12:04] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:420] Failed to parse ingredient with ingredient_parser: 2 cups flour - None
+[2026-01-05 20:12:04] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:12:04] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:15:08] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:15:08] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:15:08] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: []
+[2026-01-05 20:15:08] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:15:08] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: ['']
+[2026-01-05 20:15:08] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:15:08] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:15:08] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:15:08] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:420] Failed to parse ingredient with ingredient_parser: 2 cups flour - Parsed but no name (parsed: <Mock name='parse_ingredient()' id='4562834768'>)
+[2026-01-05 20:15:08] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:15:08] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:15:08] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:15:08] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:420] Failed to parse ingredient with ingredient_parser: 2 cups flour - None
+[2026-01-05 20:15:08] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:15:08] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:15:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:15:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:15:28] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: []
+[2026-01-05 20:15:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:15:28] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: ['']
+[2026-01-05 20:15:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:15:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:15:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:15:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:420] Failed to parse ingredient with ingredient_parser: 2 cups flour - Parsed but no name (parsed: <Mock name='parse_ingredient()' id='4562425168'>)
+[2026-01-05 20:15:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:15:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:15:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:15:28] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:420] Failed to parse ingredient with ingredient_parser: 2 cups flour - None
+[2026-01-05 20:15:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:15:28] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:33:31] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap.xml - Error: Connection error
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:33:31] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:147] Failed to fetch sitemap https://www.budgetbytes.com/post-sitemap2.xml - Error: Connection error
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:131] Successfully fetched sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:197] Processing regular sitemap
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:135] Found 2 URLs in sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:131] Successfully fetched sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:197] Processing regular sitemap
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:135] Found 4 URLs in sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:156] Filtered recipe URLs - Total discovered: 4, Recipes found: 2
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:33:31] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap.xml
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:121] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:33:31] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:145] Sitemap request timed out: https://www.budgetbytes.com/post-sitemap2.xml
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:96] Starting sitemap-based recipe URL discovery (limit: 10)
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:100] Recipe URL discovery completed from sitemap - Total discovered: 0 (method: category_fallback)
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:96] Starting sitemap-based recipe URL discovery (limit: 2)
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:100] Recipe URL discovery completed from sitemap - Total discovered: 3 (method: sitemap)
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: []
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: ['']
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:420] Failed to parse ingredient with ingredient_parser: 2 cups flour - Parsed but no name (parsed: <Mock name='parse_ingredient()' id='4592670368'>)
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:420] Failed to parse ingredient with ingredient_parser: 2 cups flour - None
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:64] Invalid Budget Bytes URL: https://www.example.com/recipe/ (provider: BudgetBytes)
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:69] Starting recipe scrape from URL: https://www.budgetbytes.com/recipe/
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:69] Starting recipe scrape from URL: https://www.budgetbytes.com/test-recipe/
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:74] Recipe scraped successfully from https://www.budgetbytes.com/test-recipe/ - Title: Test Recipe (provider: BudgetBytes)
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-05 20:33:31] INFO [recipes.services.recipe_providers.base:238] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
