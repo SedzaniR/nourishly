@@ -16,9 +16,18 @@ class Recipe(TimeStampedModel):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True, null=True)
+    description = models.TextField(
+        blank=True, null=True, help_text="Recipe description or summary"
+    )
+    author = models.CharField(
+        max_length=255, blank=True, null=True, help_text="Recipe author name"
+    )
     source_url = models.URLField(max_length=500)
     source_site = models.CharField(max_length=100)
     image_url = models.URLField(max_length=500)
+    difficulty_level = models.CharField(
+        max_length=50, blank=True, null=True, help_text="Recipe difficulty level"
+    )
     instructions = models.JSONField()
     preparation_time = models.PositiveIntegerField(
         blank=True, null=True, help_text="Preparation time in minutes"
@@ -217,9 +226,14 @@ class RecipeIngredient(models.Model):
     ingredient = models.ForeignKey(
         Ingredient, on_delete=models.CASCADE, related_name="recipe_ingredients"
     )
-    quantity = models.FloatField(help_text="Quantity of ingredient needed")
+    quantity = models.FloatField(
+        help_text="Quantity of ingredient needed", null=True, blank=True
+    )
     unit = models.CharField(
-        max_length=50, help_text="Unit of measurement (e.g., 'cups', 'grams', 'pieces')"
+        max_length=50,
+        help_text="Unit of measurement (e.g., 'cups', 'grams', 'pieces')",
+        null=True,
+        blank=True,
     )
     note = models.TextField(
         blank=True,

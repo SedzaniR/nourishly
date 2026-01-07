@@ -13,6 +13,7 @@ from . import constants
 from recipes.services.recipe_providers.utils import (
     is_recipe_provider_url,
     parse_time_duration,
+    parse_servings,
     extract_tags,
     extract_dietary_restrictions,
     extract_macros,
@@ -332,8 +333,8 @@ class BudgetBytesScraper(BaseRecipeProvider):
                         scraper.cook_time
                     )
                 ),
-                servings=service_utils.safely_extract_info_from_function_call(
-                    scraper.yields
+                servings=parse_servings(
+                    service_utils.safely_extract_info_from_function_call(scraper.yields)
                 ),
                 cuisine_type=service_utils.safely_extract_info_from_function_call(
                     scraper.cuisine

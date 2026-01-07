@@ -106,3 +106,35 @@ def parse_time_duration(duration: Any) -> Optional[int]:
             return int(duration.total_seconds() / 60)
 
         return parse_time_string(str(duration))
+
+
+def parse_servings(servings_text: Any) -> Optional[int]:
+        """Parse servings string to an integer.
+
+        Uses the minimum value when a range is provided (e.g., "6-8 servings" -> 6).
+
+        Args:
+            servings_text: Raw servings value from the scraper (string or int).
+
+        Returns:
+            Parsed integer servings or None if parsing fails.
+        """
+
+        if servings_text is None:
+            return None
+
+        if isinstance(servings_text, int):
+            return servings_text
+
+        text = str(servings_text).strip().lower()
+        if not text:
+            return None
+
+        match = re.search(r"(\d+)", text)
+        if match:
+            try:
+                return int(match.group(1))
+            except ValueError:
+                return None
+
+        return None

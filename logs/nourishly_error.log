@@ -198,3 +198,19 @@
 [2026-01-05 20:33:31] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: []
 [2026-01-05 20:33:31] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:404] No raw ingredients provided to parse: ['']
 [2026-01-05 20:33:31] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:64] Invalid Budget Bytes URL: https://www.example.com/recipe/ (provider: BudgetBytes)
+[2026-01-07 21:58:16] ERROR [recipes.utils:73] Failed to extract data from method dietary_restrictions with default value None and error recipe-scrapers (15.8.0) exception: No dietary restrictions data in SchemaOrg.
+[2026-01-07 21:58:17] ERROR [recipes.services.recipe_storage:60] Failed to store recipe 'Stuffed Poblano Peppers': column recipes_recipe.description does not exist
+LINE 1: ...recipes_recipe"."title", "recipes_recipe"."slug", "recipes_r...
+                                                             ^
+
+[2026-01-07 21:58:17] ERROR [recipes.management.commands.budget_bytes_recipe_discovery:59] Failed to store recipe data
+[2026-01-07 21:59:34] ERROR [recipes.utils:73] Failed to extract data from method dietary_restrictions with default value None and error recipe-scrapers (15.8.0) exception: No dietary restrictions data in SchemaOrg.
+[2026-01-07 21:59:34] ERROR [recipes.services.recipe_storage:60] Failed to store recipe 'Stuffed Poblano Peppers': Field 'servings' expected a number but got '6 servings'.
+[2026-01-07 21:59:34] ERROR [recipes.management.commands.budget_bytes_recipe_discovery:59] Failed to store recipe data
+[2026-01-07 22:11:28] ERROR [recipes.utils:73] Failed to extract data from method dietary_restrictions with default value None and error recipe-scrapers (15.8.0) exception: No dietary restrictions data in SchemaOrg.
+[2026-01-07 22:11:28] ERROR [recipes.services.recipe_storage:60] Failed to store recipe 'Stuffed Poblano Peppers': null value in column "quantity" of relation "recipes_recipeingredient" violates not-null constraint
+DETAIL:  Failing row contains (4247f65b-bee7-40c9-a5a2-64fd993c7828, null, , null, null, 2026-01-07 22:11:28.418675+00, e0d6e75a-e1c4-47bd-9fa9-0f0209b5f5f8, 19c349e4-bb7e-45ae-9976-47ba6fdbc1a1).
+
+[2026-01-07 22:11:28] ERROR [recipes.management.commands.budget_bytes_recipe_discovery:59] Failed to store recipe data
+[2026-01-07 22:16:58] ERROR [recipes.utils:73] Failed to extract data from method dietary_restrictions with default value None and error recipe-scrapers (15.8.0) exception: No dietary restrictions data in SchemaOrg.
+[2026-01-07 22:16:59] ERROR [recipes.services.recipe_storage:246] Failed to generate embedding for recipe 'Stuffed Poblano Peppers': The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
