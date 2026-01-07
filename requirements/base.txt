@@ -1,5 +1,6 @@
 Django==5.1.4
 django-ninja==1.1.0
+django-extensions==3.2.3
 
 # Recipe scraping
 recipe-scrapers>=14.44.0
