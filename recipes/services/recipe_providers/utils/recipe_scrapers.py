@@ -8,6 +8,9 @@ from recipes.utils import (
     safely_extract_info_from_function_call,
 )
 from recipes.services.recipe_providers import constants
+from recipes.services.recipe_providers.utils import parse_servings
+from recipes.services.macro_analysis.api_ninja import ApiNinjaMacroAnalyzer
+from recipes.services.macro_analysis.base import MacroAnalysisStatus
 
 logger = logging.getLogger(__name__)
 
@@ -16,6 +19,7 @@ def extract_macros(scraper: Any) -> Optional[MacroNutrition]:
     """Extract nutritional macro information from recipe scraper.
 
     Uses the reusable extract_numeric_value utility to parse nutrition strings.
+    Falls back to the macro analysis service when some macro fields are missing.
 
     Args:
         scraper (Any): Recipe scraper object from recipe-scrapers library.
@@ -24,36 +28,94 @@ def extract_macros(scraper: Any) -> Optional[MacroNutrition]:
         Optional[MacroNutrition]: Structured macro nutrition data, or None if unavailable.
     """
     try:
-        # Get nutrition data directly from recipe-scrapers
         nutrients = scraper.nutrients()
-        if not nutrients:
-            return None
+        macros = None
+        if nutrients:
+            macros = MacroNutrition(
+                calories=extract_numeric_value_from_string(nutrients.get("calories")),
+                protein=extract_numeric_value_from_string(
+                    nutrients.get("proteinContent")
+                ),
+                carbohydrates=extract_numeric_value_from_string(
+                    nutrients.get("carbohydrateContent")
+                ),
+                fat=extract_numeric_value_from_string(nutrients.get("fatContent")),
+                fiber=extract_numeric_value_from_string(nutrients.get("fiberContent")),
+                sugar=extract_numeric_value_from_string(nutrients.get("sugarContent")),
+                sodium=extract_numeric_value_from_string(
+                    nutrients.get("sodiumContent")
+                ),
+                saturated_fat=extract_numeric_value_from_string(
+                    nutrients.get("saturatedFatContent")
+                ),
+                cholesterol=extract_numeric_value_from_string(
+                    nutrients.get("cholesterolContent")
+                ),
+                monounsaturated_fat=extract_numeric_value_from_string(
+                    nutrients.get("monounsaturatedFatContent")
+                ),
+                polyunsaturated_fat=extract_numeric_value_from_string(
+                    nutrients.get("polyunsaturatedFatContent")
+                ),
+            )
 
-        # Use utility to extract numbers from strings like "211 kcal", "13 g"
-        macros = MacroNutrition(
-            calories=extract_numeric_value_from_string(nutrients.get("calories")),
-            protein=extract_numeric_value_from_string(nutrients.get("proteinContent")),
-            carbohydrates=extract_numeric_value_from_string(
-                nutrients.get("carbohydrateContent")
-            ),
-            fat=extract_numeric_value_from_string(nutrients.get("fatContent")),
-            fiber=extract_numeric_value_from_string(nutrients.get("fiberContent")),
-            sugar=extract_numeric_value_from_string(nutrients.get("sugarContent")),
-            sodium=extract_numeric_value_from_string(nutrients.get("sodiumContent")),
-            saturated_fat=extract_numeric_value_from_string(
-                nutrients.get("saturatedFatContent")
-            ),
-            cholesterol=extract_numeric_value_from_string(
-                nutrients.get("cholesterolContent")
-            ),
-        )
+        macros = macros or MacroNutrition()
+        missing_fields = [
+            field
+            for field in constants.MACROS_TO_EXTRACT
+            if getattr(macros, field) is None
+        ]
 
-        # Return only if we got at least one value
+        if missing_fields:
+            analyzer = ApiNinjaMacroAnalyzer()
+            if not analyzer or not analyzer.is_available():
+                logger.warning(
+                    "Macro analysis service unavailable; skipping macro fallback."
+                )
+            else:
+                title = safely_extract_info_from_function_call(scraper.title, "")
+                ingredients_list = safely_extract_info_from_function_call(
+                    scraper.ingredients, []
+                )
+                recipe_text_parts = [title] if title else []
+                if ingredients_list:
+                    recipe_text_parts.append("Ingredients:")
+                    recipe_text_parts.extend(ingredients_list)
+                recipe_text = (
+                    "\n".join(recipe_text_parts) if recipe_text_parts else title
+                )
+
+                servings = parse_servings(
+                    safely_extract_info_from_function_call(scraper.yields)
+                )
+
+                analysis_result = analyzer.analyze_recipe(
+                    recipe_text=recipe_text, servings=servings
+                )
+
+                if (
+                    analysis_result
+                    and analysis_result.status == MacroAnalysisStatus.SUCCESS
+                    and analysis_result.macro_nutrients
+                ):
+                    macro_nutrients = analysis_result.macro_nutrients
+                    logger.info(f"Macro nutrients analysis result: {analysis_result}")
+                    for field in constants.MACROS_TO_EXTRACT:
+                        if getattr(macros, field) is None:
+                            setattr(
+                                macros,
+                                field,
+                                getattr(macro_nutrients, field, None),
+                            )
+                    logger.info("Macros supplemented via macro analysis service.")
+                else:
+                    logger.warning("Macro analysis service returned no macros.")
+
         if any(
             getattr(macros, field) is not None for field in constants.MACROS_TO_EXTRACT
         ):
             logger.debug(
-                f"Macros extracted - Calories: {macros.calories}, Protein: {macros.protein}"
+                f"Macros extracted/supplemented - Calories: {macros.calories}, Protein: {macros.protein}"
             )
             return macros
 

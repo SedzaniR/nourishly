@@ -50,6 +50,8 @@ class MacroNutrition:
     sodium: Optional[float] = None  # milligrams
     saturated_fat: Optional[float] = None  # grams
     cholesterol: Optional[float] = None  # milligrams
+    monounsaturated_fat: Optional[float] = None  # grams
+    polyunsaturated_fat: Optional[float] = None  # grams
 
 
 @dataclass

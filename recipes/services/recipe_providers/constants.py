@@ -85,4 +85,8 @@ MACROS_TO_EXTRACT = [
     "fiber",
     "sugar",
     "sodium",
+    "saturated_fat",
+    "cholesterol",
+    "monounsaturated_fat",
+    "polyunsaturated_fat",
 ]

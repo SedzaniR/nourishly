@@ -207,11 +207,15 @@ class ApiNinjaMacroAnalyzer(BaseMacroAnalyzer):
                 )
                 recipe_ingredients.append(ingredient_result)
 
-                # Sum up totals
-                # total_calories += ingredient_macros.calories
-                # total_protein += ingredient_macros.protein
-                total_carbs += ingredient_macros.carbohydrates
-                total_fat += ingredient_macros.fat
+                # Sum up totals (guarding against None)
+                if ingredient_macros.calories is not None:
+                    total_calories += ingredient_macros.calories
+                if ingredient_macros.protein is not None:
+                    total_protein += ingredient_macros.protein
+                if ingredient_macros.carbohydrates is not None:
+                    total_carbs += ingredient_macros.carbohydrates
+                if ingredient_macros.fat is not None:
+                    total_fat += ingredient_macros.fat
 
                 if ingredient_macros.fiber:
                     total_fiber += ingredient_macros.fiber
