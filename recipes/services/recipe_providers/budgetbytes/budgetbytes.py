@@ -157,7 +157,6 @@ class BudgetBytesScraper(BaseRecipeProvider):
             logger.info(
                 f"Filtered recipe URLs - Total discovered: {len(discovered_urls)}, Recipes found: {len(recipe_urls)}"
             )
-            logger.debug(f"Total recipe URLs found: {len(recipe_urls)}")
             return recipe_urls[:limit]
 
         return []
@@ -308,11 +307,6 @@ class BudgetBytesScraper(BaseRecipeProvider):
 
             structured_ingredients: List[IngredientData] = self._parse_ingredients(
                 raw_ingredient_list
-            )
-
-            sample_raw = raw_ingredient_list[:2]
-            logger.debug(
-                f"Ingredient parsing completed - Raw count: {len(raw_ingredient_list)}, Parsed count: {len(structured_ingredients)}, Sample: {sample_raw}"
             )
 
             recipe_data: RecipeData = RecipeData(

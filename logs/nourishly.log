@@ -1562,3 +1562,8 @@ Ingredients:
 [2026-01-07 22:49:43] INFO [recipes.management.commands.budget_bytes_recipe_discovery:52] Recipe data found, creating recipe
 [2026-01-07 22:49:45] ERROR [recipes.services.recipe_storage:246] Failed to generate embedding for recipe 'Stuffed Poblano Peppers': The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
 [2026-01-07 22:49:45] INFO [recipes.management.commands.budget_bytes_recipe_discovery:55] Recipe stored: Stuffed Poblano Peppers (e4829817-d211-495c-a352-24d7947c2043)
+[2026-01-08 18:22:04] INFO [recipes.management.commands.budget_bytes_recipe_discovery:18] Starting budget bytes recipe discovery
+[2026-01-08 18:22:04] INFO [recipes.services.recipe_providers.base:240] Recipe provider initialized - Name: BudgetBytes, Domain: budgetbytes.com
+[2026-01-08 18:22:04] INFO [recipes.services.macro_analysis.api_ninja:36] Initializing API NINJA Nutrition API
+[2026-01-08 18:22:04] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:97] Starting sitemap-based recipe URL discovery (limit: 10)
+[2026-01-08 18:22:06] INFO [recipes.services.recipe_providers.budgetbytes.budgetbytes:122] Attempting to fetch sitemap: https://www.budgetbytes.com/post-sitemap.xml

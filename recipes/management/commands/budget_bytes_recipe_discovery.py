@@ -23,7 +23,8 @@ class Command(BaseCommand):
         embedding_client = HuggingFaceInferenceClient()
         recipe_storage_service = RecipeStorageService(embedding_client=embedding_client)
         discovered_recipes_urls = budget_bytes_scraper.discover_recipe_urls()
-        for url in discovered_recipes_urls:
+        stored_recipes_count = 0
+        for url in discovered_recipes_urls[0:100]:
             logger.info(f"Discovered recipe URL: {url}")
             recipe_data = budget_bytes_scraper.process_recipe_from_url(url)
             if recipe_data:
@@ -32,30 +33,20 @@ class Command(BaseCommand):
                     recipe_data.cuisine_type = huggingface_api_client.classify_recipe(
                         recipe_data.title
                     )
-                    logger.info(
-                        f"Cuisine type classified from huggingface: {recipe_data.cuisine_type}"
-                    )
                 if not recipe_data.macros:
-                    logger.info(
-                        "No macros found, using macros from macro analysis service"
-                    )
+
                     recipe_data.macros = macro_analysis_service.analyze_recipe(
                         recipe_data.title
                     )
-                    logger.info(
-                        f"Macros found from macro analysis service: {recipe_data.macros}"
-                    )
 
-                # we may need to use other services to supplement the information
-                # we need to decide which information is important enough to be supplemented
-
-                logger.info("Recipe data found, creating recipe")
                 stored_recipe = recipe_storage_service.store_recipe(recipe_data)
                 if stored_recipe:
+                    stored_recipes_count += 1
                     logger.info(
                         f"Recipe stored: {stored_recipe.title} ({stored_recipe.id})"
                     )
                 else:
                     logger.error("Failed to store recipe data")
-                quit()
-        logger.info("Budget bytes recipe discovery completed")
+        logger.info(
+            f"Budget bytes recipe discovery completed - Stored {stored_recipes_count} recipes"
+        )
