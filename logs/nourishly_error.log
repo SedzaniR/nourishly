@@ -268,3 +268,22 @@ DETAIL:  Failing row contains (2026-01-07 22:22:01.665485+00, 2026-01-07 22:22:0
 [2026-01-08 18:29:32] ERROR [recipes.utils:73] Failed to extract data from method title with default value Unknown Recipe and error recipe-scrapers (15.8.0) exception: No Recipe Schema found at https://www.budgetbytes.com/budget-byting-principles/.
 [2026-01-08 18:29:32] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:287] Failed to extract recipe title from https://www.budgetbytes.com/budget-byting-principles/
 [2026-01-08 18:29:32] ERROR [recipes.services.recipe_providers.budgetbytes.budgetbytes:368] Failed to normalize recipe data from https://www.budgetbytes.com/budget-byting-principles/ - Error: Failed to extract recipe title, Raw ingredients: N/A
+[2026-01-08 18:34:31] ERROR [recipes.utils:73] Failed to extract data from method dietary_restrictions with default value None and error recipe-scrapers (15.8.0) exception: No dietary restrictions data in SchemaOrg.
+[2026-01-08 18:34:35] ERROR [recipes.services.recipe_storage:246] Failed to generate embedding for recipe 'Stuffed Poblano Peppers': The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+[2026-01-08 18:34:38] ERROR [recipes.utils:73] Failed to extract data from method ratings with default value None and error recipe-scrapers (15.8.0) exception: No ratingValue in SchemaOrg.
+[2026-01-08 18:34:38] ERROR [recipes.utils:73] Failed to extract data from method dietary_restrictions with default value None and error recipe-scrapers (15.8.0) exception: No dietary restrictions data in SchemaOrg.
+[2026-01-08 18:34:39] ERROR [recipes.services.recipe_storage:246] Failed to generate embedding for recipe 'Grits 'n Greens': The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+[2026-01-08 18:34:43] ERROR [recipes.utils:73] Failed to extract data from method dietary_restrictions with default value None and error recipe-scrapers (15.8.0) exception: No dietary restrictions data in SchemaOrg.
+[2026-01-08 18:34:45] ERROR [recipes.services.recipe_storage:246] Failed to generate embedding for recipe 'Cranberry Walnut Bread': The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+[2026-01-08 18:34:48] ERROR [recipes.utils:73] Failed to extract data from method dietary_restrictions with default value None and error recipe-scrapers (15.8.0) exception: No dietary restrictions data in SchemaOrg.
+[2026-01-08 18:34:50] ERROR [recipes.services.recipe_storage:246] Failed to generate embedding for recipe 'Flour Tortillas': The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+[2026-01-08 18:34:52] ERROR [recipes.utils:73] Failed to extract data from method cook_time with default value None and error recipe-scrapers (15.8.0) exception: Cooktime information not found in SchemaOrg
+[2026-01-08 18:34:52] ERROR [recipes.utils:73] Failed to extract data from method cuisine with default value None and error recipe-scrapers (15.8.0) exception: No cuisine data in SchemaOrg.
+[2026-01-08 18:34:52] ERROR [recipes.utils:73] Failed to extract data from method cuisine with default value None and error recipe-scrapers (15.8.0) exception: No cuisine data in SchemaOrg.
+[2026-01-08 18:34:52] ERROR [recipes.utils:73] Failed to extract data from method dietary_restrictions with default value None and error recipe-scrapers (15.8.0) exception: No dietary restrictions data in SchemaOrg.
+[2026-01-08 18:34:57] ERROR [recipes.services.recipe_storage:60] Failed to store recipe 'Sriracha Hummus': value too long for type character varying(50)
+
+[2026-01-08 18:34:57] ERROR [recipes.management.commands.budget_bytes_recipe_discovery:49] Failed to store recipe data
+[2026-01-08 18:35:00] ERROR [recipes.utils:73] Failed to extract data from method cuisine with default value None and error recipe-scrapers (15.8.0) exception: No cuisine data in SchemaOrg.
+[2026-01-08 18:35:00] ERROR [recipes.utils:73] Failed to extract data from method cuisine with default value None and error recipe-scrapers (15.8.0) exception: No cuisine data in SchemaOrg.
+[2026-01-08 18:35:00] ERROR [recipes.utils:73] Failed to extract data from method dietary_restrictions with default value None and error recipe-scrapers (15.8.0) exception: No dietary restrictions data in SchemaOrg.

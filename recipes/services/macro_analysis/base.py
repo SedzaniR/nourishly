@@ -305,9 +305,7 @@ class BaseMacroAnalyzer(ABC):
             quantity: Quantity being analyzed.
             analysis_type: Type of analysis being performed.
         """
-        logger.info(
-            f"Macro analysis request - Service: {self.service_name}, Food name: {food_name}, Quantity: {quantity}, Analysis type: {analysis_type.value}"
-        )
+        pass
 
     def _create_error_result(
         self, food_name: str, error_message: str, analysis_type: AnalysisType
