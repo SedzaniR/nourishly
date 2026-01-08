@@ -110,7 +110,6 @@ class ApiNinjaMacroAnalyzer(BaseMacroAnalyzer):
                 raw_data=nutrition_data,
             )
 
-            self._log_analysis_result(analysis_result)
             return analysis_result
 
         except Exception as e:
@@ -268,8 +267,6 @@ class ApiNinjaMacroAnalyzer(BaseMacroAnalyzer):
                 confidence=confidence,
                 raw_data=data,
             )
-
-            self._log_analysis_result(analysis_result)
             return analysis_result
 
         except Exception as e:

@@ -309,21 +309,6 @@ class BaseMacroAnalyzer(ABC):
             f"Macro analysis request - Service: {self.service_name}, Food name: {food_name}, Quantity: {quantity}, Analysis type: {analysis_type.value}"
         )
 
-    def _log_analysis_result(self, result: MacroAnalysisResult) -> None:
-        """Log an analysis result.
-
-        Args:
-            result: The analysis result to log.
-        """
-        if result.status == MacroAnalysisStatus.SUCCESS:
-            logger.info(
-                f"Macro analysis successful - Service: {self.service_name}, Food name: {result.food_name}, Analysis type: {result.analysis_type.value}, Calories: {result.macro_nutrients.calories if result.macro_nutrients else None}, Confidence: {result.confidence}"
-            )
-        else:
-            logger.error(
-                f"Macro analysis failed - Service: {self.service_name}, Food name: {result.food_name}, Analysis type: {result.analysis_type.value}, Status: {result.status.value}, Error: {result.error_message}"
-            )
-
     def _create_error_result(
         self, food_name: str, error_message: str, analysis_type: AnalysisType
     ) -> MacroAnalysisResult:

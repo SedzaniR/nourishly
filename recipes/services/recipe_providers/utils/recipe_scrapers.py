@@ -99,7 +99,6 @@ def extract_macros(scraper: Any) -> Optional[MacroNutrition]:
                     and analysis_result.macro_nutrients
                 ):
                     macro_nutrients = analysis_result.macro_nutrients
-                    logger.info(f"Macro nutrients analysis result: {analysis_result}")
                     for field in constants.MACROS_TO_EXTRACT:
                         if getattr(macros, field) is None:
                             setattr(
